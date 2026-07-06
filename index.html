@@ -1,1415 +1,307 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LIVE ALCHEMY — Performance Ecosystem</title>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
-
-    <style>
-        /* ============================================
-               RESET & BASE STYLES
-            ============================================ */
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --color-purple: #6D3DF5;
-            --color-royal-purple: #7C3AED;
-            --color-indigo: #4F46E5;
-            --color-electric-blue: #2D7FF9;
-            --color-sky-blue: #45A5FF;
-            --color-cyan: #2EC5F4;
-            --color-soft-aqua: #6EE7F7;
-            --color-bg: #F7F8FC;
-            --color-text: #141414;
-            --color-text-secondary: #666666;
-            --color-border-light: rgba(0, 0, 0, 0.06);
-            --shadow-soft: 0 20px 60px rgba(0, 0, 0, 0.08);
-            --shadow-glow: 0 20px 60px rgba(109, 61, 245, 0.18);
-            --radius-card: 28px;
-            --radius-button: 999px;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: var(--color-bg);
-            color: var(--color-text);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* ============================================
-               UTILITY CLASSES
-            ============================================ */
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 32px;
-        }
-
-        .section-padding {
-            padding: 100px 0;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 6px 16px;
-            border-radius: 999px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(59, 130, 246, 0.08));
-            color: var(--color-purple);
-            letter-spacing: 0.3px;
-            margin-bottom: 16px;
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, var(--color-royal-purple), var(--color-indigo), var(--color-electric-blue), var(--color-soft-aqua));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .btn-primary {
-            display: inline-block;
-            padding: 16px 48px;
-            border-radius: var(--radius-button);
-            font-weight: 600;
-            font-size: 1rem;
-            color: white;
-            text-decoration: none;
-            background: linear-gradient(135deg, var(--color-royal-purple), var(--color-indigo), var(--color-electric-blue));
-            box-shadow: 0 4px 20px rgba(109, 61, 245, 0.25);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary:hover {
-            transform: scale(1.03);
-            box-shadow: 0 8px 40px rgba(109, 61, 245, 0.35);
-        }
-
-        .btn-secondary {
-            display: inline-block;
-            padding: 16px 48px;
-            border-radius: var(--radius-button);
-            font-weight: 500;
-            font-size: 1rem;
-            color: var(--color-text);
-            text-decoration: none;
-            background: white;
-            border: 1px solid var(--color-border-light);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .btn-secondary:hover {
-            transform: scale(1.03);
-            box-shadow: var(--shadow-soft);
-        }
-
-        .floating-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.08;
-            pointer-events: none;
-        }
-
-        /* ============================================
-               FLOATING BACKGROUND ORBS
-            ============================================ */
-        .bg-orbs {
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            background: var(--color-bg);
-            overflow: hidden;
-        }
-
-        .bg-orbs .orb-1 {
-            width: 600px;
-            height: 600px;
-            top: -10%;
-            left: -5%;
-            background: linear-gradient(135deg, var(--color-royal-purple), var(--color-soft-aqua));
-            animation: floatOrb 12s ease-in-out infinite alternate;
-        }
-
-        .bg-orbs .orb-2 {
-            width: 500px;
-            height: 500px;
-            bottom: -10%;
-            right: -5%;
-            background: linear-gradient(135deg, var(--color-electric-blue), var(--color-purple));
-            animation: floatOrb 14s ease-in-out infinite alternate-reverse;
-        }
-
-        .bg-orbs .orb-3 {
-            width: 400px;
-            height: 400px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: linear-gradient(135deg, var(--color-indigo), var(--color-cyan));
-            animation: floatOrb 10s ease-in-out infinite alternate;
-        }
-
-        @keyframes floatOrb {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-            100% {
-                transform: translate(40px, -30px) scale(1.1);
-            }
-        }
-
-        /* ============================================
-               NAVIGATION
-            ============================================ */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 20px 0;
-            transition: all 0.5s ease;
-        }
-
-        nav.scrolled {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--color-border-light);
-            padding: 12px 0;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-        }
-
-        .nav-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .nav-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-        }
-
-        .nav-links a {
-            color: var(--color-text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--color-text);
-        }
-
-        .lang-switcher {
-            display: flex;
-            gap: 4px;
-            padding-left: 20px;
-            border-left: 1px solid var(--color-border-light);
-        }
-
-        .lang-switcher a {
-            padding: 4px 12px;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            color: var(--color-text-secondary);
-            text-decoration: none;
-        }
-
-        .lang-switcher a.active {
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(59, 130, 246, 0.1));
-            color: var(--color-purple);
-        }
-
-        .lang-switcher a:hover {
-            color: var(--color-text);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--color-text);
-        }
-
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            gap: 16px;
-            margin-top: 20px;
-            padding: 24px;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(20px);
-            border-radius: var(--radius-card);
-            border: 1px solid var(--color-border-light);
-        }
-
-        .mobile-menu a {
-            color: var(--color-text);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .mobile-menu .lang-mobile {
-            display: flex;
-            gap: 8px;
-            padding-top: 16px;
-            border-top: 1px solid var(--color-border-light);
-        }
-
-        .mobile-menu .lang-mobile a {
-            padding: 4px 12px;
-            border-radius: 8px;
-            font-size: 0.8rem;
-        }
-
-        .mobile-menu .lang-mobile a.active {
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(59, 130, 246, 0.1));
-            color: var(--color-purple);
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .mobile-menu-btn {
-                display: block;
-            }
-            .mobile-menu.open {
-                display: flex;
-            }
-        }
-
-        /* ============================================
-               HERO SECTION
-            ============================================ */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding-top: 80px;
-        }
-
-        .hero-content {
-            max-width: 900px;
-        }
-
-        .hero h1 {
-            font-size: clamp(3rem, 10vw, 5.5rem);
-            font-weight: 700;
-            line-height: 1.05;
-            letter-spacing: -0.02em;
-            margin: 24px 0;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--color-text-secondary);
-            max-width: 600px;
-            margin: 0 auto 40px;
-            line-height: 1.8;
-        }
-
-        .hero .btn-group {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        /* ============================================
-               CALCULATOR SECTION (YOUR EXACT CODE)
-            ============================================ */
-        .calculator-section {
-            background: white;
-            padding: 60px 0;
-        }
-
-        .calculator-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            align-items: start;
-            margin-top: 32px;
-        }
-
-        .calculator-info {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .calculator-info h3 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            line-height: 1.2;
-        }
-
-        .calculator-info p {
-            color: var(--color-text-secondary);
-            font-size: 1.05rem;
-            line-height: 1.8;
-        }
-
-        /* ===== YOUR EXACT QUIZ STYLES (Dark Theme) ===== */
-        .quiz-container {
-            width: 100%;
-            max-width: 550px;
-            background: #0d0d0d;
-            padding: 30px;
-            border-radius: 8px;
-            border: 1px solid #222222;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            margin: 0 auto;
-        }
-
-        .quiz-container h2 {
-            font-size: 20px;
-            font-weight: 600;
-            margin-top: 0;
-            letter-spacing: -0.5px;
-            border-bottom: 1px solid #222222;
-            padding-bottom: 15px;
-            color: #ffffff;
-        }
-
-        .question-block {
-            margin-bottom: 25px;
-        }
-
-        .question-block label {
-            display: block;
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 10px;
-            color: #aaaaaa;
-        }
-
-        .question-block select,
-        .question-block input {
-            width: 100%;
-            padding: 12px;
-            background: #1c1c1c;
-            border: 1px solid #333333;
-            border-radius: 4px;
-            color: #ffffff;
-            font-size: 14px;
-            box-sizing: border-box;
-            transition: border-color 0.2s;
-            font-family: inherit;
-        }
-
-        .question-block select:focus,
-        .question-block input:focus {
-            border-color: #ffffff;
-            outline: none;
-        }
-
-        .btn-submit {
-            width: 100%;
-            padding: 14px;
-            background: #ffffff;
-            color: #000000;
-            border: none;
-            border-radius: 4px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: opacity 0.2s;
-            font-family: inherit;
-        }
-
-        .btn-submit:hover {
-            opacity: 0.9;
-        }
-
-        .result-block {
-            display: none;
-            text-align: center;
-            padding: 10px 0;
-        }
-
-        .result-block .score-display {
-            font-size: 48px;
-            font-weight: 700;
-            margin: 15px 0;
-            color: #ffffff;
-        }
-
-        .result-block .feedback-text {
-            font-size: 14px;
-            color: #aaaaaa;
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
-
-        .result-block .cta-link {
-            display: inline-block;
-            width: 100%;
-            padding: 14px;
-            background: #222222;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 14px;
-            font-weight: 600;
-            box-sizing: border-box;
-            border: 1px solid #444444;
-            transition: background 0.3s ease;
-        }
-
-        .result-block .cta-link:hover {
-            background: #2a2a2a;
-        }
-
-        @media (max-width: 1024px) {
-            .calculator-grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-            .quiz-container {
-                max-width: 100%;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .quiz-container {
-                padding: 20px;
-            }
-            .result-block .score-display {
-                font-size: 36px;
-            }
-        }
-
-        /* ============================================
-               TRUSTED BY
-            ============================================ */
-        .trusted {
-            background: white;
-        }
-
-        .trusted-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-            margin-top: 48px;
-        }
-
-        .trusted-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            padding: 32px;
-            background: var(--color-bg);
-            border-radius: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .trusted-item:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-soft);
-        }
-
-        .trusted-item .emoji {
-            font-size: 2.5rem;
-        }
-
-        .trusted-item .name {
-            font-weight: 500;
-            color: var(--color-text);
-        }
-
-        @media (max-width: 768px) {
-            .trusted-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        /* ============================================
-               AWARDS SECTION
-            ============================================ */
-        .awards {
-            background: #09090B;
-            color: white;
-        }
-
-        .awards-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 64px;
-            align-items: center;
-        }
-
-        .awards-content .badge {
-            background: rgba(255, 255, 255, 0.08);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .awards-content h2 {
-            font-size: clamp(2.2rem, 4vw, 3.2rem);
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
-
-        .awards-content p {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 32px;
-        }
-
-        .awards-gallery {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
-        .awards-gallery img {
-            width: 100%;
-            aspect-ratio: 4/3;
-            object-fit: cover;
-            border-radius: 20px;
-            transition: all 0.5s ease;
-            cursor: pointer;
-        }
-
-        .awards-gallery img:hover {
-            transform: scale(1.04);
-            box-shadow: 0 0 40px rgba(109, 61, 245, 0.3);
-        }
-
-        @media (max-width: 1024px) {
-            .awards-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            .awards-gallery {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        /* ============================================
-               ECOSYSTEM
-            ============================================ */
-        .ecosystem-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-top: 48px;
-        }
-
-        .ecosystem-card {
-            padding: 32px;
-            background: white;
-            border-radius: var(--radius-card);
-            border: 1px solid var(--color-border-light);
-            transition: all 0.3s ease;
-        }
-
-        .ecosystem-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-soft);
-        }
-
-        .ecosystem-card .icon {
-            font-size: 2.5rem;
-            margin-bottom: 12px;
-        }
-
-        .ecosystem-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-        }
-
-        .ecosystem-card p {
-            color: var(--color-text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        @media (max-width: 1024px) {
-            .ecosystem-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        @media (max-width: 640px) {
-            .ecosystem-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ============================================
-               WHY JOIN
-            ============================================ */
-        .why-join-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-            margin-top: 48px;
-        }
-
-        .why-join-card {
-            padding: 32px;
-            background: white;
-            border-radius: var(--radius-card);
-            border: 1px solid var(--color-border-light);
-            transition: all 0.3s ease;
-        }
-
-        .why-join-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-soft);
-        }
-
-        .why-join-card .icon {
-            font-size: 2rem;
-            margin-bottom: 12px;
-        }
-
-        .why-join-card h4 {
-            font-size: 1.1rem;
-            margin-bottom: 6px;
-        }
-
-        .why-join-card p {
-            color: var(--color-text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.7;
-        }
-
-        @media (max-width: 1024px) {
-            .why-join-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        @media (max-width: 640px) {
-            .why-join-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ============================================
-               REWARDS
-            ============================================ */
-        .rewards-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            margin-top: 48px;
-        }
-
-        .rewards-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            padding: 24px;
-            background: var(--color-bg);
-            border-radius: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .rewards-item:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-soft);
-        }
-
-        .rewards-item .emoji {
-            font-size: 2rem;
-        }
-
-        .rewards-item .label {
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--color-text);
-            text-align: center;
-        }
-
-        @media (max-width: 1024px) {
-            .rewards-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        @media (max-width: 640px) {
-            .rewards-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        /* ============================================
-               TESTIMONIALS
-            ============================================ */
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-top: 48px;
-        }
-
-        .testimonial-card {
-            padding: 32px;
-            background: var(--color-bg);
-            border-radius: var(--radius-card);
-            transition: all 0.3s ease;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-soft);
-        }
-
-        .testimonial-card .avatar {
-            font-size: 2.5rem;
-            margin-bottom: 12px;
-        }
-
-        .testimonial-card blockquote {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: var(--color-text);
-            margin-bottom: 16px;
-            font-style: italic;
-        }
-
-        .testimonial-card .name {
-            font-weight: 600;
-            color: var(--color-text);
-        }
-
-        .testimonial-card .role {
-            font-size: 0.85rem;
-            color: var(--color-text-secondary);
-        }
-
-        @media (max-width: 1024px) {
-            .testimonials-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        @media (max-width: 640px) {
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ============================================
-               APPLY / CTA
-            ============================================ */
-        .apply {
-            background: #09090B;
-            color: white;
-            text-align: center;
-        }
-
-        .apply .badge {
-            background: rgba(255, 255, 255, 0.08);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .apply h2 {
-            font-size: clamp(2.2rem, 4vw, 3.2rem);
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 16px;
-        }
-
-        .apply p {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 32px;
-        }
-
-        /* ============================================
-               FOOTER
-            ============================================ */
-        footer {
-            padding: 48px 0;
-            border-top: 1px solid var(--color-border-light);
-        }
-
-        .footer-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .footer-inner .logo {
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
-
-        .footer-inner .links {
-            display: flex;
-            gap: 24px;
-        }
-
-        .footer-inner .links a {
-            color: var(--color-text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-inner .links a:hover {
-            color: var(--color-text);
-        }
-
-        .footer-inner .copyright {
-            color: var(--color-text-secondary);
-            font-size: 0.85rem;
-        }
-
-        @media (max-width: 768px) {
-            .footer-inner {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-
-        /* ============================================
-               SECTION HEADERS
-            ============================================ */
-        .section-header {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .section-header h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 16px;
-        }
-
-        .section-header p {
-            font-size: 1.1rem;
-            color: var(--color-text-secondary);
-            line-height: 1.8;
-        }
-
-        /* ============================================
-               RESPONSIVE FINE-TUNING
-            ============================================ */
-        @media (max-width: 640px) {
-            .container {
-                padding: 0 20px;
-            }
-            .section-padding {
-                padding: 60px 0;
-            }
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            .hero p {
-                font-size: 1rem;
-            }
-            .btn-primary,
-            .btn-secondary {
-                padding: 14px 32px;
-                font-size: 0.9rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Live Alchemy — TikTok LIVE Performance System</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#070A12;
+  --surface:#0B1020;
+  --text:#ffffff;
+  --muted:#A1A1AA;
+  --primary:#7C3AED;
+  --accent:#22D3EE;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Inter,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+h1,h2,h3{
+  font-family:"Space Grotesk",sans-serif;
+}
+
+.container{
+  width:100%;
+  max-width:1120px;
+  margin:auto;
+  padding:0 24px;
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.glow{
+  position:absolute;
+  width:600px;height:600px;
+  background:radial-gradient(circle,var(--primary),transparent 60%);
+  filter:blur(120px);
+  opacity:0.25;
+  top:-200px;left:-200px;
+  animation:float 10s infinite ease-in-out;
+}
+
+@keyframes float{
+  0%,100%{transform:translate(0,0)}
+  50%{transform:translate(80px,60px)}
+}
+
+h1{
+  font-size:64px;
+  line-height:1.1;
+}
+
+p{
+  color:var(--muted);
+  margin-top:16px;
+  font-size:18px;
+  line-height:1.6;
+}
+
+.btns{
+  margin-top:32px;
+  display:flex;
+  gap:16px;
+}
+
+.btn{
+  padding:14px 22px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.1);
+  cursor:pointer;
+  transition:0.3s;
+  font-weight:500;
+}
+
+.btn.primary{
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  color:white;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+}
+
+/* SECTIONS */
+.section{
+  padding:120px 0;
+  opacity:0;
+  transform:translateY(30px);
+  transition:0.8s ease;
+}
+
+.section.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:24px;
+  margin-top:40px;
+}
+
+.card{
+  background:var(--surface);
+  padding:24px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,0.05);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(124,58,237,0.4);
+}
+
+/* TOP BAR */
+.topbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  padding:16px 24px;
+  backdrop-filter:blur(10px);
+  z-index:1000;
+}
+
+.lang{
+  display:flex;
+  gap:10px;
+}
+
+.lang button{
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.2);
+  color:white;
+  padding:6px 10px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.lang button.active{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* FOOTER */
+footer{
+  padding:60px 0;
+  text-align:center;
+  color:var(--muted);
+  font-size:14px;
+}
+
+</style>
 </head>
+
 <body>
 
-    <!-- ==========================================
-    FLOATING BACKGROUND ORBS
-    ========================================== -->
-    <div class="bg-orbs">
-        <div class="floating-orb orb-1"></div>
-        <div class="floating-orb orb-2"></div>
-        <div class="floating-orb orb-3"></div>
+<div class="topbar">
+  <div><strong>Live Alchemy</strong></div>
+  <div class="lang">
+    <button id="roBtn" class="active">RO</button>
+    <button id="enBtn">EN</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero container">
+  <div class="glow"></div>
+  <div>
+    <h1 id="title">LIVE ALCHEMY</h1>
+    <p id="subtitle">
+      Rețea de performanță pentru creatori TikTok LIVE
+    </p>
+
+    <div class="btns">
+      <div class="btn primary" id="cta1">Aplică pentru evaluare</div>
+      <div class="btn" id="cta2">Vezi sistemul</div>
     </div>
 
-    <!-- ==========================================
-    NAVIGATION
-    ========================================== -->
-    <nav id="navbar" role="navigation" aria-label="Main navigation">
-        <div class="container nav-inner">
-            <a href="#" class="nav-logo gradient-text">LIVE ALCHEMY</a>
+    <p style="margin-top:24px;font-size:14px" id="micro">
+      Focus pe România și Europa
+    </p>
+  </div>
+</section>
 
-            <div class="nav-links">
-                <a href="#">Home</a>
-                <a href="#calculator">Calculator</a>
-                <a href="#ecosystem">Ecosystem</a>
-                <a href="#apply">Apply</a>
-                <div class="lang-switcher">
-                    <a href="#" class="active" data-lang="ro">RO</a>
-                    <a href="#" data-lang="en">EN</a>
-                </div>
-                <a href="#calculator" class="btn-primary" style="padding: 10px 24px; font-size: 0.85rem;">Calculate Score</a>
-            </div>
+<!-- POSITION -->
+<section class="section container">
+  <h2 id="posTitle">Nu suntem o agenție. Suntem un sistem de performanță.</h2>
+  <p id="posText">
+    Majoritatea agențiilor recrutează creatori. Noi nu.
+  </p>
+</section>
 
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
-                ☰
-            </button>
-        </div>
+<!-- SYSTEM -->
+<section class="section container">
+  <h2 id="sysTitle">Sistem de performanță</h2>
 
-        <!-- Mobile Menu -->
-        <div class="container" style="display: none;" id="mobileMenu">
-            <div class="mobile-menu">
-                <a href="#">Home</a>
-                <a href="#calculator">Calculator</a>
-                <a href="#ecosystem">Ecosystem</a>
-                <a href="#apply">Apply</a>
-                <div class="lang-mobile">
-                    <a href="#" class="active" data-lang="ro">RO</a>
-                    <a href="#" data-lang="en">EN</a>
-                </div>
-                <a href="#calculator" class="btn-primary" style="text-align: center; padding: 12px 24px; font-size: 0.9rem;">Calculate Score</a>
-            </div>
-        </div>
-    </nav>
+  <div class="grid">
+    <div class="card">LIVE Structure Optimization</div>
+    <div class="card">Audience Retention</div>
+    <div class="card">Engagement Design</div>
+    <div class="card">Monetization Strategy</div>
+  </div>
+</section>
 
-    <!-- ==========================================
-    HERO
-    ========================================== -->
-    <section class="hero section-padding" id="hero">
-        <div class="container hero-content">
-            <span class="badge">Premium Ecosystem for TikTok Creators</span>
-            <h1>
-                Transform Your<br />
-                <span class="gradient-text">LIVE Performance</span>
-            </h1>
-            <p>
-                Performance ecosystem for TikTok LIVE creators who want to build sustainable and profitable careers.
-            </p>
-            <div class="btn-group">
-                <a href="#calculator" class="btn-primary">Calculate Your Score</a>
-                <a href="#ecosystem" class="btn-secondary">View Ecosystem</a>
-            </div>
-        </div>
-    </section>
+<!-- TRUST -->
+<section class="section container">
+  <h2 id="trustTitle">Control complet pentru creator</h2>
+  <p id="trustText">
+    Tu păstrezi controlul complet al contului. Fără blocaje. Fără comisioane ascunse.
+  </p>
+</section>
 
-    <!-- ==========================================
-    CALCULATOR SECTION — YOUR EXACT CODE
-    ========================================== -->
-    <section class="calculator-section" id="calculator">
-        <div class="container">
-            <div class="section-header">
-                <span class="badge">🔍 Creator Growth Score</span>
-                <h2>Calculate Your Creator Growth Score™</h2>
-                <p>Discover your strengths and areas for improvement in just 30 seconds.</p>
-            </div>
+<!-- CTA -->
+<section class="section container" style="text-align:center">
+  <h2 id="finalTitle">Aplică pentru evaluare</h2>
+  <p id="finalText">Analizăm manual fiecare aplicație.</p>
+  <div class="btn primary" style="display:inline-block;margin-top:20px">
+    Start
+  </div>
+</section>
 
-            <div class="calculator-grid">
-                <!-- Left: Info -->
-                <div class="calculator-info">
-                    <h3>What Does This Test Measure?</h3>
-                    <p>We analyze three key factors that influence your TikTok LIVE success:</p>
-                    <ul style="list-style: none; padding: 0; margin-top: 16px;">
-                        <li style="display: flex; align-items: center; gap: 12px; padding: 8px 0; color: var(--color-text-secondary); font-size: 0.95rem;">
-                            <span style="font-size: 1.5rem;">📊</span> Monthly Diamond Volume
-                        </li>
-                        <li style="display: flex; align-items: center; gap: 12px; padding: 8px 0; color: var(--color-text-secondary); font-size: 0.95rem;">
-                            <span style="font-size: 1.5rem;">⏰</span> Streaming Consistency
-                        </li>
-                        <li style="display: flex; align-items: center; gap: 12px; padding: 8px 0; color: var(--color-text-secondary); font-size: 0.95rem;">
-                            <span style="font-size: 1.5rem;">🎯</span> Algorithmic Bottlenecks
-                        </li>
-                    </ul>
-                </div>
+<footer>
+  Live Alchemy © 2026 — TikTok LIVE Performance System
+</footer>
 
-                <!-- Right: Your EXACT Calculator -->
-                <div class="quiz-container">
-                    <div id="quiz-form">
-                        <h2>Calculate Your Creator Growth Score™</h2>
+<script>
+// CONTENT SYSTEM
+const content = {
+  ro:{
+    title:"LIVE ALCHEMY",
+    subtitle:"Rețea de performanță pentru creatori TikTok LIVE",
+    cta1:"Aplică pentru evaluare",
+    cta2:"Vezi sistemul",
+    micro:"Focus pe România și Europa",
+    posTitle:"Nu suntem o agenție. Suntem un sistem de performanță.",
+    posText:"Majoritatea agențiilor recrutează creatori. Noi nu.",
+    sysTitle:"Sistem de performanță",
+    trustTitle:"Control complet pentru creator",
+    trustText:"Tu păstrezi controlul complet al contului. Fără blocaje. Fără comisioane ascunse.",
+    finalTitle:"Aplică pentru evaluare",
+    finalText:"Analizăm manual fiecare aplicație."
+  },
+  en:{
+    title:"LIVE ALCHEMY",
+    subtitle:"TikTok LIVE Creator Performance Network",
+    cta1:"Apply for Evaluation",
+    cta2:"Learn System",
+    micro:"Focused on Romania & Europe",
+    posTitle:"Not an Agency. A Performance System.",
+    posText:"Most agencies recruit creators. We don’t.",
+    sysTitle:"Performance System",
+    trustTitle:"Full Creator Control",
+    trustText:"You keep full control of your account. No restrictions. No hidden fees.",
+    finalTitle:"Apply for Evaluation",
+    finalText:"Every application is manually reviewed."
+  }
+};
 
-                        <div class="question-block">
-                            <label for="volume">Current Monthly Diamond Volume</label>
-                            <select id="volume">
-                                <option value="high">150K - 500K+ Diamonds/mo</option>
-                                <option value="mid">50K - 150K Diamonds/mo</option>
-                                <option value="low">Under 50K Diamonds/mo</option>
-                            </select>
-                        </div>
+let lang="ro";
 
-                        <div class="question-block">
-                            <label for="hours">Average Weekly Live Streaming Hours</label>
-                            <select id="hours">
-                                <option value="optimized">12 - 25 Hours (Structured)</option>
-                                <option value="overworked">25+ Hours (High Burnout Risk)</option>
-                                <option value="irregular">Under 12 Hours (Inconsistent)</option>
-                            </select>
-                        </div>
+function render(){
+  const d=content[lang];
+  for(let k in d){
+    let el=document.getElementById(k);
+    if(el) el.innerText=d[k];
+  }
 
-                        <div class="question-block">
-                            <label for="challenge">Primary Algorithmic Core Bottleneck</label>
-                            <select id="challenge">
-                                <option value="retention">Viewer Retention & Sudden View Drops</option>
-                                <option value="conversion">Gifter Monetization & Flat Income</option>
-                                <option value="policy">Policy Anxiety & Compliance Warnings</option>
-                            </select>
-                        </div>
+  document.getElementById("roBtn").classList.toggle("active",lang==="ro");
+  document.getElementById("enBtn").classList.toggle("active",lang==="en");
+}
 
-                        <button type="button" class="btn-submit" onclick="calculateScore()">Analyze My Performance Metrics</button>
-                    </div>
+document.getElementById("roBtn").onclick=()=>{lang="ro";render();}
+document.getElementById("enBtn").onclick=()=>{lang="en";render();}
 
-                    <div id="quiz-result" class="result-block">
-                        <h2 style="color: #ffffff;">Your Performance Matrix Diagnostics</h2>
-                        <div class="feedback-text" id="verdict-label" style="color: #aaaaaa;">CREATOR INSIGHT SCORE</div>
-                        <div class="score-display" id="score-val">00/100</div>
-                        <div class="feedback-text" id="feedback-val">
-                            Analysis complete. Stagnation vulnerabilities detected in system infrastructure and audience retention loops.
-                        </div>
-                        <a href="#" target="_top" class="cta-link">Apply For A Free Stream Audit & Review →</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+// SCROLL ANIMATION
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting)e.target.classList.add("show");
+  });
+},{threshold:0.1});
 
-    <!-- ==========================================
-    TRUSTED BY
-    ========================================== -->
-    <section class="trusted section-padding" id="trusted">
-        <div class="container">
-            <div class="section-header">
-                <span class="badge">Creator Trust</span>
-                <h2>Trusted by Top TikTok LIVE Creators</h2>
-                <p>Join the best TikTok creators building their careers through measurable performance.</p>
-            </div>
-            <div class="trusted-grid">
-                <div class="trusted-item"><span class="emoji">🎵</span><span class="name">TikTok</span></div>
-                <div class="trusted-item"><span class="emoji">🎬</span><span class="name">TikTok LIVE</span></div>
-                <div class="trusted-item"><span class="emoji">🌟</span><span class="name">Creator Network</span></div>
-                <div class="trusted-item"><span class="emoji">💫</span><span class="name">LIVE Community</span></div>
-            </div>
-        </div>
-    </section>
+document.querySelectorAll(".section").forEach(s=>observer.observe(s));
 
-    <!-- ==========================================
-    AWARDS
-    ========================================== -->
-    <section class="awards section-padding" id="awards">
-        <div class="container awards-grid">
-            <div class="awards-content">
-                <span class="badge">Industry Recognition</span>
-                <h2>Recognized by TikTok for Excellence</h2>
-                <p>Our commitment to creator success has been recognized through multiple official industry awards and achievements. These recognitions reflect the dedication of our creators, managers, and growth specialists who work together every day to build sustainable creator businesses.</p>
-                <a href="#apply" class="btn-primary">Become Part of an Award-Winning Network</a>
-            </div>
-            <div class="awards-gallery">
-                <img src="https://placehold.co/600x400/7C3AED/FFFFFF?text=🏆+Award+1" alt="Award 1" loading="lazy" />
-                <img src="https://placehold.co/600x400/4F46E5/FFFFFF?text=🏆+Award+2" alt="Award 2" loading="lazy" />
-                <img src="https://placehold.co/600x400/2D7FF9/FFFFFF?text=🏆+Award+3" alt="Award 3" loading="lazy" />
-                <img src="https://placehold.co/600x400/6EE7F7/141414?text=🏆+Award+4" alt="Award 4" loading="lazy" />
-            </div>
-        </div>
-    </section>
-
-    <!-- ==========================================
-    ECOSYSTEM
-    ========================================== -->
-    <section class="section-padding" id="ecosystem">
-        <div class="container">
-            <div class="section-header">
-                <span class="badge">Creative Ecosystem</span>
-                <h2>Our Creator Ecosystem</h2>
-                <p>Everything you need to build a sustainable LIVE career</p>
-            </div>
-            <div class="ecosystem-grid">
-                <div class="ecosystem-card">
-                    <div class="icon">📊</div>
-                    <h3>Creator Levels</h3>
-                    <p>Track your progress from Emerging to Elite</p>
-                </div>
-                <div class="ecosystem-card">
-                    <div class="icon">🎯</div>
-                    <h3>Performance Mapping</h3>
-                    <p>Visualize your LIVE metrics in real-time</p>
-                </div>
-                <div class="ecosystem-card">
-                    <div class="icon">💰</div>
-                    <h3>Monetization Systems</h3>
-                    <p>Optimize your diamond earnings</p>
-                </div>
-                <div class="ecosystem-card">
-                    <div class="icon">⚡</div>
-                    <h3>Stability Engine</h3>
-                    <p>Build consistent viewer retention</p>
-                </div>
-                <div class="ecosystem-card">
-                    <div class="icon">📈</div>
-                    <h3>Benchmarking Layer</h3>
-                    <p>Compare performance against top creators</p>
-                </div>
-                <div class="ecosystem-card" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(135deg, rgba(124,58,237,0.05), rgba(59,130,246,0.05)); border: 1px solid rgba(124,58,237,0.1);">
-                    <div style="font-size: 2.5rem; margin-bottom: 12px;">🚀</div>
-                    <h3 style="margin-bottom: 8px;">Start Your Journey</h3>
-                    <p style="color: var(--color-text-secondary); font-size: 0.95rem; margin-bottom: 16px;">Join the ecosystem and transform your career</p>
-                    <a href="#calculator" class="btn-primary" style="padding: 12px 32px; font-size: 0.9rem;">Calculate Your Score</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==========================================
-    WHY JOIN
-    ========================================== -->
-    <section class="section-padding" style="background: var(--color-bg);" id="why-join">
-        <div class="container">
-            <div class="section-header">
-                <span class="badge">Why Join?</span>
-                <h2>Why High-Earning Creators Join Us</h2>
-                <p>Top creators choose our ecosystem for sustainable growth and measurable performance.</p>
-            </div>
-            <div class="why-join-grid">
-                <div class="why-join-card">
-                    <div class="icon">📊</div>
-                    <h4>Data-Driven Analysis</h4>
-                    <p>Understand your performance with real-time metrics</p>
-                </div>
-                <div class="why-join-card">
-                    <div class="icon">🎯</div>
-                    <h4>Premium Mentorship</h4>
-                    <p>Direct guidance from experienced managers</p>
-                </div>
-                <div class="why-join-card">
-                    <div class="icon">🌐</div>
-                    <h4>Exclusive Community</h4>
-                    <p>Access to the network of top TikTok creators</p>
-                </div>
-                <div class="why-join-card">
-                    <div class="icon">📈</div>
-                    <h4>Growth Strategies</h4>
-                    <p>Personalized plans for long-term success</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==========================================
-    REWARDS
-    ========================================== -->
-    <section class="section-padding" id="rewards">
-        <div class="container">
-            <div class="section-header">
-                <span class="badge">Rewards Program</span>
-                <h2>Because Success Deserves Recognition</h2>
-                <p>Every milestone deserves to be celebrated. Beyond platform earnings, our creators receive exclusive rewards for achieving performance milestones.</p>
-            </div>
-            <div class="rewards-grid">
-                <div class="rewards-item"><span class="emoji">📱</span><span class="label">TikTok Universes</span></div>
-                <div class="rewards-item"><span class="emoji">🎁</span><span class="label">Premium Gifts</span></div>
-                <div class="rewards-item"><span class="emoji">💻</span><span class="label">Equipment Support</span></div>
-                <div class="rewards-item"><span class="emoji">✈️</span><span class="label">Trips</span></div>
-                <div class="rewards-item"><span class="emoji">🏆</span><span class="label">Achievement Awards</span></div>
-                <div class="rewards-item"><span class="emoji">💎</span><span class="label">Diamond Milestone Rewards</span></div>
-                <div class="rewards-item"><span class="emoji">🎉</span><span class="label">Celebration Events</span></div>
-                <div class="rewards-item"><span class="emoji">🎂</span><span class="label">Birthday Gifts</span></div>
-            </div>
-            <div style="text-align: center; margin-top: 48px; padding: 48px; background: linear-gradient(135deg, rgba(124,58,237,0.04), rgba(59,130,246,0.04)); border-radius: var(--radius-card); border: 1px solid var(--color-border-light);">
-                <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 8px;">Want to unlock creator rewards?</h3>
-                <p style="color: var(--color-text-secondary); margin-bottom: 24px;">Talk with a Live Alchemy Manager to discover our complete milestone reward system.</p>
-                <a href="https://www.tiktok.com/@thelivealchemy" target="_blank" rel="noopener noreferrer" class="btn-primary">Contact a Manager</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==========================================
-    TESTIMONIALS
-    ========================================== -->
-    <section class="section-padding" style="background: var(--color-bg);" id="testimonials">
-        <div class="container">
-            <div class="section-header">
-                <span class="badge">Success Stories</span>
-                <h2>What Our Creators Say</h2>
-                <p>Over 500 creators are building their careers with our ecosystem.</p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="avatar">🎵</div>
-                    <blockquote>"Joining LIVE ALCHEMY transformed my entire approach to streaming. My growth doubled in 3 months."</blockquote>
-                    <div class="name">Alex M.</div>
-                    <div class="role">TikTok Creator • 2M+ Followers</div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="avatar">🌟</div>
-                    <blockquote>"The ecosystem gave me clarity on what I was doing wrong and the tools to fix it."</blockquote>
-                    <div class="name">Sarah K.</div>
-                    <div class="role">LIVE Streamer • 500K+ Followers</div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="avatar">💫</div>
-                    <blockquote>"I went from inconsistent income to predictable growth within weeks of joining."</blockquote>
-                    <div class="name">David R.</div>
-                    <div class="role">Content Creator • 1M+ Followers</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==========================================
-    APPLY / CTA
-    ========================================== -->
-    <section class="apply section-padding" id="apply">
-        <div class="container">
-            <span class="badge">Start Now</span>
-            <h2>Ready to Build Your Career?</h2>
-            <p>Join the best TikTok LIVE creators and turn your performance into measurable intelligence.</p>
-            <a href="#calculator" class="btn-primary" style="background: white; color: var(--color-text); box-shadow: 0 4px 20px rgba(0,0,0,0.08);">Calculate Your Score Now</a>
-        </div>
-    </section>
-
-    <!-- ==========================================
-    FOOTER
-    ========================================== -->
-    <footer>
-        <div class="container footer-inner">
-            <span class="logo gradient-text">LIVE ALCHEMY</span>
-            <div class="links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms & Conditions</a>
-            </div>
-            <span class="copyright">© 2026 All rights reserved.</span>
-        </div>
-    </footer>
-
-    <!-- ==========================================
-    JAVASCRIPT — YOUR EXACT CALCULATOR
-    ========================================== -->
-    <script>
-        // ============================================
-        // YOUR EXACT CALCULATOR FUNCTION
-        // ============================================
-        function calculateScore() {
-            const vol = document.getElementById('volume').value;
-            const hrs = document.getElementById('hours').value;
-            const chal = document.getElementById('challenge').value;
-
-            let score = 85;
-            let feedback = "";
-
-            if (vol === 'high') score -= 5;
-            if (vol === 'mid') score -= 15;
-            if (vol === 'low') score -= 30;
-
-            if (hrs === 'overworked') {
-                score -= 15;
-                feedback += "High structural burnout risks found. Your revenue is tied directly to physical exhaustion rather than operational systems. ";
-            } else if (hrs === 'irregular') {
-                score -= 10;
-                feedback += "Inconsistent pacing anchors your visibility index lower in the algorithmic queue. ";
-            }
-
-            if (chal === 'retention') {
-                score -= 10;
-                feedback += "Critical retention leaks detected during your peak viewer onboarding sequence.";
-            } else if (chal === 'conversion') {
-                score -= 12;
-                feedback += "Gifter dependency concentration is unsustainably narrow. You require conversion scaling systems.";
-            } else if (chal === 'policy') {
-                score -= 5;
-                feedback += "Account safety parameters show severe regulatory risk exposure.";
-            }
-
-            if (score > 80) {
-                feedback = "Strong baseline performance, but highly vulnerable to unexpected platform shifts and retention plateaus. Optimization is highly recommended.";
-            }
-
-            // Show results
-            document.getElementById('quiz-form').style.display = 'none';
-            document.getElementById('score-val').innerText = score + "/100";
-            document.getElementById('feedback-val').innerText = feedback;
-            document.getElementById('quiz-result').style.display = 'block';
-        }
-
-        // ============================================
-        // NAVIGATION SCROLL EFFECT
-        // ============================================
-        document.addEventListener('DOMContentLoaded', function() {
-            const navbar = document.getElementById('navbar');
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 20) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            });
-
-            // Mobile menu toggle
-            const menuBtn = document.getElementById('mobileMenuBtn');
-            const mobileMenu = document.getElementById('mobileMenu');
-            if (menuBtn && mobileMenu) {
-                menuBtn.addEventListener('click', function() {
-                    mobileMenu.style.display = mobileMenu.style.display === 'none' ? 'block' : 'none';
-                    this.textContent = mobileMenu.style.display === 'none' ? '☰' : '✕';
-                });
-            }
-
-            // Close mobile menu on link click
-            document.querySelectorAll('.mobile-menu a[href^="#"]').forEach(link => {
-                link.addEventListener('click', function() {
-                    if (mobileMenu) {
-                        mobileMenu.style.display = 'none';
-                        if (menuBtn) menuBtn.textContent = '☰';
-                    }
-                });
-            });
-
-            // Smooth scroll
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    if (href && href !== '#') {
-                        const target = document.querySelector(href);
-                        if (target) {
-                            e.preventDefault();
-                            target.scrollIntoView({ behavior: 'smooth' });
-                        }
-                    }
-                });
-            });
-        });
-    </script>
+render();
+</script>
 
 </body>
 </html>
