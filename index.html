@@ -503,6 +503,197 @@
         }
 
         /* ============================================
+               CALCULATOR SECTION
+            ============================================ */
+        .calculator-section {
+            background: white;
+        }
+
+        .calculator-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+            margin-top: 48px;
+        }
+
+        .calculator-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .calculator-info h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .calculator-info p {
+            color: var(--color-text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .calculator-info .features-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .calculator-info .features-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 0;
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .calculator-info .features-list li::before {
+            content: "✓";
+            color: var(--color-purple);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* Quiz Form Styles */
+        .quiz-container {
+            background: var(--color-bg);
+            padding: 40px;
+            border-radius: var(--radius-card);
+            border: 1px solid var(--color-border-light);
+        }
+
+        .quiz-container h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            letter-spacing: -0.3px;
+        }
+
+        .question-block {
+            margin-bottom: 20px;
+        }
+
+        .question-block label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: var(--color-text-secondary);
+        }
+
+        .question-block select {
+            width: 100%;
+            padding: 12px 16px;
+            background: white;
+            border: 1px solid var(--color-border-light);
+            border-radius: 12px;
+            color: var(--color-text);
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+        }
+
+        .question-block select:focus {
+            border-color: var(--color-purple);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(109, 61, 245, 0.1);
+        }
+
+        .btn-calculate {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--color-royal-purple), var(--color-indigo));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-family: inherit;
+        }
+
+        .btn-calculate:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .result-block {
+            display: none;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .result-block .score-label {
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .result-block .score-display {
+            font-size: 4rem;
+            font-weight: 700;
+            margin: 12px 0;
+            color: var(--color-text);
+        }
+
+        .result-block .score-display .score-number {
+            background: linear-gradient(135deg, var(--color-royal-purple), var(--color-electric-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .result-block .feedback-text {
+            font-size: 0.95rem;
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .result-block .cta-link {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--color-text);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .result-block .cta-link:hover {
+            transform: scale(1.02);
+            background: #2a2a2a;
+        }
+
+        @media (max-width: 1024px) {
+            .calculator-container {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .quiz-container {
+                padding: 24px;
+            }
+            .result-block .score-display {
+                font-size: 3rem;
+            }
+        }
+
+        /* ============================================
                ECOSYSTEM
             ============================================ */
         .ecosystem-grid {
@@ -850,13 +1041,14 @@
 
             <div class="nav-links">
                 <a href="#" data-i18n="nav_home">Home</a>
+                <a href="#calculator" data-i18n="nav_calculator">Calculator</a>
                 <a href="#ecosystem" data-i18n="nav_ecosystem">Ecosystem</a>
                 <a href="#apply" data-i18n="nav_apply">Apply</a>
                 <div class="lang-switcher">
                     <a href="#" class="active" data-lang="ro">RO</a>
                     <a href="#" data-lang="en">EN</a>
                 </div>
-                <a href="#apply" class="btn-primary" style="padding: 10px 24px; font-size: 0.85rem;" data-i18n="nav_startDiagnostic">Start Diagnostic</a>
+                <a href="#calculator" class="btn-primary" style="padding: 10px 24px; font-size: 0.85rem;" data-i18n="nav_startDiagnostic">Calculate Score</a>
             </div>
 
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
@@ -868,13 +1060,14 @@
         <div class="container" style="display: none;" id="mobileMenu">
             <div class="mobile-menu">
                 <a href="#" data-i18n="nav_home">Home</a>
+                <a href="#calculator" data-i18n="nav_calculator">Calculator</a>
                 <a href="#ecosystem" data-i18n="nav_ecosystem">Ecosystem</a>
                 <a href="#apply" data-i18n="nav_apply">Apply</a>
                 <div class="lang-mobile">
                     <a href="#" class="active" data-lang="ro">RO</a>
                     <a href="#" data-lang="en">EN</a>
                 </div>
-                <a href="#apply" class="btn-primary" style="text-align: center; padding: 12px 24px; font-size: 0.9rem;" data-i18n="nav_startDiagnostic">Start Diagnostic</a>
+                <a href="#calculator" class="btn-primary" style="text-align: center; padding: 12px 24px; font-size: 0.9rem;" data-i18n="nav_startDiagnostic">Calculate Score</a>
             </div>
         </div>
     </nav>
@@ -893,7 +1086,7 @@
                 Ecosistem de performanță pentru creatorii TikTok LIVE care doresc să construiască cariere sustenabile și profitabile.
             </p>
             <div class="btn-group">
-                <a href="#apply" class="btn-primary" data-i18n="hero_ctaPrimary">Începe Acum</a>
+                <a href="#calculator" class="btn-primary" data-i18n="hero_ctaPrimary">Calculează-ți Scorul</a>
                 <a href="#ecosystem" class="btn-secondary" data-i18n="hero_ctaSecondary">Vezi Ecosistemul</a>
             </div>
             <div class="hero-stats">
@@ -912,6 +1105,83 @@
                 <div>
                     <div class="stat-number">15+</div>
                     <div class="stat-label" data-i18n="stats_countries">Țări</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    CALCULATOR SECTION
+    ========================================== -->
+    <section class="calculator-section section-padding" id="calculator">
+        <div class="container">
+            <div class="section-header">
+                <span class="badge" data-i18n="calculator_badge">🔍 Creator Growth Score</span>
+                <h2 data-i18n="calculator_title">Calculează-ți Scorul de Performanță</h2>
+                <p data-i18n="calculator_subtitle">Descoperă-ți punctele forte și zonele de îmbunătățire în doar 30 de secunde.</p>
+            </div>
+
+            <div class="calculator-container">
+                <!-- Left: Info -->
+                <div class="calculator-info">
+                    <h3 data-i18n="calculator_info_title">Ce Măsoară Acest Test?</h3>
+                    <p data-i18n="calculator_info_desc">Analizăm trei factori cheie care influențează succesul tău pe TikTok LIVE:</p>
+                    <ul class="features-list">
+                        <li data-i18n="calculator_info_1">📊 Volumul Lunar de Diamante</li>
+                        <li data-i18n="calculator_info_2">⏰ Consistența Orelor de Stream</li>
+                        <li data-i18n="calculator_info_3">🎯 Blocajele Algoritmice</li>
+                    </ul>
+                </div>
+
+                <!-- Right: Quiz -->
+                <div class="quiz-container">
+                    <div id="quiz-form">
+                        <h4 data-i18n="calculator_heading">Creator Growth Score™</h4>
+
+                        <div class="question-block">
+                            <label for="volume" data-i18n="calculator_q1">Volumul Lunar de Diamante</label>
+                            <select id="volume">
+                                <option value="high">150K - 500K+ Diamante/lună</option>
+                                <option value="mid">50K - 150K Diamante/lună</option>
+                                <option value="low">Sub 50K Diamante/lună</option>
+                            </select>
+                        </div>
+
+                        <div class="question-block">
+                            <label for="hours" data-i18n="calculator_q2">Ore Medii de Stream pe Săptămână</label>
+                            <select id="hours">
+                                <option value="optimized">12 - 25 Ore (Structurat)</option>
+                                <option value="overworked">25+ Ore (Risc de Burnout)</option>
+                                <option value="irregular">Sub 12 Ore (Inconsistent)</option>
+                            </select>
+                        </div>
+
+                        <div class="question-block">
+                            <label for="challenge" data-i18n="calculator_q3">Principalul Blocaj Algoritmic</label>
+                            <select id="challenge">
+                                <option value="retention">Retenția Spectatorilor & Drops</option>
+                                <option value="conversion">Monetizare & Venit Plat</option>
+                                <option value="policy">Anxietate & Avertismente</option>
+                            </select>
+                        </div>
+
+                        <button type="button" class="btn-calculate" onclick="calculateScore()" data-i18n="calculator_button">
+                            Analizează-mi Performanța
+                        </button>
+                    </div>
+
+                    <div id="quiz-result" class="result-block">
+                        <div class="score-label" data-i18n="result_label">SCORUL TĂU DE PERFORMANȚĂ</div>
+                        <div class="score-display">
+                            <span class="score-number" id="score-val">00</span><span style="color: var(--color-text-secondary);">/100</span>
+                        </div>
+                        <div class="feedback-text" id="feedback-val">
+                            Analiza completă. Vulnerabilități detectate în retenția publicului și sistemele de conversie.
+                        </div>
+                        <a href="#" target="_top" class="cta-link" data-i18n="result_cta">
+                            Aplică pentru un Audit Gratuit al Stream-ului →
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -996,7 +1266,7 @@
                     <div style="font-size: 2.5rem; margin-bottom: 12px;">🚀</div>
                     <h3 style="margin-bottom: 8px;" data-i18n="ecosystem_cta_title">Începe-ți Călătoria</h3>
                     <p style="color: var(--color-text-secondary); font-size: 0.95rem; margin-bottom: 16px;" data-i18n="ecosystem_cta_desc">Alătură-te ecosistemului și transformă-ți cariera</p>
-                    <a href="#apply" class="btn-primary" style="padding: 12px 32px; font-size: 0.9rem;" data-i18n="ecosystem_cta_button">Începe Acum</a>
+                    <a href="#calculator" class="btn-primary" style="padding: 12px 32px; font-size: 0.9rem;" data-i18n="ecosystem_cta_button">Calculează-ți Scorul</a>
                 </div>
             </div>
         </div>
@@ -1106,7 +1376,7 @@
             <span class="badge" data-i18n="apply_badge">Începe Acum</span>
             <h2 data-i18n="apply_title">Pregătit să-ți Construiești Cariera?</h2>
             <p data-i18n="apply_subtitle">Alătură-te celor mai buni creatori TikTok LIVE și transformă-ți performanța în inteligență măsurabilă.</p>
-            <a href="#apply" class="btn-primary" style="background: white; color: var(--color-text); box-shadow: 0 4px 20px rgba(0,0,0,0.08);" data-i18n="apply_cta">Aplică pentru Acces</a>
+            <a href="#calculator" class="btn-primary" style="background: white; color: var(--color-text); box-shadow: 0 4px 20px rgba(0,0,0,0.08);" data-i18n="apply_cta">Calculează-ți Scorul Acum</a>
         </div>
     </section>
 
@@ -1125,41 +1395,115 @@
     </footer>
 
     <!-- ==========================================
-    JAVASCRIPT — Language Switcher & Navigation
+    JAVASCRIPT — Calculator + Language Switcher
     ========================================== -->
     <script>
         // -----------------------------------------------------
-        // TRANSLATIONS
+        // CALCULATOR LOGIC
+        // -----------------------------------------------------
+        function calculateScore() {
+            const vol = document.getElementById('volume').value;
+            const hrs = document.getElementById('hours').value;
+            const chal = document.getElementById('challenge').value;
+
+            let score = 85;
+            let feedback = "";
+
+            if (vol === 'high') score -= 5;
+            else if (vol === 'mid') score -= 15;
+            else if (vol === 'low') score -= 30;
+
+            if (hrs === 'overworked') {
+                score -= 15;
+                feedback += "High structural burnout risks found. Your revenue is tied directly to physical exhaustion rather than operational systems. ";
+            } else if (hrs === 'irregular') {
+                score -= 10;
+                feedback += "Inconsistent pacing anchors your visibility index lower in the algorithmic queue. ";
+            }
+
+            if (chal === 'retention') {
+                score -= 10;
+                feedback += "Critical retention leaks detected during your peak viewer onboarding sequence.";
+            } else if (chal === 'conversion') {
+                score -= 12;
+                feedback += "Gifter dependency concentration is unsustainably narrow. You require conversion scaling systems.";
+            } else if (chal === 'policy') {
+                score -= 5;
+                feedback += "Account safety parameters show severe regulatory risk exposure.";
+            }
+
+            if (score > 80) {
+                feedback = "Strong baseline performance, but highly vulnerable to unexpected platform shifts and retention plateaus. Optimization is highly recommended.";
+            }
+
+            // Get current language for dynamic text
+            const currentLang = document.documentElement.lang || 'ro';
+            const translationsLocal = {
+                ro: {
+                    result_label: "SCORUL TĂU DE PERFORMANȚĂ",
+                    result_cta: "Aplică pentru un Audit Gratuit al Stream-ului →"
+                },
+                en: {
+                    result_label: "YOUR PERFORMANCE SCORE",
+                    result_cta: "Apply for a Free Stream Audit →"
+                }
+            };
+
+            const langData = translationsLocal[currentLang] || translationsLocal.ro;
+
+            document.getElementById('quiz-form').style.display = 'none';
+            document.getElementById('score-val').innerText = score;
+            document.getElementById('feedback-val').innerText = feedback;
+
+            // Update result labels based on language
+            document.querySelector('.result-block .score-label').textContent = langData.result_label;
+            document.querySelector('.result-block .cta-link').textContent = langData.result_cta;
+
+            document.getElementById('quiz-result').style.display = 'block';
+        }
+
+        // -----------------------------------------------------
+        // TRANSLATIONS (Full)
         // -----------------------------------------------------
         const translations = {
             ro: {
-                // Navigation
                 nav_home: "Acasă",
-                nav_diagnostic: "Diagnostic",
+                nav_calculator: "Calculator",
                 nav_ecosystem: "Ecosistem",
                 nav_apply: "Aplică",
-                nav_startDiagnostic: "Începe Diagnosticul",
-                // Hero
+                nav_startDiagnostic: "Calculează Scorul",
                 hero_badge: "Ecosistem Premium pentru Creatorii TikTok",
                 hero_title: "Transformă-ți",
                 hero_titleHighlight: "Performanța LIVE",
                 hero_subtitle: "Ecosistem de performanță pentru creatorii TikTok LIVE care doresc să construiască cariere sustenabile și profitabile.",
-                hero_ctaPrimary: "Începe Acum",
+                hero_ctaPrimary: "Calculează-ți Scorul",
                 hero_ctaSecondary: "Vezi Ecosistemul",
                 stats_creators: "Creatori Activi",
                 stats_growth: "Creștere Medie",
                 stats_rating: "Evaluare",
                 stats_countries: "Țări",
-                // Trusted
+                calculator_badge: "🔍 Scorul de Creștere",
+                calculator_title: "Calculează-ți Scorul de Performanță",
+                calculator_subtitle: "Descoperă-ți punctele forte și zonele de îmbunătățire în doar 30 de secunde.",
+                calculator_info_title: "Ce Măsoară Acest Test?",
+                calculator_info_desc: "Analizăm trei factori cheie care influențează succesul tău pe TikTok LIVE:",
+                calculator_info_1: "📊 Volumul Lunar de Diamante",
+                calculator_info_2: "⏰ Consistența Orelor de Stream",
+                calculator_info_3: "🎯 Blocajele Algoritmice",
+                calculator_heading: "Creator Growth Score™",
+                calculator_q1: "Volumul Lunar de Diamante",
+                calculator_q2: "Ore Medii de Stream pe Săptămână",
+                calculator_q3: "Principalul Blocaj Algoritmic",
+                calculator_button: "Analizează-mi Performanța",
+                result_label: "SCORUL TĂU DE PERFORMANȚĂ",
+                result_cta: "Aplică pentru un Audit Gratuit al Stream-ului →",
                 trusted_badge: "Încrederea Creatorilor",
                 trusted_title: "Încrederea Creatorilor de Top TikTok",
                 trusted_subtitle: "Alături de cei mai buni creatori TikTok care își construiesc carierele prin performanță măsurabilă.",
-                // Awards
                 awards_badge: "Recunoaștere în Industrie",
                 awards_title: "Recunoscut de TikTok pentru Excelență",
                 awards_subtitle: "Angajamentul nostru față de succesul creatorilor a fost recunoscut prin multiple premii oficiale ale industriei și realizări. Aceste recunoașteri reflectă dedicarea creatorilor, managerilor și specialiștilor noștri în creștere care lucrează împreună în fiecare zi pentru a construi afaceri sustenabile pentru creatori.",
                 awards_cta: "Devino parte dintr-o Rețea Premiată",
-                // Ecosystem
                 ecosystem_badge: "Ecosistemul Creativ",
                 ecosystem_title: "Ecosistemul Nostru pentru Creatori",
                 ecosystem_subtitle: "Tot ce ai nevoie pentru a construi o carieră LIVE sustenabilă",
@@ -1175,8 +1519,7 @@
                 ecosystem_benchmarking_desc: "Compară performanța ta cu cei mai buni creatori",
                 ecosystem_cta_title: "Începe-ți Călătoria",
                 ecosystem_cta_desc: "Alătură-te ecosistemului și transformă-ți cariera",
-                ecosystem_cta_button: "Începe Acum",
-                // Why Join
+                ecosystem_cta_button: "Calculează-ți Scorul",
                 whyJoin_badge: "De ce să te alături?",
                 whyJoin_title: "De Ce Se Alătură Creatorii cu Venituri Mari",
                 whyJoin_subtitle: "Creatorii de top aleg ecosistemul nostru pentru creștere sustenabilă și performanță măsurabilă.",
@@ -1188,7 +1531,6 @@
                 whyJoin_community_desc: "Acces la rețeaua celor mai buni creatori TikTok",
                 whyJoin_growth_title: "Strategii de Creștere",
                 whyJoin_growth_desc: "Planuri personalizate pentru succes pe termen lung",
-                // Rewards
                 rewards_badge: "Programul de Recompense",
                 rewards_title: "Pentru Că Succesul Merită Recunoaștere",
                 rewards_subtitle: "Fiecare realizare merită să fie sărbătorită. Dincolo de câștigurile din platformă, creatorii noștri primesc recompense exclusive.",
@@ -1203,7 +1545,6 @@
                 rewards_cta: "Vrei să deblochezi recompense pentru creatori?",
                 rewards_ctaSub: "Discută cu un Manager Live Alchemy pentru a descoperi sistemul complet de recompense.",
                 rewards_button: "Contactează un Manager",
-                // Testimonials
                 testimonials_badge: "Povești de Succes",
                 testimonials_title: "Ce Spun Creatorii Noștri",
                 testimonials_subtitle: "Peste 500 de creatori își construiesc carierele cu ajutorul ecosistemului nostru.",
@@ -1216,44 +1557,52 @@
                 testimonial_3: "„Am trecut de la venituri inconsistente la creștere previzibilă în câteva săptămâni de la înscriere.”",
                 testimonial_3_name: "David R.",
                 testimonial_3_role: "Creator de Conținut • 1M+ Followers",
-                // Apply
                 apply_badge: "Începe Acum",
                 apply_title: "Pregătit să-ți Construiești Cariera?",
                 apply_subtitle: "Alătură-te celor mai buni creatori TikTok LIVE și transformă-ți performanța în inteligență măsurabilă.",
-                apply_cta: "Aplică pentru Acces",
-                // Footer
+                apply_cta: "Calculează-ți Scorul Acum",
                 footer_privacy: "Politica de Confidențialitate",
                 footer_terms: "Termeni și Condiții",
                 footer_rights: "© 2026 Toate drepturile rezervate."
             },
             en: {
-                // Navigation
                 nav_home: "Home",
-                nav_diagnostic: "Diagnostic",
+                nav_calculator: "Calculator",
                 nav_ecosystem: "Ecosystem",
                 nav_apply: "Apply",
-                nav_startDiagnostic: "Start Diagnostic",
-                // Hero
+                nav_startDiagnostic: "Calculate Score",
                 hero_badge: "Premium Ecosystem for TikTok Creators",
                 hero_title: "Transform Your",
                 hero_titleHighlight: "LIVE Performance",
                 hero_subtitle: "Performance ecosystem for TikTok LIVE creators who want to build sustainable and profitable careers.",
-                hero_ctaPrimary: "Start Now",
+                hero_ctaPrimary: "Calculate Your Score",
                 hero_ctaSecondary: "View Ecosystem",
                 stats_creators: "Active Creators",
                 stats_growth: "Average Growth",
                 stats_rating: "Rating",
                 stats_countries: "Countries",
-                // Trusted
+                calculator_badge: "🔍 Creator Growth Score",
+                calculator_title: "Calculate Your Performance Score",
+                calculator_subtitle: "Discover your strengths and areas for improvement in just 30 seconds.",
+                calculator_info_title: "What Does This Test Measure?",
+                calculator_info_desc: "We analyze three key factors that influence your TikTok LIVE success:",
+                calculator_info_1: "📊 Monthly Diamond Volume",
+                calculator_info_2: "⏰ Streaming Consistency",
+                calculator_info_3: "🎯 Algorithmic Bottlenecks",
+                calculator_heading: "Creator Growth Score™",
+                calculator_q1: "Monthly Diamond Volume",
+                calculator_q2: "Average Weekly Streaming Hours",
+                calculator_q3: "Primary Algorithmic Bottleneck",
+                calculator_button: "Analyze My Performance",
+                result_label: "YOUR PERFORMANCE SCORE",
+                result_cta: "Apply for a Free Stream Audit →",
                 trusted_badge: "Creator Trust",
                 trusted_title: "Trusted by Top TikTok LIVE Creators",
                 trusted_subtitle: "Join the best TikTok creators building their careers through measurable performance.",
-                // Awards
                 awards_badge: "Industry Recognition",
                 awards_title: "Recognized by TikTok for Excellence",
                 awards_subtitle: "Our commitment to creator success has been recognized through multiple official industry awards and achievements. These recognitions reflect the dedication of our creators, managers, and growth specialists who work together every day to build sustainable creator businesses.",
                 awards_cta: "Become Part of an Award-Winning Network",
-                // Ecosystem
                 ecosystem_badge: "Creative Ecosystem",
                 ecosystem_title: "Our Creator Ecosystem",
                 ecosystem_subtitle: "Everything you need to build a sustainable LIVE career",
@@ -1269,8 +1618,7 @@
                 ecosystem_benchmarking_desc: "Compare performance against top creators",
                 ecosystem_cta_title: "Start Your Journey",
                 ecosystem_cta_desc: "Join the ecosystem and transform your career",
-                ecosystem_cta_button: "Start Now",
-                // Why Join
+                ecosystem_cta_button: "Calculate Your Score",
                 whyJoin_badge: "Why Join?",
                 whyJoin_title: "Why High-Earning Creators Join Us",
                 whyJoin_subtitle: "Top creators choose our ecosystem for sustainable growth and measurable performance.",
@@ -1282,7 +1630,6 @@
                 whyJoin_community_desc: "Access to the network of top TikTok creators",
                 whyJoin_growth_title: "Growth Strategies",
                 whyJoin_growth_desc: "Personalized plans for long-term success",
-                // Rewards
                 rewards_badge: "Rewards Program",
                 rewards_title: "Because Success Deserves Recognition",
                 rewards_subtitle: "Every milestone deserves to be celebrated. Beyond platform earnings, our creators receive exclusive rewards for achieving performance milestones.",
@@ -1297,7 +1644,6 @@
                 rewards_cta: "Want to unlock creator rewards?",
                 rewards_ctaSub: "Talk with a Live Alchemy Manager to discover our complete milestone reward system.",
                 rewards_button: "Contact a Manager",
-                // Testimonials
                 testimonials_badge: "Success Stories",
                 testimonials_title: "What Our Creators Say",
                 testimonials_subtitle: "Over 500 creators are building their careers with our ecosystem.",
@@ -1310,12 +1656,10 @@
                 testimonial_3: "“I went from inconsistent income to predictable growth within weeks of joining.”",
                 testimonial_3_name: "David R.",
                 testimonial_3_role: "Content Creator • 1M+ Followers",
-                // Apply
                 apply_badge: "Start Now",
                 apply_title: "Ready to Build Your Career?",
                 apply_subtitle: "Join the best TikTok LIVE creators and turn your performance into measurable intelligence.",
-                apply_cta: "Apply for Access",
-                // Footer
+                apply_cta: "Calculate Your Score Now",
                 footer_privacy: "Privacy Policy",
                 footer_terms: "Terms & Conditions",
                 footer_rights: "© 2026 All rights reserved."
@@ -1351,6 +1695,19 @@
 
             // Update html lang attribute
             document.documentElement.lang = lang;
+
+            // If result is visible, update result labels
+            const resultBlock = document.getElementById('quiz-result');
+            if (resultBlock && resultBlock.style.display === 'block') {
+                const label = resultBlock.querySelector('.score-label');
+                const cta = resultBlock.querySelector('.cta-link');
+                if (label && translations[lang].result_label) {
+                    label.textContent = translations[lang].result_label;
+                }
+                if (cta && translations[lang].result_cta) {
+                    cta.textContent = translations[lang].result_cta;
+                }
+            }
         }
 
         // -----------------------------------------------------
