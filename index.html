@@ -1,307 +1,987 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Live Alchemy — TikTok LIVE Performance System</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5" />
+  <title>LIVE ALCHEMY · Performance Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET & BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    body {
+      background: #070A12;
+      color: #FFFFFF;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      overflow-x: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    body.loaded {
+      opacity: 1;
+    }
+    /* ===== UTILITY ===== */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+    }
+    .grid-12 {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 32px;
+    }
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+    .flex-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .text-muted {
+      color: #A1A1AA;
+    }
+    .text-center {
+      text-align: center;
+    }
+    .mt-8 { margin-top: 8px; }
+    .mt-16 { margin-top: 16px; }
+    .mt-24 { margin-top: 24px; }
+    .mt-32 { margin-top: 32px; }
+    .mt-48 { margin-top: 48px; }
+    .mt-64 { margin-top: 64px; }
+    .mt-96 { margin-top: 96px; }
+    .mb-8 { margin-bottom: 8px; }
+    .mb-16 { margin-bottom: 16px; }
+    .mb-24 { margin-bottom: 24px; }
+    .mb-32 { margin-bottom: 32px; }
+    .mb-48 { margin-bottom: 48px; }
+    .mb-64 { margin-bottom: 64px; }
+    .gap-8 { gap: 8px; }
+    .gap-16 { gap: 16px; }
+    .gap-24 { gap: 24px; }
+    .gap-32 { gap: 32px; }
+    .relative { position: relative; }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    /* ===== GLOW & NOISE ===== */
+    .glow-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.25;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .glow-blob.one {
+      width: 400px;
+      height: 400px;
+      background: #7C3AED;
+      top: -100px;
+      right: -100px;
+    }
+    .glow-blob.two {
+      width: 500px;
+      height: 500px;
+      background: #22D3EE;
+      bottom: -200px;
+      left: -200px;
+      opacity: 0.15;
+    }
+    .noise-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
 
-<style>
-:root{
-  --bg:#070A12;
-  --surface:#0B1020;
-  --text:#ffffff;
-  --muted:#A1A1AA;
-  --primary:#7C3AED;
-  --accent:#22D3EE;
-}
+    /* ===== TYPOGRAPHY ===== */
+    h1, h2, h3, h4 {
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    h1 {
+      font-size: clamp(44px, 9vw, 72px);
+      font-weight: 700;
+      line-height: 1.05;
+    }
+    h2 {
+      font-size: clamp(32px, 5vw, 48px);
+    }
+    h3 {
+      font-size: clamp(22px, 2.5vw, 28px);
+    }
+    .body-lg {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #C8C8D0;
+    }
+    .body-md {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #C8C8D0;
+    }
+    .body-sm {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #A1A1AA;
+    }
+    .label {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: #7C3AED;
+    }
 
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:Inter,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  overflow-x:hidden;
-}
+    /* ===== LAYOUT ===== */
+    section {
+      padding: 64px 0;
+      position: relative;
+      z-index: 1;
+    }
+    .section-title {
+      margin-bottom: 24px;
+    }
 
-h1,h2,h3{
-  font-family:"Space Grotesk",sans-serif;
-}
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 32px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 1;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      border: none;
+      background: transparent;
+      color: #FFFFFF;
+      position: relative;
+      overflow: hidden;
+      gap: 8px;
+    }
+    .btn-primary {
+      background: #7C3AED;
+      box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+    }
+    .btn-primary:hover {
+      background: #6D28D9;
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(124, 58, 237, 0.5);
+    }
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(4px);
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.3);
+      transform: translateY(-2px);
+    }
+    .btn-glow {
+      animation: softPulse 3s infinite ease-in-out;
+    }
+    @keyframes softPulse {
+      0%, 100% { box-shadow: 0 0 20px rgba(124, 58, 237, 0.25); }
+      50% { box-shadow: 0 0 40px rgba(124, 58, 237, 0.5); }
+    }
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .btn-shimmer {
+      position: relative;
+    }
+    .btn-shimmer::after {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 60px;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.15), transparent);
+      background-size: 200% 100%;
+      animation: shimmer 3s infinite linear;
+      pointer-events: none;
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
 
-.container{
-  width:100%;
-  max-width:1120px;
-  margin:auto;
-  padding:0 24px;
-}
+    /* ===== CARDS ===== */
+    .card {
+      background: #0B1020;
+      border-radius: 24px;
+      padding: 32px;
+      border: 1px solid rgba(255,255,255,0.04);
+      backdrop-filter: blur(4px);
+      transition: all 0.35s cubic-bezier(0.2, 0, 0, 1);
+      height: 100%;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(124, 58, 237, 0.2);
+      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.6);
+    }
+    .card-glow {
+      transition: box-shadow 0.4s ease;
+    }
+    .card-glow:hover {
+      box-shadow: 0 0 30px -10px rgba(124, 58, 237, 0.2), 0 20px 40px -12px rgba(0,0,0,0.6);
+    }
+    .card-icon {
+      font-size: 28px;
+      margin-bottom: 16px;
+      display: block;
+    }
 
-/* HERO */
-.hero{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  position:relative;
-  overflow:hidden;
-}
+    /* ===== LANGUAGE TOGGLE ===== */
+    .lang-toggle {
+      position: fixed;
+      top: 24px;
+      right: 32px;
+      z-index: 100;
+      display: flex;
+      gap: 6px;
+      background: rgba(11, 16, 32, 0.6);
+      backdrop-filter: blur(12px);
+      padding: 6px;
+      border-radius: 40px;
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: #A1A1AA;
+      padding: 8px 14px;
+      border-radius: 30px;
+      font-weight: 500;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      letter-spacing: 0.02em;
+    }
+    .lang-btn.active {
+      background: #7C3AED;
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+    }
+    .lang-btn:hover:not(.active) {
+      color: #FFFFFF;
+    }
 
-.glow{
-  position:absolute;
-  width:600px;height:600px;
-  background:radial-gradient(circle,var(--primary),transparent 60%);
-  filter:blur(120px);
-  opacity:0.25;
-  top:-200px;left:-200px;
-  animation:float 10s infinite ease-in-out;
-}
+    /* ===== FADE IN / STAGGER ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0, 0, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .stagger-children > * {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0, 0, 1);
+    }
+    .stagger-children.visible > *:nth-child(1) { transition-delay: 0.05s; }
+    .stagger-children.visible > *:nth-child(2) { transition-delay: 0.10s; }
+    .stagger-children.visible > *:nth-child(3) { transition-delay: 0.15s; }
+    .stagger-children.visible > *:nth-child(4) { transition-delay: 0.20s; }
+    .stagger-children.visible > *:nth-child(5) { transition-delay: 0.25s; }
+    .stagger-children.visible > *:nth-child(6) { transition-delay: 0.30s; }
+    .stagger-children.visible > * {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-@keyframes float{
-  0%,100%{transform:translate(0,0)}
-  50%{transform:translate(80px,60px)}
-}
+    /* ===== HERO MOTION ===== */
+    .hero-glow {
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 70%;
+      height: 120%;
+      background: radial-gradient(ellipse at 70% 30%, rgba(124,58,237,0.15), transparent 70%);
+      filter: blur(60px);
+      pointer-events: none;
+      animation: slowDrift 18s infinite alternate ease-in-out;
+      z-index: 0;
+    }
+    @keyframes slowDrift {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(4%, 2%) scale(1.1); }
+    }
 
-h1{
-  font-size:64px;
-  line-height:1.1;
-}
+    /* ===== TRUST LIST ===== */
+    .trust-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 32px;
+      list-style: none;
+      padding: 0;
+    }
+    .trust-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 16px;
+      color: #D4D4DC;
+    }
+    .trust-list li::before {
+      content: '✓';
+      color: #7C3AED;
+      font-weight: 700;
+      font-size: 18px;
+    }
 
-p{
-  color:var(--muted);
-  margin-top:16px;
-  font-size:18px;
-  line-height:1.6;
-}
+    /* ===== COMPARE ===== */
+    .compare-col {
+      background: #0B1020;
+      border-radius: 24px;
+      padding: 32px;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+    .compare-col ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 16px;
+    }
+    .compare-col ul li {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      color: #C8C8D0;
+      display: flex;
+      gap: 12px;
+    }
+    .compare-col ul li:last-child {
+      border-bottom: none;
+    }
+    .compare-col ul li::before {
+      content: '—';
+      color: #7C3AED;
+      font-weight: 600;
+    }
 
-.btns{
-  margin-top:32px;
-  display:flex;
-  gap:16px;
-}
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .grid-2col {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .grid-12 {
+        gap: 24px;
+      }
+      section {
+        padding: 48px 0;
+      }
+      .lang-toggle {
+        top: 16px;
+        right: 16px;
+        padding: 4px;
+      }
+      .lang-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+      }
+      .trust-list {
+        grid-template-columns: 1fr;
+      }
+      .btn-group {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+    @media (max-width: 600px) {
+      h1 { font-size: 36px; }
+      h2 { font-size: 28px; }
+      .card { padding: 24px; }
+      .container { padding: 0 16px; }
+      .glow-blob { display: none; }
+    }
 
-.btn{
-  padding:14px 22px;
-  border-radius:12px;
-  border:1px solid rgba(255,255,255,0.1);
-  cursor:pointer;
-  transition:0.3s;
-  font-weight:500;
-}
+    /* ===== FOOTER ===== */
+    .footer {
+      padding: 48px 0 32px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      margin-top: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .footer small {
+      color: #6B6B7A;
+      font-size: 13px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-links a {
+      color: #A1A1AA;
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: #FFFFFF;
+    }
 
-.btn.primary{
-  background:linear-gradient(135deg,var(--primary),var(--accent));
-  color:white;
-}
-
-.btn:hover{
-  transform:translateY(-3px);
-}
-
-/* SECTIONS */
-.section{
-  padding:120px 0;
-  opacity:0;
-  transform:translateY(30px);
-  transition:0.8s ease;
-}
-
-.section.show{
-  opacity:1;
-  transform:translateY(0);
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:24px;
-  margin-top:40px;
-}
-
-.card{
-  background:var(--surface);
-  padding:24px;
-  border-radius:16px;
-  border:1px solid rgba(255,255,255,0.05);
-  transition:0.3s;
-}
-
-.card:hover{
-  transform:translateY(-6px);
-  border-color:rgba(124,58,237,0.4);
-}
-
-/* TOP BAR */
-.topbar{
-  position:fixed;
-  top:0;
-  width:100%;
-  display:flex;
-  justify-content:space-between;
-  padding:16px 24px;
-  backdrop-filter:blur(10px);
-  z-index:1000;
-}
-
-.lang{
-  display:flex;
-  gap:10px;
-}
-
-.lang button{
-  background:transparent;
-  border:1px solid rgba(255,255,255,0.2);
-  color:white;
-  padding:6px 10px;
-  border-radius:8px;
-  cursor:pointer;
-}
-
-.lang button.active{
-  border-color:var(--accent);
-  color:var(--accent);
-}
-
-/* FOOTER */
-footer{
-  padding:60px 0;
-  text-align:center;
-  color:var(--muted);
-  font-size:14px;
-}
-
-</style>
+    /* ===== MISC ===== */
+    .badge {
+      display: inline-block;
+      background: rgba(124, 58, 237, 0.12);
+      color: #B48BFF;
+      padding: 6px 16px;
+      border-radius: 40px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      border: 1px solid rgba(124, 58, 237, 0.15);
+    }
+    .flow-step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 16px 0;
+    }
+    .flow-num {
+      background: #7C3AED;
+      width: 36px;
+      height: 36px;
+      border-radius: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+    .flow-content {
+      flex: 1;
+    }
+    .flow-content h4 {
+      font-weight: 600;
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+    .flow-content p {
+      color: #A1A1AA;
+      font-size: 15px;
+    }
+    @media (max-width: 600px) {
+      .flow-step {
+        flex-direction: column;
+        gap: 8px;
+      }
+      .flow-num {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="noise-overlay"></div>
 
-<div class="topbar">
-  <div><strong>Live Alchemy</strong></div>
-  <div class="lang">
-    <button id="roBtn" class="active">RO</button>
-    <button id="enBtn">EN</button>
+  <!-- LANGUAGE TOGGLE -->
+  <div class="lang-toggle" id="langToggle">
+    <button class="lang-btn active" data-lang="ro">RO</button>
+    <button class="lang-btn" data-lang="en">EN</button>
   </div>
-</div>
 
-<!-- HERO -->
-<section class="hero container">
-  <div class="glow"></div>
-  <div>
-    <h1 id="title">LIVE ALCHEMY</h1>
-    <p id="subtitle">
-      Rețea de performanță pentru creatori TikTok LIVE
-    </p>
+  <!-- ===== CONTENT ===== -->
+  <div id="app" class="container" style="padding-top: 80px;">
 
-    <div class="btns">
-      <div class="btn primary" id="cta1">Aplică pentru evaluare</div>
-      <div class="btn" id="cta2">Vezi sistemul</div>
-    </div>
+    <!-- HERO -->
+    <section id="hero" class="relative" style="padding-top: 24px; min-height: 70vh;">
+      <div class="hero-glow"></div>
+      <div class="glow-blob one"></div>
+      <div class="glow-blob two"></div>
 
-    <p style="margin-top:24px;font-size:14px" id="micro">
-      Focus pe România și Europa
-    </p>
+      <div class="reveal visible" style="max-width: 800px; position: relative; z-index: 2;">
+        <span class="badge" data-key="hero_badge">LIVE ALCHEMY</span>
+        <h1 class="mt-16" data-key="hero_title">Sistem de performanță pentru creatori TikTok LIVE</h1>
+        <p class="body-lg mt-24" style="max-width: 600px;" data-key="hero_desc">Ajutăm creatorii serioși să își îmbunătățească consistența, engagementul și veniturile prin optimizare structurată.</p>
+        <div class="btn-group">
+          <a href="#cta" class="btn btn-primary btn-glow btn-shimmer" data-key="hero_cta_primary">Aplică pentru evaluare</a>
+          <a href="#modules" class="btn btn-outline" data-key="hero_cta_secondary">Vezi sistemul</a>
+        </div>
+        <p class="body-sm mt-32" data-key="hero_micro">Focused on Romania &amp; EU TikTok LIVE creators</p>
+      </div>
+    </section>
+
+    <!-- POSITIONING -->
+    <section id="positioning">
+      <div class="reveal">
+        <span class="label" data-key="pos_label">Poziționare</span>
+        <h2 class="mt-8" style="max-width: 700px;" data-key="pos_title">Nu suntem o agenție. Suntem un sistem de inteligență a performanței.</h2>
+        <p class="body-md mt-16" style="max-width: 550px;" data-key="pos_desc">Live Alchemy este o platformă de analiză și optimizare pentru creatorii TikTok LIVE care vor să construiască venituri stabile prin structură, nu prin noroc.</p>
+      </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section id="problem">
+      <div class="reveal">
+        <span class="label" data-key="prob_label">Context</span>
+        <h2 class="mt-8" style="max-width: 700px;" data-key="prob_title">TikTok LIVE este acum o economie bazată pe performanță</h2>
+        <div class="grid-2col mt-32">
+          <div class="card card-glow">
+            <p class="body-md" data-key="prob_p1">Creatorii se confruntă cu inconsistănță în streaming, iar veniturile depind de structură, nu de noroc sau de prezență ocazională.</p>
+          </div>
+          <div class="card card-glow">
+            <p class="body-md" data-key="prob_p2">Fără un sistem clar, engagementul scade, iar potențialul de monetizare rămâne neexploatat. Live Alchemy transformă datele în acțiuni precise.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULES -->
+    <section id="modules">
+      <div class="reveal">
+        <span class="label" data-key="mod_label">Sistem</span>
+        <h2 class="mt-8" data-key="mod_title">Module de performanță</h2>
+      </div>
+      <div class="grid-12 mt-32 stagger-children" id="moduleGrid">
+        <div class="col-span-12 md:col-span-4" style="grid-column: span 4;">
+          <div class="card card-glow">
+            <span class="card-icon">⚡</span>
+            <h3 data-key="mod1_title">LIVE Structure Engine</h3>
+            <p class="body-sm mt-8" data-key="mod1_desc">Controlează ritmul și retenția privitorilor prin structuri de emisie validate.</p>
+          </div>
+        </div>
+        <div class="col-span-12 md:col-span-4" style="grid-column: span 4;">
+          <div class="card card-glow">
+            <span class="card-icon">🧠</span>
+            <h3 data-key="mod2_title">Engagement Intelligence</h3>
+            <p class="body-sm mt-8" data-key="mod2_desc">Îmbunătățește modelele de interacțiune cu publicul pentru conexiuni autentice.</p>
+          </div>
+        </div>
+        <div class="col-span-12 md:col-span-4" style="grid-column: span 4;">
+          <div class="card card-glow">
+            <span class="card-icon">💰</span>
+            <h3 data-key="mod3_title">Monetization Optimization</h3>
+            <p class="body-sm mt-8" data-key="mod3_desc">Optimizează momentele de conversie pentru cadouri și suport financiar.</p>
+          </div>
+        </div>
+        <div class="col-span-12 md:col-span-4" style="grid-column: span 4;">
+          <div class="card card-glow">
+            <span class="card-icon">📈</span>
+            <h3 data-key="mod4_title">Consistency System</h3>
+            <p class="body-sm mt-8" data-key="mod4_desc">Construiește un program de streaming sustenabil, care generează încredere.</p>
+          </div>
+        </div>
+        <div class="col-span-12 md:col-span-4" style="grid-column: span 4;">
+          <div class="card card-glow">
+            <span class="card-icon">🔄</span>
+            <h3 data-key="mod5_title">Feedback Loop System</h3>
+            <p class="body-sm mt-8" data-key="mod5_desc">Insights săptămânale bazate pe date, pentru ajustări continue și creștere.</p>
+          </div>
+        </div>
+        <div class="col-span-12 md:col-span-4" style="grid-column: span 4;">
+          <div class="card card-glow" style="background: rgba(124,58,237,0.04); border-color: rgba(124,58,237,0.1);">
+            <span class="card-icon">🎯</span>
+            <h3 data-key="mod6_title">Performance Dashboard</h3>
+            <p class="body-sm mt-8" data-key="mod6_desc">Vizualizare centralizată a tuturor metricilor esențiale pentru decizii rapide.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how">
+      <div class="reveal">
+        <span class="label" data-key="how_label">Flux</span>
+        <h2 class="mt-8" data-key="how_title">Cum funcționează</h2>
+      </div>
+      <div class="grid-2col mt-32">
+        <div>
+          <div class="flow-step">
+            <div class="flow-num">1</div>
+            <div class="flow-content">
+              <h4 data-key="how_step1_title">Aplică</h4>
+              <p data-key="how_step1_desc">Completează formularul de evaluare rapidă pentru a intra în sistemul nostru de analiză.</p>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">2</div>
+            <div class="flow-content">
+              <h4 data-key="how_step2_title">Analiză sistem</h4>
+              <p data-key="how_step2_desc">Evaluăm structura actuală, engagementul și potențialul de optimizare folosind algoritmi proprietari.</p>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">3</div>
+            <div class="flow-content">
+              <h4 data-key="how_step3_title">Verificare potrivire</h4>
+              <p data-key="how_step3_desc">Stabilim dacă există un potențial real de îmbunătățire măsurabilă în cadrul ecosistemului tău.</p>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">4</div>
+            <div class="flow-content">
+              <h4 data-key="how_step4_title">Activare</h4>
+              <p data-key="how_step4_desc">Primești acces la platformă și la modulele de optimizare personalizate pentru tine.</p>
+            </div>
+          </div>
+          <p class="body-sm mt-16" style="color: #7C3AED;" data-key="how_note">* Activăm doar creatorii unde îmbunătățirea măsurabilă este posibilă.</p>
+        </div>
+        <div class="card" style="background: rgba(124,58,237,0.03); display: flex; flex-direction: column; justify-content: center;">
+          <h3 data-key="how_card_title">Sistem inteligent, nu ghicit</h3>
+          <p class="body-md mt-8" data-key="how_card_desc">Fiecare decizie de optimizare este bazată pe date și pe modele de comportament ale audienței tale.</p>
+          <div style="margin-top: 24px; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 24px;">
+            <span class="badge" data-key="how_card_badge">Transparență totală</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST SYSTEM -->
+    <section id="trust">
+      <div class="reveal">
+        <span class="label" data-key="trust_label">Încredere</span>
+        <h2 class="mt-8" data-key="trust_title">Sistem de încredere enterprise</h2>
+        <div class="card mt-32" style="background: #0B1020; border-color: rgba(255,255,255,0.06);">
+          <ul class="trust-list">
+            <li data-key="trust1">Deții controlul contului tău</li>
+            <li data-key="trust2">Niciun control asupra conturilor</li>
+            <li data-key="trust3">Fără clauză de exclusivitate</li>
+            <li data-key="trust4">Poți pleca oricând</li>
+            <li data-key="trust5">Fără taxe ascunse</li>
+          </ul>
+          <p class="body-sm mt-24" style="color: #7C3AED;" data-key="trust_footer">Transparență și securitate — standarde de nivel enterprise.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIFFERENTIATION -->
+    <section id="compare">
+      <div class="reveal">
+        <span class="label" data-key="comp_label">Diferențiere</span>
+        <h2 class="mt-8" data-key="comp_title">Sistem vs. agenții tradiționale</h2>
+      </div>
+      <div class="grid-2col mt-32">
+        <div class="compare-col">
+          <h4 style="color: #A1A1AA; font-weight: 500;" data-key="comp_agency_title">Majoritatea agențiilor</h4>
+          <ul>
+            <li data-key="comp_agency1">Recrutare agresivă</li>
+            <li data-key="comp_agency2">Sfaturi generice</li>
+            <li data-key="comp_agency3">Rezultate neclare</li>
+            <li data-key="comp_agency4">Fără metrici clare</li>
+          </ul>
+        </div>
+        <div class="compare-col" style="border-color: rgba(124,58,237,0.2);">
+          <h4 style="color: #FFFFFF; font-weight: 600;" data-key="comp_alchemy_title">Live Alchemy</h4>
+          <ul>
+            <li data-key="comp_alchemy1">Sistem bazat pe date</li>
+            <li data-key="comp_alchemy2">Optimizare structurală</li>
+            <li data-key="comp_alchemy3">Performanță măsurabilă</li>
+            <li data-key="comp_alchemy4">Transparență totală</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARKET FOCUS -->
+    <section id="market">
+      <div class="reveal text-center" style="max-width: 600px; margin: 0 auto;">
+        <span class="label" data-key="market_label">Piață</span>
+        <h2 class="mt-8" data-key="market_title">Focus pe România &amp; Europa</h2>
+        <p class="body-md mt-16" data-key="market_desc">Înțelegem specificul ecosistemului TikTok LIVE din Europa și construim soluții adaptate pentru creatorii din regiune.</p>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section id="cta" style="padding-bottom: 48px;">
+      <div class="reveal" style="max-width: 700px; margin: 0 auto; text-align: center;">
+        <span class="badge" data-key="cta_badge">Evaluare gratuită</span>
+        <h2 class="mt-16" data-key="cta_title">Aplică pentru evaluare</h2>
+        <p class="body-md mt-16" data-key="cta_desc">Fiecare aplicație este analizată manual de echipa noastră de specialiști.</p>
+        <div style="margin-top: 32px;">
+          <a href="#" class="btn btn-primary btn-glow btn-shimmer" style="padding: 18px 48px; font-size: 18px;" data-key="cta_button">Start Evaluation</a>
+        </div>
+        <p class="body-sm mt-16" style="color: #6B6B7A;" data-key="cta_note">Toate datele sunt confidențiale și securizate.</p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <small data-key="footer_copy">© 2026 LIVE ALCHEMY · Performance Intelligence</small>
+      <div class="footer-links">
+        <a href="#" data-key="footer_privacy">Confidențialitate</a>
+        <a href="#" data-key="footer_terms">Termeni</a>
+        <a href="#" data-key="footer_contact">Contact</a>
+      </div>
+    </footer>
   </div>
-</section>
 
-<!-- POSITION -->
-<section class="section container">
-  <h2 id="posTitle">Nu suntem o agenție. Suntem un sistem de performanță.</h2>
-  <p id="posText">
-    Majoritatea agențiilor recrutează creatori. Noi nu.
-  </p>
-</section>
+  <script>
+    (function() {
+      "use strict";
 
-<!-- SYSTEM -->
-<section class="section container">
-  <h2 id="sysTitle">Sistem de performanță</h2>
+      // ===== CONTENT =====
+      const content = {
+        ro: {
+          hero_badge: 'LIVE ALCHEMY',
+          hero_title: 'Sistem de performanță pentru creatori TikTok LIVE',
+          hero_desc: 'Ajutăm creatorii serioși să își îmbunătățească consistența, engagementul și veniturile prin optimizare structurată.',
+          hero_cta_primary: 'Aplică pentru evaluare',
+          hero_cta_secondary: 'Vezi sistemul',
+          hero_micro: 'Focus pe România & UE TikTok LIVE',
+          pos_label: 'Poziționare',
+          pos_title: 'Nu suntem o agenție. Suntem un sistem de inteligență a performanței.',
+          pos_desc: 'Live Alchemy este o platformă de analiză și optimizare pentru creatorii TikTok LIVE care vor să construiască venituri stabile prin structură, nu prin noroc.',
+          prob_label: 'Context',
+          prob_title: 'TikTok LIVE este acum o economie bazată pe performanță',
+          prob_p1: 'Creatorii se confruntă cu inconsistănță în streaming, iar veniturile depind de structură, nu de noroc sau de prezență ocazională.',
+          prob_p2: 'Fără un sistem clar, engagementul scade, iar potențialul de monetizare rămâne neexploatat. Live Alchemy transformă datele în acțiuni precise.',
+          mod_label: 'Sistem',
+          mod_title: 'Module de performanță',
+          mod1_title: 'LIVE Structure Engine',
+          mod1_desc: 'Controlează ritmul și retenția privitorilor prin structuri de emisie validate.',
+          mod2_title: 'Engagement Intelligence',
+          mod2_desc: 'Îmbunătățește modelele de interacțiune cu publicul pentru conexiuni autentice.',
+          mod3_title: 'Monetization Optimization',
+          mod3_desc: 'Optimizează momentele de conversie pentru cadouri și suport financiar.',
+          mod4_title: 'Consistency System',
+          mod4_desc: 'Construiește un program de streaming sustenabil, care generează încredere.',
+          mod5_title: 'Feedback Loop System',
+          mod5_desc: 'Insights săptămânale bazate pe date, pentru ajustări continue și creștere.',
+          mod6_title: 'Performance Dashboard',
+          mod6_desc: 'Vizualizare centralizată a tuturor metricilor esențiale pentru decizii rapide.',
+          how_label: 'Flux',
+          how_title: 'Cum funcționează',
+          how_step1_title: 'Aplică',
+          how_step1_desc: 'Completează formularul de evaluare rapidă pentru a intra în sistemul nostru de analiză.',
+          how_step2_title: 'Analiză sistem',
+          how_step2_desc: 'Evaluăm structura actuală, engagementul și potențialul de optimizare folosind algoritmi proprietari.',
+          how_step3_title: 'Verificare potrivire',
+          how_step3_desc: 'Stabilim dacă există un potențial real de îmbunătățire măsurabilă în cadrul ecosistemului tău.',
+          how_step4_title: 'Activare',
+          how_step4_desc: 'Primești acces la platformă și la modulele de optimizare personalizate pentru tine.',
+          how_note: '* Activăm doar creatorii unde îmbunătățirea măsurabilă este posibilă.',
+          how_card_title: 'Sistem inteligent, nu ghicit',
+          how_card_desc: 'Fiecare decizie de optimizare este bazată pe date și pe modele de comportament ale audienței tale.',
+          how_card_badge: 'Transparență totală',
+          trust_label: 'Încredere',
+          trust_title: 'Sistem de încredere enterprise',
+          trust1: 'Deții controlul contului tău',
+          trust2: 'Niciun control asupra conturilor',
+          trust3: 'Fără clauză de exclusivitate',
+          trust4: 'Poți pleca oricând',
+          trust5: 'Fără taxe ascunse',
+          trust_footer: 'Transparență și securitate — standarde de nivel enterprise.',
+          comp_label: 'Diferențiere',
+          comp_title: 'Sistem vs. agenții tradiționale',
+          comp_agency_title: 'Majoritatea agențiilor',
+          comp_agency1: 'Recrutare agresivă',
+          comp_agency2: 'Sfaturi generice',
+          comp_agency3: 'Rezultate neclare',
+          comp_agency4: 'Fără metrici clare',
+          comp_alchemy_title: 'Live Alchemy',
+          comp_alchemy1: 'Sistem bazat pe date',
+          comp_alchemy2: 'Optimizare structurală',
+          comp_alchemy3: 'Performanță măsurabilă',
+          comp_alchemy4: 'Transparență totală',
+          market_label: 'Piață',
+          market_title: 'Focus pe România & Europa',
+          market_desc: 'Înțelegem specificul ecosistemului TikTok LIVE din Europa și construim soluții adaptate pentru creatorii din regiune.',
+          cta_badge: 'Evaluare gratuită',
+          cta_title: 'Aplică pentru evaluare',
+          cta_desc: 'Fiecare aplicație este analizată manual de echipa noastră de specialiști.',
+          cta_button: 'Start Evaluation',
+          cta_note: 'Toate datele sunt confidențiale și securizate.',
+          footer_copy: '© 2026 LIVE ALCHEMY · Performance Intelligence',
+          footer_privacy: 'Confidențialitate',
+          footer_terms: 'Termeni',
+          footer_contact: 'Contact'
+        },
+        en: {
+          hero_badge: 'LIVE ALCHEMY',
+          hero_title: 'TikTok LIVE Creator Performance Intelligence System',
+          hero_desc: 'We help serious creators improve consistency, engagement quality, and earning stability through structured optimization.',
+          hero_cta_primary: 'Apply for Evaluation',
+          hero_cta_secondary: 'Learn System',
+          hero_micro: 'Focused on Romania & EU TikTok LIVE creators',
+          pos_label: 'Positioning',
+          pos_title: 'Not an Agency. A Performance Intelligence System.',
+          pos_desc: 'Live Alchemy is an analysis and optimization platform for TikTok LIVE creators who want to build stable income through structure, not luck.',
+          prob_label: 'Context',
+          prob_title: 'TikTok LIVE is now a performance-driven economy',
+          prob_p1: 'Creators struggle with inconsistent streaming, and earnings depend on structure, not luck or occasional presence.',
+          prob_p2: 'Without a clear system, engagement drops and monetization potential remains untapped. Live Alchemy turns data into precise actions.',
+          mod_label: 'System',
+          mod_title: 'Performance Modules',
+          mod1_title: 'LIVE Structure Engine',
+          mod1_desc: 'Controls pacing and viewer retention through validated broadcast structures.',
+          mod2_title: 'Engagement Intelligence',
+          mod2_desc: 'Improves audience interaction patterns for authentic connections.',
+          mod3_title: 'Monetization Optimization',
+          mod3_desc: 'Optimizes gift conversion moments and financial support.',
+          mod4_title: 'Consistency System',
+          mod4_desc: 'Builds a sustainable streaming schedule that generates trust.',
+          mod5_title: 'Feedback Loop System',
+          mod5_desc: 'Weekly data-driven insights for continuous adjustments and growth.',
+          mod6_title: 'Performance Dashboard',
+          mod6_desc: 'Centralized view of all essential metrics for quick decisions.',
+          how_label: 'Flow',
+          how_title: 'How it works',
+          how_step1_title: 'Apply',
+          how_step1_desc: 'Complete the quick evaluation form to enter our analysis system.',
+          how_step2_title: 'System Analysis',
+          how_step2_desc: 'We assess current structure, engagement, and optimization potential using proprietary algorithms.',
+          how_step3_title: 'Performance Fit Check',
+          how_step3_desc: 'We determine if there is real potential for measurable improvement within your ecosystem.',
+          how_step4_title: 'Activation',
+          how_step4_desc: 'You gain access to the platform and personalized optimization modules.',
+          how_note: '* We only activate creators where measurable improvement is possible.',
+          how_card_title: 'Intelligent system, not guesswork',
+          how_card_desc: 'Every optimization decision is based on data and your audience\'s behavior patterns.',
+          how_card_badge: 'Full transparency',
+          trust_label: 'Trust',
+          trust_title: 'Enterprise-grade trust system',
+          trust1: 'You own your account',
+          trust2: 'No control over your accounts',
+          trust3: 'No exclusivity lock',
+          trust4: 'Leave anytime',
+          trust5: 'No hidden fees',
+          trust_footer: 'Transparency and security — enterprise-level standards.',
+          comp_label: 'Differentiation',
+          comp_title: 'System vs. traditional agencies',
+          comp_agency_title: 'Most agencies',
+          comp_agency1: 'Recruitment driven',
+          comp_agency2: 'Generic advice',
+          comp_agency3: 'Unclear results',
+          comp_agency4: 'No clear metrics',
+          comp_alchemy_title: 'Live Alchemy',
+          comp_alchemy1: 'Data-driven system',
+          comp_alchemy2: 'Structural optimization',
+          comp_alchemy3: 'Measurable performance',
+          comp_alchemy4: 'Total transparency',
+          market_label: 'Market',
+          market_title: 'Focused on Romania & Europe',
+          market_desc: 'We understand the specifics of the TikTok LIVE ecosystem in Europe and build solutions adapted for creators in the region.',
+          cta_badge: 'Free evaluation',
+          cta_title: 'Apply for Creator Evaluation',
+          cta_desc: 'Every application is manually reviewed by our team of specialists.',
+          cta_button: 'Start Evaluation',
+          cta_note: 'All data is confidential and secure.',
+          footer_copy: '© 2026 LIVE ALCHEMY · Performance Intelligence',
+          footer_privacy: 'Privacy',
+          footer_terms: 'Terms',
+          footer_contact: 'Contact'
+        }
+      };
 
-  <div class="grid">
-    <div class="card">LIVE Structure Optimization</div>
-    <div class="card">Audience Retention</div>
-    <div class="card">Engagement Design</div>
-    <div class="card">Monetization Strategy</div>
-  </div>
-</section>
+      // ===== STATE =====
+      let currentLang = localStorage.getItem('livealchemy_lang') || 'ro';
+      const app = document.getElementById('app');
 
-<!-- TRUST -->
-<section class="section container">
-  <h2 id="trustTitle">Control complet pentru creator</h2>
-  <p id="trustText">
-    Tu păstrezi controlul complet al contului. Fără blocaje. Fără comisioane ascunse.
-  </p>
-</section>
+      // ===== RENDER =====
+      function renderLang(lang) {
+        const elements = document.querySelectorAll('[data-key]');
+        elements.forEach(el => {
+          const key = el.dataset.key;
+          if (content[lang] && content[lang][key] !== undefined) {
+            el.textContent = content[lang][key];
+          }
+        });
+        // update toggle
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+        localStorage.setItem('livealchemy_lang', lang);
+        currentLang = lang;
+      }
 
-<!-- CTA -->
-<section class="section container" style="text-align:center">
-  <h2 id="finalTitle">Aplică pentru evaluare</h2>
-  <p id="finalText">Analizăm manual fiecare aplicație.</p>
-  <div class="btn primary" style="display:inline-block;margin-top:20px">
-    Start
-  </div>
-</section>
+      // ===== LANGUAGE SWITCH =====
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          const lang = this.dataset.lang;
+          if (lang === currentLang) return;
+          // smooth fade
+          app.style.transition = 'opacity 0.3s ease';
+          app.style.opacity = '0';
+          setTimeout(() => {
+            renderLang(lang);
+            app.style.opacity = '1';
+          }, 300);
+        });
+      });
 
-<footer>
-  Live Alchemy © 2026 — TikTok LIVE Performance System
-</footer>
+      // ===== INIT =====
+      renderLang(currentLang);
 
-<script>
-// CONTENT SYSTEM
-const content = {
-  ro:{
-    title:"LIVE ALCHEMY",
-    subtitle:"Rețea de performanță pentru creatori TikTok LIVE",
-    cta1:"Aplică pentru evaluare",
-    cta2:"Vezi sistemul",
-    micro:"Focus pe România și Europa",
-    posTitle:"Nu suntem o agenție. Suntem un sistem de performanță.",
-    posText:"Majoritatea agențiilor recrutează creatori. Noi nu.",
-    sysTitle:"Sistem de performanță",
-    trustTitle:"Control complet pentru creator",
-    trustText:"Tu păstrezi controlul complet al contului. Fără blocaje. Fără comisioane ascunse.",
-    finalTitle:"Aplică pentru evaluare",
-    finalText:"Analizăm manual fiecare aplicație."
-  },
-  en:{
-    title:"LIVE ALCHEMY",
-    subtitle:"TikTok LIVE Creator Performance Network",
-    cta1:"Apply for Evaluation",
-    cta2:"Learn System",
-    micro:"Focused on Romania & Europe",
-    posTitle:"Not an Agency. A Performance System.",
-    posText:"Most agencies recruit creators. We don’t.",
-    sysTitle:"Performance System",
-    trustTitle:"Full Creator Control",
-    trustText:"You keep full control of your account. No restrictions. No hidden fees.",
-    finalTitle:"Apply for Evaluation",
-    finalText:"Every application is manually reviewed."
-  }
-};
+      // ===== SCROLL REVEAL (Intersection Observer) =====
+      const revealElements = document.querySelectorAll('.reveal');
+      const staggerElements = document.querySelectorAll('.stagger-children');
 
-let lang="ro";
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
 
-function render(){
-  const d=content[lang];
-  for(let k in d){
-    let el=document.getElementById(k);
-    if(el) el.innerText=d[k];
-  }
+      revealElements.forEach(el => observer.observe(el));
+      staggerElements.forEach(el => observer.observe(el));
 
-  document.getElementById("roBtn").classList.toggle("active",lang==="ro");
-  document.getElementById("enBtn").classList.toggle("active",lang==="en");
-}
+      // ===== PAGE LOAD =====
+      document.body.classList.add('loaded');
 
-document.getElementById("roBtn").onclick=()=>{lang="ro";render();}
-document.getElementById("enBtn").onclick=()=>{lang="en";render();}
+      // ===== PARALLAX (very subtle) =====
+      document.addEventListener('mousemove', function(e) {
+        const hero = document.querySelector('#hero');
+        if (!hero) return;
+        const x = (e.clientX / window.innerWidth - 0.5) * 6;
+        const y = (e.clientY / window.innerHeight - 0.5) * 6;
+        const glow = hero.querySelector('.hero-glow');
+        if (glow) {
+          glow.style.transform = `translate(${x}px, ${y}px) scale(1.02)`;
+        }
+      });
 
-// SCROLL ANIMATION
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting)e.target.classList.add("show");
-  });
-},{threshold:0.1});
-
-document.querySelectorAll(".section").forEach(s=>observer.observe(s));
-
-render();
-</script>
-
+    })();
+  </script>
 </body>
 </html>
