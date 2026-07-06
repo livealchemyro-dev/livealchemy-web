@@ -1,1 +1,378 @@
+<!DOCTYPE html>
+<html lang="ro" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIVE ALCHEMY | Premium TikTok LIVE Performance Ecosystem</title>
+    
+    <!-- Tailwind CSS Engine CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Alpine.js Core for State Management -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Lucide Vector Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Animate.css for Hardware Accelerated Premium Motion Transitions -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <!-- Premium Geometric Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #07070a;
+        }
+        /* Custom slow fluid animations */
+        .animate-slow-pulse {
+            animation: pulse 12s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.15) translate(5%, 5%); }
+        }
+        /* Premium Smooth Border Glow effect */
+        .premium-border {
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .premium-border:hover {
+            border-color: rgba(77, 227, 255, 0.3);
+            box-shadow: 0 0 30px rgba(77, 227, 255, 0.05);
+        }
+        /* Custom Custom Canvas Selection Mask */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #07070a; }
+        ::-webkit-scrollbar-thumb { background: #1a1a24; border-radius: 999px; }
+    </style>
+</head>
+<body class="text-[#F7F8FC] antialiased selection:bg-[#4DE3FF]/20 selection:text-white relative min-h-screen overflow-x-hidden"
+      x-data="{ 
+        locale: 'ro',
+        step: 1,
+        scores: [],
+        calculating: false,
+        complete: false,
+        finalScore: 0,
+        lightboxImage: null,
+        
+        copy: {
+            ro: {
+                heroBadge: 'Sistem de Înaltă Performanță • Activ',
+                title: 'LIVE ALCHEMY',
+                subtitleTitle: 'Ecosistem Core de Performanță pentru Creatorii TikTok LIVE',
+                subtitle: 'Transformăm datele brute de streaming în inteligență algoritmică premium și monetizare predictibilă.',
+                ctaPrimary: 'Inițiază Diagnostic Diagnostic',
+                ctaSecondary: 'Analizează Nivelul tău',
+                badge: 'Recunoaștere în Industrie',
+                heading: 'Decorați de TikTok pentru Excelență în Management',
+                text: 'Spre deosebire de agențiile clasice pline de spam, noi operăm un holding bazat pe analytics, eliminând fluctuațiile de audiență prin inginerie de conținut.',
+                rewardsTitle: 'Valoare Superioară. Recompense Absolute.',
+                rewardsSub: 'Pilonii tăi de scalare accelerată: De la optimizări tehnologice de studio, setup-uri multicam native, până la linii de finanțare directe pentru campanii globale.',
+                q1: 'Care este structura actuală a programului tău de transmisiuni LIVE?',
+                q1_o1: 'Spontan / Total dependent de inspirație de moment',
+                q1_o2: 'Cadru fix de 3-5 zile pe săptămână',
+                q1_o3: 'Flux zilnic continuu cu planificare strategică pe ore',
+                q2: 'Care este principala breșă unde pierzi retenția audienței?',
+                q2_o1: 'Primele 60 de secunde de la deschiderea stream-ului',
+                q2_o2: 'Mijlocul transmisiei (oboseală de format sau lipsă interacțiune)',
+                q2_o3: 'Ferestrele de tranziție critică din timpul meciurilor oficiale',
+                q3: 'Care este pilonul principal din matricea ta de monetizare?',
+                q3_o1: 'Cadouri pur organice din meciuri standard sau bătălii zilnice',
+                q3_o2: 'Campanii custom de obiective și loializare abonați (Subs)',
+                q3_o3: 'E-Commerce integrat direct / Sponsorizări externe cu branduri',
+                calc: 'Se analizează vectorii tăi de performanță...',
+                eff: 'Rată de Eficiență Algoritmică',
+                gap: 'Deficit Monetar Identificat (Monetization Gap)',
+                stab: 'Indice de Stabilitate a Audienței',
+                ctaResults: 'Afișează Raportul Complet de Limitare'
+            },
+            en: {
+                heroBadge: 'High-Performance Architecture • Active',
+                title: 'LIVE ALCHEMY',
+                subtitleTitle: 'Performance Ecosystem for Elite TikTok LIVE Creators',
+                subtitle: 'We turn volatile streaming patterns into predictable algorithmic metrics and high-tier institutional monetization.',
+                ctaPrimary: 'Initiate Digital Diagnostic',
+                ctaSecondary: 'Analyze Your Current Tier',
+                badge: 'Industry Recognition',
+                heading: 'Recognized by TikTok for Operational Excellence',
+                text: 'Moving past cheap dark templates and agency tropes, we deploy quantitative analytics frameworks to secure multi-layered growth for global creators.',
+                rewardsTitle: 'Elite Standards. Systemic Rewards.',
+                rewardsSub: 'Our infrastructure covers advanced hardware support, custom multicam setups, and direct capital deployment for high-earning talent.',
+                q1: 'What is your current weekly LIVE schedule framework?',
+                q1_o1: 'Erratic / Completely dependent on short-term inspiration',
+                q1_o2: 'Structured window of 3-5 fixed days per week',
+                q1_o3: 'Daily continuous performance channels with hourly milestones',
+                q2: 'Identify your primary retention drop vulnerability:',
+                q2_o1: 'First 60 seconds of initial broadcast loop activation',
+                q2_o2: 'Mid-stream engagement fatigue shifts or pacing issues',
+                q2_o3: 'Critical transition windows during official match matches',
+                q3: 'What is the foundation of your current monetization matrix?',
+                q3_o1: 'Pure raw organic gifting during standard match loops',
+                q3_o2: 'Targeted custom milestone campaigns & Subscriber frameworks',
+                q3_o3: 'Direct E-Commerce integration / Institutional brand deals',
+                calc: 'Processing algorithmic performance vectors...',
+                eff: 'Algorithmic Efficiency Rating',
+                gap: 'Identified Monetization Gap Index',
+                stab: 'Audience Stability Index Coefficient',
+                ctaResults: 'Unlock Complete Performance Report'
+            }
+        },
+        
+        handleSelect(value) {
+            this.scores.push(value);
+            if (this.step < 3) {
+                this.step++;
+            } else {
+                this.calculating = true;
+                setTimeout(() => {
+                    this.calculating = false;
+                    this.complete = true;
+                    let sum = this.scores.reduce((a, b) => a + b, 0);
+                    this.finalScore = Math.round(sum / this.scores.length);
+                }, 2200);
+            }
+        }
+      }">
 
+    <!-- EXPENSIVE VISUAL ASSETS: Massive Blurred Ambient Orbs -->
+    <div class="absolute top-[-10%] left-[-10%] h-[700px] w-[700px] rounded-full bg-[#8B5CF6]/10 blur-orb animate-slow-pulse"></div>
+    <div class="absolute top-[30vh] right-[-5%] h-[600px] w-[600px] rounded-full bg-[#4DE3FF]/10 blur-orb animate-slow-pulse" style="animation-delay: -4s;"></div>
+    <div class="absolute bottom-[10vh] left-[20%] h-[800px] w-[800px] rounded-full bg-[#7C3AED]/5 blur-orb animate-slow-pulse" style="animation-delay: -8s;"></div>
+
+    <!-- FIXED PREMIUM NAVIGATION BAR -->
+    <nav class="fixed top-0 inset-x-0 z-50 bg-[#07070a]/60 backdrop-blur-xl border-b border-white/[0.04] px-6 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="h-8 w-8 rounded-lg bg-gradient-to-tr from-[#4DE3FF] to-[#8B5CF6] p-[1px]">
+                    <div class="h-full w-full bg-[#07070a] rounded-lg flex items-center justify-center">
+                        <div class="h-2 w-2 rounded-full bg-[#4DE3FF]"></div>
+                    </div>
+                </div>
+                <span class="text-xs uppercase font-semibold tracking-[0.25em] text-white">Live Alchemy</span>
+            </div>
+            
+            <!-- Language Selector Engine Switcher -->
+            <div class="bg-[#121217] border border-white/5 rounded-full p-1 flex gap-1 shadow-inner">
+                <button @click="locale = 'ro'" :class="locale === 'ro' ? 'bg-white text-black font-semibold' : 'text-zinc-400 hover:text-white'" class="text-[10px] uppercase tracking-widest px-4 py-1.5 rounded-full transition-all duration-500">RO</button>
+                <button @click="locale = 'en'" :class="locale === 'en' ? 'bg-white text-black font-semibold' : 'text-zinc-400 hover:text-white'" class="text-[10px] uppercase tracking-widest px-4 py-1.5 rounded-full transition-all duration-500">EN</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO CONTAINER SECTION (Cinematic Scale) -->
+    <section class="relative min-h-screen flex flex-col items-center justify-center px-4 max-w-5xl mx-auto text-center pt-24">
+        <div class="space-y-8 max-w-4xl animate__animated animate__fadeIn animate__slow">
+            <div class="inline-flex items-center gap-2 rounded-full border border-white/5 bg-white/[0.02] px-4 py-2 backdrop-blur-md shadow-xl">
+                <span class="flex h-2 w-2 rounded-full bg-[#4DE3FF] shadow-[0_0_12px_#4DE3FF]"></span>
+                <span class="text-[10px] font-semibold tracking-[0.2em] text-zinc-400 uppercase" x-text="copy[locale].heroBadge"></span>
+            </div>
+            
+            <div class="space-y-4">
+                <h1 class="text-6xl sm:text-8xl font-bold tracking-tight text-white leading-none bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-zinc-600/70" x-text="copy[locale].title"></h1>
+                <p class="text-xl sm:text-2xl font-light text-zinc-300 tracking-tight max-w-3xl mx-auto leading-relaxed" x-text="copy[locale].subtitleTitle"></p>
+            </div>
+
+            <p class="text-base sm:text-lg text-zinc-500 font-light max-w-2xl mx-auto leading-relaxed" x-text="copy[locale].subtitle"></p>
+            
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-center gap-5">
+                <a href="#diagnostic" class="w-full sm:w-auto px-8 py-4 bg-white text-black hover:bg-zinc-200 font-medium rounded-full tracking-wide transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(255,255,255,0.15)] text-sm shadow-xl" x-text="copy[locale].ctaPrimary"></a>
+                <a href="#ecosystem" class="w-full sm:w-auto px-8 py-4 border border-white/10 bg-white/[0.01] hover:bg-white/[0.05] text-white font-medium rounded-full tracking-wide transition-all duration-300 text-sm hover:border-[#4DE3FF]/40" x-text="copy[locale].ctaSecondary"></a>
+            </div>
+        </div>
+
+        <!-- Luxury Floating Mouse Indicator Chevron animation -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-zinc-600 animate-bounce">
+            <i data-lucide="arrow-down" class="w-5 h-5 opacity-40"></i>
+        </div>
+    </section>
+
+    <!-- PREMIUM SPATIAL SPLIT CONTAINER: INDUSTRY AUTHORITY RECOGNITION -->
+    <section class="py-32 border-t border-white/[0.03] max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        <div class="lg:col-span-5 space-y-6">
+            <div class="inline-flex items-center gap-1.5 text-xs font-semibold tracking-widest text-[#4DE3FF] uppercase">
+                <span class="h-1 w-3 bg-[#4DE3FF] rounded-full inline-block"></span>
+                <span x-text="copy[locale].badge"></span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-light text-white tracking-tight leading-[1.15]" x-text="copy[locale].heading"></h2>
+            <p class="text-zinc-400 font-light text-base leading-relaxed" x-text="copy[locale].text"></p>
+        </div>
+        
+        <!-- Luxury Interactive Visual Mock Cards -->
+        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div @click="lightboxImage = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80'" 
+                 class="premium-border aspect-[4/3] overflow-hidden rounded-3xl bg-[#121217]/50 backdrop-blur-md p-6 cursor-zoom-in flex flex-col justify-between group">
+                <div class="flex items-center justify-between">
+                    <div class="p-3 bg-white/[0.02] rounded-2xl border border-white/5 text-[#4DE3FF]"><i data-lucide="award" class="w-5 h-5"></i></div>
+                    <span class="text-[10px] uppercase font-bold tracking-widest text-zinc-600">Verified Hub</span>
+                </div>
+                <div>
+                    <p class="text-xs text-zinc-500 font-medium tracking-wider">TikTok LIVE Performance</p>
+                    <p class="text-xl font-light text-white mt-1">Official Gala Award</p>
+                </div>
+            </div>
+
+            <div @click="lightboxImage = 'https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=1200&q=80'" 
+                 class="premium-border aspect-[4/3] overflow-hidden rounded-3xl bg-[#121217]/50 backdrop-blur-md p-6 cursor-zoom-in flex flex-col justify-between group">
+                <div class="flex items-center justify-between">
+                    <div class="p-3 bg-white/[0.02] rounded-2xl border border-white/5 text-[#8B5CF6]"><i data-lucide="bar-chart-3" class="w-5 h-5"></i></div>
+                    <span class="text-[10px] uppercase font-bold tracking-widest text-zinc-600">Data Architecture</span>
+                </div>
+                <div>
+                    <p class="text-xs text-zinc-500 font-medium tracking-wider">Algorithmic Optimization</p>
+                    <p class="text-xl font-light text-white mt-1">Top Tier Network</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHT-MODE CONTRAST SEGMENT: REWARDS PORTFOLIO (PURE WHITE CANVAS FOR EXTREME PRESTIGE) -->
+    <section id="ecosystem" class="py-32 bg-white text-black rounded-t-[40px] md:rounded-t-[60px] relative z-20 shadow-[0_-20px_50px_rgba(0,0,0,0.4)]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-3xl mb-20 space-y-4">
+                <div class="inline-flex items-center gap-1.5 text-xs font-bold tracking-widest text-[#7C3AED] uppercase">
+                    <span class="h-1 w-3 bg-[#7C3AED] rounded-full inline-block"></span>
+                    <span>Corporate Infrastructure</span>
+                </div>
+                <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight text-[#141414] leading-none" x-text="copy[locale].rewardsTitle"></h2>
+                <p class="text-zinc-600 font-light text-lg md:text-xl max-w-2xl" x-text="copy[locale].rewardsSub"></p>
+            </div>
+
+            <!-- Expensive, clean typographic value grid instead of generic stock placeholders -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 rounded-3xl bg-zinc-50 border border-zinc-100 shadow-sm hover:shadow-md transition-all duration-300">
+                    <div class="h-12 w-12 rounded-2xl bg-black text-[#4DE3FF] flex items-center justify-center mb-8 shadow-md"><i data-lucide="cpu" class="w-5 h-5"></i></div>
+                    <h3 class="text-xl font-bold mb-2 text-zinc-900">Multicam Live Engine</h3>
+                    <p class="text-sm text-zinc-500 font-light leading-relaxed">Integration of enterprise hardware arrays and professional encoding blocks directly to optimize algorithmic stream metrics.</p>
+                </div>
+                <div class="p-8 rounded-3xl bg-zinc-50 border border-zinc-100 shadow-sm hover:shadow-md transition-all duration-300">
+                    <div class="h-12 w-12 rounded-2xl bg-black text-[#8B5CF6] flex items-center justify-center mb-8 shadow-md"><i data-lucide="line-chart" class="w-5 h-5"></i></div>
+                    <h3 class="text-xl font-bold mb-2 text-zinc-900">Analytics Monitoring</h3>
+                    <p class="text-sm text-zinc-500 font-light leading-relaxed">Continuous analytical oversight monitoring retention fatigue thresholds to preserve account indexing standards.</p>
+                </div>
+                <div class="p-8 rounded-3xl bg-zinc-50 border border-zinc-100 shadow-sm hover:shadow-md transition-all duration-300">
+                    <div class="h-12 w-12 rounded-2xl bg-black text-white flex items-center justify-center mb-8 shadow-md"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
+                    <h3 class="text-xl font-bold mb-2 text-zinc-900">Institutional Protection</h3>
+                    <p class="text-sm text-zinc-500 font-light leading-relaxed">Direct legal counseling, priority multi-layered account protection systems, and instant integration handles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE INTERACTIVE UTILITY FRAMEWORK LAYER: DIAGNOSTIC MATRIX -->
+    <section id="diagnostic" class="py-36 max-w-7xl mx-auto px-6 relative z-20">
+        <div class="text-center max-w-3xl mx-auto mb-20 space-y-4">
+            <span class="text-xs uppercase font-semibold tracking-[0.25em] text-[#4DE3FF] bg-[#4DE3FF]/5 px-4 py-1.5 rounded-full border border-[#4DE3FF]/10 inline-block">Diagnostic Sandbox</span>
+            <h2 class="text-4xl font-light text-white tracking-tight">Algorithmic Vulnerability Index</h2>
+            <p class="text-zinc-500 font-light text-sm max-w-xl mx-auto">Analyze structural blocks on your account node profile. Complete the vector calculations below.</p>
+        </div>
+
+        <div class="w-full max-w-3xl mx-auto rounded-[32px] border border-white/5 bg-[#0f0f15]/70 p-8 md:p-14 backdrop-blur-2xl shadow-[0_30px_100px_rgba(0,0,0,0.8)] relative overflow-hidden">
+            <!-- Subtle premium glow trace line behind diagnostic panel -->
+            <div class="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-[#4DE3FF]/40 to-transparent"></div>
+
+            <!-- LOADING SCREEN ANIMATION STATE -->
+            <div x-show="calculating" x-transition class="flex flex-col items-center justify-center py-20 text-center">
+                <div class="relative h-24 w-24 mb-10">
+                    <div class="absolute inset-0 rounded-full border-2 border-t-[#4DE3FF] border-r-[#8B5CF6] border-b-transparent border-l-transparent animate-spin"></div>
+                    <div class="absolute inset-3 rounded-full border border-t-transparent border-r-transparent border-b-[#4DE3FF]/30 border-l-[#8B5CF6]/30 animate-spin" style="animation-duration: 3s; animation-direction: reverse;"></div>
+                </div>
+                <h3 class="text-2xl font-light text-white tracking-tight animate-pulse" x-text="copy[locale].calc"></h3>
+            </div>
+
+            <!-- QUESTION COMPONENT CONTAINER STATE -->
+            <div x-show="!calculating && !complete" class="animate__animated animate__fadeIn">
+                <!-- Premium Stepper Node Indicator -->
+                <div class="flex items-center justify-between mb-12 text-zinc-500 text-xs tracking-widest uppercase font-medium">
+                    <span x-text="'Phase 0' + step + ' / 03'"></span>
+                    <span class="text-[#4DE3FF]" x-text="step === 1 ? 'Schedule Optimization' : step === 2 ? 'Retention Analysis' : 'Monetization Metrics'"></span>
+                </div>
+
+                <!-- Sleek Minimal Progress Tracking Loop -->
+                <div class="flex gap-2.5 mb-12">
+                    <div :class="step >= 1 ? 'bg-gradient-to-r from-[#4DE3FF] to-[#8B5CF6]' : 'bg-white/5'" class="h-[3px] flex-1 rounded-full transition-all duration-700"></div>
+                    <div :class="step >= 2 ? 'bg-gradient-to-r from-[#4DE3FF] to-[#8B5CF6]' : 'bg-white/5'" class="h-[3px] flex-1 rounded-full transition-all duration-700"></div>
+                    <div :class="step >= 3 ? 'bg-gradient-to-r from-[#4DE3FF] to-[#8B5CF6]' : 'bg-white/5'" class="h-[3px] flex-1 rounded-full transition-all duration-700"></div>
+                </div>
+
+                <!-- Dynamic Step Content Nodes with Slide Up Animations -->
+                <div x-show="step === 1" class="space-y-8 animate__animated animate__slideInUp animate__faster">
+                    <h3 class="text-2xl md:text-3xl font-light text-white tracking-tight leading-snug" x-text="copy[locale].q1"></h3>
+                    <div class="space-y-4">
+                        <button @click="handleSelect(15)" class="w-full text-left p-6 rounded-2xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] hover:border-[#4DE3FF]/30 transition-all duration-300 flex justify-between items-center group"><span class="text-zinc-300 group-hover:text-white text-base font-light" x-text="copy[locale].q1_o1"></span><div class="h-6 w-6 rounded-full border border-white/10 flex items-center justify-center group-hover:border-[#4DE3FF]/40"><div class="h-2 w-2 rounded-full bg-transparent group-hover:bg-[#4DE3FF]"></div></div></button>
+                        <button @click="handleSelect(55)" class="w-full text-left p-6 rounded-2xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] hover:border-[#4DE3FF]/30 transition-all duration-300 flex justify-between items-center group"><span class="text-zinc-300 group-hover:text-white text-base font-light" x-text="copy[locale].q1_o2"></span><div class="h-6 w-6 rounded-full border border-white/10 flex items-center justify-center group-hover:border-[#4DE3FF]/40"><div class="h-2 w-2 rounded-full bg-transparent group-hover:bg-[#4DE3FF]"></div></div></button>
+                        <button @click="handleSelect(85)" class="w-full text-left p-6 rounded-2xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] hover:border-[#4DE3FF]/30 transition-all duration-300 flex justify-between items-center group"><span class="text-zinc-300 group-hover:text-white text-base font-light" x-text="copy[locale].q1_o3"></span><div class="h-6 w-6 rounded-full border border-white/10 flex items-center justify-center group-hover:border-[#4DE3FF]/40"><div class="h-2 w-2 rounded-full bg-transparent group-hover:bg-[#4DE3FF]"></div></div></button>
+                    </div>
+                </div>
+
+                <div x-show="step === 2" class="space-y-8 animate__animated animate__slideInUp animate__faster">
+                    <h3 class="text-2xl md:text-3xl font-light text-white tracking-tight leading-snug" x-text="copy[locale].q2"></h3>
+                    <div class="space-y-4">
+                        <button @click="handleSelect(20)" class="w-full text-left p-6 rounded-2xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] hover:border-[#4DE3FF]/30 transition-all duration-300 flex justify-between items-center group"><span class="text-zinc-300 group-hover:text-white text-base font-light" x-text="copy[locale].q2_o1"></span><div class="h-6 w-6 rounded-full border border-white/10 flex items-center justify-center group-hover:border-[#4DE3FF]/40"><div class="h-2 w-2 rounded-full bg-transparent group-hover:bg-[#4DE3FF]"></div></div></button>
+                        <button @click="handleSelect(50)" class="w-full text-left p-6 rounded-2xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] hover:border-[#4DE3FF]/30 transition-all duration-300 flex justify-between items-center group"><span class="text-zinc-300 group-hover:text-white text-base font-light" x-text="copy[locale].q2_o2"></span><div class="h-6 w-6 rounded-full border border-white/10 flex items-center justify-center group-hover:border-[#4DE3FF]/40"><div class="h-2 w-2 rounded-full bg-transparent group-hover:bg-[#4DE3FF]"></div></div></button>
+                        <button @click="handleSelect(95)" class="w-full text-left p-6 rounded-2xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] hover:border-[#4DE3FF]/30 transition-all duration-300 flex justify-between items-center group"><span class="text-zinc-300 group-hover:text-white text-base font-light" x-text="copy[locale].q2_o3"></span><div class="h-6 w-6 rounded-full border border-white/10 flex items-center justify-center group-hover:border-[#4DE3FF]/40"><div class="h-2 w-2 rounded-full bg-transparent group-hover:bg-[#4DE3FF]"></div></div></button>
+                    </div>
+                </div>
+
+                <div x-show="step === 3" class="space-y-8 animate__animated animate__slideInUp animate__faster">
+                    <h3 class="text-2xl md:text-3xl font-light text-white tracking-tight leading-snug" x-text="copy[locale].q3"></h3>
+                    <div class="space-y-4">
+                        <button @click="handleSelect(30)" class="w-full text-left p-6 rounded-2xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] hover:border-[#4DE3FF]/30 transition-all duration-300 flex justify-between items-center group"><span class="text-zinc-300 group-hover:text-white text-base font-light" x-text="copy[locale].q3_o1"></span><div class="h-6 w-6 rounded-full border border-white/10 flex items-center justify-center group-hover:border-[#4DE3FF]/40"><div class="h-2 w-2 rounded-full bg-transparent group-hover:bg-[#4DE3FF]"></div></div></button>
+                        <button @click="handleSelect(65)" class="w-full text-left p-6 rounded-2xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] hover:border-[#4DE3FF]/30 transition-all duration-300 flex justify-between items-center group"><span class="text-zinc-300 group-hover:text-white text-base font-light" x-text="copy[locale].q3_o2"></span><div class="h-6 w-6 rounded-full border border-white/10 flex items-center justify-center group-hover:border-[#4DE3FF]/40"><div class="h-2 w-2 rounded-full bg-transparent group-hover:bg-[#4DE3FF]"></div></div></button>
+                        <button @click="handleSelect(95)" class="w-full text-left p-6 rounded-2xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] hover:border-[#4DE3FF]/30 transition-all duration-300 flex justify-between items-center group"><span class="text-zinc-300 group-hover:text-white text-base font-light" x-text="copy[locale].q3_o3"></span><div class="h-6 w-6 rounded-full border border-white/10 flex items-center justify-center group-hover:border-[#4DE3FF]/40"><div class="h-2 w-2 rounded-full bg-transparent group-hover:bg-[#4DE3FF]"></div></div></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ANALYTICAL SPLIT REPORT MATRICES DATA PRESENTATION -->
+            <div x-show="complete" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center animate__animated animate__fadeIn">
+                <div class="lg:col-span-5 flex flex-col items-center justify-center text-center">
+                    <!-- Expensive circular ring metric visualization layer -->
+                    <div class="relative h-44 w-44 flex items-center justify-center rounded-full bg-white/[0.01] shadow-2xl border border-white/5">
+                        <div class="absolute inset-2 rounded-full border border-dashed border-white/10 animate-spin" style="animation-duration: 20s;"></div>
+                        <span class="text-5xl font-extralight tracking-tighter text-[#4DE3FF] drop-shadow-[0_0_15px_rgba(77,227,255,0.4)]" x-text="finalScore + '%'"></span>
+                    </div>
+                    <p class="text-[10px] uppercase tracking-[0.2em] text-zinc-500 mt-6 font-bold">Optimization Vector</p>
+                </div>
+                
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="border-b border-white/5 pb-3">
+                        <p class="text-xs text-zinc-500 uppercase tracking-wider font-semibold" x-text="copy[locale].eff"></p>
+                        <p class="text-2xl font-light text-white mt-1" x-text="finalScore + '%'"></p>
+                    </div>
+                    <div class="border-b border-white/5 pb-3">
+                        <p class="text-xs text-zinc-500 uppercase tracking-wider font-semibold" x-text="copy[locale].gap"></p>
+                        <p class="text-2xl font-light text-rose-400 mt-1" x-text="(100 - finalScore) + '%'"></p>
+                    </div>
+                    <div class="border-b border-white/5 pb-3">
+                        <p class="text-xs text-zinc-500 uppercase tracking-wider font-semibold" x-text="copy[locale].stab"></p>
+                        <p class="text-2xl font-light text-emerald-400 mt-1" x-text="Math.round(finalScore * 1.1) + '%'"></p>
+                    </div>
+                    <button class="w-full py-4.5 bg-gradient-to-r from-[#4DE3FF] to-[#8B5CF6] text-black font-semibold rounded-full text-center text-sm shadow-2xl hover:shadow-[#4DE3FF]/20 transform hover:-translate-y-0.5 transition-all duration-300" x-text="copy[locale].ctaResults"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX MODAL PORTAL PORTAL FOR PHYSICAL MEDIA ELEMENTS -->
+    <div x-show="lightboxImage" @click="lightboxImage = null" style="display: none;" class="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4 backdrop-blur-2xl transition-all">
+        <div class="relative max-h-[85vh] max-w-[90vw] animate__animated animate__scaleIn animate__faster">
+            <img :src="lightboxImage" class="max-h-[85vh] object-contain rounded-2xl border border-white/10 shadow-2xl" alt="Enlarged Core Asset Overview">
+            <button class="absolute top-4 right-4 rounded-full bg-black/60 border border-white/10 p-2.5 text-white hover:bg-white/20 transition-all">
+                <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- MINIMALIST PREMIUM INDUSTRIAL FOOTER -->
+    <footer class="py-12 border-t border-white/[0.04] max-w-7xl mx-auto px-6 text-center text-[10px] text-zinc-600 tracking-widest uppercase font-medium">
+        &copy; 2026 LIVE ALCHEMY SYSTEM OPERATIONS INC. ALL FRAMEWORKS INTELLECTUALLY SHIELDED.
+    </footer>
+
+    <script>
+        // Init global Lucide vectors
+        lucide.createIcons();
+    </script>
+</body>
+</html>
