@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LIVE ALCHEMY · Internal Performance System</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Alchemy · Creator Ecosystem</title>
+  <!-- Font & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
       margin: 0;
@@ -15,545 +17,663 @@
     }
 
     body {
-      background-color: #07080b;
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      color: #e8edf5;
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-      padding: 2rem 1.5rem;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
+      background-color: #050505;
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      scroll-behavior: smooth;
     }
 
-    /* System Container - feels like a secure internal dashboard */
-    .system-container {
+    .container {
       max-width: 1280px;
-      width: 100%;
-      background: radial-gradient(circle at 20% 30%, rgba(60, 80, 140, 0.08) 0%, transparent 60%),
-                  radial-gradient(circle at 80% 70%, rgba(120, 140, 220, 0.05) 0%, transparent 50%);
-      border-radius: 48px;
-      padding: 2.5rem 3rem 4rem;
-      border: 1px solid rgba(255, 255, 255, 0.03);
-      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.8);
-      position: relative;
-      backdrop-filter: blur(2px);
+      margin: 0 auto;
+      padding: 0 24px;
     }
 
-    /* Calm glowing orb animation */
-    .glow-orb {
-      position: absolute;
-      top: -15%;
-      right: -10%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(80, 120, 255, 0.06) 0%, transparent 70%);
-      border-radius: 50%;
-      filter: blur(80px);
-      pointer-events: none;
-      animation: pulseGlow 8s ease-in-out infinite alternate;
-      z-index: 0;
+    /* ----- GOLD ACCENT ----- */
+    .gold {
+      color: #D4AF37;
+    }
+    .gold-border {
+      border-color: #D4AF37;
+    }
+    .btn-gold {
+      background: #D4AF37;
+      color: #050505;
+      font-weight: 700;
+      border: none;
+      transition: 0.2s;
+    }
+    .btn-gold:hover {
+      background: #e6c84a;
+      transform: scale(1.02);
+      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.25);
+    }
+    .btn-outline-gold {
+      background: transparent;
+      border: 1.5px solid #D4AF37;
+      color: #D4AF37;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+    .btn-outline-gold:hover {
+      background: #D4AF37;
+      color: #050505;
+      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15);
     }
 
-    @keyframes pulseGlow {
-      0% { opacity: 0.4; transform: scale(1) translateX(0px); }
-      100% { opacity: 0.8; transform: scale(1.1) translateX(-40px); }
-    }
-
-    /* all content sits above glow */
-    .content {
-      position: relative;
-      z-index: 2;
-    }
-
-    /* ---- SYSTEM HEADER (Identity Layer) ---- */
-    .system-header {
+    /* ----- NAV ----- */
+    .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-bottom: 2rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-      margin-bottom: 3.5rem;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
-
-    .brand {
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    .logo span {
+      color: #D4AF37;
+    }
+    .nav-links {
       display: flex;
-      align-items: baseline;
-      gap: 1.5rem;
-    }
-
-    .brand h1 {
-      font-size: 1.6rem;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #ffffff 0%, #a0b8e6 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .brand .status {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: #5a7a9a;
-      background: rgba(255, 255, 255, 0.03);
-      padding: 0.3rem 1rem;
-      border-radius: 40px;
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      -webkit-text-fill-color: #5a7a9a;
-    }
-
-    .header-meta {
-      font-size: 0.75rem;
-      color: #5e7499;
-      letter-spacing: 0.02em;
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    /* ---- TYPOGRAPHY SYSTEM ---- */
-    .label-system {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #5a749c;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      display: block;
-    }
-
-    h2 {
-      font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+      gap: 32px;
       font-weight: 500;
-      letter-spacing: -0.02em;
-      color: #f0f4fe;
-      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
     }
-
-    .subhead-system {
-      font-size: clamp(1rem, 1.3vw, 1.2rem);
-      color: #b0c2e0;
-      max-width: 680px;
-      font-weight: 350;
-      line-height: 1.6;
-    }
-
-    p {
-      color: #b0c2e0;
-      font-weight: 350;
-      line-height: 1.7;
-      max-width: 680px;
-    }
-
-    /* ---- SECTIONS ---- */
-    section {
-      margin-bottom: 5rem;
-    }
-
-    .section-divider {
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.07) 50%, rgba(255,255,255,0.02) 100%);
-      margin: 4rem 0;
-    }
-
-    /* ---- CTA BUTTONS (System actions) ---- */
-    .cta-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      align-items: center;
-      margin-top: 2rem;
-    }
-
-    .btn {
-      display: inline-block;
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      padding: 0.7rem 2rem;
-      border-radius: 60px;
-      font-weight: 500;
-      font-size: 0.9rem;
-      color: #eaeef5;
+    .nav-links a {
+      color: rgba(255,255,255,0.7);
       text-decoration: none;
-      transition: all 0.2s ease;
-      letter-spacing: -0.01em;
-      cursor: default;
-      backdrop-filter: blur(4px);
-      background: rgba(255, 255, 255, 0.02);
+      transition: 0.2s;
     }
-
-    .btn-primary {
-      background: rgba(255, 255, 255, 0.07);
-      border-color: rgba(255, 255, 255, 0.1);
-      color: white;
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    .nav-links a:hover {
+      color: #fff;
     }
-
-    .btn-primary:hover {
-      background: rgba(255, 255, 255, 0.13);
-      border-color: rgba(255, 255, 255, 0.18);
-      transform: translateY(-1px);
-    }
-
-    .btn-outline {
-      border-color: rgba(255, 255, 255, 0.04);
-    }
-
-    .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.04);
-      border-color: rgba(255, 255, 255, 0.12);
-    }
-
-    .btn-small {
-      padding: 0.4rem 1.4rem;
-      font-size: 0.8rem;
-    }
-
-    /* ---- MODULE GRID (Product Layer) ---- */
-    .module-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-      gap: 1.8rem;
-      margin-top: 2.5rem;
-    }
-
-    .module-item {
-      background: rgba(255, 255, 255, 0.015);
-      border: 1px solid rgba(255, 255, 255, 0.035);
-      border-radius: 20px;
-      padding: 1.8rem 1.6rem;
-      transition: all 0.25s ease;
-    }
-
-    .module-item:hover {
-      background: rgba(255, 255, 255, 0.04);
-      border-color: rgba(255, 255, 255, 0.08);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    .module-item h4 {
-      font-size: 1.05rem;
-      font-weight: 500;
-      color: #dce6ff;
-      margin-bottom: 0.4rem;
-    }
-
-    .module-item p {
-      font-size: 0.9rem;
-      color: #8e9fc7;
-      max-width: 100%;
-    }
-
-    .module-tag {
-      display: inline-block;
-      font-size: 0.6rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: #4a6b94;
-      background: rgba(255, 255, 255, 0.02);
-      padding: 0.15rem 0.8rem;
-      border-radius: 30px;
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      margin-bottom: 0.8rem;
-    }
-
-    /* ---- TRUST GRID (Safety Layer) ---- */
-    .trust-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1.2rem;
-      margin-top: 1.8rem;
-      background: rgba(255, 255, 255, 0.01);
-      padding: 1.5rem 1.8rem;
-      border-radius: 28px;
-      border: 1px solid rgba(255, 255, 255, 0.03);
-    }
-
-    .trust-item {
+    .lang-toggle {
       display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .trust-item p {
-      font-size: 0.9rem;
-      color: #bccae6;
-      max-width: 100%;
-    }
-
-    .trust-check {
-      color: #4a8c7a;
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-
-    /* ---- STEPS (SAAS Flow) ---- */
-    .step-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-      margin-top: 1.5rem;
-      max-width: 700px;
-    }
-
-    .step-row {
-      display: flex;
-      align-items: baseline;
-      gap: 1.2rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-      padding-bottom: 0.7rem;
-    }
-
-    .step-num {
-      font-weight: 400;
-      color: #4e6b92;
-      min-width: 2.4rem;
+      gap: 12px;
       font-size: 0.85rem;
       font-weight: 500;
     }
-
-    .step-desc {
-      color: #c8d6f0;
-      font-weight: 350;
+    .lang-toggle span {
+      color: rgba(255,255,255,0.4);
+      cursor: default;
+    }
+    .lang-toggle .active {
+      color: #D4AF37;
+    }
+    .lang-toggle .inactive {
+      color: rgba(255,255,255,0.3);
     }
 
-    .quote-line {
-      font-size: 1.1rem;
-      color: #c0ceec;
-      border-left: 2px solid rgba(255, 255, 255, 0.08);
-      padding-left: 1.8rem;
-      margin: 2rem 0 0.5rem;
-      font-weight: 350;
-    }
-
-    /* ---- DIFFERENTIATION ---- */
-    .diff-grid {
+    /* ----- HERO ----- */
+    .hero {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
-      margin-top: 1.5rem;
-      max-width: 780px;
+      gap: 60px;
+      padding: 60px 0 80px;
+      align-items: center;
     }
-
-    .diff-col {
-      background: rgba(255, 255, 255, 0.01);
-      padding: 1.5rem 1.8rem;
-      border-radius: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.03);
+    .hero-text h1 {
+      font-size: 3.8rem;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
     }
-
-    .diff-col h5 {
-      font-weight: 500;
-      color: #a6bae0;
-      font-size: 0.9rem;
-      letter-spacing: 0.02em;
-      margin-bottom: 0.8rem;
+    .hero-text h1 .gold {
+      display: block;
     }
-
-    .diff-col ul {
-      list-style: none;
+    .hero-sub {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.7);
+      max-width: 500px;
+      margin-bottom: 32px;
     }
-
-    .diff-col li {
-      padding: 0.3rem 0;
-      color: #b0c0dd;
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .hero-cta .btn {
+      padding: 14px 34px;
+      border-radius: 60px;
+      font-weight: 600;
       font-size: 0.95rem;
-      font-weight: 350;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .trust-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 28px;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+    }
+    .trust-badges i {
+      color: #D4AF37;
+      margin-right: 6px;
+    }
+
+    /* Hero visual (fake stream UI) */
+    .hero-visual {
+      background: radial-gradient(circle at 30% 40%, #1a1a1a, #0a0a0a);
+      border-radius: 32px;
+      padding: 30px 20px 20px;
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+      position: relative;
+    }
+    .stream-overlay {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .stream-preview {
+      background: #111;
+      border-radius: 20px;
+      padding: 20px 20px 40px;
+      background-image: linear-gradient(145deg, #1e1e1e, #0b0b0b);
+      border: 1px solid #2a2a2a;
+      position: relative;
+    }
+    .stream-preview .avatar-circle {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: #2a2a2a;
+      border: 2px solid #D4AF37;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      justify-content: center;
+      font-size: 2rem;
     }
-
-    .diff-col li::before {
-      content: "▹";
-      color: #4a6b94;
+    .stream-preview .live-badge {
+      background: #ff2d2d;
       font-size: 0.7rem;
+      padding: 3px 10px;
+      border-radius: 40px;
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+    .floating-ui {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .floating-ui .badge {
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(4px);
+      padding: 8px 16px;
+      border-radius: 60px;
+      font-size: 0.8rem;
+      border: 1px solid rgba(255,255,255,0.04);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .floating-ui .badge i {
+      color: #D4AF37;
+    }
+    .floating-ui .badge .num {
+      font-weight: 700;
+      color: #fff;
     }
 
-    .diff-alchemy li::before {
-      content: "◆";
-      color: #7a9ec9;
+    /* section headings */
+    .section-head {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 48px;
+    }
+    .section-head h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1.2;
+    }
+    .section-head p {
+      color: rgba(255,255,255,0.6);
+      font-size: 1.15rem;
+      margin-top: 12px;
     }
 
-    /* ---- RESPONSIVE ---- */
-    @media (max-width: 700px) {
-      .system-container { padding: 1.5rem; }
-      .system-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-      .diff-grid { grid-template-columns: 1fr; }
-      .trust-grid { grid-template-columns: 1fr; }
+    /* cards */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+    .card {
+      background: #0e0e0e;
+      padding: 32px 24px;
+      border-radius: 28px;
+      border: 1px solid #1c1c1c;
+      transition: 0.25s ease;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: #D4AF37;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+    .card i {
+      font-size: 2rem;
+      color: #D4AF37;
+      margin-bottom: 16px;
+    }
+    .card h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .card p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.95rem;
+    }
+
+    /* timeline */
+    .timeline {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px 48px;
+      margin: 40px 0;
+    }
+    .timeline-item {
+      flex: 1 1 180px;
+      text-align: center;
+      position: relative;
+    }
+    .timeline-item .step {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #D4AF37;
+    }
+    .timeline-item h4 {
+      font-size: 1.2rem;
+      margin: 6px 0 4px;
+    }
+    .timeline-item p {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.9rem;
+    }
+
+    /* dashboard style */
+    .dashboard-mock {
+      background: #0b0b0b;
+      border-radius: 32px;
+      padding: 36px 30px;
+      border: 1px solid #1c1c1c;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px,1fr));
+      gap: 24px;
+      margin: 28px 0;
+    }
+    .dash-item {
+      background: #121212;
+      padding: 20px 16px;
+      border-radius: 20px;
+      border-left: 4px solid #D4AF37;
+    }
+    .dash-item .label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255,255,255,0.4);
+    }
+    .dash-item .value {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 6px 0 2px;
+    }
+    .dash-item .trend {
+      color: #4caf50;
+      font-size: 0.85rem;
+    }
+
+    /* awards */
+    .award-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+    }
+    .award-card {
+      background: #0e0e0e;
+      padding: 20px 28px;
+      border-radius: 24px;
+      border: 1px solid #1c1c1c;
+      text-align: center;
+      min-width: 160px;
+    }
+    .award-card i {
+      font-size: 2.8rem;
+      color: #D4AF37;
+    }
+    .award-card .year {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    /* community */
+    .community-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .community-item {
+      background: #111;
+      border-radius: 24px;
+      aspect-ratio: 1/1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      border: 1px solid #1c1c1c;
+    }
+
+    /* FAQ */
+    .faq-item {
+      background: #0e0e0e;
+      border-radius: 20px;
+      padding: 20px 28px;
+      margin-bottom: 16px;
+      border: 1px solid #1a1a1a;
+    }
+    .faq-item h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .faq-item p {
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* form */
+    .app-form {
+      background: #0b0b0b;
+      padding: 40px 36px;
+      border-radius: 32px;
+      border: 1px solid #1c1c1c;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .app-form input, .app-form select, .app-form textarea {
+      width: 100%;
+      padding: 14px 18px;
+      margin-bottom: 16px;
+      background: #151515;
+      border: 1px solid #2a2a2a;
+      border-radius: 60px;
+      color: #fff;
+      font-family: inherit;
+      outline: none;
+      transition: 0.2s;
+    }
+    .app-form input:focus, .app-form select:focus, .app-form textarea:focus {
+      border-color: #D4AF37;
+    }
+    .app-form textarea {
+      border-radius: 24px;
+      min-height: 100px;
+    }
+    .app-form .btn {
+      width: 100%;
+      padding: 16px;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    /* footer */
+    .footer {
+      border-top: 1px solid #1a1a1a;
+      padding: 40px 0 20px;
+      margin-top: 60px;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    /* responsive */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 30px 0;
+      }
+      .hero-text h1 {
+        font-size: 2.6rem;
+      }
+      .community-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .navbar {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .nav-links {
+        gap: 16px;
+        font-size: 0.8rem;
+      }
+      .section-head h2 {
+        font-size: 2rem;
+      }
+    }
+
+    /* scroll animation helper */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 <body>
 
-<div class="system-container">
-  <div class="glow-orb"></div>
-  <div class="content">
-
-    <!-- IDENTITY LAYER: header -->
-    <header class="system-header">
-      <div class="brand">
-        <h1>LIVE ALCHEMY</h1>
-        <span class="status">⏺ system active · v2.4</span>
-      </div>
-      <div class="header-meta">
-        <span>RO · EU focus</span>
-        <span>|</span>
-        <span>performance intelligence</span>
-      </div>
-    </header>
-
-    <!-- 1. HERO SECTION -->
-    <section>
-      <span class="label-system">⸻ INTELLIGENCE LAYER</span>
-      <h2>TikTok LIVE Performance<br />Intelligence System</h2>
-      <p class="subhead-system">
-        We help serious TikTok LIVE creators improve consistency, engagement behavior, and earning stability through structured performance optimization.
-      </p>
-      <div style="margin-top: 0.5rem; font-size: 0.8rem; color: #5a749c; letter-spacing: 0.02em;">
-        <span style="background: rgba(255,255,255,0.03); padding: 0.2rem 1rem; border-radius: 40px; border: 1px solid rgba(255,255,255,0.03);">Focused on Romania &amp; European TikTok LIVE creators</span>
-      </div>
-
-      <div class="cta-group">
-        <span class="btn btn-primary">⏵ Initiate Evaluation</span>
-        <span class="btn btn-outline">⏵ View System Flow</span>
-        <span class="btn btn-outline btn-small">⏵ Modules</span>
-      </div>
-      <div style="margin-top: 0.6rem; font-size: 0.75rem; color: #4d6188;">⸻ not an agency · internal performance system</div>
-    </section>
-
-    <!-- 2. POSITIONING SHIFT -->
-    <section>
-      <span class="label-system">⸻ POSITIONING</span>
-      <h2>Not an Agency. A System.</h2>
-      <p style="font-size: 1.05rem; max-width: 680px;">
-        Most agencies recruit creators. Live Alchemy does not recruit.<br />
-        We analyze TikTok LIVE performance behavior and apply structured optimization systems designed to improve consistency and monetization patterns.
-      </p>
-      <div style="margin-top: 1.2rem; color: #5e7499; font-size: 0.85rem; border-left: 1px solid rgba(255,255,255,0.05); padding-left: 1.2rem;">
-        removes: scam fear · new agency perception · random recruitment
-      </div>
-    </section>
-
-    <!-- 3. WHY EXISTS -->
-    <section>
-      <span class="label-system">⸻ REALITY CONTEXT</span>
-      <h2>Why This Exists</h2>
-      <p style="font-size: 1.05rem;">
-        TikTok LIVE is no longer entertainment-only. It is a performance-based economy where consistency determines earnings, viewer behavior impacts income, and structure matters more than virality.
-      </p>
-      <p style="margin-top: 1rem; color: #bccae6; font-style: italic; border-left: 2px solid rgba(255,255,255,0.04); padding-left: 1.2rem;">
-        “Most creators fail not due to talent — but due to lack of feedback systems.”
-      </p>
-    </section>
-
-    <!-- 4. PRODUCT MODULES (core value) -->
-    <section>
-      <span class="label-system">⸻ SYSTEM MODULES</span>
-      <h2>Performance Modules</h2>
-      <p style="color: #8e9fc7; margin-bottom: 0.5rem;">Product components · not services</p>
-
-      <div class="module-grid">
-        <div class="module-item"><span class="module-tag">engine</span><h4>LIVE Structure Engine</h4><p>optimizes stream flow and viewer retention patterns</p></div>
-        <div class="module-item"><span class="module-tag">behavior</span><h4>Engagement Behavior System</h4><p>improves audience interaction and participation loops</p></div>
-        <div class="module-item"><span class="module-tag">monetization</span><h4>Monetization Timing Model</h4><p>identifies optimal gifting activation moments</p></div>
-        <div class="module-item"><span class="module-tag">consistency</span><h4>Consistency Framework</h4><p>builds sustainable LIVE streaming routines</p></div>
-        <div class="module-item"><span class="module-tag">feedback</span><h4>Performance Feedback Loop</h4><p>weekly structured analysis of LIVE behavior</p></div>
-        <div class="module-item"><span class="module-tag">growth</span><h4>Growth Optimization Layer</h4><p>continuous performance adjustment system</p></div>
-      </div>
-      <div style="margin-top: 1.2rem; color: #5e7499; font-size: 0.85rem;">⸻ system upgrades for income behavior</div>
-    </section>
-
-    <!-- 5. HOW IT WORKS (SAAS FLOW) -->
-    <section>
-      <span class="label-system">⸻ SYSTEM FLOW</span>
-      <h2>How It Works</h2>
-      <div class="step-list">
-        <div class="step-row"><span class="step-num">01</span><span class="step-desc">Application Submission — creator submits LIVE profile</span></div>
-        <div class="step-row"><span class="step-num">02</span><span class="step-desc">Performance Review — system analyzes behavior patterns</span></div>
-        <div class="step-row"><span class="step-num">03</span><span class="step-desc">Fit Evaluation — determines optimization potential</span></div>
-        <div class="step-row"><span class="step-num">04</span><span class="step-desc">Activation (if selected) — structured onboarding into system</span></div>
-      </div>
-      <div class="quote-line">We only work where measurable improvement is realistically possible.</div>
-    </section>
-
-    <!-- 6. TRUST & SAFETY LAYER -->
-    <section>
-      <span class="label-system">⸻ CONTROL & TRANSPARENCY</span>
-      <h2>Creator Control</h2>
-      <div class="trust-grid">
-        <div class="trust-item"><span class="trust-check">✓</span><p>You fully own your TikTok account</p></div>
-        <div class="trust-item"><span class="trust-check">✓</span><p>We never take control of accounts</p></div>
-        <div class="trust-item"><span class="trust-check">✓</span><p>No exclusivity lock-ins</p></div>
-        <div class="trust-item"><span class="trust-check">✓</span><p>No hidden fees or charges</p></div>
-        <div class="trust-item"><span class="trust-check">✓</span><p>You can stop anytime</p></div>
-      </div>
-      <div style="margin-top: 0.8rem; color: #4d6188; font-size: 0.8rem;">⸻ removes scam suspicion · manipulation fear · control anxiety</div>
-    </section>
-
-    <!-- 7. DIFFERENTIATION -->
-    <section>
-      <span class="label-system">⸻ DIFFERENTIATION</span>
-      <h2>Why Different</h2>
-      <div class="diff-grid">
-        <div class="diff-col">
-          <h5>Most agencies</h5>
-          <ul>
-            <li>recruit as many creators as possible</li>
-            <li>offer generic advice</li>
-            <li>measure success by volume</li>
-          </ul>
-        </div>
-        <div class="diff-col diff-alchemy">
-          <h5>Live Alchemy</h5>
-          <ul>
-            <li>evaluates before onboarding</li>
-            <li>focuses on performance structure</li>
-            <li>uses system-based optimization</li>
-            <li>prioritizes consistency improvement</li>
-          </ul>
-        </div>
-      </div>
-      <div style="margin-top: 1.5rem; color: #5e7499; font-size: 0.85rem;">⸻ from “agency” to “performance infrastructure”</div>
-    </section>
-
-    <!-- 8. MARKET FOCUS -->
-    <section>
-      <span class="label-system">⸻ CURRENT FOCUS</span>
-      <h2>Market Focus</h2>
-      <p style="font-size: 1rem;">We currently work with:</p>
-      <ul style="list-style: none; margin-top: 0.3rem; color: #b0c0dd;">
-        <li style="padding: 0.15rem 0;">• Romania TikTok LIVE creators</li>
-        <li style="padding: 0.15rem 0;">• European creator markets</li>
-      </ul>
-      <p style="margin-top: 1rem; font-size: 0.85rem; color: #4d6188;">Expansion is based on ecosystem maturity and creator density.</p>
-      <div style="margin-top: 0.2rem; color: #3d5178; font-size: 0.75rem;">NO global hype · NO “worldwide” claims</div>
-    </section>
-
-    <!-- 9. CONVERSION LAYER -->
-    <section style="margin-bottom: 2rem;">
-      <span class="label-system">⸻ EVALUATION FUNNEL</span>
-      <h2>Apply for Creator Evaluation</h2>
-      <p style="font-size: 1.05rem; max-width: 600px;">
-        Every application is manually reviewed. We only activate creators where performance improvement is structurally possible.
-      </p>
-      <div class="cta-group" style="margin-top: 1.8rem;">
-        <span class="btn btn-primary" style="padding: 0.9rem 3.5rem;">⏵ Apply Now</span>
-        <span style="color: #4d6188; font-size: 0.85rem; margin-left: 0.5rem;">manual review · selective activation</span>
-      </div>
-    </section>
-
-    <!-- system footer -->
-    <div style="border-top: 1px solid rgba(255,255,255,0.02); padding-top: 2rem; margin-top: 2rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 0.7rem; color: #3d5178; letter-spacing: 0.03em;">
-      <span>LIVE ALCHEMY · internal performance intelligence</span>
-      <span>system version 2.4 · © 2026</span>
+<div class="container">
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="logo">Live <span>Alchemy</span></div>
+    <div class="nav-links">
+      <a href="#growth">Growth</a>
+      <a href="#journey">Journey</a>
+      <a href="#community">Community</a>
+      <a href="#apply">Apply</a>
     </div>
+    <div class="lang-toggle">
+      <span class="active">🇷🇴 Română</span>
+      <span class="inactive">🇬🇧 English</span>
+    </div>
+  </nav>
 
-  </div> <!-- end content -->
-</div> <!-- end system-container -->
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <h1>Your Talent Has <span class="gold">Potential.</span> We Build The System Behind Your Success.</h1>
+      <p class="hero-sub">Live Alchemy is a premium TikTok LIVE creator network helping ambitious Romanian creators grow faster through strategy, training, analytics, campaigns, and dedicated creator support.</p>
+      <div class="hero-cta">
+        <a href="#apply" class="btn btn-gold">Apply To Join Live Alchemy</a>
+        <a href="#growth" class="btn btn-outline-gold">See How We Help Creators Grow</a>
+      </div>
+      <div class="trust-badges">
+        <span><i class="fas fa-check-circle"></i> Official TikTok LIVE Partner Network</span>
+        <span><i class="fas fa-check-circle"></i> Creator Growth System</span>
+        <span><i class="fas fa-check-circle"></i> Dedicated Creator Managers</span>
+        <span><i class="fas fa-check-circle"></i> Exclusive Campaign Access</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="stream-overlay">
+        <div class="stream-preview">
+          <div class="live-badge"><i class="fas fa-circle" style="color:#ff2d2d; margin-right:6px;"></i> LIVE</div>
+          <div class="avatar-circle"><i class="fas fa-user" style="color:#D4AF37;"></i></div>
+          <div style="font-weight:600;">Andreea · 2.4k watching</div>
+          <div style="font-size:0.8rem; color:rgba(255,255,255,0.5);">✨ diamond goal 12.5k</div>
+        </div>
+        <div class="floating-ui">
+          <span class="badge"><i class="fas fa-chart-line"></i> <span class="num">+22%</span> growth</span>
+          <span class="badge"><i class="fas fa-gem"></i> <span class="num">8.4k</span> diamonds</span>
+          <span class="badge"><i class="fas fa-users"></i> <span class="num">1.2k</span> community</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2 : Not Another Agency -->
+  <section id="growth" style="padding: 60px 0;">
+    <div class="section-head">
+      <h2>Most Agencies Recruit Creators. <span class="gold">We Develop Them.</span></h2>
+      <p>No empty promises. Real strategy, real support.</p>
+    </div>
+    <div class="card-grid">
+      <div class="card fade-up"><i class="fas fa-chess-queen"></i><h3>Strategy</h3><p>Your LIVE performance analyzed. Best hours, content direction, audience psychology, monetization.</p></div>
+      <div class="card fade-up"><i class="fas fa-rocket"></i><h3>Growth System</h3><p>LIVE improvement plans, content guidance, campaign strategies, performance reviews.</p></div>
+      <div class="card fade-up"><i class="fas fa-headset"></i><h3>Professional Support</h3><p>Real team: creator managers, technical support, events, TikTok updates.</p></div>
+    </div>
+  </section>
+
+  <!-- SECTION 3 : Built For Serious Creators -->
+  <section style="padding: 40px 0;">
+    <div class="section-head">
+      <h2>We Are Not Looking For Everyone.</h2>
+      <p>Live Alchemy works with ambitious creators who treat TikTok LIVE as a serious opportunity.</p>
+    </div>
+    <div style="display:flex; flex-wrap:wrap; gap:16px; justify-content:center; margin:16px 0 32px;">
+      <span style="background:#111; padding:8px 20px; border-radius:60px; border:1px solid #2a2a2a;">✓ Already streaming consistently</span>
+      <span style="background:#111; padding:8px 20px; border-radius:60px; border:1px solid #2a2a2a;">✓ Want professional growth</span>
+      <span style="background:#111; padding:8px 20px; border-radius:60px; border:1px solid #2a2a2a;">✓ Ready to improve</span>
+      <span style="background:#111; padding:8px 20px; border-radius:60px; border:1px solid #2a2a2a;">✓ Think long-term</span>
+      <span style="background:#111; padding:8px 20px; border-radius:60px; border:1px solid #2a2a2a;">✓ Build a personal brand</span>
+    </div>
+    <div style="text-align:center;"><a href="#apply" class="btn btn-gold" style="padding:14px 48px; border-radius:60px; text-decoration:none;">Check If You Qualify</a></div>
+  </section>
+
+  <!-- SECTION 4 : Journey -->
+  <section id="journey" style="padding:60px 0;">
+    <div class="section-head">
+      <h2>From Creator To <span class="gold">Digital Entrepreneur</span></h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item"><div class="step">1</div><h4>Discover</h4><p>Analyze current performance</p></div>
+      <div class="timeline-item"><div class="step">2</div><h4>Optimize</h4><p>LIVE structure, retention, engagement</p></div>
+      <div class="timeline-item"><div class="step">3</div><h4>Scale</h4><p>Campaigns, competitions, opportunities</p></div>
+      <div class="timeline-item"><div class="step">4</div><h4>Build</h4><p>Develop your creator brand</p></div>
+    </div>
+  </section>
+
+  <!-- SECTION 5 : Why Top Creators -->
+  <section style="padding:40px 0;">
+    <div class="section-head"><h2>Why Top Creators Choose <span class="gold">Live Alchemy</span></h2></div>
+    <div class="card-grid">
+      <div class="card"><i class="fas fa-user-tie"></i><h3>Dedicated Creator Management</h3><p>Real person supporting your journey.</p></div>
+      <div class="card"><i class="fas fa-chart-pie"></i><h3>Data Driven Growth</h3><p>Decisions based on performance data.</p></div>
+      <div class="card"><i class="fas fa-trophy"></i><h3>Exclusive Opportunities</h3><p>TikTok campaigns, events, competitions.</p></div>
+      <div class="card"><i class="fas fa-handshake"></i><h3>Long-Term Partnership</h3><p>Your growth is our growth.</p></div>
+    </div>
+  </section>
+
+  <!-- SECTION 6 : SaaS Dashboard -->
+  <section style="padding:40px 0;">
+    <div class="section-head"><h2>Your Growth. <span class="gold">Measured.</span></h2></div>
+    <div class="dashboard-mock">
+      <div class="dash-item"><div class="label">LIVE Hours</div><div class="value">+32%</div><div class="trend"><i class="fas fa-arrow-up"></i> Growth</div></div>
+      <div class="dash-item"><div class="label">Audience Retention</div><div class="value">78%</div><div class="trend"><i class="fas fa-arrow-up"></i> Improvement</div></div>
+      <div class="dash-item"><div class="label">Diamond Progress</div><div class="value">12.8k</div><div class="trend"><i class="fas fa-arrow-up"></i> Revenue</div></div>
+      <div class="dash-item"><div class="label">Engagement Score</div><div class="value">9.4</div><div class="trend"><i class="fas fa-arrow-up"></i> Community</div></div>
+    </div>
+    <p style="text-align:center; color:rgba(255,255,255,0.5);">Successful creators don’t guess. They analyze and improve.</p>
+  </section>
+
+  <!-- SECTION 7 : Awards -->
+  <section style="padding:40px 0;">
+    <div class="section-head"><h2>Recognized For <span class="gold">Creator Excellence</span></h2><p>Building professional creator ecosystems at every stage.</p></div>
+    <div class="award-grid">
+      <div class="award-card"><i class="fas fa-award"></i><div class="year">2025</div><div>Best Creator Network</div></div>
+      <div class="award-card"><i class="fas fa-medal"></i><div class="year">2024</div><div>Innovation in LIVE</div></div>
+      <div class="award-card"><i class="fas fa-star"></i><div class="year">2023</div><div>Top TikTok Partner</div></div>
+      <div class="award-card"><i class="fas fa-gem"></i><div class="year">2022</div><div>Community Impact</div></div>
+    </div>
+  </section>
+
+  <!-- SECTION 8 : Community -->
+  <section id="community" style="padding:40px 0;">
+    <div class="section-head"><h2>Join A Network Of <span class="gold">Ambitious Creators</span></h2></div>
+    <div class="community-grid">
+      <div class="community-item"><i class="fas fa-user-circle" style="font-size:3rem; color:#D4AF37;"></i></div>
+      <div class="community-item"><i class="fas fa-users" style="font-size:3rem; color:#D4AF37;"></i></div>
+      <div class="community-item"><i class="fas fa-calendar-check" style="font-size:3rem; color:#D4AF37;"></i></div>
+      <div class="community-item"><i class="fas fa-chalkboard" style="font-size:3rem; color:#D4AF37;"></i></div>
+    </div>
+  </section>
+
+  <!-- SECTION 9 : FAQ -->
+  <section style="padding:40px 0;">
+    <div class="section-head"><h2>Frequently Asked <span class="gold">Questions</span></h2></div>
+    <div class="faq-item"><h4>Is joining Live Alchemy free?</h4><p>Yes. Joining is free.</p></div>
+    <div class="faq-item"><h4>Do I lose my account control?</h4><p>No. Your account remains yours.</p></div>
+    <div class="faq-item"><h4>Why should I join an agency?</h4><p>A professional agency provides support, growth strategy, campaigns, and opportunities.</p></div>
+    <div class="faq-item"><h4>Do I need millions of followers?</h4><p>No. We focus on potential, consistency, and ambition.</p></div>
+    <div class="faq-item"><h4>Can I leave anytime?</h4><p>Partnership terms are transparent—contact us for details.</p></div>
+  </section>
+
+  <!-- SECTION 10 : Application -->
+  <section id="apply" style="padding:40px 0;">
+    <div class="section-head"><h2>Start Your <span class="gold">Creator Evaluation</span></h2></div>
+    <div class="app-form">
+      <form>
+        <input type="text" placeholder="Full Name" required>
+        <input type="text" placeholder="TikTok Username" required>
+        <input type="number" placeholder="Followers">
+        <input type="number" placeholder="Average LIVE viewers">
+        <input type="number" placeholder="Monthly diamonds">
+        <input type="text" placeholder="Streaming experience (months)">
+        <input type="text" placeholder="Country">
+        <textarea placeholder="Why do you want to grow?"></textarea>
+        <button type="submit" class="btn btn-gold">Apply For Live Alchemy</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>© 2026 Live Alchemy · Romania’s premium creator growth ecosystem</div>
+    <div style="display:flex; gap:24px;"><span>Privacy</span><span>Terms</span><span>Contact</span></div>
+  </div>
+</div>
+
+<!-- scroll reveal -->
+<script>
+  const faders = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.2 });
+  faders.forEach(el => observer.observe(el));
+  // also observe cards that are not .fade-up
+  document.querySelectorAll('.card, .dash-item, .award-card, .community-item, .faq-item').forEach(el => {
+    if (!el.classList.contains('fade-up')) {
+      el.classList.add('fade-up');
+      observer.observe(el);
+    }
+  });
+</script>
 
 </body>
 </html>
