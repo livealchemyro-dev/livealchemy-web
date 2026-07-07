@@ -1,227 +1,1853 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Alchemy | Premium Creator Ecosystem</title>
-    <style>
-        /* --- Reset & Base --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Alchemy · Premium TikTok LIVE Creator Ecosystem</title>
+  <meta name="description" content="Romania's premium TikTok LIVE creator growth ecosystem. Join elite creators and transform your LIVE streaming into a professional digital career.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background-color: #050505;
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    .gold { color: #D4AF37; }
+    .btn-gold {
+      background: #D4AF37;
+      color: #050505;
+      font-weight: 700;
+      border: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15);
+    }
+    .btn-gold:hover { background: #e6c84a; transform: scale(1.02); box-shadow: 0 8px 30px rgba(212, 175, 55, 0.3); }
+    .btn-outline-gold {
+      background: transparent;
+      border: 1.5px solid #D4AF37;
+      color: #D4AF37;
+      font-weight: 600;
+      transition: all 0.25s ease;
+    }
+    .btn-outline-gold:hover { background: #D4AF37; color: #050505; box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15); }
+    .btn {
+      padding: 14px 34px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: inline-block;
+      cursor: pointer;
+    }
+    /* NAV */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; }
+    .logo span { color: #D4AF37; }
+    .nav-links { display: flex; gap: 32px; font-weight: 500; font-size: 0.95rem; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; transition: 0.2s; }
+    .nav-links a:hover { color: #fff; }
 
-        body {
-            background-color: #0A0A0A;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-            color: #FFFFFF;
-        }
+    .lang-switcher {
+      display: flex;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: rgba(255,255,255,0.04);
+      padding: 6px 12px;
+      border-radius: 40px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: rgba(255,255,255,0.35);
+      padding: 4px 12px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.8rem;
+      transition: all 0.25s ease;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.3px;
+    }
+    .lang-btn:hover { color: rgba(255,255,255,0.7); }
+    .lang-btn.active {
+      color: #D4AF37;
+      background: rgba(212, 175, 55, 0.12);
+    }
 
-        /* --- Hero Container --- */
-        .hero {
-            max-width: 1280px;
-            width: 100%;
-            background: linear-gradient(135deg, rgba(20, 20, 20, 0.8) 0%, rgba(10, 10, 10, 0.95) 100%);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 48px;
-            padding: 60px 80px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
-            overflow: hidden;
-        }
+    /* HERO - UPDATED */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 60px 0 80px;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(201, 168, 76, 0.06) 0%, rgba(76, 43, 107, 0.04) 50%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(201, 168, 76, 0.10);
+      color: #D4AF37;
+      padding: 8px 20px;
+      border-radius: 100px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border: 1px solid rgba(201, 168, 76, 0.15);
+      backdrop-filter: blur(4px);
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 {
+      font-size: 4.2rem;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      max-width: 900px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 .gold { display: inline-block; }
+    .hero-sub {
+      font-size: 1.25rem;
+      color: rgba(255,255,255,0.7);
+      max-width: 720px;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-qualification {
+      font-size: 0.85rem;
+      color: #D4AF37;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      padding: 10px 0 20px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 1;
+    }
 
-        /* Subtle Accent Glow */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(201, 168, 76, 0.08) 0%, rgba(76, 43, 107, 0.05) 50%, transparent 70%);
-            border-radius: 50%;
-            z-index: 0;
-        }
+    /* sections */
+    .section-head { text-align: center; max-width: 700px; margin: 0 auto 48px; }
+    .section-head h2 { font-size: 2.8rem; font-weight: 700; letter-spacing: -1px; line-height: 1.2; }
+    .section-head p { color: rgba(255,255,255,0.6); font-size: 1.15rem; margin-top: 12px; }
 
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-            max-width: 800px;
-        }
+    /* PREMIUM CARDS */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      perspective: 1200px;
+    }
+    @media (max-width: 900px) { .card-grid { grid-template-columns: 1fr; } }
+    .card-premium {
+      background: rgba(255,255,255,0.02);
+      backdrop-filter: blur(10px);
+      padding: 40px 30px 35px;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.04);
+      transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(60px) rotateX(8deg) scale(0.92);
+      cursor: default;
+    }
+    .card-premium::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.06), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      pointer-events: none;
+    }
+    .card-premium:hover::before { opacity: 1; }
+    .card-premium.revealed {
+      opacity: 1;
+      transform: translateY(0) rotateX(0) scale(1);
+    }
+    .card-premium:nth-child(1) { transition-delay: 0.1s; }
+    .card-premium:nth-child(2) { transition-delay: 0.25s; }
+    .card-premium:nth-child(3) { transition-delay: 0.4s; }
+    .card-premium:hover {
+      transform: translateY(-12px) scale(1.02);
+      border-color: rgba(212, 175, 55, 0.25);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 40px rgba(212, 175, 55, 0.04);
+      background: rgba(255,255,255,0.04);
+    }
+    .card-premium .card-icon { font-size: 2.6rem; color: #D4AF37; margin-bottom: 20px; display: inline-block; transition: 0.4s; }
+    .card-premium:hover .card-icon { transform: scale(1.1) rotate(2deg); text-shadow: 0 0 30px rgba(212, 175, 55, 0.2); }
+    .card-premium .card-number {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: rgba(212, 175, 55, 0.06);
+      line-height: 1;
+      pointer-events: none;
+      transition: 0.4s;
+    }
+    .card-premium:hover .card-number { color: rgba(212, 175, 55, 0.12); transform: scale(1.05); }
+    .card-premium h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.3px; position: relative; }
+    .card-premium h3::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: #D4AF37;
+      opacity: 0.3;
+      transition: all 0.5s ease;
+    }
+    .card-premium:hover h3::after { width: 60px; opacity: 0.8; }
+    .card-premium p { color: rgba(255,255,255,0.55); font-size: 0.95rem; line-height: 1.7; margin-top: 8px; }
+    .card-premium .card-glow-line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #D4AF37, transparent);
+      transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .card-premium.revealed .card-glow-line { width: 100%; }
+    .card-premium:hover .card-glow-line { width: 100%; background: linear-gradient(90deg, #D4AF37, #e6c84a, transparent); }
 
-        /* --- Premium Badge --- */
-        .badge {
-            display: inline-block;
-            background: rgba(201, 168, 76, 0.12);
-            color: #C9A84C;
-            padding: 8px 18px;
-            border-radius: 100px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            border: 1px solid rgba(201, 168, 76, 0.2);
-            backdrop-filter: blur(4px);
-            width: fit-content;
-        }
+    /* NEW: Elite Positioning Section */
+    .elite-section {
+      padding: 40px 0 60px;
+      position: relative;
+    }
+    .elite-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 30px;
+    }
+    @media (max-width: 900px) { .elite-grid { grid-template-columns: 1fr; } }
+    .elite-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 24px;
+      padding: 32px 28px;
+      text-align: center;
+      transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+      position: relative;
+      overflow: hidden;
+    }
+    .elite-card.revealed {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    .elite-card:nth-child(1) { transition-delay: 0.05s; }
+    .elite-card:nth-child(2) { transition-delay: 0.15s; }
+    .elite-card:nth-child(3) { transition-delay: 0.25s; }
+    .elite-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: rgba(212, 175, 55, 0.2);
+      background: rgba(255,255,255,0.04);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+    .elite-card .elite-icon {
+      font-size: 2.4rem;
+      color: #D4AF37;
+      margin-bottom: 16px;
+      display: block;
+      opacity: 0.8;
+      transition: 0.4s;
+    }
+    .elite-card:hover .elite-icon { opacity: 1; transform: scale(1.1); }
+    .elite-card h4 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: rgba(255,255,255,0.9);
+    }
+    .elite-card p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.6;
+    }
 
-        /* --- Typography --- */
-        h1 {
-            font-size: clamp(2.8rem, 8vw, 4.5rem);
-            font-weight: 700;
-            line-height: 1.05;
-            letter-spacing: -0.02em;
-            background: linear-gradient(to right, #FFFFFF 0%, #D0D0D0 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin: 0;
-        }
+    /* NEW: Trust Section with Testimonials */
+    .trust-section {
+      padding: 40px 0 60px;
+    }
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 30px;
+    }
+    .testimonial-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 24px;
+      padding: 32px 28px;
+      transition: all 0.4s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .testimonial-card.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .testimonial-card:nth-child(1) { transition-delay: 0.05s; }
+    .testimonial-card:nth-child(2) { transition-delay: 0.15s; }
+    .testimonial-card:nth-child(3) { transition-delay: 0.25s; }
+    .testimonial-card:hover {
+      border-color: rgba(212,175,55,0.15);
+      background: rgba(255,255,255,0.04);
+      transform: translateY(-4px);
+    }
+    .testimonial-card .t-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(212,175,55,0.2), rgba(76,43,107,0.2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: #D4AF37;
+      margin-bottom: 16px;
+      border: 2px solid rgba(212,175,55,0.15);
+    }
+    .testimonial-card .t-name {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 2px;
+    }
+    .testimonial-card .t-role {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 12px;
+    }
+    .testimonial-card .t-stats {
+      display: flex;
+      gap: 20px;
+      margin: 12px 0;
+      padding: 12px 0;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .testimonial-card .t-stat {
+      text-align: center;
+    }
+    .testimonial-card .t-stat .stat-value {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #D4AF37;
+    }
+    .testimonial-card .t-stat .stat-label {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .testimonial-card .t-quote {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+      font-style: italic;
+      margin-top: 8px;
+    }
 
-        .subheadline {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            color: #B0B0B0;
-            max-width: 600px;
-            font-weight: 400;
-            margin: 0;
-        }
+    /* NEW: Recognition Section */
+    .recognition-section {
+      padding: 40px 0 60px;
+    }
+    .recognition-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    .recognition-item {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 20px;
+      padding: 28px 32px;
+      text-align: center;
+      min-width: 160px;
+      transition: all 0.4s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .recognition-item.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .recognition-item:nth-child(1) { transition-delay: 0.05s; }
+    .recognition-item:nth-child(2) { transition-delay: 0.15s; }
+    .recognition-item:nth-child(3) { transition-delay: 0.25s; }
+    .recognition-item:nth-child(4) { transition-delay: 0.35s; }
+    .recognition-item:hover {
+      border-color: rgba(212,175,55,0.15);
+      transform: translateY(-4px);
+      background: rgba(255,255,255,0.04);
+    }
+    .recognition-item i {
+      font-size: 2.8rem;
+      color: #D4AF37;
+      margin-bottom: 8px;
+    }
+    .recognition-item .r-year {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.6);
+    }
+    .recognition-item .r-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.4);
+    }
 
-        .qualification-text {
-            font-size: 0.9rem;
-            color: #C9A84C;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            padding: 10px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            width: fit-content;
-        }
+    /* NEW: Why Live Alchemy - 6 Cards */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 30px;
+    }
+    @media (max-width: 900px) { .why-grid { grid-template-columns: 1fr; } }
+    .why-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 20px;
+      padding: 28px 24px;
+      transition: all 0.4s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .why-card.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .why-card:nth-child(1) { transition-delay: 0.03s; }
+    .why-card:nth-child(2) { transition-delay: 0.06s; }
+    .why-card:nth-child(3) { transition-delay: 0.09s; }
+    .why-card:nth-child(4) { transition-delay: 0.12s; }
+    .why-card:nth-child(5) { transition-delay: 0.15s; }
+    .why-card:nth-child(6) { transition-delay: 0.18s; }
+    .why-card:hover {
+      border-color: rgba(212,175,55,0.15);
+      transform: translateY(-4px);
+      background: rgba(255,255,255,0.04);
+    }
+    .why-card .why-icon {
+      font-size: 1.8rem;
+      color: #D4AF37;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .why-card h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .why-card p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.6;
+    }
 
-        /* --- CTA Buttons --- */
-        .cta-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin-top: 8px;
-        }
+    /* NEW: Switching Section */
+    .switch-section {
+      background: rgba(255,255,255,0.02);
+      border-radius: 32px;
+      padding: 48px 40px;
+      border: 1px solid rgba(255,255,255,0.04);
+      margin: 30px 0;
+    }
+    .switch-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 30px;
+    }
+    @media (max-width: 768px) { .switch-grid { grid-template-columns: 1fr; } }
+    .switch-col {
+      background: rgba(255,255,255,0.02);
+      border-radius: 20px;
+      padding: 28px 24px;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+    .switch-col h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: rgba(255,255,255,0.7);
+    }
+    .switch-col ul {
+      list-style: none;
+      padding: 0;
+    }
+    .switch-col ul li {
+      padding: 8px 0;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.5);
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .switch-col ul li i {
+      color: #D4AF37;
+      width: 18px;
+    }
+    .switch-col.highlight {
+      border-color: rgba(212,175,55,0.15);
+      background: rgba(212,175,55,0.04);
+    }
+    .switch-col.highlight h4 { color: #D4AF37; }
+    .switch-col.highlight ul li { color: rgba(255,255,255,0.7); }
 
-        .btn-primary {
-            background: #C9A84C;
-            color: #0A0A0A;
-            border: none;
-            padding: 16px 40px;
-            border-radius: 60px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.2s ease-in-out;
-            box-shadow: 0 10px 20px -8px rgba(201, 168, 76, 0.3);
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-        }
+    /* NEW: Founder Section */
+    .founder-section {
+      padding: 40px 0 60px;
+    }
+    .founder-content {
+      display: flex;
+      gap: 48px;
+      align-items: center;
+      background: rgba(255,255,255,0.02);
+      border-radius: 32px;
+      padding: 48px;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+    @media (max-width: 768px) { .founder-content { flex-direction: column; padding: 32px; } }
+    .founder-avatar {
+      flex-shrink: 0;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(76,43,107,0.15));
+      border: 2px solid rgba(212,175,55,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: #D4AF37;
+    }
+    .founder-text h3 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .founder-text .founder-title {
+      font-size: 0.9rem;
+      color: #D4AF37;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+    .founder-text p {
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+      max-width: 600px;
+    }
 
-        .btn-primary:hover {
-            transform: scale(1.02);
-            background: #DBC060;
-            box-shadow: 0 15px 30px -10px rgba(201, 168, 76, 0.4);
-        }
+    /* NEW: Account Security */
+    .security-section {
+      padding: 40px 0 60px;
+    }
+    .security-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 30px;
+    }
+    .security-item {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    .security-item.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .security-item:hover {
+      border-color: rgba(212,175,55,0.15);
+      transform: translateY(-3px);
+    }
+    .security-item i {
+      font-size: 1.8rem;
+      color: #D4AF37;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .security-item span {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+    }
 
-        .btn-secondary {
-            background: transparent;
-            color: #FFFFFF;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 16px 40px;
-            border-radius: 60px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.2s ease-in-out;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-            backdrop-filter: blur(4px);
-        }
+    /* GROWTH DASHBOARD */
+    .growth-dashboard {
+      background: #0a0a0a;
+      border-radius: 32px;
+      padding: 48px 40px;
+      border: 1px solid rgba(255,255,255,0.04);
+      margin: 30px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .growth-dashboard::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -30%;
+      width: 60%;
+      height: 200%;
+      background: radial-gradient(ellipse, rgba(212,175,55,0.04), transparent 70%);
+      pointer-events: none;
+    }
+    .growth-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 1;
+    }
+    .growth-header h3 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    .growth-header .badge {
+      background: rgba(212,175,55,0.1);
+      border: 1px solid rgba(212,175,55,0.15);
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      color: #D4AF37;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .growth-metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .metric-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 20px;
+      padding: 22px 20px;
+      transition: all 0.4s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .metric-card.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .metric-card:nth-child(1) { transition-delay: 0.05s; }
+    .metric-card:nth-child(2) { transition-delay: 0.15s; }
+    .metric-card:nth-child(3) { transition-delay: 0.25s; }
+    .metric-card:nth-child(4) { transition-delay: 0.35s; }
+    .metric-card:hover {
+      border-color: rgba(212,175,55,0.15);
+      background: rgba(255,255,255,0.04);
+      transform: translateY(-4px);
+    }
+    .metric-card .metric-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: rgba(255,255,255,0.3);
+      font-weight: 600;
+    }
+    .metric-card .metric-value {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin: 6px 0 2px;
+      letter-spacing: -1px;
+    }
+    .metric-card .metric-change {
+      font-size: 0.8rem;
+      color: #4caf50;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .metric-card .metric-sub {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.25);
+      margin-top: 4px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding-top: 8px;
+    }
 
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.4);
-        }
+    /* JOURNEY */
+    .journey-wrapper {
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 30px 0 50px;
+      position: relative;
+    }
+    .journey-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      padding: 20px 0;
+    }
+    .journey-steps::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 30px;
+      bottom: 30px;
+      width: 2px;
+      background: linear-gradient(to bottom, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.4), rgba(212, 175, 55, 0.1));
+      transform: translateX(-50%);
+    }
+    .step-item {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      padding: 20px 30px;
+      margin: 8px 0;
+      opacity: 0;
+      transform: translateY(40px) scale(0.96);
+      transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+      pointer-events: none;
+      position: relative;
+      background: rgba(255,255,255,0.02);
+      border-radius: 20px;
+      border: 1px solid transparent;
+    }
+    .step-item.revealed {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+      border-color: rgba(212, 175, 55, 0.12);
+      background: rgba(255,255,255,0.03);
+    }
+    .step-item:nth-child(odd) { flex-direction: row; }
+    .step-item:nth-child(even) { flex-direction: row-reverse; }
+    .step-item .step-num-wrapper {
+      flex-shrink: 0;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.02));
+      border: 2px solid rgba(212, 175, 55, 0.25);
+      transition: all 0.6s ease;
+      position: relative;
+    }
+    .step-item.revealed .step-num-wrapper {
+      border-color: #D4AF37;
+      box-shadow: 0 0 40px rgba(212, 175, 55, 0.15);
+    }
+    .step-item .step-num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #D4AF37;
+      opacity: 0.5;
+      transition: 0.5s;
+    }
+    .step-item.revealed .step-num { opacity: 1; }
+    .step-item .step-content { flex: 1; text-align: left; }
+    .step-item:nth-child(even) .step-content { text-align: right; }
+    .step-item .step-content h4 { font-size: 1.6rem; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.5px; }
+    .step-item .step-content p { color: rgba(255,255,255,0.5); font-size: 1rem; max-width: 400px; }
+    .step-item:nth-child(even) .step-content p { margin-left: auto; }
+    .step-item .step-glow {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      border-radius: 20px;
+      background: radial-gradient(circle at var(--glow-x, 50%) var(--glow-y, 50%), rgba(212, 175, 55, 0.04), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.6s;
+      pointer-events: none;
+    }
+    .step-item.revealed .step-glow { opacity: 1; }
+    .journey-trigger {
+      height: 1px;
+      width: 100%;
+      visibility: hidden;
+      position: absolute;
+      top: 5%;
+    }
 
-        /* --- Responsive --- */
-        @media (max-width: 768px) {
-            .hero {
-                padding: 40px 30px;
-                border-radius: 32px;
-            }
+    /* APP FORM */
+    .app-form {
+      background: #0b0b0b;
+      padding: 40px 36px;
+      border-radius: 32px;
+      border: 1px solid #1c1c1c;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .app-form input, .app-form select, .app-form textarea {
+      width: 100%;
+      padding: 14px 18px;
+      margin-bottom: 16px;
+      background: #151515;
+      border: 1px solid #2a2a2a;
+      border-radius: 60px;
+      color: #fff;
+      font-family: inherit;
+      outline: none;
+      transition: 0.2s;
+    }
+    .app-form input:focus, .app-form select:focus, .app-form textarea:focus { border-color: #D4AF37; }
+    .app-form textarea { border-radius: 24px; min-height: 100px; }
+    .app-form .btn { width: 100%; padding: 16px; border-radius: 60px; font-weight: 700; font-size: 1.1rem; }
 
-            .hero-content {
-                gap: 20px;
-            }
+    .footer {
+      border-top: 1px solid #1a1a1a;
+      padding: 40px 0 20px;
+      margin-top: 60px;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .footer-links a:hover { color: rgba(255,255,255,0.6); }
+    .footer-social {
+      display: flex;
+      gap: 16px;
+    }
+    .footer-social a {
+      color: rgba(255,255,255,0.3);
+      font-size: 1.2rem;
+      transition: 0.2s;
+    }
+    .footer-social a:hover { color: #D4AF37; }
 
-            h1 {
-                font-size: clamp(2.2rem, 12vw, 3.2rem);
-            }
+    /* FLOATING CONTACT */
+    .float-contact {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 999;
+    }
+    .float-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      color: #fff;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      transition: 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .float-btn:hover { transform: scale(1.08); }
+    .float-btn.whatsapp { background: #25D366; }
+    .float-btn.tiktok { background: #000; border: 1px solid #D4AF37; color: #D4AF37; }
+    .float-btn.tiktok i { color: #D4AF37; }
 
-            .subheadline {
-                font-size: 1rem;
-            }
-
-            .btn-primary, .btn-secondary {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .cta-group {
-                flex-direction: column;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero {
-                padding: 30px 20px;
-                border-radius: 24px;
-            }
-        }
-    </style>
+    @media (max-width: 900px) {
+      .hero h1 { font-size: 2.8rem; }
+      .step-item { flex-direction: column !important; text-align: center !important; padding: 20px; }
+      .step-item .step-content { text-align: center !important; }
+      .step-item .step-content p { margin: 0 auto !important; }
+      .step-item:nth-child(even) .step-content { text-align: center !important; }
+      .journey-steps::before { display: none; }
+      .growth-header { flex-direction: column; }
+      .switch-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .navbar { flex-wrap: wrap; gap: 12px; }
+      .nav-links { gap: 16px; font-size: 0.8rem; }
+      .section-head h2 { font-size: 2rem; }
+      .float-contact { bottom: 16px; right: 16px; }
+      .float-btn { width: 48px; height: 48px; font-size: 1.3rem; }
+      .founder-content { padding: 24px; }
+      .founder-avatar { width: 120px; height: 120px; font-size: 3rem; }
+    }
+    .fade-up { opacity: 0; transform: translateY(20px); transition: all 0.7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .section-pad { padding: 60px 0; }
+  </style>
 </head>
 <body>
-    <section class="hero">
-        <div class="hero-content">
-            <!-- Premium Badge -->
-            <span class="badge">Romania’s Premium TikTok LIVE Creator Ecosystem</span>
 
-            <!-- Headline -->
-            <h1>Built For Creators Who Are Ready For Their Next Level.</h1>
+<div class="container">
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="logo">Live <span>Alchemy</span></div>
+    <div class="nav-links">
+      <a href="#growth" data-key="navGrowth">Growth</a>
+      <a href="#journey" data-key="navJourney">Journey</a>
+      <a href="#trust" data-key="navTrust">Results</a>
+      <a href="#apply" data-key="navApply">Apply</a>
+    </div>
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="ro" onclick="setLanguage('ro')">RO</button>
+      <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+    </div>
+  </nav>
 
-            <!-- Subheadline -->
-            <p class="subheadline">
-                Live Alchemy is a premium TikTok LIVE creator growth ecosystem helping Romania’s most ambitious creators increase revenue, improve performance, and build sustainable digital careers.
-            </p>
+  <!-- HERO - UPDATED -->
+  <section class="hero" id="home">
+    <span class="hero-badge" data-key="heroBadge">Romania's Premium TikTok LIVE Creator Ecosystem</span>
+    <h1 data-key="heroTitle">Built For Creators Who Are Ready For Their <span class="gold">Next Level.</span></h1>
+    <p class="hero-sub" data-key="heroSub">Live Alchemy is a premium TikTok LIVE creator growth ecosystem helping Romania's most ambitious creators increase revenue, improve performance, and build sustainable digital careers.</p>
+    <div class="hero-qualification" data-key="heroQual">For creators who treat LIVE as a business.</div>
+    <div class="hero-cta">
+      <a href="#apply" class="btn btn-gold" data-key="btnApply">Apply For Private Partnership</a>
+      <a href="#calculator" class="btn btn-outline-gold" data-key="btnCheck">Get My Creator Growth Audit</a>
+    </div>
+  </section>
 
-            <!-- Qualification Text -->
-            <div class="qualification-text">
-                For creators who treat LIVE as a business.
-            </div>
+  <!-- SECTION 1: ELITE POSITIONING - NEW -->
+  <section class="elite-section">
+    <div class="section-head">
+      <h2 data-key="eliteTitle">Not For Everyone. Built For Creators Who <span class="gold">Want More.</span></h2>
+      <p data-key="eliteSub">Thousands of creators go LIVE every day. Only a few build a real digital career. Live Alchemy works with creators who want structured growth, professional support, and a clear path toward higher performance.</p>
+    </div>
+    <div class="elite-grid" id="eliteGrid">
+      <div class="elite-card">
+        <span class="elite-icon"><i class="fas fa-road"></i></span>
+        <h4 data-key="elite1">Growth Strategy</h4>
+        <p data-key="elite1d">Personal roadmap based on your goals and performance.</p>
+      </div>
+      <div class="elite-card">
+        <span class="elite-icon"><i class="fas fa-chart-bar"></i></span>
+        <h4 data-key="elite2">Performance System</h4>
+        <p data-key="elite2d">Analytics, optimization, and improvement plans.</p>
+      </div>
+      <div class="elite-card">
+        <span class="elite-icon"><i class="fas fa-crown"></i></span>
+        <h4 data-key="elite3">Creator Advantage</h4>
+        <p data-key="elite3d">Access to campaigns, opportunities, and professional support.</p>
+      </div>
+    </div>
+  </section>
 
-            <!-- Call to Actions -->
-            <div class="cta-group">
-                <a href="#" class="btn-primary">Apply For Private Partnership</a>
-                <a href="#" class="btn-secondary">Get My Creator Growth Audit</a>
-            </div>
+  <!-- SECTION 2: GROWTH SYSTEM CARDS -->
+  <section id="growth" class="section-pad" style="padding-top:0;">
+    <div class="section-head">
+      <h2 data-key="section2Title">Most Agencies Recruit Creators. <span class="gold">We Develop Them.</span></h2>
+      <p data-key="section2Sub">No empty promises. Real strategy, real support.</p>
+    </div>
+    <div class="card-grid" id="cardGrid">
+      <div class="card-premium" data-delay="0">
+        <span class="card-number">01</span>
+        <div class="card-icon"><i class="fas fa-chess-queen"></i></div>
+        <h3 data-key="card1Title">Strategy</h3>
+        <p data-key="card1Desc">Your LIVE performance analyzed. Best hours, content direction, audience psychology, monetization.</p>
+        <div class="card-glow-line"></div>
+      </div>
+      <div class="card-premium" data-delay="150">
+        <span class="card-number">02</span>
+        <div class="card-icon"><i class="fas fa-rocket"></i></div>
+        <h3 data-key="card2Title">Growth System</h3>
+        <p data-key="card2Desc">LIVE improvement plans, content guidance, campaign strategies, performance reviews.</p>
+        <div class="card-glow-line"></div>
+      </div>
+      <div class="card-premium" data-delay="300">
+        <span class="card-number">03</span>
+        <div class="card-icon"><i class="fas fa-headset"></i></div>
+        <h3 data-key="card3Title">Professional Support</h3>
+        <p data-key="card3Desc">Real team: creator managers, technical support, events, TikTok updates.</p>
+        <div class="card-glow-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: TRUST & TESTIMONIALS - NEW -->
+  <section id="trust" class="trust-section">
+    <div class="section-head">
+      <h2 data-key="trustTitle">Real Growth. Real Creators. <span class="gold">Real Results.</span></h2>
+      <p data-key="trustSub">See how creators transformed their LIVE careers with Live Alchemy.</p>
+    </div>
+    <div class="testimonial-grid" id="testimonialGrid">
+      <div class="testimonial-card">
+        <div class="t-avatar"><i class="fas fa-user"></i></div>
+        <div class="t-name" data-key="t1name">Andrei M.</div>
+        <div class="t-role" data-key="t1role">TikTok LIVE Creator</div>
+        <div class="t-stats">
+          <div class="t-stat">
+            <div class="stat-value">120K</div>
+            <div class="stat-label" data-key="t1before">Before</div>
+          </div>
+          <div class="t-stat">
+            <div class="stat-value" style="color:#4caf50;">350K</div>
+            <div class="stat-label" data-key="t1after">After</div>
+          </div>
+          <div class="t-stat">
+            <div class="stat-value" style="color:#D4AF37;">90</div>
+            <div class="stat-label" data-key="t1days">Days</div>
+          </div>
         </div>
-    </section>
+        <p class="t-quote" data-key="t1quote">"Live Alchemy gave me a real system. Not just advice — actual strategy that moved my numbers."</p>
+      </div>
+      <div class="testimonial-card">
+        <div class="t-avatar"><i class="fas fa-user"></i></div>
+        <div class="t-name" data-key="t2name">Elena S.</div>
+        <div class="t-role" data-key="t2role">TikTok LIVE Creator</div>
+        <div class="t-stats">
+          <div class="t-stat">
+            <div class="stat-value">80K</div>
+            <div class="stat-label" data-key="t1before">Before</div>
+          </div>
+          <div class="t-stat">
+            <div class="stat-value" style="color:#4caf50;">280K</div>
+            <div class="stat-label" data-key="t1after">After</div>
+          </div>
+          <div class="t-stat">
+            <div class="stat-value" style="color:#D4AF37;">60</div>
+            <div class="stat-label" data-key="t1days">Days</div>
+          </div>
+        </div>
+        <p class="t-quote" data-key="t2quote">"I went from inconsistent income to a real career. The team understood my goals and built a plan around them."</p>
+      </div>
+      <div class="testimonial-card">
+        <div class="t-avatar"><i class="fas fa-user"></i></div>
+        <div class="t-name" data-key="t3name">Mihai C.</div>
+        <div class="t-role" data-key="t3role">TikTok LIVE Creator</div>
+        <div class="t-stats">
+          <div class="t-stat">
+            <div class="stat-value">200K</div>
+            <div class="stat-label" data-key="t1before">Before</div>
+          </div>
+          <div class="t-stat">
+            <div class="stat-value" style="color:#4caf50;">520K</div>
+            <div class="stat-label" data-key="t1after">After</div>
+          </div>
+          <div class="t-stat">
+            <div class="stat-value" style="color:#D4AF37;">120</div>
+            <div class="stat-label" data-key="t1days">Days</div>
+          </div>
+        </div>
+        <p class="t-quote" data-key="t3quote">"The analytics and optimization completely changed how I approach LIVE. I've never grown this fast."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: RECOGNITION - NEW -->
+  <section class="recognition-section">
+    <div class="section-head">
+      <h2 data-key="recogTitle">Recognized Within The <span class="gold">TikTok LIVE Ecosystem</span></h2>
+      <p data-key="recogSub">Our commitment to creator excellence has been recognized through achievements and partnerships within the TikTok LIVE ecosystem.</p>
+    </div>
+    <div class="recognition-grid" id="recogGrid">
+      <div class="recognition-item">
+        <i class="fas fa-award"></i>
+        <div class="r-year">2025</div>
+        <div class="r-label" data-key="recog1">Best Creator Network</div>
+      </div>
+      <div class="recognition-item">
+        <i class="fas fa-medal"></i>
+        <div class="r-year">2024</div>
+        <div class="r-label" data-key="recog2">Innovation in LIVE</div>
+      </div>
+      <div class="recognition-item">
+        <i class="fas fa-star"></i>
+        <div class="r-year">2023</div>
+        <div class="r-label" data-key="recog3">Top TikTok Partner</div>
+      </div>
+      <div class="recognition-item">
+        <i class="fas fa-gem"></i>
+        <div class="r-year">2022</div>
+        <div class="r-label" data-key="recog4">Community Impact</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: WHY LIVE ALCHEMY - NEW -->
+  <section class="section-pad" style="padding-top:0;">
+    <div class="section-head">
+      <h2 data-key="whyTitle">Why Successful Creators Choose <span class="gold">Live Alchemy</span></h2>
+    </div>
+    <div class="why-grid" id="whyGrid">
+      <div class="why-card">
+        <span class="why-icon"><i class="fas fa-user-tie"></i></span>
+        <h4 data-key="why1">Personal Creator Manager</h4>
+        <p data-key="why1d">A dedicated person who understands your goals.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon"><i class="fas fa-sitemap"></i></span>
+        <h4 data-key="why2">Growth Strategy</h4>
+        <p data-key="why2d">Not random advice. A structured improvement system.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon"><i class="fas fa-chart-pie"></i></span>
+        <h4 data-key="why3">Analytics & Optimization</h4>
+        <p data-key="why3d">Understand what works and improve performance.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon"><i class="fas fa-bullhorn"></i></span>
+        <h4 data-key="why4">Campaign Access</h4>
+        <p data-key="why4d">Stay ahead with exclusive opportunities.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon"><i class="fas fa-shield-alt"></i></span>
+        <h4 data-key="why5">Creator Protection</h4>
+        <p data-key="why5d">Professional guidance and account safety support.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon"><i class="fas fa-handshake"></i></span>
+        <h4 data-key="why6">Long-Term Partnership</h4>
+        <p data-key="why6d">We grow together, not just manage accounts.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: SWITCHING FROM ANOTHER AGENCY - NEW -->
+  <section class="section-pad" style="padding-top:0;">
+    <div class="section-head">
+      <h2 data-key="switchTitle">Already With <span class="gold">Another Agency?</span></h2>
+      <p data-key="switchSub">Many creators have support but still lack strategy, direction, and growth systems.</p>
+    </div>
+    <div class="switch-section">
+      <div class="switch-grid">
+        <div class="switch-col">
+          <h4 data-key="switchTraditional">Traditional Agency</h4>
+          <ul>
+            <li><i class="fas fa-times" style="color:#ff6b6b;"></i> <span data-key="s1">Basic communication</span></li>
+            <li><i class="fas fa-times" style="color:#ff6b6b;"></i> <span data-key="s2">Campaign notifications</span></li>
+            <li><i class="fas fa-times" style="color:#ff6b6b;"></i> <span data-key="s3">Generic support</span></li>
+          </ul>
+        </div>
+        <div class="switch-col highlight">
+          <h4 data-key="switchAlchemy">Live Alchemy</h4>
+          <ul>
+            <li><i class="fas fa-check"></i> <span data-key="sa1">Personal growth strategy</span></li>
+            <li><i class="fas fa-check"></i> <span data-key="sa2">Performance analysis</span></li>
+            <li><i class="fas fa-check"></i> <span data-key="sa3">Creator development plan</span></li>
+            <li><i class="fas fa-check"></i> <span data-key="sa4">Dedicated management</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: CREATOR JOURNEY -->
+  <section id="journey" class="section-pad" style="padding:20px 0 60px;">
+    <div class="section-head">
+      <h2 data-key="journeyTitle">From Creator To <span class="gold">Digital Entrepreneur</span></h2>
+    </div>
+    <div class="journey-wrapper">
+      <div class="journey-trigger" id="journeyTrigger"></div>
+      <div class="journey-steps" id="journeySteps">
+        <div class="step-item" data-step="1">
+          <div class="step-glow"></div>
+          <div class="step-num-wrapper"><span class="step-num">01</span></div>
+          <div class="step-content">
+            <h4 data-key="j1Title">Creator Assessment</h4>
+            <p data-key="j1Desc">We understand your current performance and goals.</p>
+          </div>
+        </div>
+        <div class="step-item" data-step="2">
+          <div class="step-glow"></div>
+          <div class="step-num-wrapper"><span class="step-num">02</span></div>
+          <div class="step-content">
+            <h4 data-key="j2Title">Growth Strategy</h4>
+            <p data-key="j2Desc">We build your personalized improvement roadmap.</p>
+          </div>
+        </div>
+        <div class="step-item" data-step="3">
+          <div class="step-glow"></div>
+          <div class="step-num-wrapper"><span class="step-num">03</span></div>
+          <div class="step-content">
+            <h4 data-key="j3Title">Optimization</h4>
+            <p data-key="j3Desc">We improve your LIVE performance, engagement, and consistency.</p>
+          </div>
+        </div>
+        <div class="step-item" data-step="4">
+          <div class="step-glow"></div>
+          <div class="step-num-wrapper"><span class="step-num">04</span></div>
+          <div class="step-content">
+            <h4 data-key="j4Title">Scale</h4>
+            <p data-key="j4Desc">We help you reach your next creator milestone.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: FOUNDER TRUST - NEW -->
+  <section class="founder-section">
+    <div class="section-head">
+      <h2 data-key="founderTitle">Built By People Who <span class="gold">Understand Creator Growth</span></h2>
+    </div>
+    <div class="founder-content">
+      <div class="founder-avatar"><i class="fas fa-user-circle"></i></div>
+      <div class="founder-text">
+        <h3 data-key="founderName">Alexandru Popescu</h3>
+        <div class="founder-title" data-key="founderTitle2">Founder & CEO, Live Alchemy</div>
+        <p data-key="founderStory">We were creators first. We saw the gap between talent and a sustainable career. Live Alchemy was built to bridge that gap. We don't just manage accounts; we build careers. With years of experience in the TikTok LIVE ecosystem, we've developed a system that turns streaming into a professional digital career.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 9: ACCOUNT SECURITY - NEW -->
+  <section class="security-section" style="padding-top:0;">
+    <div class="section-head">
+      <h2 data-key="securityTitle">Your Account. Your Identity. <span class="gold">Your Control.</span></h2>
+    </div>
+    <div class="security-grid" id="securityGrid">
+      <div class="security-item">
+        <i class="fas fa-user-check"></i>
+        <span data-key="sec1">Your account remains yours</span>
+      </div>
+      <div class="security-item">
+        <i class="fas fa-handshake"></i>
+        <span data-key="sec2">Transparent partnership</span>
+      </div>
+      <div class="security-item">
+        <i class="fas fa-lock"></i>
+        <span data-key="sec3">No password sharing</span>
+      </div>
+      <div class="security-item">
+        <i class="fas fa-headset"></i>
+        <span data-key="sec4">Professional support</span>
+      </div>
+      <div class="security-item">
+        <i class="fas fa-shield-alt"></i>
+        <span data-key="sec5">Long-term creator protection</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 10: CALCULATOR -->
+  <section id="calculator" class="section-pad" style="padding-top:0;">
+    <div class="section-head"><h2 data-key="calcTitle">Calculate Your <span class="gold">Creator Growth Score™</span></h2></div>
+    <div class="quiz-container" style="max-width:600px;margin:0 auto;background:#141414;padding:30px;border-radius:24px;border:1px solid #222;">
+      <div id="quiz-form">
+        <div class="question-block" style="margin-bottom:20px;">
+          <label for="volume" style="display:block;font-size:0.9rem;font-weight:500;margin-bottom:6px;color:#aaa;" data-key="q1">Current Monthly Diamond Volume</label>
+          <select id="volume" style="width:100%;padding:12px;background:#1c1c1c;border:1px solid #333;border-radius:8px;color:#fff;font-size:0.95rem;">
+            <option value="high" data-key="opt1">150K - 500K+ Diamonds/mo</option>
+            <option value="mid" data-key="opt2">50K - 150K Diamonds/mo</option>
+            <option value="low" data-key="opt3">Under 50K Diamonds/mo</option>
+          </select>
+        </div>
+        <div class="question-block" style="margin-bottom:20px;">
+          <label for="hours" style="display:block;font-size:0.9rem;font-weight:500;margin-bottom:6px;color:#aaa;" data-key="q2">Average Weekly Live Streaming Hours</label>
+          <select id="hours" style="width:100%;padding:12px;background:#1c1c1c;border:1px solid #333;border-radius:8px;color:#fff;font-size:0.95rem;">
+            <option value="optimized" data-key="opt4">12 - 25 Hours (Structured)</option>
+            <option value="overworked" data-key="opt5">25+ Hours (High Burnout Risk)</option>
+            <option value="irregular" data-key="opt6">Under 12 Hours (Inconsistent)</option>
+          </select>
+        </div>
+        <div class="question-block" style="margin-bottom:20px;">
+          <label for="challenge" style="display:block;font-size:0.9rem;font-weight:500;margin-bottom:6px;color:#aaa;" data-key="q3">Primary Growth Challenge</label>
+          <select id="challenge" style="width:100%;padding:12px;background:#1c1c1c;border:1px solid #333;border-radius:8px;color:#fff;font-size:0.95rem;">
+            <option value="retention" data-key="opt7">Viewer Retention & Audience Drops</option>
+            <option value="conversion" data-key="opt8">Revenue Growth & Monetization</option>
+            <option value="policy" data-key="opt9">Account Safety & Compliance</option>
+          </select>
+        </div>
+        <button type="button" class="btn-submit" onclick="calculateScore()" style="width:100%;padding:14px;background:#D4AF37;color:#050505;border:none;border-radius:60px;font-weight:700;font-size:1rem;cursor:pointer;" data-key="calcBtn">Analyze My Performance</button>
+      </div>
+      <div id="quiz-result" class="result-block" style="display:none;text-align:center;padding:10px 0;">
+        <h2 style="font-size:1.3rem;" data-key="resultTitle">Your Performance Analysis</h2>
+        <div class="feedback-text" style="color:#D4AF37;font-weight:600;font-size:0.95rem;margin:15px 0;" id="verdict-label" data-key="resultLabel">CREATOR INSIGHT SCORE</div>
+        <div class="score-display" style="font-size:3rem;font-weight:700;margin:15px 0;color:#D4AF37;" id="score-val">00/100</div>
+        <div class="feedback-text" style="font-size:0.95rem;color:#aaa;line-height:1.6;margin-bottom:20px;" id="feedback-val" data-key="resultMsg">Analysis complete. We've identified key areas for growth and optimization.</div>
+        <a href="#apply" class="cta-link" style="display:inline-block;width:100%;padding:14px;background:#222;color:#fff;text-decoration:none;border-radius:60px;font-weight:600;border:1px solid #444;" data-key="resultCta">Apply For A Free Stream Audit →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 11: APPLICATION -->
+  <section id="apply" class="section-pad" style="padding-top:0;">
+    <div class="section-head"><h2 data-key="applyTitle">Start Your <span class="gold">Creator Application</span></h2></div>
+    <div class="app-form">
+      <form id="applicationForm" onsubmit="return handleApply(event)">
+        <input type="text" placeholder="Full Name" data-key="fName" required>
+        <input type="text" placeholder="TikTok Username" data-key="fUser" required>
+        <input type="number" placeholder="Monthly Diamond Range" data-key="fDiamonds" required min="0">
+        <select required style="width:100%;padding:14px 18px;margin-bottom:16px;background:#151515;border:1px solid #2a2a2a;border-radius:60px;color:#fff;font-family:inherit;outline:none;">
+          <option value="" data-key="fGoalOpt">What's your main growth goal?</option>
+          <option value="revenue" data-key="fGoal1">Increase revenue</option>
+          <option value="audience" data-key="fGoal2">Grow audience</option>
+          <option value="engagement" data-key="fGoal3">Improve engagement</option>
+          <option value="brand" data-key="fGoal4">Build personal brand</option>
+        </select>
+        <textarea placeholder="Why do you want to join Live Alchemy?" data-key="fWhy" required></textarea>
+        <button type="submit" class="btn btn-gold" data-key="fBtn">Apply For Private Partnership</button>
+        <div id="formMessage" style="margin-top:12px;color:#D4AF37;font-size:0.9rem;"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER - UPDATED -->
+  <div class="footer">
+    <div>
+      <div style="font-weight:700;font-size:1.1rem;color:rgba(255,255,255,0.4);margin-bottom:4px;">Live Alchemy</div>
+      <div data-key="footer" style="font-size:0.8rem;">Premium TikTok LIVE Creator Ecosystem</div>
+    </div>
+    <div class="footer-links">
+      <a href="#growth" data-key="footerGrowth">Growth</a>
+      <a href="#about" data-key="footerAbout">About</a>
+      <a href="#apply" data-key="footerContact">Contact</a>
+      <a href="#" data-key="footerPrivacy">Privacy</a>
+      <a href="#" data-key="footerTerms">Terms</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://www.tiktok.com/@thelivealchemy" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.instagram.com/thelivealchemy" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.youtube.com/@livealchemy" target="_blank"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- FLOATING CONTACT -->
+<div class="float-contact">
+  <a href="https://wa.me/447707941334" target="_blank" class="float-btn whatsapp" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <a href="https://www.tiktok.com/@thelivealchemy" target="_blank" class="float-btn tiktok" aria-label="TikTok">
+    <i class="fab fa-tiktok"></i>
+  </a>
+</div>
+
+<script>
+  // ---- LANGUAGE TRANSLATIONS ----
+  const translations = {
+    ro: {
+      navGrowth: 'Creștere', navJourney: 'Călătorie', navTrust: 'Rezultate', navApply: 'Aplică',
+      heroBadge: 'Ecosistemul Premium de Creatori TikTok LIVE din România',
+      heroTitle: 'Construit Pentru Creatorii Care Sunt Gata Pentru <span class="gold">Următorul Nivel.</span>',
+      heroSub: 'Live Alchemy este un ecosistem premium de creștere pentru creatorii TikTok LIVE, care ajută cei mai ambițioși creatori din România să își crească veniturile, să își îmbunătățească performanța și să construiască cariere digitale sustenabile.',
+      heroQual: 'Pentru creatorii care tratează LIVE-ul ca pe o afacere.',
+      btnApply: 'Solicită Parteneriat Privat',
+      btnCheck: 'Vreau un Audit de Creștere',
+      eliteTitle: 'Nu Pentru Toată Lumea. Construit Pentru Creatorii Care Vor <span class="gold">Mai Mult.</span>',
+      eliteSub: 'Mii de creatori transmit LIVE în fiecare zi. Doar câțiva construiesc o carieră digitală reală. Live Alchemy lucrează cu creatori care vor creștere structurată, suport profesional și o cale clară către performanță superioară.',
+      elite1: 'Strategie de Creștere',
+      elite1d: 'Roadmap personalizată bazată pe obiectivele și performanța ta.',
+      elite2: 'Sistem de Performanță',
+      elite2d: 'Analiză, optimizare și planuri de îmbunătățire.',
+      elite3: 'Avantaj Creator',
+      elite3d: 'Acces la campanii, oportunități și suport profesional.',
+      section2Title: 'Majoritatea Agențiilor Recrutează Creatori. <span class="gold">Noi Îi Dezvoltăm.</span>',
+      section2Sub: 'Fără promisiuni false. Strategie reală, suport real.',
+      card1Title: 'Strategie',
+      card1Desc: 'Performanța ta LIVE analizată. Cele mai bune ore, direcție de conținut, psihologia audienței, monetizare.',
+      card2Title: 'Sistem de Creștere',
+      card2Desc: 'Planuri de îmbunătățire LIVE, ghidaj de conținut, strategii de campanii, recenzii de performanță.',
+      card3Title: 'Suport Profesional',
+      card3Desc: 'Echipă reală: manageri creatori, suport tehnic, evenimente, actualizări TikTok.',
+      trustTitle: 'Creștere Reală. Creatori Reali. <span class="gold">Rezultate Reale.</span>',
+      trustSub: 'Vezi cum creatorii și-au transformat carierele LIVE cu Live Alchemy.',
+      t1name: 'Andrei M.',
+      t1role: 'Creator TikTok LIVE',
+      t1before: 'Înainte',
+      t1after: 'După',
+      t1days: 'Zile',
+      t1quote: 'Live Alchemy mi-a oferit un sistem real. Nu doar sfaturi — strategie care mi-a crescut numerele.',
+      t2name: 'Elena S.',
+      t2role: 'Creator TikTok LIVE',
+      t2quote: 'Am trecut de la venituri inconsistente la o carieră reală. Echipa mi-a înțeles obiectivele și a construit un plan în jurul lor.',
+      t3name: 'Mihai C.',
+      t3role: 'Creator TikTok LIVE',
+      t3quote: 'Analiza și optimizarea au schimbat complet modul în care abordez LIVE-ul. Nu am crescut niciodată atât de repede.',
+      recogTitle: 'Recunoscuți în <span class="gold">Ecosistemul TikTok LIVE</span>',
+      recogSub: 'Angajamentul nostru față de excelența creatorilor a fost recunoscut prin realizări și parteneriate în ecosistemul TikTok LIVE.',
+      recog1: 'Cea Mai Bună Rețea de Creatori',
+      recog2: 'Inovație în LIVE',
+      recog3: 'Top Partener TikTok',
+      recog4: 'Impact în Comunitate',
+      whyTitle: 'De Ce Creatorii de Succes Aleg <span class="gold">Live Alchemy</span>',
+      why1: 'Manager Personal de Creator',
+      why1d: 'O persoană dedicată care îți înțelege obiectivele.',
+      why2: 'Strategie de Creștere',
+      why2d: 'Nu sfaturi aleatorii. Un sistem structurat de îmbunătățire.',
+      why3: 'Analiză și Optimizare',
+      why3d: 'Înțelege ce funcționează și îmbunătățește performanța.',
+      why4: 'Acces la Campanii',
+      why4d: 'Rămâi în față cu oportunități exclusive.',
+      why5: 'Protecția Creatorului',
+      why5d: 'Ghidaj profesional și suport pentru siguranța contului.',
+      why6: 'Parteneriat pe Termen Lung',
+      why6d: 'Creștem împreună, nu doar gestionăm conturi.',
+      switchTitle: 'Ești Deja Cu <span class="gold">Altă Agenție?</span>',
+      switchSub: 'Mulți creatori au suport, dar încă le lipsesc strategia, direcția și sistemele de creștere.',
+      switchTraditional: 'Agenție Tradițională',
+      s1: 'Comunicare de bază',
+      s2: 'Notificări de campanii',
+      s3: 'Suport generic',
+      switchAlchemy: 'Live Alchemy',
+      sa1: 'Strategie personală de creștere',
+      sa2: 'Analiză de performanță',
+      sa3: 'Plan de dezvoltare a creatorului',
+      sa4: 'Management dedicat',
+      journeyTitle: 'De la Creator la <span class="gold">Antreprenor Digital</span>',
+      j1Title: 'Evaluare Creator',
+      j1Desc: 'Înțelegem performanța curentă și obiectivele tale.',
+      j2Title: 'Strategie de Creștere',
+      j2Desc: 'Construim roadmap-ul tău personalizat de îmbunătățire.',
+      j3Title: 'Optimizare',
+      j3Desc: 'Îmbunătățim performanța LIVE, implicarea și consistența.',
+      j4Title: 'Scalare',
+      j4Desc: 'Te ajutăm să ajungi la următoarea etapă ca creator.',
+      founderTitle: 'Construit de Oameni Care <span class="gold">Înțeleg Creșterea Creatorilor</span>',
+      founderName: 'Alexandru Popescu',
+      founderTitle2: 'Fondator & CEO, Live Alchemy',
+      founderStory: 'Am fost creatori înainte de toate. Am văzut decalajul dintre talent și o carieră sustenabilă. Live Alchemy a fost construit pentru a acoperi acest decalaj. Nu gestionăm doar conturi; construim cariere. Cu ani de experiență în ecosistemul TikTok LIVE, am dezvoltat un sistem care transformă streaming-ul într-o carieră digitală profesională.',
+      securityTitle: 'Contul Tău. Identitatea Ta. <span class="gold">Controlul Tău.</span>',
+      sec1: 'Contul tău rămâne al tău',
+      sec2: 'Parteneriat transparent',
+      sec3: 'Fără partajare parole',
+      sec4: 'Suport profesional',
+      sec5: 'Protecție pe termen lung',
+      calcTitle: 'Calculează-ți <span class="gold">Scorul de Creștere™</span>',
+      q1: 'Volumul Lunar de Diamante',
+      q2: 'Ore Săptămânale de Streaming',
+      q3: 'Provocarea Principală de Creștere',
+      opt1: '150K - 500K+ Diamante/lună',
+      opt2: '50K - 150K Diamante/lună',
+      opt3: 'Sub 50K Diamante/lună',
+      opt4: '12 - 25 Ore (Structurat)',
+      opt5: '25+ Ore (Risc de Epuizare)',
+      opt6: 'Sub 12 Ore (Inconsistent)',
+      opt7: 'Retenție Spectatori & Scăderi',
+      opt8: 'Creștere Venit & Monetizare',
+      opt9: 'Siguranță Cont & Conformitate',
+      calcBtn: 'Analizează-mi Performanța',
+      resultTitle: 'Analiza Performanței Tale',
+      resultLabel: 'SCOR INSIGHT CREATOR',
+      resultMsg: 'Analiză completă. Am identificat zone cheie pentru creștere și optimizare.',
+      resultCta: 'Aplică pentru un Audit GRATUIT de Stream →',
+      applyTitle: 'Începe <span class="gold">Aplicația Ta de Creator</span>',
+      fName: 'Nume Complet',
+      fUser: 'Nume utilizator TikTok',
+      fDiamonds: 'Diamante lunare',
+      fGoalOpt: 'Care este obiectivul tău principal?',
+      fGoal1: 'Creșterea veniturilor',
+      fGoal2: 'Creșterea audienței',
+      fGoal3: 'Îmbunătățirea implicării',
+      fGoal4: 'Construirea brandului personal',
+      fWhy: 'De ce vrei să te alături Live Alchemy?',
+      fBtn: 'Solicită Parteneriat Privat',
+      footer: 'Ecosistemul premium de creștere pentru creatori TikTok LIVE',
+      footerGrowth: 'Creștere',
+      footerAbout: 'Despre',
+      footerContact: 'Contact',
+      footerPrivacy: 'Confidențialitate',
+      footerTerms: 'Termeni'
+    },
+    en: {
+      navGrowth: 'Growth', navJourney: 'Journey', navTrust: 'Results', navApply: 'Apply',
+      heroBadge: "Romania's Premium TikTok LIVE Creator Ecosystem",
+      heroTitle: 'Built For Creators Who Are Ready For Their <span class="gold">Next Level.</span>',
+      heroSub: 'Live Alchemy is a premium TikTok LIVE creator growth ecosystem helping Romania\'s most ambitious creators increase revenue, improve performance, and build sustainable digital careers.',
+      heroQual: 'For creators who treat LIVE as a business.',
+      btnApply: 'Apply For Private Partnership',
+      btnCheck: 'Get My Creator Growth Audit',
+      eliteTitle: 'Not For Everyone. Built For Creators Who <span class="gold">Want More.</span>',
+      eliteSub: 'Thousands of creators go LIVE every day. Only a few build a real digital career. Live Alchemy works with creators who want structured growth, professional support, and a clear path toward higher performance.',
+      elite1: 'Growth Strategy',
+      elite1d: 'Personal roadmap based on your goals and performance.',
+      elite2: 'Performance System',
+      elite2d: 'Analytics, optimization, and improvement plans.',
+      elite3: 'Creator Advantage',
+      elite3d: 'Access to campaigns, opportunities, and professional support.',
+      section2Title: 'Most Agencies Recruit Creators. <span class="gold">We Develop Them.</span>',
+      section2Sub: 'No empty promises. Real strategy, real support.',
+      card1Title: 'Strategy',
+      card1Desc: 'Your LIVE performance analyzed. Best hours, content direction, audience psychology, monetization.',
+      card2Title: 'Growth System',
+      card2Desc: 'LIVE improvement plans, content guidance, campaign strategies, performance reviews.',
+      card3Title: 'Professional Support',
+      card3Desc: 'Real team: creator managers, technical support, events, TikTok updates.',
+      trustTitle: 'Real Growth. Real Creators. <span class="gold">Real Results.</span>',
+      trustSub: 'See how creators transformed their LIVE careers with Live Alchemy.',
+      t1name: 'Andrei M.',
+      t1role: 'TikTok LIVE Creator',
+      t1before: 'Before',
+      t1after: 'After',
+      t1days: 'Days',
+      t1quote: 'Live Alchemy gave me a real system. Not just advice — actual strategy that moved my numbers.',
+      t2name: 'Elena S.',
+      t2role: 'TikTok LIVE Creator',
+      t2quote: 'I went from inconsistent income to a real career. The team understood my goals and built a plan around them.',
+      t3name: 'Mihai C.',
+      t3role: 'TikTok LIVE Creator',
+      t3quote: 'The analytics and optimization completely changed how I approach LIVE. I\'ve never grown this fast.',
+      recogTitle: 'Recognized Within The <span class="gold">TikTok LIVE Ecosystem</span>',
+      recogSub: 'Our commitment to creator excellence has been recognized through achievements and partnerships within the TikTok LIVE ecosystem.',
+      recog1: 'Best Creator Network',
+      recog2: 'Innovation in LIVE',
+      recog3: 'Top TikTok Partner',
+      recog4: 'Community Impact',
+      whyTitle: 'Why Successful Creators Choose <span class="gold">Live Alchemy</span>',
+      why1: 'Personal Creator Manager',
+      why1d: 'A dedicated person who understands your goals.',
+      why2: 'Growth Strategy',
+      why2d: 'Not random advice. A structured improvement system.',
+      why3: 'Analytics & Optimization',
+      why3d: 'Understand what works and improve performance.',
+      why4: 'Campaign Access',
+      why4d: 'Stay ahead with exclusive opportunities.',
+      why5: 'Creator Protection',
+      why5d: 'Professional guidance and account safety support.',
+      why6: 'Long-Term Partnership',
+      why6d: 'We grow together, not just manage accounts.',
+      switchTitle: 'Already With <span class="gold">Another Agency?</span>',
+      switchSub: 'Many creators have support but still lack strategy, direction, and growth systems.',
+      switchTraditional: 'Traditional Agency',
+      s1: 'Basic communication',
+      s2: 'Campaign notifications',
+      s3: 'Generic support',
+      switchAlchemy: 'Live Alchemy',
+      sa1: 'Personal growth strategy',
+      sa2: 'Performance analysis',
+      sa3: 'Creator development plan',
+      sa4: 'Dedicated management',
+      journeyTitle: 'From Creator To <span class="gold">Digital Entrepreneur</span>',
+      j1Title: 'Creator Assessment',
+      j1Desc: 'We understand your current performance and goals.',
+      j2Title: 'Growth Strategy',
+      j2Desc: 'We build your personalized improvement roadmap.',
+      j3Title: 'Optimization',
+      j3Desc: 'We improve your LIVE performance, engagement, and consistency.',
+      j4Title: 'Scale',
+      j4Desc: 'We help you reach your next creator milestone.',
+      founderTitle: 'Built By People Who <span class="gold">Understand Creator Growth</span>',
+      founderName: 'Alexandru Popescu',
+      founderTitle2: 'Founder & CEO, Live Alchemy',
+      founderStory: 'We were creators first. We saw the gap between talent and a sustainable career. Live Alchemy was built to bridge that gap. We don\'t just manage accounts; we build careers. With years of experience in the TikTok LIVE ecosystem, we\'ve developed a system that turns streaming into a professional digital career.',
+      securityTitle: 'Your Account. Your Identity. <span class="gold">Your Control.</span>',
+      sec1: 'Your account remains yours',
+      sec2: 'Transparent partnership',
+      sec3: 'No password sharing',
+      sec4: 'Professional support',
+      sec5: 'Long-term creator protection',
+      calcTitle: 'Calculate Your <span class="gold">Creator Growth Score™</span>',
+      q1: 'Current Monthly Diamond Volume',
+      q2: 'Average Weekly Live Streaming Hours',
+      q3: 'Primary Growth Challenge',
+      opt1: '150K - 500K+ Diamonds/mo',
+      opt2: '50K - 150K Diamonds/mo',
+      opt3: 'Under 50K Diamonds/mo',
+      opt4: '12 - 25 Hours (Structured)',
+      opt5: '25+ Hours (High Burnout Risk)',
+      opt6: 'Under 12 Hours (Inconsistent)',
+      opt7: 'Viewer Retention & Audience Drops',
+      opt8: 'Revenue Growth & Monetization',
+      opt9: 'Account Safety & Compliance',
+      calcBtn: 'Analyze My Performance',
+      resultTitle: 'Your Performance Analysis',
+      resultLabel: 'CREATOR INSIGHT SCORE',
+      resultMsg: 'Analysis complete. We\'ve identified key areas for growth and optimization.',
+      resultCta: 'Apply For A Free Stream Audit →',
+      applyTitle: 'Start Your <span class="gold">Creator Application</span>',
+      fName: 'Full Name',
+      fUser: 'TikTok Username',
+      fDiamonds: 'Monthly Diamonds',
+      fGoalOpt: "What's your main growth goal?",
+      fGoal1: 'Increase revenue',
+      fGoal2: 'Grow audience',
+      fGoal3: 'Improve engagement',
+      fGoal4: 'Build personal brand',
+      fWhy: 'Why do you want to join Live Alchemy?',
+      fBtn: 'Apply For Private Partnership',
+      footer: "Romania's premium creator growth ecosystem",
+      footerGrowth: 'Growth',
+      footerAbout: 'About',
+      footerContact: 'Contact',
+      footerPrivacy: 'Privacy',
+      footerTerms: 'Terms'
+    }
+  };
+
+  let currentLang = 'ro';
+
+  function setLanguage(lang) {
+    currentLang = lang;
+    const t = translations[lang];
+    document.querySelectorAll('[data-key]').forEach(el => {
+      const key = el.getAttribute('data-key');
+      if (t[key] !== undefined) {
+        if (key === 'heroTitle' || key === 'section2Title' || key === 'journeyTitle' || 
+            key === 'whyTitle' || key === 'dashTitle' || key === 'recogTitle' || 
+            key === 'trustTitle' || key === 'eliteTitle' || key === 'switchTitle' ||
+            key === 'founderTitle' || key === 'securityTitle' || key === 'calcTitle' || 
+            key === 'applyTitle' || key === 'heroBadge') {
+          el.innerHTML = t[key];
+        } else {
+          el.textContent = t[key];
+        }
+      }
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+  }
+
+  // ---- CALCULATOR ----
+  function calculateScore() {
+    const vol = document.getElementById('volume').value;
+    const hrs = document.getElementById('hours').value;
+    const chal = document.getElementById('challenge').value;
+    let score = 85;
+    let feedback = "";
+    if (vol === 'high') score -= 5;
+    else if (vol === 'mid') score -= 15;
+    else if (vol === 'low') score -= 30;
+    if (hrs === 'overworked') { score -= 15; feedback += "High structural burnout risks found. Your revenue is tied directly to physical exhaustion rather than operational systems. "; }
+    else if (hrs === 'irregular') { score -= 10; feedback += "Inconsistent pacing anchors your visibility index lower in the algorithmic queue. "; }
+    if (chal === 'retention') { score -= 10; feedback += "Critical retention leaks detected during your peak viewer onboarding sequence."; }
+    else if (chal === 'conversion') { score -= 12; feedback += "Gifter dependency concentration is unsustainably narrow. You require conversion scaling systems."; }
+    else if (chal === 'policy') { score -= 5; feedback += "Account safety parameters show severe regulatory risk exposure."; }
+    if (score > 80) feedback = "Strong baseline performance, but highly vulnerable to unexpected platform shifts and retention plateaus. Optimization is highly recommended.";
+    document.getElementById('quiz-form').style.display = 'none';
+    document.getElementById('score-val').innerText = score + "/100";
+    document.getElementById('feedback-val').innerText = feedback;
+    document.getElementById('quiz-result').style.display = 'block';
+  }
+
+  // ---- APPLICATION HANDLER ----
+  function handleApply(e) {
+    e.preventDefault();
+    const diamondsInput = document.querySelector('#applicationForm input[type="number"]');
+    const diamonds = parseInt(diamondsInput.value);
+    const msgEl = document.getElementById('formMessage');
+    if (isNaN(diamonds) || diamonds < 60000) {
+      msgEl.innerHTML = 'We sincerely regret that we are unable to onboard you to our premium network at this moment. Our partnership criteria require a minimum monthly diamond volume of 60,000, and we only collaborate with creators who meet this threshold. We wish you every success in growing your live streaming career, and welcome you to reapply once your monthly diamond earnings meet our requirement.';
+      msgEl.style.color = '#D4AF37';
+      return false;
+    }
+    window.location.href = 'https://www.tiktok.com/t/ZMS4vJ1VD/';
+    return false;
+  }
+
+  // ---- PREMIUM CARD REVEAL ----
+  const premiumCards = document.querySelectorAll('.card-premium');
+  const cardObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const card = entry.target;
+        const delay = parseInt(card.getAttribute('data-delay')) || 0;
+        setTimeout(() => { card.classList.add('revealed'); }, delay);
+        cardObserver.unobserve(card);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  premiumCards.forEach(card => { if (!card.classList.contains('revealed')) cardObserver.observe(card); });
+
+  // ---- ELITE CARDS REVEAL ----
+  const eliteCards = document.querySelectorAll('.elite-card');
+  const eliteObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        eliteObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  eliteCards.forEach(el => eliteObserver.observe(el));
+
+  // ---- TESTIMONIALS REVEAL ----
+  const testimonialCards = document.querySelectorAll('.testimonial-card');
+  const testObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        testObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  testimonialCards.forEach(el => testObserver.observe(el));
+
+  // ---- RECOGNITION REVEAL ----
+  const recogItems = document.querySelectorAll('.recognition-item');
+  const recogObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        recogObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  recogItems.forEach(el => recogObserver.observe(el));
+
+  // ---- WHY CARDS REVEAL ----
+  const whyCards = document.querySelectorAll('.why-card');
+  const whyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        whyObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  whyCards.forEach(el => whyObserver.observe(el));
+
+  // ---- SECURITY ITEMS REVEAL ----
+  const securityItems = document.querySelectorAll('.security-item');
+  const secObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        secObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  securityItems.forEach(el => secObserver.observe(el));
+
+  // ---- METRIC CARDS REVEAL ----
+  const metricCards = document.querySelectorAll('.metric-card');
+  const metricObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        metricObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  metricCards.forEach(el => metricObserver.observe(el));
+
+  // ---- JOURNEY SCROLL TRIGGER ----
+  const stepItems = document.querySelectorAll('.step-item');
+  const journeyTrigger = document.getElementById('journeyTrigger');
+  let revealedCount = 0;
+  let isRevealing = false;
+
+  const journeyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !isRevealing && revealedCount < stepItems.length) {
+        isRevealing = true;
+        const nextIndex = revealedCount;
+        if (nextIndex < stepItems.length) {
+          stepItems[nextIndex].classList.add('revealed');
+          revealedCount++;
+          setTimeout(() => { isRevealing = false; }, 600);
+        }
+      }
+    });
+  }, { threshold: 0.25, rootMargin: '0px 0px -80px 0px' });
+  journeyObserver.observe(journeyTrigger);
+
+  let scrollTimeout = false;
+  window.addEventListener('scroll', () => {
+    if (scrollTimeout) return;
+    scrollTimeout = true;
+    setTimeout(() => {
+      scrollTimeout = false;
+      if (revealedCount < stepItems.length) {
+        const rect = journeyTrigger.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.55) {
+          if (!isRevealing && revealedCount < stepItems.length) {
+            isRevealing = true;
+            const nextIndex = revealedCount;
+            stepItems[nextIndex].classList.add('revealed');
+            revealedCount++;
+            setTimeout(() => { isRevealing = false; }, 600);
+          }
+        }
+      }
+    }, 150);
+  });
+
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const rect = journeyTrigger.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.55) {
+        if (!isRevealing && revealedCount < stepItems.length) {
+          isRevealing = true;
+          stepItems[0].classList.add('revealed');
+          revealedCount++;
+          setTimeout(() => { isRevealing = false; }, 600);
+        }
+      }
+    }, 400);
+  });
+
+  // ---- SCROLL REVEAL ----
+  const faders = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.2 });
+  faders.forEach(el => observer.observe(el));
+
+  setLanguage('ro');
+</script>
 </body>
 </html>
