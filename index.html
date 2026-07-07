@@ -9,11 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       background-color: #050505;
       color: #ffffff;
@@ -21,11 +17,7 @@
       line-height: 1.6;
       scroll-behavior: smooth;
     }
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
     .gold { color: #D4AF37; }
     .btn-gold {
       background: #D4AF37;
@@ -35,11 +27,7 @@
       transition: all 0.25s ease;
       box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15);
     }
-    .btn-gold:hover {
-      background: #e6c84a;
-      transform: scale(1.02);
-      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.3);
-    }
+    .btn-gold:hover { background: #e6c84a; transform: scale(1.02); box-shadow: 0 8px 30px rgba(212, 175, 55, 0.3); }
     .btn-outline-gold {
       background: transparent;
       border: 1.5px solid #D4AF37;
@@ -47,11 +35,7 @@
       font-weight: 600;
       transition: all 0.25s ease;
     }
-    .btn-outline-gold:hover {
-      background: #D4AF37;
-      color: #050505;
-      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15);
-    }
+    .btn-outline-gold:hover { background: #D4AF37; color: #050505; box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15); }
     .btn {
       padding: 14px 34px;
       border-radius: 60px;
@@ -61,8 +45,7 @@
       display: inline-block;
       cursor: pointer;
     }
-
-    /* ---- NAV ---- */
+    /* NAV */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -75,12 +58,26 @@
     .nav-links { display: flex; gap: 32px; font-weight: 500; font-size: 0.95rem; }
     .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; transition: 0.2s; }
     .nav-links a:hover { color: #fff; }
-    .lang-toggle { display: flex; gap: 12px; font-size: 0.85rem; font-weight: 500; }
-    .lang-toggle span { color: rgba(255,255,255,0.4); cursor: default; }
-    .lang-toggle .active { color: #D4AF37; }
-    .lang-toggle .inactive { color: rgba(255,255,255,0.25); }
+    .lang-toggle {
+      display: flex;
+      gap: 12px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .lang-toggle span {
+      color: rgba(255,255,255,0.4);
+      transition: 0.2s;
+      padding: 4px 8px;
+      border-radius: 20px;
+    }
+    .lang-toggle .active {
+      color: #D4AF37;
+      background: rgba(212, 175, 55, 0.12);
+    }
+    .lang-toggle .inactive:hover { color: #fff; background: rgba(255,255,255,0.05); }
 
-    /* ---- HERO (centered) ---- */
+    /* HERO */
     .hero {
       display: flex;
       flex-direction: column;
@@ -88,28 +85,10 @@
       text-align: center;
       padding: 60px 0 80px;
     }
-    .hero h1 {
-      font-size: 4.2rem;
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -2px;
-      max-width: 900px;
-      margin-bottom: 20px;
-    }
+    .hero h1 { font-size: 4.2rem; font-weight: 700; line-height: 1.1; letter-spacing: -2px; max-width: 900px; margin-bottom: 20px; }
     .hero h1 .gold { display: inline-block; }
-    .hero-sub {
-      font-size: 1.25rem;
-      color: rgba(255,255,255,0.7);
-      max-width: 640px;
-      margin-bottom: 36px;
-    }
-    .hero-cta {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 32px;
-    }
+    .hero-sub { font-size: 1.25rem; color: rgba(255,255,255,0.7); max-width: 640px; margin-bottom: 36px; }
+    .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-bottom: 32px; }
     .trust-badges {
       display: flex;
       flex-wrap: wrap;
@@ -120,7 +99,6 @@
     }
     .trust-badges i { color: #D4AF37; margin-right: 6px; }
 
-    /* floating cinematic orbs */
     .hero-glow {
       position: relative;
       margin-top: 30px;
@@ -154,29 +132,11 @@
       100% { transform: translateY(0px); }
     }
 
-    /* ---- sections common ---- */
-    .section-head {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 48px;
-    }
-    .section-head h2 {
-      font-size: 2.8rem;
-      font-weight: 700;
-      letter-spacing: -1px;
-      line-height: 1.2;
-    }
-    .section-head p {
-      color: rgba(255,255,255,0.6);
-      font-size: 1.15rem;
-      margin-top: 12px;
-    }
-
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 30px;
-    }
+    /* sections */
+    .section-head { text-align: center; max-width: 700px; margin: 0 auto 48px; }
+    .section-head h2 { font-size: 2.8rem; font-weight: 700; letter-spacing: -1px; line-height: 1.2; }
+    .section-head p { color: rgba(255,255,255,0.6); font-size: 1.15rem; margin-top: 12px; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
     .card {
       background: #0e0e0e;
       padding: 32px 24px;
@@ -184,29 +144,17 @@
       border: 1px solid #1c1c1c;
       transition: 0.3s ease;
     }
-    .card:hover {
-      transform: translateY(-6px);
-      border-color: #D4AF37;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-    }
+    .card:hover { transform: translateY(-6px); border-color: #D4AF37; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
     .card i { font-size: 2rem; color: #D4AF37; margin-bottom: 16px; }
     .card h3 { font-size: 1.4rem; font-weight: 600; margin-bottom: 10px; }
     .card p { color: rgba(255,255,255,0.6); font-size: 0.95rem; }
 
-    /* timeline */
-    .timeline {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 24px 48px;
-      margin: 40px 0;
-    }
+    .timeline { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px 48px; margin: 40px 0; }
     .timeline-item { flex: 1 1 180px; text-align: center; }
     .timeline-item .step { font-size: 2.2rem; font-weight: 800; color: #D4AF37; }
     .timeline-item h4 { font-size: 1.2rem; margin: 6px 0 4px; }
     .timeline-item p { color: rgba(255,255,255,0.5); font-size: 0.9rem; }
 
-    /* dashboard */
     .dashboard-mock {
       background: #0b0b0b;
       border-radius: 32px;
@@ -227,7 +175,6 @@
     .dash-item .value { font-size: 2rem; font-weight: 700; margin: 6px 0 2px; }
     .dash-item .trend { color: #4caf50; font-size: 0.85rem; }
 
-    /* awards */
     .award-grid { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; }
     .award-card {
       background: #0e0e0e;
@@ -240,13 +187,7 @@
     .award-card i { font-size: 2.8rem; color: #D4AF37; }
     .award-card .year { font-weight: 700; font-size: 1.1rem; }
 
-    /* community */
-    .community-grid {
-      display: grid;
-      grid-template-columns: repeat(4,1fr);
-      gap: 16px;
-      margin-top: 24px;
-    }
+    .community-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-top: 24px; }
     .community-item {
       background: #111;
       border-radius: 24px;
@@ -258,7 +199,6 @@
       border: 1px solid #1c1c1c;
     }
 
-    /* FAQ */
     .faq-item {
       background: #0e0e0e;
       border-radius: 20px;
@@ -269,7 +209,7 @@
     .faq-item h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 6px; }
     .faq-item p { color: rgba(255,255,255,0.6); }
 
-    /* ---- CALCULATOR (embedded) ---- */
+    /* CALCULATOR */
     .quiz-container {
       max-width: 600px;
       margin: 0 auto;
@@ -322,7 +262,7 @@
     }
     .cta-link:hover { background: #2a2a2a; }
 
-    /* app form */
+    /* APP FORM */
     .app-form {
       background: #0b0b0b;
       padding: 40px 36px;
@@ -357,6 +297,37 @@
       justify-content: space-between;
       flex-wrap: wrap;
     }
+
+    /* FLOATING CONTACT BUTTONS */
+    .float-contact {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 999;
+    }
+    .float-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      color: #fff;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      transition: 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .float-btn:hover { transform: scale(1.08); }
+    .float-btn.whatsapp { background: #25D366; }
+    .float-btn.tiktok { background: #000; border: 1px solid #D4AF37; color: #D4AF37; }
+    .float-btn.tiktok i { color: #D4AF37; }
+
     @media (max-width: 900px) {
       .hero h1 { font-size: 2.8rem; }
       .community-grid { grid-template-columns: repeat(2,1fr); }
@@ -365,17 +336,22 @@
       .navbar { flex-wrap: wrap; gap: 12px; }
       .nav-links { gap: 16px; font-size: 0.8rem; }
       .section-head h2 { font-size: 2rem; }
+      .float-contact { bottom: 16px; right: 16px; }
+      .float-btn { width: 48px; height: 48px; font-size: 1.3rem; }
     }
-    .fade-up {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.7s ease;
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .fade-up { opacity: 0; transform: translateY(20px); transition: all 0.7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
     .section-pad { padding: 60px 0; }
+    .toast-msg {
+      background: #1a1a1a;
+      border-left: 4px solid #D4AF37;
+      padding: 14px 20px;
+      border-radius: 12px;
+      color: #fff;
+      max-width: 400px;
+      margin: 10px auto;
+      font-size: 0.95rem;
+    }
   </style>
 </head>
 <body>
@@ -390,13 +366,13 @@
       <a href="#community">Community</a>
       <a href="#apply">Apply</a>
     </div>
-    <div class="lang-toggle">
-      <span class="active">🇷🇴 Română</span>
-      <span class="inactive">🇬🇧 English</span>
+    <div class="lang-toggle" id="langToggle">
+      <span class="active" data-lang="ro">🇷🇴 Română</span>
+      <span class="inactive" data-lang="en">🇬🇧 English</span>
     </div>
   </nav>
 
-  <!-- HERO (centered, no fake stream card) -->
+  <!-- HERO -->
   <section class="hero" id="home">
     <h1>Your Talent Has <span class="gold">Potential.</span><br>We Build The System Behind Your Success.</h1>
     <p class="hero-sub">Live Alchemy is a premium TikTok LIVE creator network helping ambitious Romanian creators grow faster through strategy, training, analytics, campaigns, and dedicated creator support.</p>
@@ -410,15 +386,14 @@
       <span><i class="fas fa-check-circle"></i> Dedicated Creator Managers</span>
       <span><i class="fas fa-check-circle"></i> Exclusive Campaign Access</span>
     </div>
-    <!-- cinematic floating UI -->
     <div class="hero-glow">
-      <div class="glow-item"><i class="fas fa-chart-line"></i> <span>+32%</span> growth</div>
-      <div class="glow-item"><i class="fas fa-gem"></i> <span>12.8k</span> diamonds</div>
-      <div class="glow-item"><i class="fas fa-users"></i> <span>1.2k</span> community</div>
+      <div class="glow-item"><i class="fas fa-chart-line"></i> <span>32%</span> creator growth</div>
+      <div class="glow-item"><i class="fas fa-gem"></i> <span>670K</span> diamonds distributed last month</div>
+      <div class="glow-item"><i class="fas fa-users"></i> <span>vibrant</span> community</div>
     </div>
   </section>
 
-  <!-- SECTION 2 : Not Another Agency -->
+  <!-- SECTION 2 -->
   <section id="growth" class="section-pad">
     <div class="section-head">
       <h2>Most Agencies Recruit Creators. <span class="gold">We Develop Them.</span></h2>
@@ -431,7 +406,7 @@
     </div>
   </section>
 
-  <!-- SECTION 3 : Built For Serious Creators -->
+  <!-- SECTION 3 -->
   <section class="section-pad" style="padding-top:0;">
     <div class="section-head">
       <h2>We Are Not Looking For Everyone.</h2>
@@ -447,11 +422,9 @@
     <div style="text-align:center;"><a href="#apply" class="btn btn-gold" style="padding:14px 48px; border-radius:60px; text-decoration:none;">Check If You Qualify</a></div>
   </section>
 
-  <!-- SECTION 4 : Journey -->
+  <!-- SECTION 4 -->
   <section id="journey" class="section-pad">
-    <div class="section-head">
-      <h2>From Creator To <span class="gold">Digital Entrepreneur</span></h2>
-    </div>
+    <div class="section-head"><h2>From Creator To <span class="gold">Digital Entrepreneur</span></h2></div>
     <div class="timeline">
       <div class="timeline-item"><div class="step">1</div><h4>Discover</h4><p>Analyze current performance</p></div>
       <div class="timeline-item"><div class="step">2</div><h4>Optimize</h4><p>LIVE structure, retention, engagement</p></div>
@@ -460,7 +433,7 @@
     </div>
   </section>
 
-  <!-- SECTION 5 : Why Top Creators -->
+  <!-- SECTION 5 -->
   <section class="section-pad" style="padding-top:0;">
     <div class="section-head"><h2>Why Top Creators Choose <span class="gold">Live Alchemy</span></h2></div>
     <div class="card-grid">
@@ -471,7 +444,7 @@
     </div>
   </section>
 
-  <!-- SECTION 6 : SaaS Dashboard -->
+  <!-- SECTION 6 -->
   <section class="section-pad" style="padding-top:0;">
     <div class="section-head"><h2>Your Growth. <span class="gold">Measured.</span></h2></div>
     <div class="dashboard-mock">
@@ -483,7 +456,7 @@
     <p style="text-align:center; color:rgba(255,255,255,0.5);">Successful creators don’t guess. They analyze and improve.</p>
   </section>
 
-  <!-- SECTION 7 : Awards -->
+  <!-- SECTION 7 -->
   <section class="section-pad" style="padding-top:0;">
     <div class="section-head"><h2>Recognized For <span class="gold">Creator Excellence</span></h2><p>Building professional creator ecosystems at every stage.</p></div>
     <div class="award-grid">
@@ -494,7 +467,7 @@
     </div>
   </section>
 
-  <!-- SECTION 8 : Community -->
+  <!-- SECTION 8 -->
   <section id="community" class="section-pad" style="padding-top:0;">
     <div class="section-head"><h2>Join A Network Of <span class="gold">Ambitious Creators</span></h2></div>
     <div class="community-grid">
@@ -505,7 +478,7 @@
     </div>
   </section>
 
-  <!-- SECTION 9 : CALCULATOR (replaces old secondary CTA) -->
+  <!-- SECTION 9 : CALCULATOR -->
   <section id="calculator" class="section-pad" style="padding-top:0;">
     <div class="section-head"><h2>Calculate Your <span class="gold">Creator Growth Score™</span></h2></div>
     <div class="quiz-container">
@@ -556,20 +529,21 @@
     <div class="faq-item"><h4>Can I leave anytime?</h4><p>Partnership terms are transparent—contact us for details.</p></div>
   </section>
 
-  <!-- SECTION 11 : Application -->
+  <!-- SECTION 11 : APPLICATION -->
   <section id="apply" class="section-pad" style="padding-top:0;">
     <div class="section-head"><h2>Start Your <span class="gold">Creator Evaluation</span></h2></div>
     <div class="app-form">
-      <form>
+      <form id="applicationForm" onsubmit="return handleApply(event)">
         <input type="text" placeholder="Full Name" required>
         <input type="text" placeholder="TikTok Username" required>
-        <input type="number" placeholder="Followers">
-        <input type="number" placeholder="Average LIVE viewers">
-        <input type="number" placeholder="Monthly diamonds">
-        <input type="text" placeholder="Streaming experience (months)">
-        <input type="text" placeholder="Country">
-        <textarea placeholder="Why do you want to grow?"></textarea>
+        <input type="number" placeholder="Followers" required>
+        <input type="number" placeholder="Average LIVE viewers" required>
+        <input type="number" id="diamondsInput" placeholder="Monthly diamonds" required min="0">
+        <input type="text" placeholder="Streaming experience (months)" required>
+        <input type="text" placeholder="Country" required>
+        <textarea placeholder="Why do you want to grow?" required></textarea>
         <button type="submit" class="btn btn-gold">Apply For Live Alchemy</button>
+        <div id="formMessage" style="margin-top:12px; color:#D4AF37; font-size:0.9rem;"></div>
       </form>
     </div>
   </section>
@@ -581,32 +555,281 @@
   </div>
 </div>
 
+<!-- FLOATING CONTACT BUTTONS -->
+<div class="float-contact">
+  <a href="https://wa.me/447707941334" target="_blank" class="float-btn whatsapp" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <a href="https://www.tiktok.com/@thelivealchemy" target="_blank" class="float-btn tiktok" aria-label="TikTok">
+    <i class="fab fa-tiktok"></i>
+  </a>
+</div>
+
 <script>
-  // Calculator logic
+  // ---- LANGUAGE TOGGLE ----
+  const langToggle = document.getElementById('langToggle');
+  const langSpans = langToggle.querySelectorAll('span');
+  let currentLang = 'ro'; // ro = Romanian, en = English
+
+  // Translation map (only key phrases for demo)
+  const translations = {
+    ro: {
+      navGrowth: 'Growth',
+      navJourney: 'Călătorie',
+      navCommunity: 'Comunitate',
+      navApply: 'Aplică',
+      heroTitle: 'Talentul Tău Are <span class="gold">Potencial.</span><br>Noi Construim Sistemul Din Spatele Succesului Tău.',
+      heroSub: 'Live Alchemy este o rețea premium de creatori TikTok LIVE care ajută creatori români ambițioși să crească mai repede prin strategie, training, analiză, campanii și suport dedicat.',
+      btnApply: 'Aplică la Live Alchemy',
+      btnCheck: 'Verifică-ți Performanța LIVE',
+      trust1: '✓ Rețea Oficială Partener TikTok LIVE',
+      trust2: '✓ Sistem de Creștere pentru Creatori',
+      trust3: '✓ Manageri Dedicati',
+      trust4: '✓ Acces Exclusiv la Campanii',
+      section2Title: 'Majoritatea Agențiilor Recrutează Creatori. <span class="gold">Noi Îi Dezvoltăm.</span>',
+      section2Sub: 'Fără promisiuni false. Strategie reală, suport real.',
+      card1Title: 'Strategie',
+      card1Desc: 'Performanța ta LIVE analizată. Cele mai bune ore, direcție de conținut, psihologia audienței, monetizare.',
+      card2Title: 'Sistem de Creștere',
+      card2Desc: 'Planuri de îmbunătățire LIVE, ghidaj de conținut, strategii de campanii, recenzii de performanță.',
+      card3Title: 'Suport Profesional',
+      card3Desc: 'Echipă reală: manageri creatori, suport tehnic, evenimente, actualizări TikTok.',
+      section3Title: 'Nu Căutăm Pe Toată Lumea.',
+      section3Sub: 'Live Alchemy lucrează cu creatori ambițioși care tratează TikTok LIVE ca pe o oportunitate serioasă.',
+      section3Tags: ['✓ Transmiteți constant', '✓ Doriți creștere profesională', '✓ Gata să vă îmbunătățiți', '✓ Gândiți pe termen lung', '✓ Construiți un brand personal'],
+      section3Btn: 'Verifică Dacă Te Califici',
+      journeyTitle: 'De la Creator la <span class="gold">Antreprenor Digital</span>',
+      journey1: 'Descoperă', journey1d: 'Analizăm performanța curentă',
+      journey2: 'Optimizează', journey2d: 'Structură LIVE, retenție, implicare',
+      journey3: 'Scalare', journey3d: 'Campanii, competiții, oportunități',
+      journey4: 'Construiește', journey4d: 'Dezvoltă-ți brandul de creator',
+      whyTitle: 'De Ce Creatorii de Top Aleg <span class="gold">Live Alchemy</span>',
+      why1: 'Management Dedicat', why1d: 'Persoană reală care îți susține parcursul.',
+      why2: 'Creștere Bazată pe Date', why2d: 'Decizii bazate pe date de performanță.',
+      why3: 'Oportunități Excluzive', why3d: 'Campanii TikTok, evenimente, competiții.',
+      why4: 'Parteneriat pe Termen Lung', why4d: 'Creșterea ta este creșterea noastră.',
+      dashTitle: 'Creșterea Ta. <span class="gold">Măsurată.</span>',
+      dashMsg: 'Creatorii de succes nu ghicesc. Analizează și îmbunătățesc.',
+      awardsTitle: 'Recunoscuți pentru <span class="gold">Excelența în Creare</span>',
+      awardsSub: 'Construim ecosisteme profesionale pentru creatori la fiecare etapă.',
+      communityTitle: 'Alătură-te unei Rețele de <span class="gold">Creatori Ambițioși</span>',
+      faqTitle: 'Întrebări Frecvente',
+      faq1q: 'Este gratuit să mă alătur Live Alchemy?', faq1a: 'Da. Înscrierea este gratuită.',
+      faq2q: 'Îmi pierd controlul asupra contului?', faq2a: 'Nu. Contul tău rămâne al tău.',
+      faq3q: 'De ce ar trebui să mă alătur unei agenții?', faq3a: 'O agenție profesionistă oferă suport, strategie de creștere, campanii și oportunități.',
+      faq4q: 'Am nevoie de milioane de urmăritori?', faq4a: 'Nu. Ne concentrăm pe potențial, consistență și ambiție.',
+      faq5q: 'Pot pleca oricând?', faq5a: 'Termenii parteneriatului sunt transparenți—contactați-ne pentru detalii.',
+      applyTitle: 'Începe <span class="gold">Evaluarea Ta de Creator</span>',
+      applyName: 'Nume Complet',
+      applyUser: 'Nume de utilizator TikTok',
+      applyFollowers: 'Urmăritori',
+      applyViewers: 'Spectatori medii LIVE',
+      applyDiamonds: 'Diamante lunare',
+      applyExp: 'Experiență în streaming (luni)',
+      applyCountry: 'Țara',
+      applyWhy: 'De ce vrei să crești?',
+      applyBtn: 'Aplică la Live Alchemy'
+    },
+    en: {
+      navGrowth: 'Growth',
+      navJourney: 'Journey',
+      navCommunity: 'Community',
+      navApply: 'Apply',
+      heroTitle: 'Your Talent Has <span class="gold">Potential.</span><br>We Build The System Behind Your Success.',
+      heroSub: 'Live Alchemy is a premium TikTok LIVE creator network helping ambitious Romanian creators grow faster through strategy, training, analytics, campaigns, and dedicated creator support.',
+      btnApply: 'Apply To Join Live Alchemy',
+      btnCheck: 'Check Your LIVE Performance',
+      trust1: '✓ Official TikTok LIVE Partner Network',
+      trust2: '✓ Creator Growth System',
+      trust3: '✓ Dedicated Creator Managers',
+      trust4: '✓ Exclusive Campaign Access',
+      section2Title: 'Most Agencies Recruit Creators. <span class="gold">We Develop Them.</span>',
+      section2Sub: 'No empty promises. Real strategy, real support.',
+      card1Title: 'Strategy',
+      card1Desc: 'Your LIVE performance analyzed. Best hours, content direction, audience psychology, monetization.',
+      card2Title: 'Growth System',
+      card2Desc: 'LIVE improvement plans, content guidance, campaign strategies, performance reviews.',
+      card3Title: 'Professional Support',
+      card3Desc: 'Real team: creator managers, technical support, events, TikTok updates.',
+      section3Title: 'We Are Not Looking For Everyone.',
+      section3Sub: 'Live Alchemy works with ambitious creators who treat TikTok LIVE as a serious opportunity.',
+      section3Tags: ['✓ Already streaming consistently', '✓ Want professional growth', '✓ Ready to improve', '✓ Think long-term', '✓ Build a personal brand'],
+      section3Btn: 'Check If You Qualify',
+      journeyTitle: 'From Creator To <span class="gold">Digital Entrepreneur</span>',
+      journey1: 'Discover', journey1d: 'Analyze current performance',
+      journey2: 'Optimize', journey2d: 'LIVE structure, retention, engagement',
+      journey3: 'Scale', journey3d: 'Campaigns, competitions, opportunities',
+      journey4: 'Build', journey4d: 'Develop your creator brand',
+      whyTitle: 'Why Top Creators Choose <span class="gold">Live Alchemy</span>',
+      why1: 'Dedicated Creator Management', why1d: 'Real person supporting your journey.',
+      why2: 'Data Driven Growth', why2d: 'Decisions based on performance data.',
+      why3: 'Exclusive Opportunities', why3d: 'TikTok campaigns, events, competitions.',
+      why4: 'Long-Term Partnership', why4d: 'Your growth is our growth.',
+      dashTitle: 'Your Growth. <span class="gold">Measured.</span>',
+      dashMsg: 'Successful creators don’t guess. They analyze and improve.',
+      awardsTitle: 'Recognized For <span class="gold">Creator Excellence</span>',
+      awardsSub: 'Building professional creator ecosystems at every stage.',
+      communityTitle: 'Join A Network Of <span class="gold">Ambitious Creators</span>',
+      faqTitle: 'Frequently Asked Questions',
+      faq1q: 'Is joining Live Alchemy free?', faq1a: 'Yes. Joining is free.',
+      faq2q: 'Do I lose my account control?', faq2a: 'No. Your account remains yours.',
+      faq3q: 'Why should I join an agency?', faq3a: 'A professional agency provides support, growth strategy, campaigns, and opportunities.',
+      faq4q: 'Do I need millions of followers?', faq4a: 'No. We focus on potential, consistency, and ambition.',
+      faq5q: 'Can I leave anytime?', faq5a: 'Partnership terms are transparent—contact us for details.',
+      applyTitle: 'Start Your <span class="gold">Creator Evaluation</span>',
+      applyName: 'Full Name',
+      applyUser: 'TikTok Username',
+      applyFollowers: 'Followers',
+      applyViewers: 'Average LIVE viewers',
+      applyDiamonds: 'Monthly diamonds',
+      applyExp: 'Streaming experience (months)',
+      applyCountry: 'Country',
+      applyWhy: 'Why do you want to grow?',
+      applyBtn: 'Apply For Live Alchemy'
+    }
+  };
+
+  function setLanguage(lang) {
+    currentLang = lang;
+    const t = translations[lang];
+    // update nav
+    document.querySelector('.nav-links a[href="#growth"]').textContent = t.navGrowth;
+    document.querySelector('.nav-links a[href="#journey"]').textContent = t.navJourney;
+    document.querySelector('.nav-links a[href="#community"]').textContent = t.navCommunity;
+    document.querySelector('.nav-links a[href="#apply"]').textContent = t.navApply;
+    // hero
+    document.querySelector('.hero h1').innerHTML = t.heroTitle;
+    document.querySelector('.hero-sub').textContent = t.heroSub;
+    document.querySelector('.hero-cta a:first-child').textContent = t.btnApply;
+    document.querySelector('.hero-cta a:last-child').textContent = t.btnCheck;
+    const trustSpans = document.querySelectorAll('.trust-badges span');
+    trustSpans[0].innerHTML = t.trust1;
+    trustSpans[1].innerHTML = t.trust2;
+    trustSpans[2].innerHTML = t.trust3;
+    trustSpans[3].innerHTML = t.trust4;
+    // section2
+    document.querySelector('#growth .section-head h2').innerHTML = t.section2Title;
+    document.querySelector('#growth .section-head p').textContent = t.section2Sub;
+    const cards = document.querySelectorAll('#growth .card');
+    cards[0].querySelector('h3').textContent = t.card1Title;
+    cards[0].querySelector('p').textContent = t.card1Desc;
+    cards[1].querySelector('h3').textContent = t.card2Title;
+    cards[1].querySelector('p').textContent = t.card2Desc;
+    cards[2].querySelector('h3').textContent = t.card3Title;
+    cards[2].querySelector('p').textContent = t.card3Desc;
+    // section3
+    const s3 = document.querySelector('#growth + section');
+    s3.querySelector('.section-head h2').textContent = t.section3Title;
+    s3.querySelector('.section-head p').textContent = t.section3Sub;
+    const tagSpans = s3.querySelectorAll('div[style*="display:flex"] span');
+    t.section3Tags.forEach((txt, i) => { if (tagSpans[i]) tagSpans[i].textContent = txt; });
+    s3.querySelector('a.btn').textContent = t.section3Btn;
+    // journey
+    document.querySelector('#journey .section-head h2').innerHTML = t.journeyTitle;
+    const jItems = document.querySelectorAll('#journey .timeline-item');
+    jItems[0].querySelector('h4').textContent = t.journey1;
+    jItems[0].querySelector('p').textContent = t.journey1d;
+    jItems[1].querySelector('h4').textContent = t.journey2;
+    jItems[1].querySelector('p').textContent = t.journey2d;
+    jItems[2].querySelector('h4').textContent = t.journey3;
+    jItems[2].querySelector('p').textContent = t.journey3d;
+    jItems[3].querySelector('h4').textContent = t.journey4;
+    jItems[3].querySelector('p').textContent = t.journey4d;
+    // why
+    const whySection = document.querySelector('#journey + section');
+    whySection.querySelector('.section-head h2').innerHTML = t.whyTitle;
+    const whyCards = whySection.querySelectorAll('.card');
+    whyCards[0].querySelector('h3').textContent = t.why1;
+    whyCards[0].querySelector('p').textContent = t.why1d;
+    whyCards[1].querySelector('h3').textContent = t.why2;
+    whyCards[1].querySelector('p').textContent = t.why2d;
+    whyCards[2].querySelector('h3').textContent = t.why3;
+    whyCards[2].querySelector('p').textContent = t.why3d;
+    whyCards[3].querySelector('h3').textContent = t.why4;
+    whyCards[3].querySelector('p').textContent = t.why4d;
+    // dashboard
+    const dashSection = whySection.nextElementSibling;
+    dashSection.querySelector('.section-head h2').innerHTML = t.dashTitle;
+    dashSection.querySelector('p').textContent = t.dashMsg;
+    // awards
+    const awardSection = dashSection.nextElementSibling;
+    awardSection.querySelector('.section-head h2').innerHTML = t.awardsTitle;
+    awardSection.querySelector('.section-head p').textContent = t.awardsSub;
+    // community
+    const commSection = awardSection.nextElementSibling;
+    commSection.querySelector('.section-head h2').innerHTML = t.communityTitle;
+    // faq
+    const faqSection = document.querySelector('#calculator + section');
+    faqSection.querySelector('.section-head h2').innerHTML = t.faqTitle;
+    const faqs = faqSection.querySelectorAll('.faq-item');
+    faqs[0].querySelector('h4').textContent = t.faq1q;
+    faqs[0].querySelector('p').textContent = t.faq1a;
+    faqs[1].querySelector('h4').textContent = t.faq2q;
+    faqs[1].querySelector('p').textContent = t.faq2a;
+    faqs[2].querySelector('h4').textContent = t.faq3q;
+    faqs[2].querySelector('p').textContent = t.faq3a;
+    faqs[3].querySelector('h4').textContent = t.faq4q;
+    faqs[3].querySelector('p').textContent = t.faq4a;
+    faqs[4].querySelector('h4').textContent = t.faq5q;
+    faqs[4].querySelector('p').textContent = t.faq5a;
+    // apply
+    const applySection = document.getElementById('apply');
+    applySection.querySelector('.section-head h2').innerHTML = t.applyTitle;
+    const formInputs = applySection.querySelectorAll('input, textarea');
+    const labels = [t.applyName, t.applyUser, t.applyFollowers, t.applyViewers, t.applyDiamonds, t.applyExp, t.applyCountry, t.applyWhy];
+    formInputs.forEach((el, idx) => { if (idx < labels.length) el.placeholder = labels[idx]; });
+    applySection.querySelector('button[type="submit"]').textContent = t.applyBtn;
+
+    // toggle active class
+    langSpans.forEach(span => {
+      span.classList.remove('active', 'inactive');
+      if (span.dataset.lang === lang) span.classList.add('active');
+      else span.classList.add('inactive');
+    });
+  }
+
+  langSpans.forEach(span => {
+    span.addEventListener('click', () => {
+      const lang = span.dataset.lang;
+      if (lang !== currentLang) setLanguage(lang);
+    });
+  });
+
+  // ---- CALCULATOR ----
   function calculateScore() {
     const vol = document.getElementById('volume').value;
     const hrs = document.getElementById('hours').value;
     const chal = document.getElementById('challenge').value;
     let score = 85;
     let feedback = "";
-
     if (vol === 'high') score -= 5;
     else if (vol === 'mid') score -= 15;
     else if (vol === 'low') score -= 30;
-
     if (hrs === 'overworked') { score -= 15; feedback += "High structural burnout risks found. Your revenue is tied directly to physical exhaustion rather than operational systems. "; }
     else if (hrs === 'irregular') { score -= 10; feedback += "Inconsistent pacing anchors your visibility index lower in the algorithmic queue. "; }
-
     if (chal === 'retention') { score -= 10; feedback += "Critical retention leaks detected during your peak viewer onboarding sequence."; }
     else if (chal === 'conversion') { score -= 12; feedback += "Gifter dependency concentration is unsustainably narrow. You require conversion scaling systems."; }
     else if (chal === 'policy') { score -= 5; feedback += "Account safety parameters show severe regulatory risk exposure."; }
-
     if (score > 80) feedback = "Strong baseline performance, but highly vulnerable to unexpected platform shifts and retention plateaus. Optimization is highly recommended.";
-
     document.getElementById('quiz-form').style.display = 'none';
     document.getElementById('score-val').innerText = score + "/100";
     document.getElementById('feedback-val').innerText = feedback;
     document.getElementById('quiz-result').style.display = 'block';
+  }
+
+  // ---- APPLICATION HANDLER ----
+  function handleApply(e) {
+    e.preventDefault();
+    const diamonds = parseInt(document.getElementById('diamondsInput').value);
+    const msgEl = document.getElementById('formMessage');
+    if (isNaN(diamonds) || diamonds < 60000) {
+      msgEl.innerHTML = '⚠️ Sorry, you cannot join this premium network. We do not collaborate with low-tier creators.';
+      msgEl.style.color = '#D4AF37';
+      return false;
+    }
+    // redirect to TikTok link
+    window.location.href = 'https://www.tiktok.com/@thelivealchemy';
+    return false;
   }
 
   // scroll reveal
@@ -618,7 +841,9 @@
   document.querySelectorAll('.card, .dash-item, .award-card, .community-item, .faq-item').forEach(el => {
     if (!el.classList.contains('fade-up')) { el.classList.add('fade-up'); observer.observe(el); }
   });
-</script>
 
+  // set default language (Romanian)
+  setLanguage('ro');
+</script>
 </body>
 </html>
