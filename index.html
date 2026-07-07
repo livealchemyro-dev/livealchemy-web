@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Live Alchemy · Creator Ecosystem</title>
-  <!-- Font & Icons -->
+  <title>Live Alchemy · Creator Growth Ecosystem</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
@@ -15,7 +14,6 @@
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       background-color: #050505;
       color: #ffffff;
@@ -23,46 +21,48 @@
       line-height: 1.6;
       scroll-behavior: smooth;
     }
-
     .container {
       max-width: 1280px;
       margin: 0 auto;
       padding: 0 24px;
     }
-
-    /* ----- GOLD ACCENT ----- */
-    .gold {
-      color: #D4AF37;
-    }
-    .gold-border {
-      border-color: #D4AF37;
-    }
+    .gold { color: #D4AF37; }
     .btn-gold {
       background: #D4AF37;
       color: #050505;
       font-weight: 700;
       border: none;
-      transition: 0.2s;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15);
     }
     .btn-gold:hover {
       background: #e6c84a;
       transform: scale(1.02);
-      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.25);
+      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.3);
     }
     .btn-outline-gold {
       background: transparent;
       border: 1.5px solid #D4AF37;
       color: #D4AF37;
       font-weight: 600;
-      transition: 0.2s;
+      transition: all 0.25s ease;
     }
     .btn-outline-gold:hover {
       background: #D4AF37;
       color: #050505;
       box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15);
     }
+    .btn {
+      padding: 14px 34px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: inline-block;
+      cursor: pointer;
+    }
 
-    /* ----- NAV ----- */
+    /* ---- NAV ---- */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -70,164 +70,91 @@
       padding: 20px 0;
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-    }
-    .logo span {
-      color: #D4AF37;
-    }
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      font-weight: 500;
-      font-size: 0.95rem;
-    }
-    .nav-links a {
-      color: rgba(255,255,255,0.7);
-      text-decoration: none;
-      transition: 0.2s;
-    }
-    .nav-links a:hover {
-      color: #fff;
-    }
-    .lang-toggle {
-      display: flex;
-      gap: 12px;
-      font-size: 0.85rem;
-      font-weight: 500;
-    }
-    .lang-toggle span {
-      color: rgba(255,255,255,0.4);
-      cursor: default;
-    }
-    .lang-toggle .active {
-      color: #D4AF37;
-    }
-    .lang-toggle .inactive {
-      color: rgba(255,255,255,0.3);
-    }
+    .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; }
+    .logo span { color: #D4AF37; }
+    .nav-links { display: flex; gap: 32px; font-weight: 500; font-size: 0.95rem; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; transition: 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .lang-toggle { display: flex; gap: 12px; font-size: 0.85rem; font-weight: 500; }
+    .lang-toggle span { color: rgba(255,255,255,0.4); cursor: default; }
+    .lang-toggle .active { color: #D4AF37; }
+    .lang-toggle .inactive { color: rgba(255,255,255,0.25); }
 
-    /* ----- HERO ----- */
+    /* ---- HERO (centered) ---- */
     .hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      padding: 60px 0 80px;
+      display: flex;
+      flex-direction: column;
       align-items: center;
+      text-align: center;
+      padding: 60px 0 80px;
     }
-    .hero-text h1 {
-      font-size: 3.8rem;
+    .hero h1 {
+      font-size: 4.2rem;
       font-weight: 700;
       line-height: 1.1;
       letter-spacing: -2px;
+      max-width: 900px;
       margin-bottom: 20px;
     }
-    .hero-text h1 .gold {
-      display: block;
-    }
+    .hero h1 .gold { display: inline-block; }
     .hero-sub {
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       color: rgba(255,255,255,0.7);
-      max-width: 500px;
-      margin-bottom: 32px;
+      max-width: 640px;
+      margin-bottom: 36px;
     }
     .hero-cta {
       display: flex;
       gap: 16px;
       flex-wrap: wrap;
-      margin-bottom: 28px;
-    }
-    .hero-cta .btn {
-      padding: 14px 34px;
-      border-radius: 60px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-decoration: none;
-      display: inline-block;
+      justify-content: center;
+      margin-bottom: 32px;
     }
     .trust-badges {
       display: flex;
       flex-wrap: wrap;
       gap: 16px 28px;
+      justify-content: center;
       font-size: 0.9rem;
       color: rgba(255,255,255,0.6);
     }
-    .trust-badges i {
-      color: #D4AF37;
-      margin-right: 6px;
-    }
+    .trust-badges i { color: #D4AF37; margin-right: 6px; }
 
-    /* Hero visual (fake stream UI) */
-    .hero-visual {
-      background: radial-gradient(circle at 30% 40%, #1a1a1a, #0a0a0a);
-      border-radius: 32px;
-      padding: 30px 20px 20px;
-      border: 1px solid rgba(212, 175, 55, 0.15);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+    /* floating cinematic orbs */
+    .hero-glow {
       position: relative;
-    }
-    .stream-overlay {
+      margin-top: 30px;
+      width: 100%;
+      max-width: 700px;
+      height: 120px;
       display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .stream-preview {
-      background: #111;
-      border-radius: 20px;
-      padding: 20px 20px 40px;
-      background-image: linear-gradient(145deg, #1e1e1e, #0b0b0b);
-      border: 1px solid #2a2a2a;
-      position: relative;
-    }
-    .stream-preview .avatar-circle {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      background: #2a2a2a;
-      border: 2px solid #D4AF37;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
       justify-content: center;
-      font-size: 2rem;
-    }
-    .stream-preview .live-badge {
-      background: #ff2d2d;
-      font-size: 0.7rem;
-      padding: 3px 10px;
-      border-radius: 40px;
-      font-weight: 700;
-      display: inline-block;
-      margin-bottom: 8px;
-    }
-    .floating-ui {
-      display: flex;
+      gap: 40px;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 16px;
     }
-    .floating-ui .badge {
-      background: rgba(255,255,255,0.06);
-      backdrop-filter: blur(4px);
-      padding: 8px 16px;
+    .glow-item {
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      padding: 12px 24px;
       border-radius: 60px;
-      font-size: 0.8rem;
-      border: 1px solid rgba(255,255,255,0.04);
+      font-size: 0.9rem;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 10px;
+      animation: floatGlow 6s ease-in-out infinite;
     }
-    .floating-ui .badge i {
-      color: #D4AF37;
-    }
-    .floating-ui .badge .num {
-      font-weight: 700;
-      color: #fff;
+    .glow-item i { color: #D4AF37; font-size: 1.2rem; }
+    .glow-item span { font-weight: 600; }
+    .glow-item:nth-child(2) { animation-delay: 1.2s; }
+    .glow-item:nth-child(3) { animation-delay: 2.4s; }
+    @keyframes floatGlow {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+      100% { transform: translateY(0px); }
     }
 
-    /* section headings */
+    /* ---- sections common ---- */
     .section-head {
       text-align: center;
       max-width: 700px;
@@ -245,7 +172,6 @@
       margin-top: 12px;
     }
 
-    /* cards */
     .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -256,27 +182,16 @@
       padding: 32px 24px;
       border-radius: 28px;
       border: 1px solid #1c1c1c;
-      transition: 0.25s ease;
+      transition: 0.3s ease;
     }
     .card:hover {
       transform: translateY(-6px);
       border-color: #D4AF37;
       box-shadow: 0 20px 40px rgba(0,0,0,0.6);
     }
-    .card i {
-      font-size: 2rem;
-      color: #D4AF37;
-      margin-bottom: 16px;
-    }
-    .card h3 {
-      font-size: 1.4rem;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-    .card p {
-      color: rgba(255,255,255,0.6);
-      font-size: 0.95rem;
-    }
+    .card i { font-size: 2rem; color: #D4AF37; margin-bottom: 16px; }
+    .card h3 { font-size: 1.4rem; font-weight: 600; margin-bottom: 10px; }
+    .card p { color: rgba(255,255,255,0.6); font-size: 0.95rem; }
 
     /* timeline */
     .timeline {
@@ -286,26 +201,12 @@
       gap: 24px 48px;
       margin: 40px 0;
     }
-    .timeline-item {
-      flex: 1 1 180px;
-      text-align: center;
-      position: relative;
-    }
-    .timeline-item .step {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: #D4AF37;
-    }
-    .timeline-item h4 {
-      font-size: 1.2rem;
-      margin: 6px 0 4px;
-    }
-    .timeline-item p {
-      color: rgba(255,255,255,0.5);
-      font-size: 0.9rem;
-    }
+    .timeline-item { flex: 1 1 180px; text-align: center; }
+    .timeline-item .step { font-size: 2.2rem; font-weight: 800; color: #D4AF37; }
+    .timeline-item h4 { font-size: 1.2rem; margin: 6px 0 4px; }
+    .timeline-item p { color: rgba(255,255,255,0.5); font-size: 0.9rem; }
 
-    /* dashboard style */
+    /* dashboard */
     .dashboard-mock {
       background: #0b0b0b;
       border-radius: 32px;
@@ -322,29 +223,12 @@
       border-radius: 20px;
       border-left: 4px solid #D4AF37;
     }
-    .dash-item .label {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: rgba(255,255,255,0.4);
-    }
-    .dash-item .value {
-      font-size: 2rem;
-      font-weight: 700;
-      margin: 6px 0 2px;
-    }
-    .dash-item .trend {
-      color: #4caf50;
-      font-size: 0.85rem;
-    }
+    .dash-item .label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.4); }
+    .dash-item .value { font-size: 2rem; font-weight: 700; margin: 6px 0 2px; }
+    .dash-item .trend { color: #4caf50; font-size: 0.85rem; }
 
     /* awards */
-    .award-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-      justify-content: center;
-    }
+    .award-grid { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; }
     .award-card {
       background: #0e0e0e;
       padding: 20px 28px;
@@ -353,14 +237,8 @@
       text-align: center;
       min-width: 160px;
     }
-    .award-card i {
-      font-size: 2.8rem;
-      color: #D4AF37;
-    }
-    .award-card .year {
-      font-weight: 700;
-      font-size: 1.1rem;
-    }
+    .award-card i { font-size: 2.8rem; color: #D4AF37; }
+    .award-card .year { font-weight: 700; font-size: 1.1rem; }
 
     /* community */
     .community-grid {
@@ -388,16 +266,63 @@
       margin-bottom: 16px;
       border: 1px solid #1a1a1a;
     }
-    .faq-item h4 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-    .faq-item p {
-      color: rgba(255,255,255,0.6);
-    }
+    .faq-item h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 6px; }
+    .faq-item p { color: rgba(255,255,255,0.6); }
 
-    /* form */
+    /* ---- CALCULATOR (embedded) ---- */
+    .quiz-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #141414;
+      padding: 30px;
+      border-radius: 24px;
+      border: 1px solid #222;
+    }
+    .quiz-container h2 { font-size: 1.5rem; font-weight: 600; border-bottom: 1px solid #222; padding-bottom: 15px; margin-bottom: 20px; }
+    .question-block { margin-bottom: 20px; }
+    .question-block label { display: block; font-size: 0.9rem; font-weight: 500; margin-bottom: 6px; color: #aaa; }
+    .question-block select, .question-block input {
+      width: 100%;
+      padding: 12px;
+      background: #1c1c1c;
+      border: 1px solid #333;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.95rem;
+      transition: 0.2s;
+    }
+    .question-block select:focus { border-color: #D4AF37; outline: none; }
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      background: #D4AF37;
+      color: #050505;
+      border: none;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn-submit:hover { background: #e6c84a; transform: scale(1.01); }
+    .result-block { display: none; text-align: center; padding: 10px 0; }
+    .score-display { font-size: 3rem; font-weight: 700; margin: 15px 0; color: #D4AF37; }
+    .feedback-text { font-size: 0.95rem; color: #aaa; line-height: 1.6; margin-bottom: 20px; }
+    .cta-link {
+      display: inline-block;
+      width: 100%;
+      padding: 14px;
+      background: #222;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 60px;
+      font-weight: 600;
+      border: 1px solid #444;
+      transition: 0.2s;
+    }
+    .cta-link:hover { background: #2a2a2a; }
+
+    /* app form */
     .app-form {
       background: #0b0b0b;
       padding: 40px 36px;
@@ -418,22 +343,10 @@
       outline: none;
       transition: 0.2s;
     }
-    .app-form input:focus, .app-form select:focus, .app-form textarea:focus {
-      border-color: #D4AF37;
-    }
-    .app-form textarea {
-      border-radius: 24px;
-      min-height: 100px;
-    }
-    .app-form .btn {
-      width: 100%;
-      padding: 16px;
-      border-radius: 60px;
-      font-weight: 700;
-      font-size: 1.1rem;
-    }
+    .app-form input:focus, .app-form select:focus, .app-form textarea:focus { border-color: #D4AF37; }
+    .app-form textarea { border-radius: 24px; min-height: 100px; }
+    .app-form .btn { width: 100%; padding: 16px; border-radius: 60px; font-weight: 700; font-size: 1.1rem; }
 
-    /* footer */
     .footer {
       border-top: 1px solid #1a1a1a;
       padding: 40px 0 20px;
@@ -444,44 +357,25 @@
       justify-content: space-between;
       flex-wrap: wrap;
     }
-
-    /* responsive */
     @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 30px 0;
-      }
-      .hero-text h1 {
-        font-size: 2.6rem;
-      }
-      .community-grid {
-        grid-template-columns: repeat(2,1fr);
-      }
+      .hero h1 { font-size: 2.8rem; }
+      .community-grid { grid-template-columns: repeat(2,1fr); }
     }
     @media (max-width: 600px) {
-      .navbar {
-        flex-wrap: wrap;
-        gap: 12px;
-      }
-      .nav-links {
-        gap: 16px;
-        font-size: 0.8rem;
-      }
-      .section-head h2 {
-        font-size: 2rem;
-      }
+      .navbar { flex-wrap: wrap; gap: 12px; }
+      .nav-links { gap: 16px; font-size: 0.8rem; }
+      .section-head h2 { font-size: 2rem; }
     }
-
-    /* scroll animation helper */
     .fade-up {
       opacity: 0;
       transform: translateY(20px);
-      transition: all 0.6s ease;
+      transition: all 0.7s ease;
     }
     .fade-up.visible {
       opacity: 1;
       transform: translateY(0);
     }
+    .section-pad { padding: 60px 0; }
   </style>
 </head>
 <body>
@@ -502,41 +396,30 @@
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- HERO (centered, no fake stream card) -->
   <section class="hero" id="home">
-    <div class="hero-text">
-      <h1>Your Talent Has <span class="gold">Potential.</span> We Build The System Behind Your Success.</h1>
-      <p class="hero-sub">Live Alchemy is a premium TikTok LIVE creator network helping ambitious Romanian creators grow faster through strategy, training, analytics, campaigns, and dedicated creator support.</p>
-      <div class="hero-cta">
-        <a href="#apply" class="btn btn-gold">Apply To Join Live Alchemy</a>
-        <a href="#growth" class="btn btn-outline-gold">See How We Help Creators Grow</a>
-      </div>
-      <div class="trust-badges">
-        <span><i class="fas fa-check-circle"></i> Official TikTok LIVE Partner Network</span>
-        <span><i class="fas fa-check-circle"></i> Creator Growth System</span>
-        <span><i class="fas fa-check-circle"></i> Dedicated Creator Managers</span>
-        <span><i class="fas fa-check-circle"></i> Exclusive Campaign Access</span>
-      </div>
+    <h1>Your Talent Has <span class="gold">Potential.</span><br>We Build The System Behind Your Success.</h1>
+    <p class="hero-sub">Live Alchemy is a premium TikTok LIVE creator network helping ambitious Romanian creators grow faster through strategy, training, analytics, campaigns, and dedicated creator support.</p>
+    <div class="hero-cta">
+      <a href="#apply" class="btn btn-gold">Apply To Join Live Alchemy</a>
+      <a href="#calculator" class="btn btn-outline-gold">Check Your LIVE Performance</a>
     </div>
-    <div class="hero-visual">
-      <div class="stream-overlay">
-        <div class="stream-preview">
-          <div class="live-badge"><i class="fas fa-circle" style="color:#ff2d2d; margin-right:6px;"></i> LIVE</div>
-          <div class="avatar-circle"><i class="fas fa-user" style="color:#D4AF37;"></i></div>
-          <div style="font-weight:600;">Andreea · 2.4k watching</div>
-          <div style="font-size:0.8rem; color:rgba(255,255,255,0.5);">✨ diamond goal 12.5k</div>
-        </div>
-        <div class="floating-ui">
-          <span class="badge"><i class="fas fa-chart-line"></i> <span class="num">+22%</span> growth</span>
-          <span class="badge"><i class="fas fa-gem"></i> <span class="num">8.4k</span> diamonds</span>
-          <span class="badge"><i class="fas fa-users"></i> <span class="num">1.2k</span> community</span>
-        </div>
-      </div>
+    <div class="trust-badges">
+      <span><i class="fas fa-check-circle"></i> Official TikTok LIVE Partner Network</span>
+      <span><i class="fas fa-check-circle"></i> Creator Growth System</span>
+      <span><i class="fas fa-check-circle"></i> Dedicated Creator Managers</span>
+      <span><i class="fas fa-check-circle"></i> Exclusive Campaign Access</span>
+    </div>
+    <!-- cinematic floating UI -->
+    <div class="hero-glow">
+      <div class="glow-item"><i class="fas fa-chart-line"></i> <span>+32%</span> growth</div>
+      <div class="glow-item"><i class="fas fa-gem"></i> <span>12.8k</span> diamonds</div>
+      <div class="glow-item"><i class="fas fa-users"></i> <span>1.2k</span> community</div>
     </div>
   </section>
 
   <!-- SECTION 2 : Not Another Agency -->
-  <section id="growth" style="padding: 60px 0;">
+  <section id="growth" class="section-pad">
     <div class="section-head">
       <h2>Most Agencies Recruit Creators. <span class="gold">We Develop Them.</span></h2>
       <p>No empty promises. Real strategy, real support.</p>
@@ -549,7 +432,7 @@
   </section>
 
   <!-- SECTION 3 : Built For Serious Creators -->
-  <section style="padding: 40px 0;">
+  <section class="section-pad" style="padding-top:0;">
     <div class="section-head">
       <h2>We Are Not Looking For Everyone.</h2>
       <p>Live Alchemy works with ambitious creators who treat TikTok LIVE as a serious opportunity.</p>
@@ -565,7 +448,7 @@
   </section>
 
   <!-- SECTION 4 : Journey -->
-  <section id="journey" style="padding:60px 0;">
+  <section id="journey" class="section-pad">
     <div class="section-head">
       <h2>From Creator To <span class="gold">Digital Entrepreneur</span></h2>
     </div>
@@ -578,7 +461,7 @@
   </section>
 
   <!-- SECTION 5 : Why Top Creators -->
-  <section style="padding:40px 0;">
+  <section class="section-pad" style="padding-top:0;">
     <div class="section-head"><h2>Why Top Creators Choose <span class="gold">Live Alchemy</span></h2></div>
     <div class="card-grid">
       <div class="card"><i class="fas fa-user-tie"></i><h3>Dedicated Creator Management</h3><p>Real person supporting your journey.</p></div>
@@ -589,7 +472,7 @@
   </section>
 
   <!-- SECTION 6 : SaaS Dashboard -->
-  <section style="padding:40px 0;">
+  <section class="section-pad" style="padding-top:0;">
     <div class="section-head"><h2>Your Growth. <span class="gold">Measured.</span></h2></div>
     <div class="dashboard-mock">
       <div class="dash-item"><div class="label">LIVE Hours</div><div class="value">+32%</div><div class="trend"><i class="fas fa-arrow-up"></i> Growth</div></div>
@@ -601,7 +484,7 @@
   </section>
 
   <!-- SECTION 7 : Awards -->
-  <section style="padding:40px 0;">
+  <section class="section-pad" style="padding-top:0;">
     <div class="section-head"><h2>Recognized For <span class="gold">Creator Excellence</span></h2><p>Building professional creator ecosystems at every stage.</p></div>
     <div class="award-grid">
       <div class="award-card"><i class="fas fa-award"></i><div class="year">2025</div><div>Best Creator Network</div></div>
@@ -612,7 +495,7 @@
   </section>
 
   <!-- SECTION 8 : Community -->
-  <section id="community" style="padding:40px 0;">
+  <section id="community" class="section-pad" style="padding-top:0;">
     <div class="section-head"><h2>Join A Network Of <span class="gold">Ambitious Creators</span></h2></div>
     <div class="community-grid">
       <div class="community-item"><i class="fas fa-user-circle" style="font-size:3rem; color:#D4AF37;"></i></div>
@@ -622,8 +505,49 @@
     </div>
   </section>
 
-  <!-- SECTION 9 : FAQ -->
-  <section style="padding:40px 0;">
+  <!-- SECTION 9 : CALCULATOR (replaces old secondary CTA) -->
+  <section id="calculator" class="section-pad" style="padding-top:0;">
+    <div class="section-head"><h2>Calculate Your <span class="gold">Creator Growth Score™</span></h2></div>
+    <div class="quiz-container">
+      <div id="quiz-form">
+        <div class="question-block">
+          <label for="volume">Current Monthly Diamond Volume</label>
+          <select id="volume">
+            <option value="high">150K - 500K+ Diamonds/mo</option>
+            <option value="mid">50K - 150K Diamonds/mo</option>
+            <option value="low">Under 50K Diamonds/mo</option>
+          </select>
+        </div>
+        <div class="question-block">
+          <label for="hours">Average Weekly Live Streaming Hours</label>
+          <select id="hours">
+            <option value="optimized">12 - 25 Hours (Structured)</option>
+            <option value="overworked">25+ Hours (High Burnout Risk)</option>
+            <option value="irregular">Under 12 Hours (Inconsistent)</option>
+          </select>
+        </div>
+        <div class="question-block">
+          <label for="challenge">Primary Algorithmic Core Bottleneck</label>
+          <select id="challenge">
+            <option value="retention">Viewer Retention & Sudden View Drops</option>
+            <option value="conversion">Gifter Monotonization & Flat Income</option>
+            <option value="policy">Policy Anxiety & Compliance Warnings</option>
+          </select>
+        </div>
+        <button type="button" class="btn-submit" onclick="calculateScore()">Analyze My Performance Metrics</button>
+      </div>
+      <div id="quiz-result" class="result-block">
+        <h2 style="font-size:1.3rem;">Your Performance Matrix Diagnostics</h2>
+        <div class="feedback-text" id="verdict-label" style="color:#D4AF37; font-weight:600;">CREATOR INSIGHT SCORE</div>
+        <div class="score-display" id="score-val">00/100</div>
+        <div class="feedback-text" id="feedback-val">Analysis complete. Stagnation vulnerabilities detected in system infrastructure and audience retention loops.</div>
+        <a href="#apply" class="cta-link">Apply For A Free Stream Audit & Review →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 10 : FAQ -->
+  <section class="section-pad" style="padding-top:0;">
     <div class="section-head"><h2>Frequently Asked <span class="gold">Questions</span></h2></div>
     <div class="faq-item"><h4>Is joining Live Alchemy free?</h4><p>Yes. Joining is free.</p></div>
     <div class="faq-item"><h4>Do I lose my account control?</h4><p>No. Your account remains yours.</p></div>
@@ -632,8 +556,8 @@
     <div class="faq-item"><h4>Can I leave anytime?</h4><p>Partnership terms are transparent—contact us for details.</p></div>
   </section>
 
-  <!-- SECTION 10 : Application -->
-  <section id="apply" style="padding:40px 0;">
+  <!-- SECTION 11 : Application -->
+  <section id="apply" class="section-pad" style="padding-top:0;">
     <div class="section-head"><h2>Start Your <span class="gold">Creator Evaluation</span></h2></div>
     <div class="app-form">
       <form>
@@ -657,21 +581,42 @@
   </div>
 </div>
 
-<!-- scroll reveal -->
 <script>
+  // Calculator logic
+  function calculateScore() {
+    const vol = document.getElementById('volume').value;
+    const hrs = document.getElementById('hours').value;
+    const chal = document.getElementById('challenge').value;
+    let score = 85;
+    let feedback = "";
+
+    if (vol === 'high') score -= 5;
+    else if (vol === 'mid') score -= 15;
+    else if (vol === 'low') score -= 30;
+
+    if (hrs === 'overworked') { score -= 15; feedback += "High structural burnout risks found. Your revenue is tied directly to physical exhaustion rather than operational systems. "; }
+    else if (hrs === 'irregular') { score -= 10; feedback += "Inconsistent pacing anchors your visibility index lower in the algorithmic queue. "; }
+
+    if (chal === 'retention') { score -= 10; feedback += "Critical retention leaks detected during your peak viewer onboarding sequence."; }
+    else if (chal === 'conversion') { score -= 12; feedback += "Gifter dependency concentration is unsustainably narrow. You require conversion scaling systems."; }
+    else if (chal === 'policy') { score -= 5; feedback += "Account safety parameters show severe regulatory risk exposure."; }
+
+    if (score > 80) feedback = "Strong baseline performance, but highly vulnerable to unexpected platform shifts and retention plateaus. Optimization is highly recommended.";
+
+    document.getElementById('quiz-form').style.display = 'none';
+    document.getElementById('score-val').innerText = score + "/100";
+    document.getElementById('feedback-val').innerText = feedback;
+    document.getElementById('quiz-result').style.display = 'block';
+  }
+
+  // scroll reveal
   const faders = document.querySelectorAll('.fade-up');
   const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
   }, { threshold: 0.2 });
   faders.forEach(el => observer.observe(el));
-  // also observe cards that are not .fade-up
   document.querySelectorAll('.card, .dash-item, .award-card, .community-item, .faq-item').forEach(el => {
-    if (!el.classList.contains('fade-up')) {
-      el.classList.add('fade-up');
-      observer.observe(el);
-    }
+    if (!el.classList.contains('fade-up')) { el.classList.add('fade-up'); observer.observe(el); }
   });
 </script>
 
