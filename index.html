@@ -59,7 +59,7 @@
     .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; transition: 0.2s; }
     .nav-links a:hover { color: #fff; }
 
-    /* LANGUAGE SWITCHER - clean text only */
+    /* LANGUAGE SWITCHER */
     .lang-switcher {
       display: flex;
       gap: 8px;
@@ -148,20 +148,142 @@
     .section-head { text-align: center; max-width: 700px; margin: 0 auto 48px; }
     .section-head h2 { font-size: 2.8rem; font-weight: 700; letter-spacing: -1px; line-height: 1.2; }
     .section-head p { color: rgba(255,255,255,0.6); font-size: 1.15rem; margin-top: 12px; }
-    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
-    .card {
-      background: #0e0e0e;
-      padding: 32px 24px;
-      border-radius: 28px;
-      border: 1px solid #1c1c1c;
-      transition: 0.3s ease;
-    }
-    .card:hover { transform: translateY(-6px); border-color: #D4AF37; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
-    .card i { font-size: 2rem; color: #D4AF37; margin-bottom: 16px; }
-    .card h3 { font-size: 1.4rem; font-weight: 600; margin-bottom: 10px; }
-    .card p { color: rgba(255,255,255,0.6); font-size: 0.95rem; }
 
-    /* JOURNEY - PREMIUM CINEMATIC */
+    /* PREMIUM CARDS - ANIMATED */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      perspective: 1200px;
+    }
+    @media (max-width: 900px) {
+      .card-grid { grid-template-columns: 1fr; }
+    }
+    .card-premium {
+      background: rgba(255,255,255,0.02);
+      backdrop-filter: blur(10px);
+      padding: 40px 30px 35px;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.04);
+      transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(60px) rotateX(8deg) scale(0.92);
+      cursor: default;
+    }
+    .card-premium::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.06), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      pointer-events: none;
+    }
+    .card-premium:hover::before { opacity: 1; }
+    .card-premium.revealed {
+      opacity: 1;
+      transform: translateY(0) rotateX(0) scale(1);
+    }
+    .card-premium:nth-child(1) { transition-delay: 0.1s; }
+    .card-premium:nth-child(2) { transition-delay: 0.25s; }
+    .card-premium:nth-child(3) { transition-delay: 0.4s; }
+    .card-premium:hover {
+      transform: translateY(-12px) scale(1.02);
+      border-color: rgba(212, 175, 55, 0.25);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 40px rgba(212, 175, 55, 0.04);
+      background: rgba(255,255,255,0.04);
+    }
+    .card-premium .card-icon {
+      font-size: 2.6rem;
+      color: #D4AF37;
+      margin-bottom: 20px;
+      display: inline-block;
+      position: relative;
+      transition: 0.4s;
+    }
+    .card-premium:hover .card-icon {
+      transform: scale(1.1) rotate(2deg);
+      text-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+    }
+    .card-premium .card-number {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: rgba(212, 175, 55, 0.06);
+      line-height: 1;
+      pointer-events: none;
+      transition: 0.4s;
+    }
+    .card-premium:hover .card-number {
+      color: rgba(212, 175, 55, 0.12);
+      transform: scale(1.05);
+    }
+    .card-premium h3 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+      position: relative;
+    }
+    .card-premium h3::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: #D4AF37;
+      opacity: 0.3;
+      transition: all 0.5s ease;
+    }
+    .card-premium:hover h3::after {
+      width: 60px;
+      opacity: 0.8;
+    }
+    .card-premium p {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.98rem;
+      line-height: 1.7;
+      margin-top: 8px;
+    }
+    .card-premium .card-glow-line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #D4AF37, transparent);
+      transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .card-premium.revealed .card-glow-line { width: 100%; }
+    .card-premium:hover .card-glow-line {
+      width: 100%;
+      background: linear-gradient(90deg, #D4AF37, #e6c84a, transparent);
+    }
+    /* Floating particle dots */
+    .card-premium .dot {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.08);
+      pointer-events: none;
+      animation: floatDot 8s infinite ease-in-out;
+    }
+    .card-premium .dot:nth-child(1) { width: 6px; height: 6px; top: 15%; right: 15%; animation-delay: 0s; }
+    .card-premium .dot:nth-child(2) { width: 4px; height: 4px; bottom: 20%; left: 10%; animation-delay: 2s; }
+    .card-premium .dot:nth-child(3) { width: 8px; height: 8px; top: 60%; right: 8%; animation-delay: 4s; }
+    @keyframes floatDot {
+      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+      50% { transform: translate(-10px, -20px) scale(1.5); opacity: 0.8; }
+    }
+
+    /* JOURNEY */
     .journey-wrapper {
       min-height: 70vh;
       display: flex;
@@ -179,7 +301,6 @@
       position: relative;
       padding: 20px 0;
     }
-    /* Vertical line connecting steps */
     .journey-steps::before {
       content: '';
       position: absolute;
@@ -239,22 +360,10 @@
       transition: 0.5s;
     }
     .step-item.revealed .step-num { opacity: 1; }
-    .step-item .step-content {
-      flex: 1;
-      text-align: left;
-    }
+    .step-item .step-content { flex: 1; text-align: left; }
     .step-item:nth-child(even) .step-content { text-align: right; }
-    .step-item .step-content h4 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-      letter-spacing: -0.5px;
-    }
-    .step-item .step-content p {
-      color: rgba(255,255,255,0.5);
-      font-size: 1rem;
-      max-width: 400px;
-    }
+    .step-item .step-content h4 { font-size: 1.6rem; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.5px; }
+    .step-item .step-content p { color: rgba(255,255,255,0.5); font-size: 1rem; max-width: 400px; }
     .step-item:nth-child(even) .step-content p { margin-left: auto; }
     .step-item .step-glow {
       position: absolute;
@@ -269,8 +378,6 @@
       pointer-events: none;
     }
     .step-item.revealed .step-glow { opacity: 1; }
-
-    /* Journey trigger */
     .journey-trigger {
       height: 1px;
       width: 100%;
@@ -476,7 +583,7 @@
 <body>
 
 <div class="container">
-  <!-- NAV with language switcher (no flags) -->
+  <!-- NAV -->
   <nav class="navbar">
     <div class="logo">Live <span>Alchemy</span></div>
     <div class="nav-links">
@@ -512,16 +619,43 @@
     </div>
   </section>
 
-  <!-- SECTION 2 -->
+  <!-- SECTION 2 - PREMIUM ANIMATED CARDS -->
   <section id="growth" class="section-pad">
     <div class="section-head">
       <h2 data-key="section2Title">Most Agencies Recruit Creators. <span class="gold">We Develop Them.</span></h2>
       <p data-key="section2Sub">No empty promises. Real strategy, real support.</p>
     </div>
-    <div class="card-grid">
-      <div class="card fade-up"><i class="fas fa-chess-queen"></i><h3 data-key="card1Title">Strategy</h3><p data-key="card1Desc">Your LIVE performance analyzed. Best hours, content direction, audience psychology, monetization.</p></div>
-      <div class="card fade-up"><i class="fas fa-rocket"></i><h3 data-key="card2Title">Growth System</h3><p data-key="card2Desc">LIVE improvement plans, content guidance, campaign strategies, performance reviews.</p></div>
-      <div class="card fade-up"><i class="fas fa-headset"></i><h3 data-key="card3Title">Professional Support</h3><p data-key="card3Desc">Real team: creator managers, technical support, events, TikTok updates.</p></div>
+    <div class="card-grid" id="cardGrid">
+      <div class="card-premium" data-delay="0">
+        <span class="card-number">01</span>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="card-icon"><i class="fas fa-chess-queen"></i></div>
+        <h3 data-key="card1Title">Strategy</h3>
+        <p data-key="card1Desc">Your LIVE performance analyzed. Best hours, content direction, audience psychology, monetization.</p>
+        <div class="card-glow-line"></div>
+      </div>
+      <div class="card-premium" data-delay="150">
+        <span class="card-number">02</span>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="card-icon"><i class="fas fa-rocket"></i></div>
+        <h3 data-key="card2Title">Growth System</h3>
+        <p data-key="card2Desc">LIVE improvement plans, content guidance, campaign strategies, performance reviews.</p>
+        <div class="card-glow-line"></div>
+      </div>
+      <div class="card-premium" data-delay="300">
+        <span class="card-number">03</span>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="card-icon"><i class="fas fa-headset"></i></div>
+        <h3 data-key="card3Title">Professional Support</h3>
+        <p data-key="card3Desc">Real team: creator managers, technical support, events, TikTok updates.</p>
+        <div class="card-glow-line"></div>
+      </div>
     </div>
   </section>
 
@@ -541,7 +675,7 @@
     <div style="text-align:center;"><a href="#apply" class="btn btn-gold" style="padding:14px 48px; border-radius:60px; text-decoration:none;" data-key="section3Btn">Check If You Qualify</a></div>
   </section>
 
-  <!-- SECTION 4 : JOURNEY - PREMIUM CINEMATIC -->
+  <!-- SECTION 4 : JOURNEY -->
   <section id="journey" class="section-pad" style="padding:20px 0 60px;">
     <div class="section-head">
       <h2 data-key="journeyTitle">From Creator To <span class="gold">Digital Entrepreneur</span></h2>
@@ -588,11 +722,27 @@
   <!-- SECTION 5 -->
   <section class="section-pad" style="padding-top:0;">
     <div class="section-head"><h2 data-key="whyTitle">Why Top Creators Choose <span class="gold">Live Alchemy</span></h2></div>
-    <div class="card-grid">
-      <div class="card"><i class="fas fa-user-tie"></i><h3 data-key="why1">Dedicated Creator Management</h3><p data-key="why1d">Real person supporting your journey.</p></div>
-      <div class="card"><i class="fas fa-chart-pie"></i><h3 data-key="why2">Data Driven Growth</h3><p data-key="why2d">Decisions based on performance data.</p></div>
-      <div class="card"><i class="fas fa-trophy"></i><h3 data-key="why3">Exclusive Opportunities</h3><p data-key="why3d">TikTok campaigns, events, competitions.</p></div>
-      <div class="card"><i class="fas fa-handshake"></i><h3 data-key="why4">Long-Term Partnership</h3><p data-key="why4d">Your growth is our growth.</p></div>
+    <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+      <div class="card-premium" style="opacity:1; transform:none; border-color:rgba(212,175,55,0.08);" data-delay="0">
+        <div class="card-icon"><i class="fas fa-user-tie"></i></div>
+        <h3 data-key="why1">Dedicated Creator Management</h3>
+        <p data-key="why1d">Real person supporting your journey.</p>
+      </div>
+      <div class="card-premium" style="opacity:1; transform:none; border-color:rgba(212,175,55,0.08);" data-delay="0">
+        <div class="card-icon"><i class="fas fa-chart-pie"></i></div>
+        <h3 data-key="why2">Data Driven Growth</h3>
+        <p data-key="why2d">Decisions based on performance data.</p>
+      </div>
+      <div class="card-premium" style="opacity:1; transform:none; border-color:rgba(212,175,55,0.08);" data-delay="0">
+        <div class="card-icon"><i class="fas fa-trophy"></i></div>
+        <h3 data-key="why3">Exclusive Opportunities</h3>
+        <p data-key="why3d">TikTok campaigns, events, competitions.</p>
+      </div>
+      <div class="card-premium" style="opacity:1; transform:none; border-color:rgba(212,175,55,0.08);" data-delay="0">
+        <div class="card-icon"><i class="fas fa-handshake"></i></div>
+        <h3 data-key="why4">Long-Term Partnership</h3>
+        <p data-key="why4d">Your growth is our growth.</p>
+      </div>
     </div>
   </section>
 
@@ -721,226 +871,120 @@
   // ---- LANGUAGE TRANSLATIONS ----
   const translations = {
     ro: {
-      navGrowth: 'Growth',
-      navJourney: 'Călătorie',
-      navCommunity: 'Comunitate',
-      navApply: 'Aplică',
+      navGrowth: 'Growth', navJourney: 'Călătorie', navCommunity: 'Comunitate', navApply: 'Aplică',
       heroTitle: 'Talentul Tău Are <span class="gold">Potencial.</span><br>Noi Construim Sistemul Din Spatele Succesului Tău.',
       heroSub: 'Live Alchemy este o rețea premium de creatori TikTok LIVE care ajută creatori români ambițioși să crească mai repede prin strategie, training, analiză, campanii și suport dedicat.',
-      btnApply: 'Aplică la Live Alchemy',
-      btnCheck: 'Verifică-ți Performanța LIVE',
-      trust1: '✓ Rețea Oficială Partener TikTok LIVE',
-      trust2: '✓ Sistem de Creștere pentru Creatori',
-      trust3: '✓ Manageri Dedicati',
-      trust4: '✓ Acces Exclusiv la Campanii',
-      glow1: 'creștere creatori',
-      glow2: 'diamante distribuite luna trecută',
+      btnApply: 'Aplică la Live Alchemy', btnCheck: 'Verifică-ți Performanța LIVE',
+      trust1: '✓ Rețea Oficială Partener TikTok LIVE', trust2: '✓ Sistem de Creștere pentru Creatori',
+      trust3: '✓ Manageri Dedicati', trust4: '✓ Acces Exclusiv la Campanii',
+      glow1: 'creștere creatori', glow2: 'diamante distribuite luna trecută',
       glow3: 'Încredere de peste 900 de creatori TikTok la nivel global',
       section2Title: 'Majoritatea Agențiilor Recrutează Creatori. <span class="gold">Noi Îi Dezvoltăm.</span>',
       section2Sub: 'Fără promisiuni false. Strategie reală, suport real.',
-      card1Title: 'Strategie',
-      card1Desc: 'Performanța ta LIVE analizată. Cele mai bune ore, direcție de conținut, psihologia audienței, monetizare.',
-      card2Title: 'Sistem de Creștere',
-      card2Desc: 'Planuri de îmbunătățire LIVE, ghidaj de conținut, strategii de campanii, recenzii de performanță.',
-      card3Title: 'Suport Profesional',
-      card3Desc: 'Echipă reală: manageri creatori, suport tehnic, evenimente, actualizări TikTok.',
-      section3Title: 'Nu Căutăm Pe Toată Lumea.',
-      section3Sub: 'Live Alchemy lucrează cu creatori ambițioși care tratează TikTok LIVE ca pe o oportunitate serioasă.',
-      tag1: '✓ Transmiteți constant',
-      tag2: '✓ Doriți creștere profesională',
-      tag3: '✓ Gata să vă îmbunătățiți',
-      tag4: '✓ Gândiți pe termen lung',
-      tag5: '✓ Construiți un brand personal',
+      card1Title: 'Strategie', card1Desc: 'Performanța ta LIVE analizată. Cele mai bune ore, direcție de conținut, psihologia audienței, monetizare.',
+      card2Title: 'Sistem de Creștere', card2Desc: 'Planuri de îmbunătățire LIVE, ghidaj de conținut, strategii de campanii, recenzii de performanță.',
+      card3Title: 'Suport Profesional', card3Desc: 'Echipă reală: manageri creatori, suport tehnic, evenimente, actualizări TikTok.',
+      section3Title: 'Nu Căutăm Pe Toată Lumea.', section3Sub: 'Live Alchemy lucrează cu creatori ambițioși care tratează TikTok LIVE ca pe o oportunitate serioasă.',
+      tag1: '✓ Transmiteți constant', tag2: '✓ Doriți creștere profesională', tag3: '✓ Gata să vă îmbunătățiți',
+      tag4: '✓ Gândiți pe termen lung', tag5: '✓ Construiți un brand personal',
       section3Btn: 'Verifică Dacă Te Califici',
       journeyTitle: 'De la Creator la <span class="gold">Antreprenor Digital</span>',
-      j1Title: 'Descoperă',
-      j1Desc: 'Analizăm performanța curentă, audiența și potențialul tău de creștere.',
-      j2Title: 'Optimizează',
-      j2Desc: 'Îmbunătățește structura LIVE, retenția, implicarea și monetizarea.',
-      j3Title: 'Scalare',
-      j3Desc: 'Acces la campanii exclusive, competiții și oportunități de creștere.',
-      j4Title: 'Construiește',
-      j4Desc: 'Dezvoltă-ți brandul de creator și stabilește-te ca antreprenor digital.',
+      j1Title: 'Descoperă', j1Desc: 'Analizăm performanța curentă, audiența și potențialul tău de creștere.',
+      j2Title: 'Optimizează', j2Desc: 'Îmbunătățește structura LIVE, retenția, implicarea și monetizarea.',
+      j3Title: 'Scalare', j3Desc: 'Acces la campanii exclusive, competiții și oportunități de creștere.',
+      j4Title: 'Construiește', j4Desc: 'Dezvoltă-ți brandul de creator și stabilește-te ca antreprenor digital.',
       whyTitle: 'De Ce Creatorii de Top Aleg <span class="gold">Live Alchemy</span>',
-      why1: 'Management Dedicat',
-      why1d: 'Persoană reală care îți susține parcursul.',
-      why2: 'Creștere Bazată pe Date',
-      why2d: 'Decizii bazate pe date de performanță.',
-      why3: 'Oportunități Excluzive',
-      why3d: 'Campanii TikTok, evenimente, competiții.',
-      why4: 'Parteneriat pe Termen Lung',
-      why4d: 'Creșterea ta este creșterea noastră.',
+      why1: 'Management Dedicat', why1d: 'Persoană reală care îți susține parcursul.',
+      why2: 'Creștere Bazată pe Date', why2d: 'Decizii bazate pe date de performanță.',
+      why3: 'Oportunități Excluzive', why3d: 'Campanii TikTok, evenimente, competiții.',
+      why4: 'Parteneriat pe Termen Lung', why4d: 'Creșterea ta este creșterea noastră.',
       dashTitle: 'Creșterea Ta. <span class="gold">Măsurată.</span>',
-      dash1l: 'Ore LIVE',
-      dash1t: 'Creștere',
-      dash2l: 'Retenție Audiență',
-      dash2t: 'Îmbunătățire',
-      dash3l: 'Progres Diamante',
-      dash3t: 'Venit',
-      dash4l: 'Scor Implicare',
-      dash4t: 'Comunitate',
+      dash1l: 'Ore LIVE', dash1t: 'Creștere', dash2l: 'Retenție Audiență', dash2t: 'Îmbunătățire',
+      dash3l: 'Progres Diamante', dash3t: 'Venit', dash4l: 'Scor Implicare', dash4t: 'Comunitate',
       dashMsg: 'Creatorii de succes nu ghicesc. Analizează și îmbunătățesc.',
       awardsTitle: 'Recunoscuți pentru <span class="gold">Excelența în Creare</span>',
       awardsSub: 'Construim ecosisteme profesionale pentru creatori la fiecare etapă.',
-      aw1: 'Cea Mai Bună Rețea de Creatori',
-      aw2: 'Inovație în LIVE',
-      aw3: 'Top Partener TikTok',
-      aw4: 'Impact în Comunitate',
+      aw1: 'Cea Mai Bună Rețea de Creatori', aw2: 'Inovație în LIVE', aw3: 'Top Partener TikTok', aw4: 'Impact în Comunitate',
       communityTitle: 'Alătură-te unei Rețele de <span class="gold">Creatori Ambițioși</span>',
       calcTitle: 'Calculează-ți <span class="gold">Scorul de Creștere™</span>',
-      q1: 'Volumul Lunar Curent de Diamante',
-      q2: 'Ore Medii Săptămânale de Streaming LIVE',
-      q3: 'Blocaj Central Algoritmic',
-      opt1: '150K - 500K+ Diamante/lună',
-      opt2: '50K - 150K Diamante/lună',
-      opt3: 'Sub 50K Diamante/lună',
-      opt4: '12 - 25 Ore (Structurat)',
-      opt5: '25+ Ore (Risc Mare de Epuizare)',
-      opt6: 'Sub 12 Ore (Inconsistent)',
-      opt7: 'Retenție Spectatori & Scăderi Bruște',
-      opt8: 'Monotonizare Gifter & Venit Plat',
-      opt9: 'Anxietate Politici & Avertismente Conformitate',
+      q1: 'Volumul Lunar Curent de Diamante', q2: 'Ore Medii Săptămânale de Streaming LIVE', q3: 'Blocaj Central Algoritmic',
+      opt1: '150K - 500K+ Diamante/lună', opt2: '50K - 150K Diamante/lună', opt3: 'Sub 50K Diamante/lună',
+      opt4: '12 - 25 Ore (Structurat)', opt5: '25+ Ore (Risc Mare de Epuizare)', opt6: 'Sub 12 Ore (Inconsistent)',
+      opt7: 'Retenție Spectatori & Scăderi Bruște', opt8: 'Monotonizare Gifter & Venit Plat', opt9: 'Anxietate Politici & Avertismente Conformitate',
       calcBtn: 'Analizează-mi Metricile de Performanță',
-      resultTitle: 'Diagnosticul Matricei Tale de Performanță',
-      resultLabel: 'SCOR INSIGHT CREATOR',
+      resultTitle: 'Diagnosticul Matricei Tale de Performanță', resultLabel: 'SCOR INSIGHT CREATOR',
       resultMsg: 'Analiză completă. Vulnerabilități de stagnare detectate în infrastructura sistemului și buclele de retenție a audienței.',
       resultCta: 'Aplică pentru un Audit GRATUIT de Stream →',
       faqTitle: 'Întrebări Frecvente',
-      faq1q: 'Este gratuit să mă alătur Live Alchemy?',
-      faq1a: 'Da. Înscrierea este gratuită.',
-      faq2q: 'Îmi pierd controlul asupra contului?',
-      faq2a: 'Nu. Contul tău rămâne al tău.',
-      faq3q: 'De ce ar trebui să mă alătur unei agenții?',
-      faq3a: 'O agenție profesionistă oferă suport, strategie de creștere, campanii și oportunități.',
-      faq4q: 'Am nevoie de milioane de urmăritori?',
-      faq4a: 'Nu. Ne concentrăm pe potențial, consistență și ambiție.',
-      faq5q: 'Pot pleca oricând?',
-      faq5a: 'Termenii parteneriatului sunt transparenți—contactați-ne pentru detalii.',
+      faq1q: 'Este gratuit să mă alătur Live Alchemy?', faq1a: 'Da. Înscrierea este gratuită.',
+      faq2q: 'Îmi pierd controlul asupra contului?', faq2a: 'Nu. Contul tău rămâne al tău.',
+      faq3q: 'De ce ar trebui să mă alătur unei agenții?', faq3a: 'O agenție profesionistă oferă suport, strategie de creștere, campanii și oportunități.',
+      faq4q: 'Am nevoie de milioane de urmăritori?', faq4a: 'Nu. Ne concentrăm pe potențial, consistență și ambiție.',
+      faq5q: 'Pot pleca oricând?', faq5a: 'Termenii parteneriatului sunt transparenți—contactați-ne pentru detalii.',
       applyTitle: 'Începe <span class="gold">Evaluarea Ta de Creator</span>',
-      fName: 'Nume Complet',
-      fUser: 'Nume de utilizator TikTok',
-      fFollowers: 'Urmăritori',
-      fViewers: 'Spectatori medii LIVE',
-      fDiamonds: 'Diamante lunare',
-      fExp: 'Experiență în streaming (luni)',
-      fCountry: 'Țara',
-      fWhy: 'De ce vrei să crești?',
-      fBtn: 'Aplică la Live Alchemy',
+      fName: 'Nume Complet', fUser: 'Nume de utilizator TikTok', fFollowers: 'Urmăritori',
+      fViewers: 'Spectatori medii LIVE', fDiamonds: 'Diamante lunare', fExp: 'Experiență în streaming (luni)',
+      fCountry: 'Țara', fWhy: 'De ce vrei să crești?', fBtn: 'Aplică la Live Alchemy',
       footer: '© 2026 Live Alchemy · Ecosistemul premium de creștere pentru creatori din România',
-      footerPrivacy: 'Confidențialitate',
-      footerTerms: 'Termeni',
-      footerContact: 'Contact'
+      footerPrivacy: 'Confidențialitate', footerTerms: 'Termeni', footerContact: 'Contact'
     },
     en: {
-      navGrowth: 'Growth',
-      navJourney: 'Journey',
-      navCommunity: 'Community',
-      navApply: 'Apply',
+      navGrowth: 'Growth', navJourney: 'Journey', navCommunity: 'Community', navApply: 'Apply',
       heroTitle: 'Your Talent Has <span class="gold">Potential.</span><br>We Build The System Behind Your Success.',
       heroSub: 'Live Alchemy is a premium TikTok LIVE creator network helping ambitious Romanian creators grow faster through strategy, training, analytics, campaigns, and dedicated creator support.',
-      btnApply: 'Apply To Join Live Alchemy',
-      btnCheck: 'Check Your LIVE Performance',
-      trust1: '✓ Official TikTok LIVE Partner Network',
-      trust2: '✓ Creator Growth System',
-      trust3: '✓ Dedicated Creator Managers',
-      trust4: '✓ Exclusive Campaign Access',
-      glow1: 'creator growth',
-      glow2: 'diamonds distributed last month',
+      btnApply: 'Apply To Join Live Alchemy', btnCheck: 'Check Your LIVE Performance',
+      trust1: '✓ Official TikTok LIVE Partner Network', trust2: '✓ Creator Growth System',
+      trust3: '✓ Dedicated Creator Managers', trust4: '✓ Exclusive Campaign Access',
+      glow1: 'creator growth', glow2: 'diamonds distributed last month',
       glow3: 'Trusted by over 900 top TikTok creators globally',
       section2Title: 'Most Agencies Recruit Creators. <span class="gold">We Develop Them.</span>',
       section2Sub: 'No empty promises. Real strategy, real support.',
-      card1Title: 'Strategy',
-      card1Desc: 'Your LIVE performance analyzed. Best hours, content direction, audience psychology, monetization.',
-      card2Title: 'Growth System',
-      card2Desc: 'LIVE improvement plans, content guidance, campaign strategies, performance reviews.',
-      card3Title: 'Professional Support',
-      card3Desc: 'Real team: creator managers, technical support, events, TikTok updates.',
-      section3Title: 'We Are Not Looking For Everyone.',
-      section3Sub: 'Live Alchemy works with ambitious creators who treat TikTok LIVE as a serious opportunity.',
-      tag1: '✓ Already streaming consistently',
-      tag2: '✓ Want professional growth',
-      tag3: '✓ Ready to improve',
-      tag4: '✓ Think long-term',
-      tag5: '✓ Build a personal brand',
+      card1Title: 'Strategy', card1Desc: 'Your LIVE performance analyzed. Best hours, content direction, audience psychology, monetization.',
+      card2Title: 'Growth System', card2Desc: 'LIVE improvement plans, content guidance, campaign strategies, performance reviews.',
+      card3Title: 'Professional Support', card3Desc: 'Real team: creator managers, technical support, events, TikTok updates.',
+      section3Title: 'We Are Not Looking For Everyone.', section3Sub: 'Live Alchemy works with ambitious creators who treat TikTok LIVE as a serious opportunity.',
+      tag1: '✓ Already streaming consistently', tag2: '✓ Want professional growth', tag3: '✓ Ready to improve',
+      tag4: '✓ Think long-term', tag5: '✓ Build a personal brand',
       section3Btn: 'Check If You Qualify',
       journeyTitle: 'From Creator To <span class="gold">Digital Entrepreneur</span>',
-      j1Title: 'Discover',
-      j1Desc: 'We analyze your current performance, audience, and growth potential.',
-      j2Title: 'Optimize',
-      j2Desc: 'Improve LIVE structure, audience retention, engagement, and monetization.',
-      j3Title: 'Scale',
-      j3Desc: 'Access exclusive campaigns, competitions, and growth opportunities.',
-      j4Title: 'Build',
-      j4Desc: 'Develop your creator brand and establish yourself as a digital entrepreneur.',
+      j1Title: 'Discover', j1Desc: 'We analyze your current performance, audience, and growth potential.',
+      j2Title: 'Optimize', j2Desc: 'Improve LIVE structure, audience retention, engagement, and monetization.',
+      j3Title: 'Scale', j3Desc: 'Access exclusive campaigns, competitions, and growth opportunities.',
+      j4Title: 'Build', j4Desc: 'Develop your creator brand and establish yourself as a digital entrepreneur.',
       whyTitle: 'Why Top Creators Choose <span class="gold">Live Alchemy</span>',
-      why1: 'Dedicated Creator Management',
-      why1d: 'Real person supporting your journey.',
-      why2: 'Data Driven Growth',
-      why2d: 'Decisions based on performance data.',
-      why3: 'Exclusive Opportunities',
-      why3d: 'TikTok campaigns, events, competitions.',
-      why4: 'Long-Term Partnership',
-      why4d: 'Your growth is our growth.',
+      why1: 'Dedicated Creator Management', why1d: 'Real person supporting your journey.',
+      why2: 'Data Driven Growth', why2d: 'Decisions based on performance data.',
+      why3: 'Exclusive Opportunities', why3d: 'TikTok campaigns, events, competitions.',
+      why4: 'Long-Term Partnership', why4d: 'Your growth is our growth.',
       dashTitle: 'Your Growth. <span class="gold">Measured.</span>',
-      dash1l: 'LIVE Hours',
-      dash1t: 'Growth',
-      dash2l: 'Audience Retention',
-      dash2t: 'Improvement',
-      dash3l: 'Diamond Progress',
-      dash3t: 'Revenue',
-      dash4l: 'Engagement Score',
-      dash4t: 'Community',
+      dash1l: 'LIVE Hours', dash1t: 'Growth', dash2l: 'Audience Retention', dash2t: 'Improvement',
+      dash3l: 'Diamond Progress', dash3t: 'Revenue', dash4l: 'Engagement Score', dash4t: 'Community',
       dashMsg: "Successful creators don't guess. They analyze and improve.",
       awardsTitle: 'Recognized For <span class="gold">Creator Excellence</span>',
       awardsSub: 'Building professional creator ecosystems at every stage.',
-      aw1: 'Best Creator Network',
-      aw2: 'Innovation in LIVE',
-      aw3: 'Top TikTok Partner',
-      aw4: 'Community Impact',
+      aw1: 'Best Creator Network', aw2: 'Innovation in LIVE', aw3: 'Top TikTok Partner', aw4: 'Community Impact',
       communityTitle: 'Join A Network Of <span class="gold">Ambitious Creators</span>',
       calcTitle: 'Calculate Your <span class="gold">Creator Growth Score™</span>',
-      q1: 'Current Monthly Diamond Volume',
-      q2: 'Average Weekly Live Streaming Hours',
-      q3: 'Primary Algorithmic Core Bottleneck',
-      opt1: '150K - 500K+ Diamonds/mo',
-      opt2: '50K - 150K Diamonds/mo',
-      opt3: 'Under 50K Diamonds/mo',
-      opt4: '12 - 25 Hours (Structured)',
-      opt5: '25+ Hours (High Burnout Risk)',
-      opt6: 'Under 12 Hours (Inconsistent)',
-      opt7: 'Viewer Retention & Sudden View Drops',
-      opt8: 'Gifter Monotonization & Flat Income',
-      opt9: 'Policy Anxiety & Compliance Warnings',
+      q1: 'Current Monthly Diamond Volume', q2: 'Average Weekly Live Streaming Hours', q3: 'Primary Algorithmic Core Bottleneck',
+      opt1: '150K - 500K+ Diamonds/mo', opt2: '50K - 150K Diamonds/mo', opt3: 'Under 50K Diamonds/mo',
+      opt4: '12 - 25 Hours (Structured)', opt5: '25+ Hours (High Burnout Risk)', opt6: 'Under 12 Hours (Inconsistent)',
+      opt7: 'Viewer Retention & Sudden View Drops', opt8: 'Gifter Monotonization & Flat Income', opt9: 'Policy Anxiety & Compliance Warnings',
       calcBtn: 'Analyze My Performance Metrics',
-      resultTitle: 'Your Performance Matrix Diagnostics',
-      resultLabel: 'CREATOR INSIGHT SCORE',
+      resultTitle: 'Your Performance Matrix Diagnostics', resultLabel: 'CREATOR INSIGHT SCORE',
       resultMsg: 'Analysis complete. Stagnation vulnerabilities detected in system infrastructure and audience retention loops.',
       resultCta: 'Apply For A Free Stream Audit & Review →',
       faqTitle: 'Frequently Asked Questions',
-      faq1q: 'Is joining Live Alchemy free?',
-      faq1a: 'Yes. Joining is free.',
-      faq2q: 'Do I lose my account control?',
-      faq2a: 'No. Your account remains yours.',
-      faq3q: 'Why should I join an agency?',
-      faq3a: 'A professional agency provides support, growth strategy, campaigns, and opportunities.',
-      faq4q: 'Do I need millions of followers?',
-      faq4a: 'No. We focus on potential, consistency, and ambition.',
-      faq5q: 'Can I leave anytime?',
-      faq5a: 'Partnership terms are transparent—contact us for details.',
+      faq1q: 'Is joining Live Alchemy free?', faq1a: 'Yes. Joining is free.',
+      faq2q: 'Do I lose my account control?', faq2a: 'No. Your account remains yours.',
+      faq3q: 'Why should I join an agency?', faq3a: 'A professional agency provides support, growth strategy, campaigns, and opportunities.',
+      faq4q: 'Do I need millions of followers?', faq4a: 'No. We focus on potential, consistency, and ambition.',
+      faq5q: 'Can I leave anytime?', faq5a: 'Partnership terms are transparent—contact us for details.',
       applyTitle: 'Start Your <span class="gold">Creator Evaluation</span>',
-      fName: 'Full Name',
-      fUser: 'TikTok Username',
-      fFollowers: 'Followers',
-      fViewers: 'Average LIVE viewers',
-      fDiamonds: 'Monthly diamonds',
-      fExp: 'Streaming experience (months)',
-      fCountry: 'Country',
-      fWhy: 'Why do you want to grow?',
-      fBtn: 'Apply For Live Alchemy',
+      fName: 'Full Name', fUser: 'TikTok Username', fFollowers: 'Followers',
+      fViewers: 'Average LIVE viewers', fDiamonds: 'Monthly diamonds', fExp: 'Streaming experience (months)',
+      fCountry: 'Country', fWhy: 'Why do you want to grow?', fBtn: 'Apply For Live Alchemy',
       footer: '© 2026 Live Alchemy · Romania\'s premium creator growth ecosystem',
-      footerPrivacy: 'Privacy',
-      footerTerms: 'Terms',
-      footerContact: 'Contact'
+      footerPrivacy: 'Privacy', footerTerms: 'Terms', footerContact: 'Contact'
     }
   };
 
@@ -949,12 +993,9 @@
   function setLanguage(lang) {
     currentLang = lang;
     const t = translations[lang];
-    
-    // Update all elements with data-key attribute
     document.querySelectorAll('[data-key]').forEach(el => {
       const key = el.getAttribute('data-key');
       if (t[key] !== undefined) {
-        // Check if HTML contains span or other tags
         if (key === 'heroTitle' || key === 'section2Title' || key === 'journeyTitle' || 
             key === 'whyTitle' || key === 'dashTitle' || key === 'awardsTitle' || 
             key === 'communityTitle' || key === 'calcTitle' || key === 'applyTitle') {
@@ -964,8 +1005,6 @@
         }
       }
     });
-
-    // Update language buttons
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.lang === lang);
     });
@@ -1007,7 +1046,28 @@
     return false;
   }
 
-  // ---- SCROLL-TRIGGERED JOURNEY (PREMIUM) ----
+  // ---- PREMIUM CARD REVEAL (Intersection Observer) ----
+  const premiumCards = document.querySelectorAll('.card-premium');
+  const cardObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const card = entry.target;
+        const delay = parseInt(card.getAttribute('data-delay')) || 0;
+        setTimeout(() => {
+          card.classList.add('revealed');
+        }, delay);
+        cardObserver.unobserve(card);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  premiumCards.forEach(card => {
+    if (!card.classList.contains('revealed')) {
+      cardObserver.observe(card);
+    }
+  });
+
+  // ---- JOURNEY SCROLL TRIGGER ----
   const stepItems = document.querySelectorAll('.step-item');
   const journeyTrigger = document.getElementById('journeyTrigger');
   let revealedCount = 0;
@@ -1021,9 +1081,7 @@
         if (nextIndex < stepItems.length) {
           stepItems[nextIndex].classList.add('revealed');
           revealedCount++;
-          setTimeout(() => {
-            isRevealing = false;
-          }, 600);
+          setTimeout(() => { isRevealing = false; }, 600);
         }
       }
     });
@@ -1046,9 +1104,7 @@
             const nextIndex = revealedCount;
             stepItems[nextIndex].classList.add('revealed');
             revealedCount++;
-            setTimeout(() => {
-              isRevealing = false;
-            }, 600);
+            setTimeout(() => { isRevealing = false; }, 600);
           }
         }
       }
@@ -1064,9 +1120,7 @@
           isRevealing = true;
           stepItems[0].classList.add('revealed');
           revealedCount++;
-          setTimeout(() => {
-            isRevealing = false;
-          }, 600);
+          setTimeout(() => { isRevealing = false; }, 600);
         }
       }
     }, 400);
@@ -1078,11 +1132,10 @@
     entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
   }, { threshold: 0.2 });
   faders.forEach(el => observer.observe(el));
-  document.querySelectorAll('.card, .dash-item, .award-card, .community-item, .faq-item').forEach(el => {
+  document.querySelectorAll('.dash-item, .award-card, .community-item, .faq-item').forEach(el => {
     if (!el.classList.contains('fade-up')) { el.classList.add('fade-up'); observer.observe(el); }
   });
 
-  // Set default language
   setLanguage('ro');
 </script>
 </body>
