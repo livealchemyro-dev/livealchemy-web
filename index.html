@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Live Alchemy · Premium TikTok LIVE Creator Ecosystem</title>
-  <meta name="description" content="Romania's premium TikTok LIVE creator growth ecosystem. Join elite creators and transform your LIVE streaming into a professional digital career.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
@@ -239,31 +238,44 @@
       overflow: hidden;
       margin-top: 30px;
     }
-    .testimonial-carousel {
+    .testimonial-carousel-track {
       display: flex;
-      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
       gap: 20px;
       padding: 10px 0;
+      will-change: transform;
     }
     .testimonial-card {
       flex: 0 0 calc(33.333% - 14px);
-      min-width: 280px;
+      min-width: 0;
       background: rgba(255,255,255,0.02);
       border: 1px solid rgba(255,255,255,0.04);
       border-radius: 24px;
       padding: 28px 24px;
       transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-      opacity: 0.6;
+      opacity: 0.5;
       transform: scale(0.92);
       pointer-events: none;
+      position: relative;
     }
     .testimonial-card.active {
       opacity: 1;
       transform: scale(1);
-      border-color: rgba(212,175,55,0.15);
-      background: rgba(255,255,255,0.04);
+      border-color: rgba(212,175,55,0.2);
+      background: rgba(255,255,255,0.05);
       pointer-events: auto;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(212,175,55,0.03);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(212,175,55,0.04);
+    }
+    .testimonial-card.active::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(212,175,55,0.04), transparent 50%);
+      pointer-events: none;
     }
     .testimonial-card .t-avatar {
       width: 64px;
@@ -273,6 +285,8 @@
       margin-bottom: 14px;
       border: 2px solid rgba(212,175,55,0.15);
       background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(76,43,107,0.1));
+      position: relative;
+      z-index: 1;
     }
     .testimonial-card .t-avatar img {
       width: 100%;
@@ -283,11 +297,15 @@
       font-weight: 700;
       font-size: 1.05rem;
       margin-bottom: 1px;
+      position: relative;
+      z-index: 1;
     }
     .testimonial-card .t-role {
       font-size: 0.75rem;
       color: rgba(255,255,255,0.3);
       margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
     }
     .testimonial-card .t-stats {
       display: flex;
@@ -296,6 +314,8 @@
       padding: 10px 0;
       border-top: 1px solid rgba(255,255,255,0.04);
       border-bottom: 1px solid rgba(255,255,255,0.04);
+      position: relative;
+      z-index: 1;
     }
     .testimonial-card .t-stat {
       text-align: center;
@@ -318,6 +338,8 @@
       line-height: 1.6;
       font-style: italic;
       margin-top: 6px;
+      position: relative;
+      z-index: 1;
     }
 
     /* Carousel Controls */
@@ -815,7 +837,12 @@
     }
     .cta-link:hover { background: #2a2a2a; }
 
-    @media (max-width: 900px) {
+    @media (max-width: 1024px) {
+      .testimonial-card {
+        flex: 0 0 calc(50% - 10px);
+      }
+    }
+    @media (max-width: 768px) {
       .hero h1 { font-size: 2.8rem; }
       .step-item { flex-direction: column !important; text-align: center !important; padding: 20px; }
       .step-item .step-content { text-align: center !important; }
@@ -825,10 +852,10 @@
       .switch-grid { grid-template-columns: 1fr; }
       .why-grid { grid-template-columns: 1fr; }
       .testimonial-card {
-        flex: 0 0 calc(100% - 20px);
+        flex: 0 0 calc(100% - 0px);
         min-width: 0;
       }
-      .testimonial-carousel {
+      .testimonial-carousel-track {
         gap: 12px;
       }
     }
@@ -915,9 +942,9 @@
       <p data-key="trustSub">See how Romanian creators transformed their LIVE careers with Live Alchemy.</p>
     </div>
     <div class="testimonial-carousel-wrapper">
-      <div class="testimonial-carousel" id="testimonialCarousel">
+      <div class="testimonial-carousel-track" id="testimonialCarousel">
         <!-- Card 1 -->
-        <div class="testimonial-card" data-index="0">
+        <div class="testimonial-card active" data-index="0">
           <div class="t-avatar"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Andrei M."></div>
           <div class="t-name">Andrei M.</div>
           <div class="t-role">TikTok LIVE · Bucharest</div>
@@ -1293,56 +1320,97 @@
 
 <script>
   // ---- CAROUSEL ----
-  const carousel = document.getElementById('testimonialCarousel');
-  const cards = carousel.querySelectorAll('.testimonial-card');
+  const track = document.getElementById('testimonialCarousel');
+  const cards = track.querySelectorAll('.testimonial-card');
   const totalCards = cards.length;
   let currentIndex = 0;
   let autoPlayInterval = null;
   const autoPlayDelay = 4000;
+  let cardsPerView = 3;
+  let isTransitioning = false;
+
+  // Calculate cards per view based on screen width
+  function getCardsPerView() {
+    if (window.innerWidth < 768) return 1;
+    if (window.innerWidth < 1024) return 2;
+    return 3;
+  }
 
   // Create dots
   const dotsContainer = document.getElementById('carouselDots');
-  for (let i = 0; i < totalCards; i++) {
-    const dot = document.createElement('button');
-    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-    dot.dataset.index = i;
-    dot.addEventListener('click', () => goToSlide(i));
-    dotsContainer.appendChild(dot);
+  function createDots() {
+    dotsContainer.innerHTML = '';
+    const totalDots = Math.ceil(totalCards / cardsPerView);
+    for (let i = 0; i < totalDots; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.dataset.index = i;
+      dot.addEventListener('click', () => goToSlide(i * cardsPerView));
+      dotsContainer.appendChild(dot);
+    }
   }
 
   function updateCarousel() {
+    if (isTransitioning) return;
+    
     const cardWidth = cards[0].offsetWidth + 20; // width + gap
     const offset = currentIndex * cardWidth;
-    carousel.style.transform = `translateX(-${offset}px)`;
+    track.style.transform = `translateX(-${offset}px)`;
     
     // Update active states
     cards.forEach((card, index) => {
-      card.classList.toggle('active', index === currentIndex);
+      const isActive = index >= currentIndex && index < currentIndex + cardsPerView;
+      card.classList.toggle('active', isActive);
     });
     
     // Update dots
+    const totalDots = Math.ceil(totalCards / cardsPerView);
+    const dotIndex = Math.floor(currentIndex / cardsPerView);
     dotsContainer.querySelectorAll('.carousel-dot').forEach((dot, index) => {
-      dot.classList.toggle('active', index === currentIndex);
+      dot.classList.toggle('active', index === dotIndex);
     });
     
     // Update counter
-    document.getElementById('carouselCounter').textContent = `${currentIndex + 1} / ${totalCards}`;
+    const start = currentIndex + 1;
+    const end = Math.min(currentIndex + cardsPerView, totalCards);
+    document.getElementById('carouselCounter').textContent = `${start} - ${end} / ${totalCards}`;
   }
 
   function goToSlide(index) {
-    if (index < 0) index = totalCards - 1;
-    if (index >= totalCards) index = 0;
+    if (isTransitioning) return;
+    
+    // Ensure index is within bounds
+    const maxIndex = Math.max(0, totalCards - cardsPerView);
+    if (index < 0) index = maxIndex;
+    if (index > maxIndex) index = 0;
+    
+    // Round to nearest valid position
+    index = Math.round(index / cardsPerView) * cardsPerView;
+    if (index > maxIndex) index = maxIndex;
+    
     currentIndex = index;
+    isTransitioning = true;
     updateCarousel();
+    setTimeout(() => {
+      isTransitioning = false;
+    }, 700);
     resetAutoPlay();
   }
 
   function nextSlide() {
-    goToSlide(currentIndex + 1);
+    const maxIndex = Math.max(0, totalCards - cardsPerView);
+    let nextIndex = currentIndex + cardsPerView;
+    if (nextIndex > maxIndex) nextIndex = 0;
+    goToSlide(nextIndex);
   }
 
   function prevSlide() {
-    goToSlide(currentIndex - 1);
+    let prevIndex = currentIndex - cardsPerView;
+    if (prevIndex < 0) {
+      const maxIndex = Math.max(0, totalCards - cardsPerView);
+      prevIndex = maxIndex;
+    }
+    goToSlide(prevIndex);
   }
 
   function resetAutoPlay() {
@@ -1395,7 +1463,27 @@
     }
   });
 
+  // Handle resize
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      const newCardsPerView = getCardsPerView();
+      if (newCardsPerView !== cardsPerView) {
+        cardsPerView = newCardsPerView;
+        createDots();
+        // Reset to first slide
+        currentIndex = 0;
+        updateCarousel();
+        // Update counter
+        document.getElementById('carouselCounter').textContent = `1 - ${Math.min(cardsPerView, totalCards)} / ${totalCards}`;
+      }
+    }, 250);
+  });
+
   // Initialize
+  cardsPerView = getCardsPerView();
+  createDots();
   updateCarousel();
   startAutoPlay();
 
