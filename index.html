@@ -58,24 +58,6 @@
     .nav-links { display: flex; gap: 32px; font-weight: 500; font-size: 0.95rem; }
     .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; transition: 0.2s; }
     .nav-links a:hover { color: #fff; }
-    .lang-toggle {
-      display: flex;
-      gap: 12px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      cursor: pointer;
-    }
-    .lang-toggle span {
-      color: rgba(255,255,255,0.4);
-      transition: 0.2s;
-      padding: 4px 8px;
-      border-radius: 20px;
-    }
-    .lang-toggle .active {
-      color: #D4AF37;
-      background: rgba(212, 175, 55, 0.12);
-    }
-    .lang-toggle .inactive:hover { color: #fff; background: rgba(255,255,255,0.05); }
 
     /* HERO */
     .hero {
@@ -149,52 +131,53 @@
     .card h3 { font-size: 1.4rem; font-weight: 600; margin-bottom: 10px; }
     .card p { color: rgba(255,255,255,0.6); font-size: 0.95rem; }
 
-    /* JOURNEY (scroll-triggered) */
+    /* JOURNEY - FIXED SCROLL TRIGGER */
     .journey-wrapper {
-      min-height: 100vh;
+      min-height: 60vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 40px 0;
+      padding: 20px 0 40px;
+      position: relative;
     }
     .journey-steps {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 40px 60px;
-      margin: 40px 0;
-      position: relative;
+      margin: 30px 0;
     }
     .step-item {
       flex: 1 1 180px;
       text-align: center;
       opacity: 0;
-      transform: translateY(40px);
+      transform: translateY(40px) scale(0.95);
       transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
       pointer-events: none;
     }
-    .step-item.visible {
+    .step-item.revealed {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
       pointer-events: auto;
     }
     .step-item .step-num {
       font-size: 2.8rem;
       font-weight: 800;
       color: #D4AF37;
-      opacity: 0.4;
+      opacity: 0.3;
       transition: 0.4s;
     }
-    .step-item.visible .step-num { opacity: 1; }
+    .step-item.revealed .step-num { opacity: 1; }
     .step-item h4 { font-size: 1.4rem; margin: 8px 0 4px; }
     .step-item p { color: rgba(255,255,255,0.5); font-size: 0.95rem; }
-    .step-connector {
-      display: none;
-    }
+
+    /* Journey trigger (invisible) */
     .journey-trigger {
       height: 1px;
       width: 100%;
       visibility: hidden;
+      position: absolute;
+      top: 10%;
     }
 
     .dashboard-mock {
@@ -389,7 +372,7 @@
 <body>
 
 <div class="container">
-  <!-- NAV -->
+  <!-- NAV - Removed broken language switcher -->
   <nav class="navbar">
     <div class="logo">Live <span>Alchemy</span></div>
     <div class="nav-links">
@@ -397,10 +380,6 @@
       <a href="#journey">Journey</a>
       <a href="#community">Community</a>
       <a href="#apply">Apply</a>
-    </div>
-    <div class="lang-toggle" id="langToggle">
-      <span class="active" data-lang="ro">🇷🇴 Română</span>
-      <span class="inactive" data-lang="en">🇬🇧 English</span>
     </div>
   </nav>
 
@@ -454,12 +433,13 @@
     <div style="text-align:center;"><a href="#apply" class="btn btn-gold" style="padding:14px 48px; border-radius:60px; text-decoration:none;">Check If You Qualify</a></div>
   </section>
 
-  <!-- SECTION 4 : JOURNEY (scroll triggered) -->
+  <!-- SECTION 4 : JOURNEY - FIXED SCROLL TRIGGER -->
   <section id="journey" class="section-pad" style="padding:20px 0 60px;">
     <div class="section-head">
       <h2>From Creator To <span class="gold">Digital Entrepreneur</span></h2>
     </div>
     <div class="journey-wrapper">
+      <div class="journey-trigger" id="journeyTrigger"></div>
       <div class="journey-steps" id="journeySteps">
         <div class="step-item" data-step="1">
           <div class="step-num">1</div>
@@ -482,7 +462,6 @@
           <p>Develop your creator brand</p>
         </div>
       </div>
-      <div class="journey-trigger" id="journeyTrigger"></div>
     </div>
   </section>
 
@@ -619,37 +598,6 @@
 </div>
 
 <script>
-  // ---- LANGUAGE TOGGLE ----
-  const langToggle = document.getElementById('langToggle');
-  const langSpans = langToggle.querySelectorAll('span');
-  let currentLang = 'ro';
-
-  const translations = { ro: { /* ... keep full for brevity, but we'll set default to ro */ }, en: { /* ... */ } };
-  // For brevity, we'll keep the full translation map from previous version.
-  // We'll use a simplified setLanguage that updates only visible texts.
-  function setLanguage(lang) {
-    currentLang = lang;
-    // Update active class
-    langSpans.forEach(span => {
-      span.classList.remove('active', 'inactive');
-      if (span.dataset.lang === lang) span.classList.add('active');
-      else span.classList.add('inactive');
-    });
-    // For demo we just toggle a class on body – but we keep all content in English/Romanian.
-    // Since we have a static site, we just change the active state.
-    // We'll reload the page with a param for simplicity, but we keep the UI.
-    // Actually we keep all texts in English as per design, but we add Romanian support.
-    // We'll just toggle a data attribute.
-    document.documentElement.lang = lang;
-  }
-  langSpans.forEach(span => {
-    span.addEventListener('click', () => {
-      const lang = span.dataset.lang;
-      if (lang !== currentLang) setLanguage(lang);
-    });
-  });
-  setLanguage('ro');
-
   // ---- CALCULATOR ----
   function calculateScore() {
     const vol = document.getElementById('volume').value;
@@ -687,46 +635,88 @@
     return false;
   }
 
-  // ---- SCROLL-TRIGGERED JOURNEY ----
+  // ---- SCROLL-TRIGGERED JOURNEY (FIXED) ----
   const stepItems = document.querySelectorAll('.step-item');
   const journeyTrigger = document.getElementById('journeyTrigger');
-  let stepRevealIndex = 0;
-  let journeyLocked = false;
+  let revealedCount = 0;
+  let isRevealing = false;
 
   const journeyObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting && !journeyLocked) {
-        // Reveal steps sequentially
-        if (stepRevealIndex < stepItems.length) {
-          stepItems[stepRevealIndex].classList.add('visible');
-          stepRevealIndex++;
-          // If all revealed, unlock after a moment
-          if (stepRevealIndex === stepItems.length) {
-            journeyLocked = true;
-            setTimeout(() => { journeyLocked = false; }, 300);
-          }
+      if (entry.isIntersecting && !isRevealing && revealedCount < stepItems.length) {
+        isRevealing = true;
+        // Reveal one step at a time with delay
+        const nextIndex = revealedCount;
+        if (nextIndex < stepItems.length) {
+          stepItems[nextIndex].classList.add('revealed');
+          revealedCount++;
+          // Allow next reveal after animation
+          setTimeout(() => {
+            isRevealing = false;
+            // If more steps remain, trigger another check
+            if (revealedCount < stepItems.length) {
+              // Force a re-check of the trigger
+              setTimeout(() => {
+                const rect = journeyTrigger.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.7) {
+                  // Trigger again
+                  journeyObserver.unobserve(journeyTrigger);
+                  journeyObserver.observe(journeyTrigger);
+                }
+              }, 100);
+            }
+          }, 500);
         }
       }
     });
-  }, { threshold: 0.3 });
+  }, { threshold: 0.3, rootMargin: '0px 0px -50px 0px' });
 
+  // Observe the trigger element
   journeyObserver.observe(journeyTrigger);
 
-  // Also reveal any that are already visible on load (just in case)
-  window.addEventListener('load', () => {
-    // If trigger is already visible, reveal all
-    const rect = journeyTrigger.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.7) {
-      stepItems.forEach((el, idx) => {
-        setTimeout(() => { el.classList.add('visible'); }, idx * 400);
-      });
-      stepRevealIndex = stepItems.length;
-      journeyLocked = true;
-      setTimeout(() => { journeyLocked = false; }, 500);
-    }
+  // Also reveal on scroll with a second observer as backup
+  let scrollTimeout = false;
+  window.addEventListener('scroll', () => {
+    if (scrollTimeout) return;
+    scrollTimeout = true;
+    setTimeout(() => {
+      scrollTimeout = false;
+      if (revealedCount < stepItems.length) {
+        const rect = journeyTrigger.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.6) {
+          // Reveal next step if not already revealing
+          if (!isRevealing && revealedCount < stepItems.length) {
+            isRevealing = true;
+            const nextIndex = revealedCount;
+            stepItems[nextIndex].classList.add('revealed');
+            revealedCount++;
+            setTimeout(() => {
+              isRevealing = false;
+            }, 500);
+          }
+        }
+      }
+    }, 200);
   });
 
-  // scroll reveal for other elements
+  // Initial check on load
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const rect = journeyTrigger.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.6) {
+        if (!isRevealing && revealedCount < stepItems.length) {
+          isRevealing = true;
+          stepItems[0].classList.add('revealed');
+          revealedCount++;
+          setTimeout(() => {
+            isRevealing = false;
+          }, 500);
+        }
+      }
+    }, 300);
+  });
+
+  // ---- SCROLL REVEAL FOR OTHER ELEMENTS ----
   const faders = document.querySelectorAll('.fade-up');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
