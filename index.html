@@ -228,7 +228,7 @@
       line-height: 1.6;
     }
 
-    /* TRUST SECTION - FLAT GRID (NO ANIMATION) */
+    /* TRUST SECTION - STAGGERED GRID ANIMATION */
     .trust-section {
       padding: 40px 0 60px;
     }
@@ -249,14 +249,36 @@
       border: 1px solid rgba(255,255,255,0.06);
       border-radius: 24px;
       padding: 24px 20px;
-      transition: all 0.3s ease;
       position: relative;
+      
+      /* Initial state before scroll reveal */
+      opacity: 0;
+      transform: translateY(30px) scale(0.98);
+      
+      /* Smooth cubic bezier entry curve paired with prompt response timings on active hovers */
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), 
+                  transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), 
+                  border-color 0.3s ease, 
+                  background 0.3s ease, 
+                  box-shadow 0.3s ease;
     }
-    .trust-card:hover {
-      border-color: rgba(212,175,55,0.2);
-      transform: translateY(-4px);
+    
+    /* Staggered load offsets based on row position */
+    .trust-card:nth-child(4n+1) { transition-delay: 0.05s; }
+    .trust-card:nth-child(4n+2) { transition-delay: 0.15s; }
+    .trust-card:nth-child(4n+3) { transition-delay: 0.25s; }
+    .trust-card:nth-child(4n+4) { transition-delay: 0.35s; }
+
+    .trust-card.revealed {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    
+    .trust-card.revealed:hover {
+      border-color: rgba(212,175,55,0.25);
+      transform: translateY(-6px);
       background: rgba(255,255,255,0.04);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
     }
     .trust-card .avatar {
       width: 56px;
@@ -849,10 +871,12 @@
         <h4 data-key="elite1">Growth Strategy</h4>
         <p data-key="elite1d">Personal roadmap based on your goals and performance.</p>
       </div>
-      <div class="elite-card">
-        <span class="elite-icon"><i class="fas fa-chart-bar"></i></span>
-        <h4 data-key="elite2">Performance System</h4>
-        <p data-key="elite2d">Analytics, optimization, and improvement plans.</p>
+      <div class="elite-grid">
+        <div class="elite-card">
+          <span class="elite-icon"><i class="fas fa-chart-bar"></i></span>
+          <h4 data-key="elite2">Performance System</h4>
+          <p data-key="elite2d">Analytics, optimization, and improvement plans.</p>
+        </div>
       </div>
       <div class="elite-card">
         <span class="elite-icon"><i class="fas fa-crown"></i></span>
@@ -862,7 +886,7 @@
     </div>
   </section>
 
-  <!-- SECTION 2: TRUST & TESTIMONIALS - FLAT GRID (NO ANIMATION) -->
+  <!-- SECTION 2: TRUST & TESTIMONIALS - ANIMATED STAGGERED GRID -->
   <section id="trust" class="trust-section">
     <div class="section-head">
       <h2 data-key="trustTitle">Real Growth. Real Creators. <span class="gold">Real Results.</span></h2>
@@ -1064,7 +1088,7 @@
   <!-- SECTION 6: CREATOR JOURNEY -->
   <section id="journey" class="section-pad" style="padding:20px 0 60px;">
     <div class="section-head">
-      <h2 data-key="journeyTitle">From Creator To <span class="gold">Digital Entrepreneur</span></h2>
+      <h2 data-key="journeyTitle">De la Creator la <span class="gold">Digital Entrepreneur</span></h2>
     </div>
     <div class="journey-wrapper">
       <div class="journey-trigger" id="journeyTrigger"></div>
@@ -1292,7 +1316,7 @@
       q2: 'Ore Săptămânale de Streaming',
       q3: 'Provocarea Principală de Creștere',
       opt1: '150K - 500K+ Diamante/lună',
-      opt2: '50K - 150K Diamante/lună',
+      opt2: '50K - 150K Diamonds/lună',
       opt3: 'Sub 50K Diamante/lună',
       opt4: '12 - 25 Ore (Structurat)',
       opt5: '25+ Ore (Risc de Epuizare)',
@@ -1347,7 +1371,7 @@
       recog3: 'Top TikTok Partner',
       whyTitle: 'Why Successful Creators Choose <span class="gold">Live Alchemy</span>',
       why1: 'Personal Creator Manager',
-      why1d: 'A dedicated person who understands your goals.',
+      why1d: 'O dedicated person who understands your goals.',
       why2: 'Growth Strategy',
       why2d: 'Not random advice. A structured improvement system.',
       why3: 'Analytics & Optimization',
@@ -1410,6 +1434,7 @@
       fGoal1: 'Increase revenue',
       fGoal2: 'Grow audience',
       fGoal3: 'Improve engagement',
+      fGoal4: 'Build personal brand',
       fGoal4: 'Build personal brand',
       fWhy: 'Why do you want to join Live Alchemy?',
       fBtn: 'Apply For Private Partnership',
@@ -1492,6 +1517,18 @@
     });
   }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
   eliteCards.forEach(el => eliteObserver.observe(el));
+
+  // ---- TRUST CARDS REVEAL ----
+  const trustCards = document.querySelectorAll('.trust-card');
+  const trustObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        trustObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.10, rootMargin: '0px 0px -30px 0px' });
+  trustCards.forEach(el => trustObserver.observe(el));
 
   // ---- RECOGNITION REVEAL ----
   const recogItems = document.querySelectorAll('.recognition-item');
