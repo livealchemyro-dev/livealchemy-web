@@ -228,7 +228,7 @@
       line-height: 1.6;
     }
 
-    /* TRUST SECTION - FIXED CAROUSEL */
+    /* TRUST SECTION - NEW SIMPLIFIED CAROUSEL */
     .trust-section {
       padding: 40px 0 60px;
       overflow: hidden;
@@ -238,14 +238,12 @@
       width: 100%;
       overflow: hidden;
       margin-top: 30px;
-      padding: 10px 0;
     }
     .testimonial-carousel-track {
       display: flex;
       gap: 20px;
       transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
       will-change: transform;
-      padding: 5px 2px;
     }
     .testimonial-card {
       flex: 0 0 calc(33.333% - 14px);
@@ -255,7 +253,7 @@
       border-radius: 24px;
       padding: 28px 24px;
       transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-      opacity: 0.35;
+      opacity: 0.4;
       transform: scale(0.92);
       pointer-events: none;
       position: relative;
@@ -979,7 +977,7 @@
     </div>
   </section>
 
-  <!-- SECTION 2: TRUST & TESTIMONIALS - FIXED CAROUSEL -->
+  <!-- SECTION 2: TRUST & TESTIMONIALS - REBUILT CAROUSEL -->
   <section id="trust" class="trust-section">
     <div class="section-head">
       <h2 data-key="trustTitle">Real Growth. Real Creators. <span class="gold">Real Results.</span></h2>
@@ -1353,16 +1351,17 @@
 </div>
 
 <script>
-  // ---- FIXED CAROUSEL - SIMPLE AND RELIABLE ----
+  // ---- REBUILT CAROUSEL - FIXED ----
   (function() {
     const track = document.getElementById('testimonialCarousel');
     const cards = track.querySelectorAll('.testimonial-card');
     const totalCards = cards.length;
-    let currentSlide = 0;
+    let currentIndex = 0;
     let autoPlayInterval = null;
     const autoPlayDelay = 4000;
-    let isTransitioning = false;
     let cardsPerView = 3;
+    let isTransitioning = false;
+    let isInitialized = false;
 
     // Calculate cards per view based on screen width
     function getCardsPerView() {
@@ -1381,7 +1380,7 @@
         dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
         dot.dataset.index = i;
         dot.addEventListener('click', function() {
-          goToSlide(i * cardsPerView);
+          goToSlide(parseInt(this.dataset.index) * cardsPerView);
         });
         dotsContainer.appendChild(dot);
       }
@@ -1395,38 +1394,28 @@
       const cardWidth = firstCard.offsetWidth;
       const gap = 20; // gap from CSS
       const slideWidth = cardWidth + gap;
-      const offset = currentSlide * slideWidth;
+      const offset = currentIndex * slideWidth;
       
-      // Apply the transform
-      track.style.transition = 'transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
-      track.style.transform = 'translateX(-' + offset + 'px)';
+      track.style.transform = `translateX(-${offset}px)`;
       
       // Update active states
-      for (let i = 0; i < cards.length; i++) {
-        const isActive = i >= currentSlide && i < currentSlide + cardsPerView;
-        if (isActive) {
-          cards[i].classList.add('active');
-        } else {
-          cards[i].classList.remove('active');
-        }
-      }
+      cards.forEach((card, index) => {
+        const isActive = index >= currentIndex && index < currentIndex + cardsPerView;
+        card.classList.toggle('active', isActive);
+      });
       
       // Update dots
       const totalDots = Math.ceil(totalCards / cardsPerView);
-      const dotIndex = Math.floor(currentSlide / cardsPerView);
+      const dotIndex = Math.floor(currentIndex / cardsPerView);
       const dots = dotsContainer.querySelectorAll('.carousel-dot');
-      for (let i = 0; i < dots.length; i++) {
-        if (i === dotIndex) {
-          dots[i].classList.add('active');
-        } else {
-          dots[i].classList.remove('active');
-        }
-      }
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === dotIndex);
+      });
       
       // Update counter
-      const start = currentSlide + 1;
-      const end = Math.min(currentSlide + cardsPerView, totalCards);
-      document.getElementById('carouselCounter').textContent = start + ' - ' + end + ' / ' + totalCards;
+      const start = currentIndex + 1;
+      const end = Math.min(currentIndex + cardsPerView, totalCards);
+      document.getElementById('carouselCounter').textContent = `${start} - ${end} / ${totalCards}`;
     }
 
     function goToSlide(index) {
@@ -1437,11 +1426,13 @@
       if (index < 0) index = maxIndex;
       if (index > maxIndex) index = 0;
       
-      // Round to nearest valid position
+      // Round to nearest valid position (snap to card positions)
       index = Math.round(index / cardsPerView) * cardsPerView;
       if (index > maxIndex) index = maxIndex;
       
-      currentSlide = index;
+      if (index === currentIndex) return;
+      
+      currentIndex = index;
       isTransitioning = true;
       updateCarousel();
       setTimeout(function() {
@@ -1452,13 +1443,13 @@
 
     function nextSlide() {
       const maxIndex = Math.max(0, totalCards - cardsPerView);
-      let nextIndex = currentSlide + cardsPerView;
+      let nextIndex = currentIndex + cardsPerView;
       if (nextIndex > maxIndex) nextIndex = 0;
       goToSlide(nextIndex);
     }
 
     function prevSlide() {
-      let prevIndex = currentSlide - cardsPerView;
+      let prevIndex = currentIndex - cardsPerView;
       if (prevIndex < 0) {
         const maxIndex = Math.max(0, totalCards - cardsPerView);
         prevIndex = maxIndex;
@@ -1508,41 +1499,56 @@
     });
     carouselWrapper.addEventListener('touchend', function(e) {
       touchEndX = e.changedTouches[0].screenX;
-      var diff = touchStartX - touchEndX;
+      const diff = touchStartX - touchEndX;
       if (Math.abs(diff) > 50) {
-        if (diff > 0) {
-          nextSlide();
-        } else {
-          prevSlide();
-        }
+        if (diff > 0) nextSlide();
+        else prevSlide();
         resetAutoPlay();
       }
     });
 
     // Handle resize
-    var resizeTimeout;
+    let resizeTimeout;
     window.addEventListener('resize', function() {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(function() {
-        var newCardsPerView = getCardsPerView();
+        const newCardsPerView = getCardsPerView();
         if (newCardsPerView !== cardsPerView) {
           cardsPerView = newCardsPerView;
           createDots();
           // Reset to first slide
-          currentSlide = 0;
+          currentIndex = 0;
           updateCarousel();
           // Update counter
-          document.getElementById('carouselCounter').textContent = '1 - ' + Math.min(cardsPerView, totalCards) + ' / ' + totalCards;
+          document.getElementById('carouselCounter').textContent = `1 - ${Math.min(cardsPerView, totalCards)} / ${totalCards}`;
         }
       }, 250);
     });
 
     // Initialize
-    cardsPerView = getCardsPerView();
-    createDots();
-    // Force initial update after layout
-    setTimeout(updateCarousel, 100);
-    startAutoPlay();
+    function init() {
+      cardsPerView = getCardsPerView();
+      createDots();
+      // Force initial update after layout
+      setTimeout(function() {
+        updateCarousel();
+        isInitialized = true;
+      }, 100);
+      startAutoPlay();
+    }
+
+    // Run init when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+
+    // Also re-run on window load to ensure all measurements are correct
+    window.addEventListener('load', function() {
+      setTimeout(updateCarousel, 200);
+    });
+
   })();
 
   // ---- LANGUAGE TRANSLATIONS ----
