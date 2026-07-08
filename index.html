@@ -20,28 +20,29 @@
     }
     .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
 
-    /* NEW COLOR SYSTEM */
+    /* TIKTOK COLOR SYSTEM ON BLACK CANVAS */
     :root {
       --obsidian: #050505;
       --carbon: #111111;
-      --violet: #8B5CFF;
-      --cyan: #25F4EE;
-      --magenta: #FE2C55;
+      --tiktok-cyan: #25F4EE;
+      --tiktok-red: #FE2C55;
+      --tiktok-purple: #8B5CFF;
+      --tiktok-white: #FFFFFF;
       --gold: #D4AF37;
-      --violet-glow: rgba(139, 92, 255, 0.15);
-      --cyan-glow: rgba(37, 244, 238, 0.1);
-      --magenta-glow: rgba(254, 44, 85, 0.1);
-      --gold-glow: rgba(212, 175, 55, 0.15);
+      --cyan-glow: rgba(37, 244, 238, 0.12);
+      --red-glow: rgba(254, 44, 85, 0.10);
+      --purple-glow: rgba(139, 92, 255, 0.10);
+      --gold-glow: rgba(212, 175, 55, 0.12);
     }
 
     .gold { color: var(--gold); }
-    .violet { color: var(--violet); }
-    .cyan { color: var(--cyan); }
-    .magenta { color: var(--magenta); }
+    .cyan { color: var(--tiktok-cyan); }
+    .red { color: var(--tiktok-red); }
+    .purple { color: var(--tiktok-purple); }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--violet), #6B3FD4);
-      color: #fff;
+      background: linear-gradient(135deg, var(--tiktok-cyan), #1AC8C2);
+      color: #050505;
       font-weight: 700;
       border: none;
       padding: 16px 40px;
@@ -51,7 +52,7 @@
       display: inline-block;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 30px rgba(139, 92, 255, 0.25), 0 0 40px rgba(37, 244, 238, 0.05);
+      box-shadow: 0 4px 30px rgba(37, 244, 238, 0.2);
       position: relative;
       overflow: hidden;
     }
@@ -62,14 +63,14 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle, rgba(37, 244, 238, 0.05), transparent 60%);
+      background: radial-gradient(circle, rgba(37, 244, 238, 0.15), transparent 60%);
       opacity: 0;
       transition: opacity 0.4s ease;
       pointer-events: none;
     }
     .btn-primary:hover {
       transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 8px 40px rgba(139, 92, 255, 0.35), 0 0 60px rgba(37, 244, 238, 0.08);
+      box-shadow: 0 8px 40px rgba(37, 244, 238, 0.3);
     }
     .btn-primary:hover::before {
       opacity: 1;
@@ -89,10 +90,10 @@
       transition: all 0.3s ease;
     }
     .btn-secondary:hover {
-      border-color: var(--violet);
-      background: rgba(139, 92, 255, 0.05);
+      border-color: var(--tiktok-cyan);
+      background: rgba(37, 244, 238, 0.05);
       transform: translateY(-2px);
-      box-shadow: 0 0 40px rgba(139, 92, 255, 0.05);
+      box-shadow: 0 0 40px rgba(37, 244, 238, 0.05);
     }
 
     .btn {
@@ -113,7 +114,12 @@
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
     .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; }
-    .logo span { color: var(--gold); }
+    .logo span { 
+      background: linear-gradient(135deg, var(--tiktok-cyan), var(--tiktok-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
     .nav-links { display: flex; gap: 32px; font-weight: 500; font-size: 0.95rem; }
     .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; transition: 0.2s; }
     .nav-links a:hover { color: #fff; }
@@ -143,8 +149,8 @@
     }
     .lang-btn:hover { color: rgba(255,255,255,0.7); }
     .lang-btn.active {
-      color: var(--violet);
-      background: rgba(139, 92, 255, 0.12);
+      color: var(--tiktok-cyan);
+      background: rgba(37, 244, 238, 0.12);
     }
 
     /* HERO */
@@ -163,21 +169,21 @@
       right: -20%;
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle, rgba(139, 92, 255, 0.06) 0%, rgba(37, 244, 238, 0.03) 50%, transparent 70%);
+      background: radial-gradient(circle, rgba(37, 244, 238, 0.06) 0%, rgba(254, 44, 85, 0.04) 50%, transparent 70%);
       border-radius: 50%;
       pointer-events: none;
     }
     .hero-badge {
       display: inline-block;
-      background: rgba(139, 92, 255, 0.08);
-      color: var(--violet);
+      background: rgba(37, 244, 238, 0.08);
+      color: var(--tiktok-cyan);
       padding: 8px 20px;
       border-radius: 100px;
       font-size: 0.7rem;
       font-weight: 600;
       letter-spacing: 1px;
       text-transform: uppercase;
-      border: 1px solid rgba(139, 92, 255, 0.15);
+      border: 1px solid rgba(37, 244, 238, 0.15);
       backdrop-filter: blur(4px);
       margin-bottom: 20px;
       position: relative;
@@ -194,6 +200,13 @@
       z-index: 1;
     }
     .hero h1 .gold { color: var(--gold); display: inline-block; }
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--tiktok-cyan), var(--tiktok-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: inline-block;
+    }
     .hero-sub {
       font-size: 1.25rem;
       color: rgba(255,255,255,0.7);
@@ -204,7 +217,7 @@
     }
     .hero-qualification {
       font-size: 0.85rem;
-      color: var(--violet);
+      color: var(--tiktok-cyan);
       font-weight: 500;
       letter-spacing: 0.5px;
       padding: 10px 0 20px;
@@ -227,6 +240,8 @@
     .section-head { text-align: center; max-width: 700px; margin: 0 auto 48px; }
     .section-head h2 { font-size: 2.8rem; font-weight: 700; letter-spacing: -1px; line-height: 1.2; }
     .section-head h2 .gold { color: var(--gold); }
+    .section-head h2 .cyan { color: var(--tiktok-cyan); }
+    .section-head h2 .red { color: var(--tiktok-red); }
     .section-head p { color: rgba(255,255,255,0.6); font-size: 1.15rem; margin-top: 12px; }
 
     /* ELITE CARDS */
@@ -260,7 +275,7 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle at 30% 30%, rgba(139, 92, 255, 0.04), transparent 60%);
+      background: radial-gradient(circle at 30% 30%, rgba(37, 244, 238, 0.04), transparent 60%);
       opacity: 0;
       transition: opacity 0.8s ease;
       pointer-events: none;
@@ -275,13 +290,13 @@
     .elite-card:nth-child(3) { transition-delay: 0.25s; }
     .elite-card:hover {
       transform: translateY(-8px) scale(1.02);
-      border-color: rgba(139, 92, 255, 0.2);
+      border-color: rgba(37, 244, 238, 0.2);
       background: rgba(255,255,255,0.04);
       box-shadow: 0 20px 40px rgba(0,0,0,0.4);
     }
     .elite-card .elite-icon {
       font-size: 2.4rem;
-      color: var(--violet);
+      color: var(--tiktok-cyan);
       margin-bottom: 16px;
       display: block;
       opacity: 0.8;
@@ -334,7 +349,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(135deg, rgba(139, 92, 255, 0.03), rgba(37, 244, 238, 0.02));
+      background: linear-gradient(135deg, rgba(37, 244, 238, 0.03), rgba(254, 44, 85, 0.02));
       opacity: 0;
       transition: opacity 0.5s ease;
       pointer-events: none;
@@ -344,9 +359,9 @@
       transform: translateY(0) scale(1);
     }
     .trust-card:hover {
-      border-color: rgba(139, 92, 255, 0.2);
+      border-color: rgba(37, 244, 238, 0.2);
       transform: translateY(-6px) scale(1.02);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(139, 92, 255, 0.03);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(37, 244, 238, 0.04);
     }
     .trust-card:hover::before {
       opacity: 1;
@@ -357,13 +372,13 @@
       border-radius: 50%;
       overflow: hidden;
       margin-bottom: 12px;
-      border: 2px solid rgba(139, 92, 255, 0.15);
-      background: linear-gradient(135deg, rgba(139, 92, 255, 0.1), rgba(37, 244, 238, 0.05));
+      border: 2px solid rgba(37, 244, 238, 0.15);
+      background: linear-gradient(135deg, rgba(37, 244, 238, 0.1), rgba(254, 44, 85, 0.05));
       transition: all 0.4s ease;
     }
     .trust-card:hover .avatar {
-      border-color: var(--violet);
-      box-shadow: 0 0 30px rgba(139, 92, 255, 0.1);
+      border-color: var(--tiktok-cyan);
+      box-shadow: 0 0 30px rgba(37, 244, 238, 0.1);
     }
     .trust-card .avatar img {
       width: 100%;
@@ -377,7 +392,7 @@
       transition: color 0.3s ease;
     }
     .trust-card:hover .name {
-      color: var(--violet);
+      color: var(--tiktok-cyan);
     }
     .trust-card .role {
       font-size: 0.7rem;
@@ -399,11 +414,14 @@
     .trust-card .stat .value {
       font-weight: 700;
       font-size: 0.95rem;
-      color: var(--cyan);
+      color: var(--tiktok-cyan);
       transition: all 0.3s ease;
     }
     .trust-card .stat .value.gold-value {
       color: var(--gold);
+    }
+    .trust-card .stat .value.red-value {
+      color: var(--tiktok-red);
     }
     .trust-card:hover .stat .value {
       transform: scale(1.05);
@@ -526,13 +544,13 @@
     .why-card:nth-child(5) { transition-delay: 0.15s; }
     .why-card:nth-child(6) { transition-delay: 0.18s; }
     .why-card:hover {
-      border-color: rgba(139, 92, 255, 0.15);
+      border-color: rgba(37, 244, 238, 0.15);
       transform: translateY(-4px);
       background: rgba(255,255,255,0.04);
     }
     .why-card .why-icon {
       font-size: 1.8rem;
-      color: var(--violet);
+      color: var(--tiktok-cyan);
       margin-bottom: 12px;
       display: block;
     }
@@ -588,16 +606,16 @@
       gap: 10px;
     }
     .switch-col ul li i {
-      color: var(--cyan);
+      color: var(--tiktok-cyan);
       width: 18px;
     }
     .switch-col.highlight {
-      border-color: rgba(139, 92, 255, 0.15);
-      background: rgba(139, 92, 255, 0.04);
+      border-color: rgba(37, 244, 238, 0.15);
+      background: rgba(37, 244, 238, 0.04);
     }
-    .switch-col.highlight h4 { color: var(--violet); }
+    .switch-col.highlight h4 { color: var(--tiktok-cyan); }
     .switch-col.highlight ul li { color: rgba(255,255,255,0.7); }
-    .switch-col ul li .fa-times { color: var(--magenta); }
+    .switch-col ul li .fa-times { color: var(--tiktok-red); }
 
     /* ACCOUNT SECURITY */
     .security-section {
@@ -624,12 +642,12 @@
       transform: translateY(0);
     }
     .security-item:hover {
-      border-color: rgba(139, 92, 255, 0.15);
+      border-color: rgba(37, 244, 238, 0.15);
       transform: translateY(-3px);
     }
     .security-item i {
       font-size: 1.8rem;
-      color: var(--violet);
+      color: var(--tiktok-cyan);
       margin-bottom: 8px;
       display: block;
     }
@@ -663,7 +681,7 @@
       top: 30px;
       bottom: 30px;
       width: 2px;
-      background: linear-gradient(to bottom, rgba(139, 92, 255, 0.1), rgba(139, 92, 255, 0.4), rgba(139, 92, 255, 0.1));
+      background: linear-gradient(to bottom, rgba(37, 244, 238, 0.1), rgba(37, 244, 238, 0.4), rgba(37, 244, 238, 0.1));
       transform: translateX(-50%);
     }
     .step-item {
@@ -685,7 +703,7 @@
       opacity: 1;
       transform: translateY(0) scale(1);
       pointer-events: auto;
-      border-color: rgba(139, 92, 255, 0.12);
+      border-color: rgba(37, 244, 238, 0.12);
       background: rgba(255,255,255,0.03);
     }
     .step-item:nth-child(odd) { flex-direction: row; }
@@ -698,19 +716,19 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: radial-gradient(circle at 30% 30%, rgba(139, 92, 255, 0.15), rgba(139, 92, 255, 0.02));
-      border: 2px solid rgba(139, 92, 255, 0.25);
+      background: radial-gradient(circle at 30% 30%, rgba(37, 244, 238, 0.15), rgba(37, 244, 238, 0.02));
+      border: 2px solid rgba(37, 244, 238, 0.25);
       transition: all 0.6s ease;
       position: relative;
     }
     .step-item.revealed .step-num-wrapper {
-      border-color: var(--violet);
-      box-shadow: 0 0 40px rgba(139, 92, 255, 0.15);
+      border-color: var(--tiktok-cyan);
+      box-shadow: 0 0 40px rgba(37, 244, 238, 0.15);
     }
     .step-item .step-num {
       font-size: 2rem;
       font-weight: 800;
-      color: var(--violet);
+      color: var(--tiktok-cyan);
       opacity: 0.5;
       transition: 0.5s;
     }
@@ -727,7 +745,7 @@
       top: 0;
       left: 0;
       border-radius: 20px;
-      background: radial-gradient(circle at var(--glow-x, 50%) var(--glow-y, 50%), rgba(139, 92, 255, 0.04), transparent 70%);
+      background: radial-gradient(circle at var(--glow-x, 50%) var(--glow-y, 50%), rgba(37, 244, 238, 0.04), transparent 70%);
       opacity: 0;
       transition: opacity 0.6s;
       pointer-events: none;
@@ -762,7 +780,7 @@
       outline: none;
       transition: 0.2s;
     }
-    .app-form input:focus, .app-form select:focus, .app-form textarea:focus { border-color: var(--violet); }
+    .app-form input:focus, .app-form select:focus, .app-form textarea:focus { border-color: var(--tiktok-cyan); }
     .app-form textarea { border-radius: 24px; min-height: 100px; }
     .app-form .btn { width: 100%; padding: 16px; border-radius: 60px; font-weight: 700; font-size: 1.1rem; }
 
@@ -815,8 +833,13 @@
     }
     .float-btn:hover { transform: scale(1.08); }
     .float-btn.whatsapp { background: #25D366; }
-    .float-btn.tiktok { background: #000; border: 1px solid var(--violet); color: var(--violet); }
-    .float-btn.tiktok i { color: var(--violet); }
+    .float-btn.tiktok { 
+      background: #000; 
+      border: 2px solid var(--tiktok-cyan); 
+      color: var(--tiktok-cyan); 
+      box-shadow: 0 0 30px rgba(37, 244, 238, 0.1);
+    }
+    .float-btn.tiktok i { color: var(--tiktok-cyan); }
 
     /* CALCULATOR */
     .quiz-container {
@@ -845,26 +868,26 @@
       font-size: 0.95rem;
       transition: 0.2s;
     }
-    .question-block select:focus { border-color: var(--violet); outline: none; }
+    .question-block select:focus { border-color: var(--tiktok-cyan); outline: none; }
     .btn-submit {
       width: 100%;
       padding: 14px;
-      background: linear-gradient(135deg, var(--violet), #6B3FD4);
-      color: #fff;
+      background: linear-gradient(135deg, var(--tiktok-cyan), #1AC8C2);
+      color: #050505;
       border: none;
       border-radius: 60px;
       font-weight: 700;
       font-size: 1rem;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 30px rgba(139, 92, 255, 0.2);
+      box-shadow: 0 4px 30px rgba(37, 244, 238, 0.2);
     }
     .btn-submit:hover { 
       transform: scale(1.02);
-      box-shadow: 0 8px 40px rgba(139, 92, 255, 0.3);
+      box-shadow: 0 8px 40px rgba(37, 244, 238, 0.3);
     }
     .result-block { display: none; text-align: center; padding: 10px 0; }
-    .score-display { font-size: 3rem; font-weight: 700; margin: 15px 0; color: var(--cyan); }
+    .score-display { font-size: 3rem; font-weight: 700; margin: 15px 0; color: var(--tiktok-cyan); }
     .feedback-text { font-size: 0.95rem; color: rgba(255,255,255,0.6); line-height: 1.6; margin-bottom: 20px; }
     .cta-link {
       display: inline-block;
@@ -878,7 +901,7 @@
       border: 1px solid rgba(255,255,255,0.06);
       transition: 0.2s;
     }
-    .cta-link:hover { background: #2a2a2a; border-color: var(--violet); }
+    .cta-link:hover { background: #2a2a2a; border-color: var(--tiktok-cyan); }
 
     @media (max-width: 768px) {
       .hero h1 { font-size: 2.8rem; }
@@ -946,7 +969,7 @@
   <!-- HERO -->
   <section class="hero" id="home">
     <span class="hero-badge" data-key="heroBadge">Romania's Premium TikTok LIVE Creator Ecosystem</span>
-    <h1 data-key="heroTitle">Built For Creators Who Are Ready For Their <span class="gold">Next Level.</span></h1>
+    <h1 data-key="heroTitle">Built For Creators Who Are Ready For Their <span class="highlight">Next Level.</span></h1>
     <p class="hero-sub" data-key="heroSub">Live Alchemy is a premium TikTok LIVE creator growth ecosystem helping Romania's most ambitious creators increase revenue, improve performance, and build sustainable digital careers.</p>
     <div class="hero-qualification" data-key="heroQual">For creators who treat LIVE as a business.</div>
     <div class="hero-cta">
@@ -980,7 +1003,7 @@
     </div>
   </section>
 
-  <!-- SECTION 2: TRUST & TESTIMONIALS - STAGGERED ANIMATION -->
+  <!-- SECTION 2: TRUST & TESTIMONIALS -->
   <section id="trust" class="trust-section">
     <div class="section-head">
       <h2 data-key="trustTitle">Real Growth. Real Creators. <span class="gold">Real Results.</span></h2>
@@ -993,8 +1016,8 @@
         <div class="name">Andrei M.</div>
         <div class="role">TikTok LIVE · Bucharest</div>
         <div class="stats">
-          <div class="stat"><div class="value">120K</div><div class="label">Before</div></div>
-          <div class="stat"><div class="value" style="color:#25F4EE;">350K</div><div class="label">After</div></div>
+          <div class="stat"><div class="value red-value">120K</div><div class="label">Before</div></div>
+          <div class="stat"><div class="value">350K</div><div class="label">After</div></div>
           <div class="stat"><div class="value gold-value">90</div><div class="label">Days</div></div>
         </div>
         <div class="quote">"I was stuck at 120K for months. Within 90 days, I hit 350K. The strategy actually works."</div>
@@ -1005,8 +1028,8 @@
         <div class="name">Elena S.</div>
         <div class="role">TikTok LIVE · Cluj-Napoca</div>
         <div class="stats">
-          <div class="stat"><div class="value">80K</div><div class="label">Before</div></div>
-          <div class="stat"><div class="value" style="color:#25F4EE;">280K</div><div class="label">After</div></div>
+          <div class="stat"><div class="value red-value">80K</div><div class="label">Before</div></div>
+          <div class="stat"><div class="value">280K</div><div class="label">After</div></div>
           <div class="stat"><div class="value gold-value">60</div><div class="label">Days</div></div>
         </div>
         <div class="quote">"My income was all over the place. Now I have a system and a team that actually understands my goals."</div>
@@ -1017,8 +1040,8 @@
         <div class="name">Mihai C.</div>
         <div class="role">TikTok LIVE · Timișoara</div>
         <div class="stats">
-          <div class="stat"><div class="value">200K</div><div class="label">Before</div></div>
-          <div class="stat"><div class="value" style="color:#25F4EE;">520K</div><div class="label">After</div></div>
+          <div class="stat"><div class="value red-value">200K</div><div class="label">Before</div></div>
+          <div class="stat"><div class="value">520K</div><div class="label">After</div></div>
           <div class="stat"><div class="value gold-value">120</div><div class="label">Days</div></div>
         </div>
         <div class="quote">"I was already doing well, but the analytics showed me where I was leaking revenue. Fixed it in weeks."</div>
@@ -1029,8 +1052,8 @@
         <div class="name">Ioana R.</div>
         <div class="role">TikTok LIVE · Brașov</div>
         <div class="stats">
-          <div class="stat"><div class="value">45K</div><div class="label">Before</div></div>
-          <div class="stat"><div class="value" style="color:#25F4EE;">190K</div><div class="label">After</div></div>
+          <div class="stat"><div class="value red-value">45K</div><div class="label">Before</div></div>
+          <div class="stat"><div class="value">190K</div><div class="label">After</div></div>
           <div class="stat"><div class="value gold-value">45</div><div class="label">Days</div></div>
         </div>
         <div class="quote">"I thought my content was good, but retention was killing me. Now my viewers actually stay and gift."</div>
@@ -1041,8 +1064,8 @@
         <div class="name">Cristian P.</div>
         <div class="role">TikTok LIVE · Iași</div>
         <div class="stats">
-          <div class="stat"><div class="value">160K</div><div class="label">Before</div></div>
-          <div class="stat"><div class="value" style="color:#25F4EE;">430K</div><div class="label">After</div></div>
+          <div class="stat"><div class="value red-value">160K</div><div class="label">Before</div></div>
+          <div class="stat"><div class="value">430K</div><div class="label">After</div></div>
           <div class="stat"><div class="value gold-value">75</div><div class="label">Days</div></div>
         </div>
         <div class="quote">"The strategy sessions completely changed how I approach every stream. I'm earning more with less stress."</div>
@@ -1053,8 +1076,8 @@
         <div class="name">Andreea D.</div>
         <div class="role">TikTok LIVE · Constanța</div>
         <div class="stats">
-          <div class="stat"><div class="value">95K</div><div class="label">Before</div></div>
-          <div class="stat"><div class="value" style="color:#25F4EE;">310K</div><div class="label">After</div></div>
+          <div class="stat"><div class="value red-value">95K</div><div class="label">Before</div></div>
+          <div class="stat"><div class="value">310K</div><div class="label">After</div></div>
           <div class="stat"><div class="value gold-value">55</div><div class="label">Days</div></div>
         </div>
         <div class="quote">"Before, I was just streaming. Now I'm building a brand. The difference is night and day."</div>
@@ -1065,8 +1088,8 @@
         <div class="name">Vlad T.</div>
         <div class="role">TikTok LIVE · Sibiu</div>
         <div class="stats">
-          <div class="stat"><div class="value">250K</div><div class="label">Before</div></div>
-          <div class="stat"><div class="value" style="color:#25F4EE;">680K</div><div class="label">After</div></div>
+          <div class="stat"><div class="value red-value">250K</div><div class="label">Before</div></div>
+          <div class="stat"><div class="value">680K</div><div class="label">After</div></div>
           <div class="stat"><div class="value gold-value">100</div><div class="label">Days</div></div>
         </div>
         <div class="quote">"I've been in the game for years, but I never had this level of clarity. The data doesn't lie."</div>
@@ -1077,8 +1100,8 @@
         <div class="name">Maria G.</div>
         <div class="role">TikTok LIVE · Oradea</div>
         <div class="stats">
-          <div class="stat"><div class="value">60K</div><div class="label">Before</div></div>
-          <div class="stat"><div class="value" style="color:#25F4EE;">220K</div><div class="label">After</div></div>
+          <div class="stat"><div class="value red-value">60K</div><div class="label">Before</div></div>
+          <div class="stat"><div class="value">220K</div><div class="label">After</div></div>
           <div class="stat"><div class="value gold-value">30</div><div class="label">Days</div></div>
         </div>
         <div class="quote">"In just one month, I've grown more than in the entire last year. Finally, a system that works."</div>
@@ -1169,10 +1192,10 @@
         <div class="switch-col highlight">
           <h4 data-key="switchAlchemy">Live Alchemy</h4>
           <ul>
-            <li><i class="fas fa-check" style="color:var(--cyan);"></i> <span data-key="sa1">Personal growth strategy</span></li>
-            <li><i class="fas fa-check" style="color:var(--cyan);"></i> <span data-key="sa2">Performance analysis</span></li>
-            <li><i class="fas fa-check" style="color:var(--cyan);"></i> <span data-key="sa3">Creator development plan</span></li>
-            <li><i class="fas fa-check" style="color:var(--cyan);"></i> <span data-key="sa4">Dedicated management</span></li>
+            <li><i class="fas fa-check" style="color:var(--tiktok-cyan);"></i> <span data-key="sa1">Personal growth strategy</span></li>
+            <li><i class="fas fa-check" style="color:var(--tiktok-cyan);"></i> <span data-key="sa2">Performance analysis</span></li>
+            <li><i class="fas fa-check" style="color:var(--tiktok-cyan);"></i> <span data-key="sa3">Creator development plan</span></li>
+            <li><i class="fas fa-check" style="color:var(--tiktok-cyan);"></i> <span data-key="sa4">Dedicated management</span></li>
           </ul>
         </div>
       </div>
@@ -1285,7 +1308,7 @@
       </div>
       <div id="quiz-result" class="result-block">
         <h2 style="font-size:1.3rem;" data-key="resultTitle">Your Performance Analysis</h2>
-        <div class="feedback-text" style="color:var(--violet); font-weight:600;" id="verdict-label" data-key="resultLabel">CREATOR INSIGHT SCORE</div>
+        <div class="feedback-text" style="color:var(--tiktok-cyan); font-weight:600;" id="verdict-label" data-key="resultLabel">CREATOR INSIGHT SCORE</div>
         <div class="score-display" id="score-val">00/100</div>
         <div class="feedback-text" id="feedback-val" data-key="resultMsg">Analysis complete. We've identified key areas for growth and optimization.</div>
         <a href="#apply" class="cta-link" data-key="resultCta">Apply For A Free Stream Audit →</a>
@@ -1310,7 +1333,7 @@
         </select>
         <textarea placeholder="Why do you want to join Live Alchemy?" data-key="fWhy" required></textarea>
         <button type="submit" class="btn btn-primary" data-key="fBtn">Apply For Private Partnership</button>
-        <div id="formMessage" style="margin-top:12px;color:var(--violet);font-size:0.9rem;"></div>
+        <div id="formMessage" style="margin-top:12px;color:var(--tiktok-cyan);font-size:0.9rem;"></div>
       </form>
     </div>
   </section>
@@ -1354,7 +1377,6 @@
       });
     }
 
-    // Use Intersection Observer to trigger animation when section is visible
     const section = document.querySelector('.trust-section');
     const observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
@@ -1373,7 +1395,7 @@
     ro: {
       navElite: 'De Ce Noi', navTrust: 'Rezultate', navJourney: 'Călătorie', navApply: 'Aplică',
       heroBadge: 'Ecosistemul Premium de Creatori TikTok LIVE din România',
-      heroTitle: 'Construit Pentru Creatorii Care Sunt Gata Pentru <span class="gold">Următorul Nivel.</span>',
+      heroTitle: 'Construit Pentru Creatorii Care Sunt Gata Pentru <span class="highlight">Următorul Nivel.</span>',
       heroSub: 'Live Alchemy este un ecosistem premium de creștere pentru creatorii TikTok LIVE, care ajută cei mai ambițioși creatori din România să își crească veniturile, să își îmbunătățească performanța și să construiască cariere digitale sustenabile.',
       heroQual: 'Pentru creatorii care tratează LIVE-ul ca pe o afacere.',
       btnApply: 'Solicită Parteneriat Privat',
@@ -1470,7 +1492,7 @@
     en: {
       navElite: 'Why Us', navTrust: 'Results', navJourney: 'Journey', navApply: 'Apply',
       heroBadge: "Romania's Premium TikTok LIVE Creator Ecosystem",
-      heroTitle: 'Built For Creators Who Are Ready For Their <span class="gold">Next Level.</span>',
+      heroTitle: 'Built For Creators Who Are Ready For Their <span class="highlight">Next Level.</span>',
       heroSub: 'Live Alchemy is a premium TikTok LIVE creator growth ecosystem helping Romania\'s most ambitious creators increase revenue, improve performance, and build sustainable digital careers.',
       heroQual: 'For creators who treat LIVE as a business.',
       btnApply: 'Apply For Private Partnership',
@@ -1619,7 +1641,7 @@
     const msgEl = document.getElementById('formMessage');
     if (isNaN(diamonds) || diamonds < 60000) {
       msgEl.innerHTML = 'We sincerely regret that we are unable to onboard you to our premium network at this moment. Our partnership criteria require a minimum monthly diamond volume of 60,000, and we only collaborate with creators who meet this threshold. We wish you every success in growing your live streaming career, and welcome you to reapply once your monthly diamond earnings meet our requirement.';
-      msgEl.style.color = '#8B5CFF';
+      msgEl.style.color = '#25F4EE';
       return false;
     }
     window.location.href = 'https://www.tiktok.com/t/ZMS4vJ1VD/';
