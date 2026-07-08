@@ -228,7 +228,7 @@
       line-height: 1.6;
     }
 
-    /* TRUST SECTION - STAGGERED GRID ANIMATION */
+    /* TRUST SECTION - STAGGERED ANIMATION CARDS */
     .trust-section {
       padding: 40px 0 60px;
     }
@@ -249,36 +249,20 @@
       border: 1px solid rgba(255,255,255,0.06);
       border-radius: 24px;
       padding: 24px 20px;
+      transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
       position: relative;
-      
-      /* Initial state before scroll reveal */
       opacity: 0;
-      transform: translateY(30px) scale(0.98);
-      
-      /* Smooth cubic bezier entry curve paired with prompt response timings on active hovers */
-      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), 
-                  transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), 
-                  border-color 0.3s ease, 
-                  background 0.3s ease, 
-                  box-shadow 0.3s ease;
+      transform: translateY(40px) scale(0.95);
     }
-    
-    /* Staggered load offsets based on row position */
-    .trust-card:nth-child(4n+1) { transition-delay: 0.05s; }
-    .trust-card:nth-child(4n+2) { transition-delay: 0.15s; }
-    .trust-card:nth-child(4n+3) { transition-delay: 0.25s; }
-    .trust-card:nth-child(4n+4) { transition-delay: 0.35s; }
-
-    .trust-card.revealed {
+    .trust-card.visible {
       opacity: 1;
       transform: translateY(0) scale(1);
     }
-    
-    .trust-card.revealed:hover {
+    .trust-card:hover {
       border-color: rgba(212,175,55,0.25);
-      transform: translateY(-6px);
-      background: rgba(255,255,255,0.04);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      transform: translateY(-6px) scale(1.02);
+      background: rgba(255,255,255,0.05);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(212,175,55,0.04);
     }
     .trust-card .avatar {
       width: 56px;
@@ -288,6 +272,11 @@
       margin-bottom: 12px;
       border: 2px solid rgba(212,175,55,0.15);
       background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(76,43,107,0.1));
+      transition: all 0.4s ease;
+    }
+    .trust-card:hover .avatar {
+      border-color: rgba(212,175,55,0.4);
+      box-shadow: 0 0 30px rgba(212,175,55,0.1);
     }
     .trust-card .avatar img {
       width: 100%;
@@ -298,6 +287,10 @@
       font-weight: 700;
       font-size: 1rem;
       margin-bottom: 1px;
+      transition: color 0.3s ease;
+    }
+    .trust-card:hover .name {
+      color: #D4AF37;
     }
     .trust-card .role {
       font-size: 0.7rem;
@@ -320,6 +313,10 @@
       font-weight: 700;
       font-size: 0.95rem;
       color: #D4AF37;
+      transition: all 0.3s ease;
+    }
+    .trust-card:hover .stat .value {
+      transform: scale(1.05);
     }
     .trust-card .stat .label {
       font-size: 0.55rem;
@@ -333,6 +330,10 @@
       line-height: 1.6;
       font-style: italic;
       margin-top: 6px;
+      transition: color 0.3s ease;
+    }
+    .trust-card:hover .quote {
+      color: rgba(255,255,255,0.7);
     }
 
     /* RECOGNITION */
@@ -871,12 +872,10 @@
         <h4 data-key="elite1">Growth Strategy</h4>
         <p data-key="elite1d">Personal roadmap based on your goals and performance.</p>
       </div>
-      <div class="elite-grid">
-        <div class="elite-card">
-          <span class="elite-icon"><i class="fas fa-chart-bar"></i></span>
-          <h4 data-key="elite2">Performance System</h4>
-          <p data-key="elite2d">Analytics, optimization, and improvement plans.</p>
-        </div>
+      <div class="elite-card">
+        <span class="elite-icon"><i class="fas fa-chart-bar"></i></span>
+        <h4 data-key="elite2">Performance System</h4>
+        <p data-key="elite2d">Analytics, optimization, and improvement plans.</p>
       </div>
       <div class="elite-card">
         <span class="elite-icon"><i class="fas fa-crown"></i></span>
@@ -886,15 +885,15 @@
     </div>
   </section>
 
-  <!-- SECTION 2: TRUST & TESTIMONIALS - ANIMATED STAGGERED GRID -->
+  <!-- SECTION 2: TRUST & TESTIMONIALS - STAGGERED ANIMATION -->
   <section id="trust" class="trust-section">
     <div class="section-head">
       <h2 data-key="trustTitle">Real Growth. Real Creators. <span class="gold">Real Results.</span></h2>
       <p data-key="trustSub">See how Romanian creators transformed their LIVE careers with Live Alchemy.</p>
     </div>
-    <div class="trust-grid">
+    <div class="trust-grid" id="trustGrid">
       <!-- Card 1 -->
-      <div class="trust-card">
+      <div class="trust-card" data-delay="0">
         <div class="avatar"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Andrei M."></div>
         <div class="name">Andrei M.</div>
         <div class="role">TikTok LIVE · Bucharest</div>
@@ -906,7 +905,7 @@
         <div class="quote">"Live Alchemy gave me a real system. Not just advice — actual strategy."</div>
       </div>
       <!-- Card 2 -->
-      <div class="trust-card">
+      <div class="trust-card" data-delay="100">
         <div class="avatar"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Elena S."></div>
         <div class="name">Elena S.</div>
         <div class="role">TikTok LIVE · Cluj-Napoca</div>
@@ -918,7 +917,7 @@
         <div class="quote">"From inconsistent income to a real career. They built a plan around my goals."</div>
       </div>
       <!-- Card 3 -->
-      <div class="trust-card">
+      <div class="trust-card" data-delay="200">
         <div class="avatar"><img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Mihai C."></div>
         <div class="name">Mihai C.</div>
         <div class="role">TikTok LIVE · Timișoara</div>
@@ -930,7 +929,7 @@
         <div class="quote">"Analytics and optimization changed how I approach LIVE. Never grown this fast."</div>
       </div>
       <!-- Card 4 -->
-      <div class="trust-card">
+      <div class="trust-card" data-delay="300">
         <div class="avatar"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Ioana R."></div>
         <div class="name">Ioana R.</div>
         <div class="role">TikTok LIVE · Brașov</div>
@@ -942,7 +941,7 @@
         <div class="quote">"My retention doubled. The team showed me exactly what my audience wants."</div>
       </div>
       <!-- Card 5 -->
-      <div class="trust-card">
+      <div class="trust-card" data-delay="400">
         <div class="avatar"><img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Cristian P."></div>
         <div class="name">Cristian P.</div>
         <div class="role">TikTok LIVE · Iași</div>
@@ -954,7 +953,7 @@
         <div class="quote">"The growth strategy was tailored to my style. I'm earning more with less effort."</div>
       </div>
       <!-- Card 6 -->
-      <div class="trust-card">
+      <div class="trust-card" data-delay="500">
         <div class="avatar"><img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Andreea D."></div>
         <div class="name">Andreea D.</div>
         <div class="role">TikTok LIVE · Constanța</div>
@@ -966,7 +965,7 @@
         <div class="quote">"They understood my vision and gave me the tools to make it happen."</div>
       </div>
       <!-- Card 7 -->
-      <div class="trust-card">
+      <div class="trust-card" data-delay="600">
         <div class="avatar"><img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Vlad T."></div>
         <div class="name">Vlad T.</div>
         <div class="role">TikTok LIVE · Sibiu</div>
@@ -978,7 +977,7 @@
         <div class="quote">"Top-tier analytics and a team that actually cares about my growth."</div>
       </div>
       <!-- Card 8 -->
-      <div class="trust-card">
+      <div class="trust-card" data-delay="700">
         <div class="avatar"><img src="https://randomuser.me/api/portraits/women/56.jpg" alt="Maria G."></div>
         <div class="name">Maria G.</div>
         <div class="role">TikTok LIVE · Oradea</div>
@@ -1088,7 +1087,7 @@
   <!-- SECTION 6: CREATOR JOURNEY -->
   <section id="journey" class="section-pad" style="padding:20px 0 60px;">
     <div class="section-head">
-      <h2 data-key="journeyTitle">De la Creator la <span class="gold">Digital Entrepreneur</span></h2>
+      <h2 data-key="journeyTitle">From Creator To <span class="gold">Digital Entrepreneur</span></h2>
     </div>
     <div class="journey-wrapper">
       <div class="journey-trigger" id="journeyTrigger"></div>
@@ -1247,6 +1246,33 @@
 </div>
 
 <script>
+  // ---- STAGGERED ANIMATION FOR TRUST CARDS ----
+  (function() {
+    const cards = document.querySelectorAll('.trust-card');
+    
+    function animateCards() {
+      cards.forEach((card, index) => {
+        const delay = parseInt(card.getAttribute('data-delay')) || 0;
+        setTimeout(function() {
+          card.classList.add('visible');
+        }, delay);
+      });
+    }
+
+    // Use Intersection Observer to trigger animation when section is visible
+    const section = document.querySelector('.trust-section');
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          animateCards();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+    
+    observer.observe(section);
+  })();
+
   // ---- LANGUAGE TRANSLATIONS ----
   const translations = {
     ro: {
@@ -1316,7 +1342,7 @@
       q2: 'Ore Săptămânale de Streaming',
       q3: 'Provocarea Principală de Creștere',
       opt1: '150K - 500K+ Diamante/lună',
-      opt2: '50K - 150K Diamonds/lună',
+      opt2: '50K - 150K Diamante/lună',
       opt3: 'Sub 50K Diamante/lună',
       opt4: '12 - 25 Ore (Structurat)',
       opt5: '25+ Ore (Risc de Epuizare)',
@@ -1371,7 +1397,7 @@
       recog3: 'Top TikTok Partner',
       whyTitle: 'Why Successful Creators Choose <span class="gold">Live Alchemy</span>',
       why1: 'Personal Creator Manager',
-      why1d: 'O dedicated person who understands your goals.',
+      why1d: 'A dedicated person who understands your goals.',
       why2: 'Growth Strategy',
       why2d: 'Not random advice. A structured improvement system.',
       why3: 'Analytics & Optimization',
@@ -1434,7 +1460,6 @@
       fGoal1: 'Increase revenue',
       fGoal2: 'Grow audience',
       fGoal3: 'Improve engagement',
-      fGoal4: 'Build personal brand',
       fGoal4: 'Build personal brand',
       fWhy: 'Why do you want to join Live Alchemy?',
       fBtn: 'Apply For Private Partnership',
@@ -1517,18 +1542,6 @@
     });
   }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
   eliteCards.forEach(el => eliteObserver.observe(el));
-
-  // ---- TRUST CARDS REVEAL ----
-  const trustCards = document.querySelectorAll('.trust-card');
-  const trustObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        trustObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.10, rootMargin: '0px 0px -30px 0px' });
-  trustCards.forEach(el => trustObserver.observe(el));
 
   // ---- RECOGNITION REVEAL ----
   const recogItems = document.querySelectorAll('.recognition-item');
