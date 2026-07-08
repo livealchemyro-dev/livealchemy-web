@@ -19,82 +19,24 @@
       scroll-behavior: smooth;
     }
     .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-
-    /* ORIGINAL PREMIUM COLOR SYSTEM */
-    :root {
-      --obsidian: #050505;
-      --carbon: #111111;
-      --violet: #8B5CFF;
-      --cyan: #25F4EE;
-      --magenta: #FE2C55;
-      --gold: #D4AF37;
-      --violet-glow: rgba(139, 92, 255, 0.12);
-      --cyan-glow: rgba(37, 244, 238, 0.08);
-      --magenta-glow: rgba(254, 44, 85, 0.08);
-      --gold-glow: rgba(212, 175, 55, 0.12);
-    }
-
-    .gold { color: var(--gold); }
-    .violet { color: var(--violet); }
-    .cyan { color: var(--cyan); }
-    .magenta { color: var(--magenta); }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--violet), #6B3FD4);
-      color: #ffffff;
+    .gold { color: #D4AF37; }
+    .btn-gold {
+      background: #D4AF37;
+      color: #050505;
       font-weight: 700;
       border: none;
-      padding: 16px 40px;
-      border-radius: 60px;
-      font-size: 0.95rem;
-      text-decoration: none;
-      display: inline-block;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 30px rgba(139, 92, 255, 0.2);
-      position: relative;
-      overflow: hidden;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15);
     }
-    .btn-primary::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(139, 92, 255, 0.15), transparent 60%);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      pointer-events: none;
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 8px 40px rgba(139, 92, 255, 0.3);
-    }
-    .btn-primary:hover::before {
-      opacity: 1;
-    }
-
-    .btn-secondary {
+    .btn-gold:hover { background: #e6c84a; transform: scale(1.02); box-shadow: 0 8px 30px rgba(212, 175, 55, 0.3); }
+    .btn-outline-gold {
       background: transparent;
-      border: 1.5px solid rgba(255,255,255,0.15);
-      color: #ffffff;
+      border: 1.5px solid #D4AF37;
+      color: #D4AF37;
       font-weight: 600;
-      padding: 16px 40px;
-      border-radius: 60px;
-      font-size: 0.95rem;
-      text-decoration: none;
-      display: inline-block;
-      cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.25s ease;
     }
-    .btn-secondary:hover {
-      border-color: var(--gold);
-      background: rgba(212, 175, 55, 0.05);
-      transform: translateY(-2px);
-      box-shadow: 0 0 40px rgba(212, 175, 55, 0.05);
-    }
-
+    .btn-outline-gold:hover { background: #D4AF37; color: #050505; box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15); }
     .btn {
       padding: 14px 34px;
       border-radius: 60px;
@@ -113,7 +55,7 @@
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
     .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; }
-    .logo span { color: var(--gold); }
+    .logo span { color: #D4AF37; }
     .nav-links { display: flex; gap: 32px; font-weight: 500; font-size: 0.95rem; }
     .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; transition: 0.2s; }
     .nav-links a:hover { color: #fff; }
@@ -143,7 +85,7 @@
     }
     .lang-btn:hover { color: rgba(255,255,255,0.7); }
     .lang-btn.active {
-      color: var(--gold);
+      color: #D4AF37;
       background: rgba(212, 175, 55, 0.12);
     }
 
@@ -163,21 +105,21 @@
       right: -20%;
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle, rgba(139, 92, 255, 0.06) 0%, rgba(212, 175, 55, 0.04) 50%, transparent 70%);
+      background: radial-gradient(circle, rgba(201, 168, 76, 0.06) 0%, rgba(76, 43, 107, 0.04) 50%, transparent 70%);
       border-radius: 50%;
       pointer-events: none;
     }
     .hero-badge {
       display: inline-block;
-      background: rgba(212, 175, 55, 0.08);
-      color: var(--gold);
+      background: rgba(201, 168, 76, 0.10);
+      color: #D4AF37;
       padding: 8px 20px;
       border-radius: 100px;
       font-size: 0.7rem;
       font-weight: 600;
       letter-spacing: 1px;
       text-transform: uppercase;
-      border: 1px solid rgba(212, 175, 55, 0.15);
+      border: 1px solid rgba(201, 168, 76, 0.15);
       backdrop-filter: blur(4px);
       margin-bottom: 20px;
       position: relative;
@@ -193,7 +135,7 @@
       position: relative;
       z-index: 1;
     }
-    .hero h1 .gold { color: var(--gold); display: inline-block; }
+    .hero h1 .gold { display: inline-block; }
     .hero-sub {
       font-size: 1.25rem;
       color: rgba(255,255,255,0.7);
@@ -204,7 +146,7 @@
     }
     .hero-qualification {
       font-size: 0.85rem;
-      color: var(--gold);
+      color: #D4AF37;
       font-weight: 500;
       letter-spacing: 0.5px;
       padding: 10px 0 20px;
@@ -226,7 +168,6 @@
     /* sections */
     .section-head { text-align: center; max-width: 700px; margin: 0 auto 48px; }
     .section-head h2 { font-size: 2.8rem; font-weight: 700; letter-spacing: -1px; line-height: 1.2; }
-    .section-head h2 .gold { color: var(--gold); }
     .section-head p { color: rgba(255,255,255,0.6); font-size: 1.15rem; margin-top: 12px; }
 
     /* ELITE CARDS */
@@ -253,19 +194,6 @@
       position: relative;
       overflow: hidden;
     }
-    .elite-card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at 30% 30%, rgba(139, 92, 255, 0.04), transparent 60%);
-      opacity: 0;
-      transition: opacity 0.8s ease;
-      pointer-events: none;
-    }
-    .elite-card:hover::before { opacity: 1; }
     .elite-card.revealed {
       opacity: 1;
       transform: translateY(0) scale(1);
@@ -275,13 +203,13 @@
     .elite-card:nth-child(3) { transition-delay: 0.25s; }
     .elite-card:hover {
       transform: translateY(-8px) scale(1.02);
-      border-color: rgba(139, 92, 255, 0.2);
+      border-color: rgba(212, 175, 55, 0.2);
       background: rgba(255,255,255,0.04);
       box-shadow: 0 20px 40px rgba(0,0,0,0.4);
     }
     .elite-card .elite-icon {
       font-size: 2.4rem;
-      color: var(--violet);
+      color: #D4AF37;
       margin-bottom: 16px;
       display: block;
       opacity: 0.8;
@@ -317,39 +245,24 @@
       .trust-grid { grid-template-columns: 1fr; }
     }
     .trust-card {
-      background: var(--carbon);
-      border: 1px solid rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
       border-radius: 24px;
       padding: 24px 20px;
-      transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
       position: relative;
       opacity: 0;
       transform: translateY(40px) scale(0.95);
-      overflow: hidden;
-    }
-    .trust-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, rgba(139, 92, 255, 0.03), rgba(212, 175, 55, 0.02));
-      opacity: 0;
-      transition: opacity 0.5s ease;
-      pointer-events: none;
     }
     .trust-card.visible {
       opacity: 1;
       transform: translateY(0) scale(1);
     }
     .trust-card:hover {
-      border-color: rgba(139, 92, 255, 0.2);
+      border-color: rgba(212,175,55,0.25);
       transform: translateY(-6px) scale(1.02);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(139, 92, 255, 0.04);
-    }
-    .trust-card:hover::before {
-      opacity: 1;
+      background: rgba(255,255,255,0.05);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(212,175,55,0.04);
     }
     .trust-card .avatar {
       width: 56px;
@@ -357,13 +270,13 @@
       border-radius: 50%;
       overflow: hidden;
       margin-bottom: 12px;
-      border: 2px solid rgba(139, 92, 255, 0.15);
-      background: linear-gradient(135deg, rgba(139, 92, 255, 0.1), rgba(212, 175, 55, 0.05));
+      border: 2px solid rgba(212,175,55,0.15);
+      background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(76,43,107,0.1));
       transition: all 0.4s ease;
     }
     .trust-card:hover .avatar {
-      border-color: var(--violet);
-      box-shadow: 0 0 30px rgba(139, 92, 255, 0.1);
+      border-color: rgba(212,175,55,0.4);
+      box-shadow: 0 0 30px rgba(212,175,55,0.1);
     }
     .trust-card .avatar img {
       width: 100%;
@@ -377,7 +290,7 @@
       transition: color 0.3s ease;
     }
     .trust-card:hover .name {
-      color: var(--gold);
+      color: #D4AF37;
     }
     .trust-card .role {
       font-size: 0.7rem;
@@ -399,11 +312,8 @@
     .trust-card .stat .value {
       font-weight: 700;
       font-size: 0.95rem;
-      color: var(--violet);
+      color: #D4AF37;
       transition: all 0.3s ease;
-    }
-    .trust-card .stat .value.gold-value {
-      color: var(--gold);
     }
     .trust-card:hover .stat .value {
       transform: scale(1.05);
@@ -447,8 +357,8 @@
       }
     }
     .recognition-item {
-      background: var(--carbon);
-      border: 1px solid rgba(255,255,255,0.04);
+      background: #000000;
+      border: 1px solid rgba(255,255,255,0.06);
       border-radius: 20px;
       padding: 20px;
       text-align: center;
@@ -465,7 +375,7 @@
     .recognition-item:nth-child(2) { transition-delay: 0.15s; }
     .recognition-item:nth-child(3) { transition-delay: 0.25s; }
     .recognition-item:hover {
-      border-color: rgba(212, 175, 55, 0.2);
+      border-color: rgba(212,175,55,0.2);
       transform: translateY(-4px);
       background: #0a0a0a;
       box-shadow: 0 20px 60px rgba(0,0,0,0.6);
@@ -476,19 +386,19 @@
       object-fit: contain;
       border-radius: 12px;
       margin-bottom: 12px;
-      background: var(--carbon);
+      background: #000000;
       padding: 10px;
     }
     .recognition-item .award-badge {
       display: inline-block;
-      background: rgba(212, 175, 55, 0.1);
-      color: var(--gold);
+      background: rgba(212,175,55,0.1);
+      color: #D4AF37;
       padding: 6px 18px;
       border-radius: 100px;
       font-size: 0.7rem;
       font-weight: 600;
       letter-spacing: 0.5px;
-      border: 1px solid rgba(212, 175, 55, 0.1);
+      border: 1px solid rgba(212,175,55,0.1);
       margin-top: 4px;
     }
     .recognition-item .award-label {
@@ -507,7 +417,7 @@
     }
     @media (max-width: 900px) { .why-grid { grid-template-columns: 1fr; } }
     .why-card {
-      background: var(--carbon);
+      background: rgba(255,255,255,0.02);
       border: 1px solid rgba(255,255,255,0.04);
       border-radius: 20px;
       padding: 28px 24px;
@@ -526,13 +436,13 @@
     .why-card:nth-child(5) { transition-delay: 0.15s; }
     .why-card:nth-child(6) { transition-delay: 0.18s; }
     .why-card:hover {
-      border-color: rgba(139, 92, 255, 0.15);
+      border-color: rgba(212,175,55,0.15);
       transform: translateY(-4px);
       background: rgba(255,255,255,0.04);
     }
     .why-card .why-icon {
       font-size: 1.8rem;
-      color: var(--violet);
+      color: #D4AF37;
       margin-bottom: 12px;
       display: block;
     }
@@ -549,7 +459,7 @@
 
     /* SWITCHING SECTION */
     .switch-section {
-      background: var(--carbon);
+      background: rgba(255,255,255,0.02);
       border-radius: 32px;
       padding: 48px 40px;
       border: 1px solid rgba(255,255,255,0.04);
@@ -588,16 +498,15 @@
       gap: 10px;
     }
     .switch-col ul li i {
-      color: var(--violet);
+      color: #D4AF37;
       width: 18px;
     }
     .switch-col.highlight {
-      border-color: rgba(139, 92, 255, 0.15);
-      background: rgba(139, 92, 255, 0.04);
+      border-color: rgba(212,175,55,0.15);
+      background: rgba(212,175,55,0.04);
     }
-    .switch-col.highlight h4 { color: var(--violet); }
+    .switch-col.highlight h4 { color: #D4AF37; }
     .switch-col.highlight ul li { color: rgba(255,255,255,0.7); }
-    .switch-col ul li .fa-times { color: var(--magenta); }
 
     /* ACCOUNT SECURITY */
     .security-section {
@@ -610,7 +519,7 @@
       margin-top: 30px;
     }
     .security-item {
-      background: var(--carbon);
+      background: rgba(255,255,255,0.02);
       border: 1px solid rgba(255,255,255,0.04);
       border-radius: 16px;
       padding: 20px;
@@ -624,12 +533,12 @@
       transform: translateY(0);
     }
     .security-item:hover {
-      border-color: rgba(139, 92, 255, 0.15);
+      border-color: rgba(212,175,55,0.15);
       transform: translateY(-3px);
     }
     .security-item i {
       font-size: 1.8rem;
-      color: var(--gold);
+      color: #D4AF37;
       margin-bottom: 8px;
       display: block;
     }
@@ -704,13 +613,13 @@
       position: relative;
     }
     .step-item.revealed .step-num-wrapper {
-      border-color: var(--gold);
+      border-color: #D4AF37;
       box-shadow: 0 0 40px rgba(212, 175, 55, 0.15);
     }
     .step-item .step-num {
       font-size: 2rem;
       font-weight: 800;
-      color: var(--gold);
+      color: #D4AF37;
       opacity: 0.5;
       transition: 0.5s;
     }
@@ -743,10 +652,10 @@
 
     /* APP FORM */
     .app-form {
-      background: var(--carbon);
+      background: #0b0b0b;
       padding: 40px 36px;
       border-radius: 32px;
-      border: 1px solid rgba(255,255,255,0.04);
+      border: 1px solid #1c1c1c;
       max-width: 640px;
       margin: 0 auto;
     }
@@ -762,12 +671,12 @@
       outline: none;
       transition: 0.2s;
     }
-    .app-form input:focus, .app-form select:focus, .app-form textarea:focus { border-color: var(--gold); }
+    .app-form input:focus, .app-form select:focus, .app-form textarea:focus { border-color: #D4AF37; }
     .app-form textarea { border-radius: 24px; min-height: 100px; }
     .app-form .btn { width: 100%; padding: 16px; border-radius: 60px; font-weight: 700; font-size: 1.1rem; }
 
     .footer {
-      border-top: 1px solid rgba(255,255,255,0.04);
+      border-top: 1px solid #1a1a1a;
       padding: 40px 0 20px;
       margin-top: 60px;
       color: rgba(255,255,255,0.3);
@@ -815,22 +724,17 @@
     }
     .float-btn:hover { transform: scale(1.08); }
     .float-btn.whatsapp { background: #25D366; }
-    .float-btn.tiktok { 
-      background: #000; 
-      border: 2px solid var(--gold); 
-      color: var(--gold); 
-      box-shadow: 0 0 30px rgba(212, 175, 55, 0.1);
-    }
-    .float-btn.tiktok i { color: var(--gold); }
+    .float-btn.tiktok { background: #000; border: 1px solid #D4AF37; color: #D4AF37; }
+    .float-btn.tiktok i { color: #D4AF37; }
 
     /* CALCULATOR */
     .quiz-container {
       max-width: 600px;
       margin: 0 auto;
-      background: var(--carbon);
+      background: #141414;
       padding: 30px;
       border-radius: 24px;
-      border: 1px solid rgba(255,255,255,0.04);
+      border: 1px solid #222;
     }
     .question-block { margin-bottom: 20px; }
     .question-block label {
@@ -838,7 +742,7 @@
       font-size: 0.9rem;
       font-weight: 500;
       margin-bottom: 6px;
-      color: rgba(255,255,255,0.6);
+      color: #aaa;
     }
     .question-block select {
       width: 100%;
@@ -850,27 +754,23 @@
       font-size: 0.95rem;
       transition: 0.2s;
     }
-    .question-block select:focus { border-color: var(--gold); outline: none; }
+    .question-block select:focus { border-color: #D4AF37; outline: none; }
     .btn-submit {
       width: 100%;
       padding: 14px;
-      background: linear-gradient(135deg, var(--violet), #6B3FD4);
-      color: #fff;
+      background: #D4AF37;
+      color: #050505;
       border: none;
       border-radius: 60px;
       font-weight: 700;
       font-size: 1rem;
       cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 30px rgba(139, 92, 255, 0.2);
+      transition: 0.2s;
     }
-    .btn-submit:hover { 
-      transform: scale(1.02);
-      box-shadow: 0 8px 40px rgba(139, 92, 255, 0.3);
-    }
+    .btn-submit:hover { background: #e6c84a; transform: scale(1.01); }
     .result-block { display: none; text-align: center; padding: 10px 0; }
-    .score-display { font-size: 3rem; font-weight: 700; margin: 15px 0; color: var(--gold); }
-    .feedback-text { font-size: 0.95rem; color: rgba(255,255,255,0.6); line-height: 1.6; margin-bottom: 20px; }
+    .score-display { font-size: 3rem; font-weight: 700; margin: 15px 0; color: #D4AF37; }
+    .feedback-text { font-size: 0.95rem; color: #aaa; line-height: 1.6; margin-bottom: 20px; }
     .cta-link {
       display: inline-block;
       width: 100%;
@@ -880,10 +780,10 @@
       text-decoration: none;
       border-radius: 60px;
       font-weight: 600;
-      border: 1px solid rgba(255,255,255,0.06);
+      border: 1px solid #444;
       transition: 0.2s;
     }
-    .cta-link:hover { background: #2a2a2a; border-color: var(--gold); }
+    .cta-link:hover { background: #2a2a2a; }
 
     @media (max-width: 768px) {
       .hero h1 { font-size: 2.8rem; }
@@ -955,8 +855,8 @@
     <p class="hero-sub" data-key="heroSub">Live Alchemy is a premium TikTok LIVE creator growth ecosystem helping Romania's most ambitious creators increase revenue, improve performance, and build sustainable digital careers.</p>
     <div class="hero-qualification" data-key="heroQual">For creators who treat LIVE as a business.</div>
     <div class="hero-cta">
-      <a href="#apply" class="btn-primary" data-key="btnApply">Apply For Private Partnership</a>
-      <a href="#calculator" class="btn-secondary" data-key="btnCheck">Get My Creator Growth Audit</a>
+      <a href="#apply" class="btn btn-gold" data-key="btnApply">Apply For Private Partnership</a>
+      <a href="#calculator" class="btn btn-outline-gold" data-key="btnCheck">Get My Creator Growth Audit</a>
     </div>
   </section>
 
@@ -985,7 +885,7 @@
     </div>
   </section>
 
-  <!-- SECTION 2: TRUST & TESTIMONIALS -->
+  <!-- SECTION 2: TRUST & TESTIMONIALS - STAGGERED ANIMATION -->
   <section id="trust" class="trust-section">
     <div class="section-head">
       <h2 data-key="trustTitle">Real Growth. Real Creators. <span class="gold">Real Results.</span></h2>
@@ -998,11 +898,11 @@
         <div class="name">Andrei M.</div>
         <div class="role">TikTok LIVE · Bucharest</div>
         <div class="stats">
-          <div class="stat"><div class="value" style="color:#FE2C55;">120K</div><div class="label">Before</div></div>
-          <div class="stat"><div class="value" style="color:#8B5CFF;">350K</div><div class="label">After</div></div>
-          <div class="stat"><div class="value gold-value">90</div><div class="label">Days</div></div>
+          <div class="stat"><div class="value">120K</div><div class="label">Before</div></div>
+          <div class="stat"><div class="value" style="color:#4caf50;">350K</div><div class="label">After</div></div>
+          <div class="stat"><div class="value" style="color:#D4AF37;">90</div><div class="label">Days</div></div>
         </div>
-        <div class="quote">"I was stuck at 120K for months. Within 90 days, I hit 350K. The strategy actually works."</div>
+        <div class="quote">"Live Alchemy gave me a real system. Not just advice — actual strategy."</div>
       </div>
       <!-- Card 2 -->
       <div class="trust-card" data-delay="100">
@@ -1010,11 +910,11 @@
         <div class="name">Elena S.</div>
         <div class="role">TikTok LIVE · Cluj-Napoca</div>
         <div class="stats">
-          <div class="stat"><div class="value" style="color:#FE2C55;">80K</div><div class="label">Before</div></div>
-          <div class="stat"><div class="value" style="color:#8B5CFF;">280K</div><div class="label">After</div></div>
-          <div class="stat"><div class="value gold-value">60</div><div class="label">Days</div></div>
+          <div class="stat"><div class="value">80K</div><div class="label">Before</div></div>
+          <div class="stat"><div class="value" style="color:#4caf50;">280K</div><div class="label">After</div></div>
+          <div class="stat"><div class="value" style="color:#D4AF37;">60</div><div class="label">Days</div></div>
         </div>
-        <div class="quote">"My income was all over the place. Now I have a system and a team that actually understands my goals."</div>
+        <div class="quote">"From inconsistent income to a real career. They built a plan around my goals."</div>
       </div>
       <!-- Card 3 -->
       <div class="trust-card" data-delay="200">
@@ -1022,11 +922,11 @@
         <div class="name">Mihai C.</div>
         <div class="role">TikTok LIVE · Timișoara</div>
         <div class="stats">
-          <div class="stat"><div class="value" style="color:#FE2C55;">200K</div><div class="label">Before</div></div>
-          <div class="stat"><div class="value" style="color:#8B5CFF;">520K</div><div class="label">After</div></div>
-          <div class="stat"><div class="value gold-value">120</div><div class="label">Days</div></div>
+          <div class="stat"><div class="value">200K</div><div class="label">Before</div></div>
+          <div class="stat"><div class="value" style="color:#4caf50;">520K</div><div class="label">After</div></div>
+          <div class="stat"><div class="value" style="color:#D4AF37;">120</div><div class="label">Days</div></div>
         </div>
-        <div class="quote">"I was already doing well, but the analytics showed me where I was leaking revenue. Fixed it in weeks."</div>
+        <div class="quote">"Analytics and optimization changed how I approach LIVE. Never grown this fast."</div>
       </div>
       <!-- Card 4 -->
       <div class="trust-card" data-delay="300">
@@ -1034,11 +934,11 @@
         <div class="name">Ioana R.</div>
         <div class="role">TikTok LIVE · Brașov</div>
         <div class="stats">
-          <div class="stat"><div class="value" style="color:#FE2C55;">45K</div><div class="label">Before</div></div>
-          <div class="stat"><div class="value" style="color:#8B5CFF;">190K</div><div class="label">After</div></div>
-          <div class="stat"><div class="value gold-value">45</div><div class="label">Days</div></div>
+          <div class="stat"><div class="value">45K</div><div class="label">Before</div></div>
+          <div class="stat"><div class="value" style="color:#4caf50;">190K</div><div class="label">After</div></div>
+          <div class="stat"><div class="value" style="color:#D4AF37;">45</div><div class="label">Days</div></div>
         </div>
-        <div class="quote">"I thought my content was good, but retention was killing me. Now my viewers actually stay and gift."</div>
+        <div class="quote">"My retention doubled. The team showed me exactly what my audience wants."</div>
       </div>
       <!-- Card 5 -->
       <div class="trust-card" data-delay="400">
@@ -1046,11 +946,11 @@
         <div class="name">Cristian P.</div>
         <div class="role">TikTok LIVE · Iași</div>
         <div class="stats">
-          <div class="stat"><div class="value" style="color:#FE2C55;">160K</div><div class="label">Before</div></div>
-          <div class="stat"><div class="value" style="color:#8B5CFF;">430K</div><div class="label">After</div></div>
-          <div class="stat"><div class="value gold-value">75</div><div class="label">Days</div></div>
+          <div class="stat"><div class="value">160K</div><div class="label">Before</div></div>
+          <div class="stat"><div class="value" style="color:#4caf50;">430K</div><div class="label">After</div></div>
+          <div class="stat"><div class="value" style="color:#D4AF37;">75</div><div class="label">Days</div></div>
         </div>
-        <div class="quote">"The strategy sessions completely changed how I approach every stream. I'm earning more with less stress."</div>
+        <div class="quote">"The growth strategy was tailored to my style. I'm earning more with less effort."</div>
       </div>
       <!-- Card 6 -->
       <div class="trust-card" data-delay="500">
@@ -1058,11 +958,11 @@
         <div class="name">Andreea D.</div>
         <div class="role">TikTok LIVE · Constanța</div>
         <div class="stats">
-          <div class="stat"><div class="value" style="color:#FE2C55;">95K</div><div class="label">Before</div></div>
-          <div class="stat"><div class="value" style="color:#8B5CFF;">310K</div><div class="label">After</div></div>
-          <div class="stat"><div class="value gold-value">55</div><div class="label">Days</div></div>
+          <div class="stat"><div class="value">95K</div><div class="label">Before</div></div>
+          <div class="stat"><div class="value" style="color:#4caf50;">310K</div><div class="label">After</div></div>
+          <div class="stat"><div class="value" style="color:#D4AF37;">55</div><div class="label">Days</div></div>
         </div>
-        <div class="quote">"Before, I was just streaming. Now I'm building a brand. The difference is night and day."</div>
+        <div class="quote">"They understood my vision and gave me the tools to make it happen."</div>
       </div>
       <!-- Card 7 -->
       <div class="trust-card" data-delay="600">
@@ -1070,11 +970,11 @@
         <div class="name">Vlad T.</div>
         <div class="role">TikTok LIVE · Sibiu</div>
         <div class="stats">
-          <div class="stat"><div class="value" style="color:#FE2C55;">250K</div><div class="label">Before</div></div>
-          <div class="stat"><div class="value" style="color:#8B5CFF;">680K</div><div class="label">After</div></div>
-          <div class="stat"><div class="value gold-value">100</div><div class="label">Days</div></div>
+          <div class="stat"><div class="value">250K</div><div class="label">Before</div></div>
+          <div class="stat"><div class="value" style="color:#4caf50;">680K</div><div class="label">After</div></div>
+          <div class="stat"><div class="value" style="color:#D4AF37;">100</div><div class="label">Days</div></div>
         </div>
-        <div class="quote">"I've been in the game for years, but I never had this level of clarity. The data doesn't lie."</div>
+        <div class="quote">"Top-tier analytics and a team that actually cares about my growth."</div>
       </div>
       <!-- Card 8 -->
       <div class="trust-card" data-delay="700">
@@ -1082,11 +982,11 @@
         <div class="name">Maria G.</div>
         <div class="role">TikTok LIVE · Oradea</div>
         <div class="stats">
-          <div class="stat"><div class="value" style="color:#FE2C55;">60K</div><div class="label">Before</div></div>
-          <div class="stat"><div class="value" style="color:#8B5CFF;">220K</div><div class="label">After</div></div>
-          <div class="stat"><div class="value gold-value">30</div><div class="label">Days</div></div>
+          <div class="stat"><div class="value">60K</div><div class="label">Before</div></div>
+          <div class="stat"><div class="value" style="color:#4caf50;">220K</div><div class="label">After</div></div>
+          <div class="stat"><div class="value" style="color:#D4AF37;">30</div><div class="label">Days</div></div>
         </div>
-        <div class="quote">"In just one month, I've grown more than in the entire last year. Finally, a system that works."</div>
+        <div class="quote">"In just one month, I've seen more growth than in the entire last year."</div>
       </div>
     </div>
   </section>
@@ -1166,18 +1066,18 @@
         <div class="switch-col">
           <h4 data-key="switchTraditional">Traditional Agency</h4>
           <ul>
-            <li><i class="fas fa-times"></i> <span data-key="s1">Basic communication</span></li>
-            <li><i class="fas fa-times"></i> <span data-key="s2">Campaign notifications</span></li>
-            <li><i class="fas fa-times"></i> <span data-key="s3">Generic support</span></li>
+            <li><i class="fas fa-times" style="color:#ff6b6b;"></i> <span data-key="s1">Basic communication</span></li>
+            <li><i class="fas fa-times" style="color:#ff6b6b;"></i> <span data-key="s2">Campaign notifications</span></li>
+            <li><i class="fas fa-times" style="color:#ff6b6b;"></i> <span data-key="s3">Generic support</span></li>
           </ul>
         </div>
         <div class="switch-col highlight">
           <h4 data-key="switchAlchemy">Live Alchemy</h4>
           <ul>
-            <li><i class="fas fa-check" style="color:var(--violet);"></i> <span data-key="sa1">Personal growth strategy</span></li>
-            <li><i class="fas fa-check" style="color:var(--violet);"></i> <span data-key="sa2">Performance analysis</span></li>
-            <li><i class="fas fa-check" style="color:var(--violet);"></i> <span data-key="sa3">Creator development plan</span></li>
-            <li><i class="fas fa-check" style="color:var(--violet);"></i> <span data-key="sa4">Dedicated management</span></li>
+            <li><i class="fas fa-check"></i> <span data-key="sa1">Personal growth strategy</span></li>
+            <li><i class="fas fa-check"></i> <span data-key="sa2">Performance analysis</span></li>
+            <li><i class="fas fa-check"></i> <span data-key="sa3">Creator development plan</span></li>
+            <li><i class="fas fa-check"></i> <span data-key="sa4">Dedicated management</span></li>
           </ul>
         </div>
       </div>
@@ -1290,7 +1190,7 @@
       </div>
       <div id="quiz-result" class="result-block">
         <h2 style="font-size:1.3rem;" data-key="resultTitle">Your Performance Analysis</h2>
-        <div class="feedback-text" style="color:var(--gold); font-weight:600;" id="verdict-label" data-key="resultLabel">CREATOR INSIGHT SCORE</div>
+        <div class="feedback-text" style="color:#D4AF37; font-weight:600;" id="verdict-label" data-key="resultLabel">CREATOR INSIGHT SCORE</div>
         <div class="score-display" id="score-val">00/100</div>
         <div class="feedback-text" id="feedback-val" data-key="resultMsg">Analysis complete. We've identified key areas for growth and optimization.</div>
         <a href="#apply" class="cta-link" data-key="resultCta">Apply For A Free Stream Audit →</a>
@@ -1314,8 +1214,8 @@
           <option value="brand" data-key="fGoal4">Build personal brand</option>
         </select>
         <textarea placeholder="Why do you want to join Live Alchemy?" data-key="fWhy" required></textarea>
-        <button type="submit" class="btn btn-primary" data-key="fBtn">Apply For Private Partnership</button>
-        <div id="formMessage" style="margin-top:12px;color:var(--gold);font-size:0.9rem;"></div>
+        <button type="submit" class="btn btn-gold" data-key="fBtn">Apply For Private Partnership</button>
+        <div id="formMessage" style="margin-top:12px;color:#D4AF37;font-size:0.9rem;"></div>
       </form>
     </div>
   </section>
@@ -1359,6 +1259,7 @@
       });
     }
 
+    // Use Intersection Observer to trigger animation when section is visible
     const section = document.querySelector('.trust-section');
     const observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
