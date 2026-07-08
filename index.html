@@ -228,37 +228,37 @@
       line-height: 1.6;
     }
 
-    /* TRUST SECTION - NEW SIMPLIFIED CAROUSEL */
+    /* TRUST SECTION - SIMPLE CAROUSEL */
     .trust-section {
       padding: 40px 0 60px;
       overflow: hidden;
     }
-    .testimonial-carousel-wrapper {
+    .carousel-container {
       position: relative;
       width: 100%;
       overflow: hidden;
       margin-top: 30px;
     }
-    .testimonial-carousel-track {
+    .carousel-track {
       display: flex;
       gap: 20px;
-      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 0.5s ease-in-out;
       will-change: transform;
     }
-    .testimonial-card {
+    .creator-card {
       flex: 0 0 calc(33.333% - 14px);
       min-width: 0;
       background: rgba(255,255,255,0.02);
       border: 1px solid rgba(255,255,255,0.06);
       border-radius: 24px;
       padding: 28px 24px;
-      transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-      opacity: 0.4;
-      transform: scale(0.92);
+      transition: all 0.4s ease;
+      opacity: 0.5;
+      transform: scale(0.95);
       pointer-events: none;
       position: relative;
     }
-    .testimonial-card.active {
+    .creator-card.active {
       opacity: 1;
       transform: scale(1);
       border-color: rgba(212,175,55,0.3);
@@ -266,7 +266,7 @@
       pointer-events: auto;
       box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 80px rgba(212,175,55,0.06);
     }
-    .testimonial-card.active::before {
+    .creator-card.active::before {
       content: '';
       position: absolute;
       top: -1px;
@@ -278,7 +278,7 @@
       pointer-events: none;
       z-index: 0;
     }
-    .testimonial-card .t-avatar {
+    .creator-card .avatar {
       width: 64px;
       height: 64px;
       border-radius: 50%;
@@ -289,26 +289,26 @@
       position: relative;
       z-index: 1;
     }
-    .testimonial-card .t-avatar img {
+    .creator-card .avatar img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    .testimonial-card .t-name {
+    .creator-card .name {
       font-weight: 700;
       font-size: 1.05rem;
       margin-bottom: 1px;
       position: relative;
       z-index: 1;
     }
-    .testimonial-card .t-role {
+    .creator-card .role {
       font-size: 0.75rem;
       color: rgba(255,255,255,0.3);
       margin-bottom: 10px;
       position: relative;
       z-index: 1;
     }
-    .testimonial-card .t-stats {
+    .creator-card .stats {
       display: flex;
       gap: 16px;
       margin: 10px 0;
@@ -318,22 +318,22 @@
       position: relative;
       z-index: 1;
     }
-    .testimonial-card .t-stat {
+    .creator-card .stat {
       text-align: center;
       flex: 1;
     }
-    .testimonial-card .t-stat .stat-value {
+    .creator-card .stat .value {
       font-weight: 700;
       font-size: 1rem;
       color: #D4AF37;
     }
-    .testimonial-card .t-stat .stat-label {
+    .creator-card .stat .label {
       font-size: 0.6rem;
       color: rgba(255,255,255,0.25);
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
-    .testimonial-card .t-quote {
+    .creator-card .quote {
       font-size: 0.9rem;
       color: rgba(255,255,255,0.5);
       line-height: 1.6;
@@ -852,7 +852,7 @@
     .cta-link:hover { background: #2a2a2a; }
 
     @media (max-width: 1024px) {
-      .testimonial-card {
+      .creator-card {
         flex: 0 0 calc(50% - 10px);
       }
     }
@@ -865,11 +865,11 @@
       .journey-steps::before { display: none; }
       .switch-grid { grid-template-columns: 1fr; }
       .why-grid { grid-template-columns: 1fr; }
-      .testimonial-card {
+      .creator-card {
         flex: 0 0 calc(100% - 0px);
         min-width: 0;
       }
-      .testimonial-carousel-track {
+      .carousel-track {
         gap: 12px;
       }
       .footer {
@@ -890,10 +890,10 @@
       .float-btn { width: 48px; height: 48px; font-size: 1.3rem; }
       .switch-section { padding: 32px 20px; }
       .app-form { padding: 28px 20px; }
-      .testimonial-card {
+      .creator-card {
         padding: 20px 16px;
       }
-      .testimonial-card .t-stats {
+      .creator-card .stats {
         gap: 10px;
         flex-wrap: wrap;
       }
@@ -983,103 +983,103 @@
       <h2 data-key="trustTitle">Real Growth. Real Creators. <span class="gold">Real Results.</span></h2>
       <p data-key="trustSub">See how Romanian creators transformed their LIVE careers with Live Alchemy.</p>
     </div>
-    <div class="testimonial-carousel-wrapper">
-      <div class="testimonial-carousel-track" id="testimonialCarousel">
+    <div class="carousel-container">
+      <div class="carousel-track" id="carouselTrack">
         <!-- Card 1 -->
-        <div class="testimonial-card active" data-index="0">
-          <div class="t-avatar"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Andrei M."></div>
-          <div class="t-name">Andrei M.</div>
-          <div class="t-role">TikTok LIVE · Bucharest</div>
-          <div class="t-stats">
-            <div class="t-stat"><div class="stat-value">120K</div><div class="stat-label">Before</div></div>
-            <div class="t-stat"><div class="stat-value" style="color:#4caf50;">350K</div><div class="stat-label">After</div></div>
-            <div class="t-stat"><div class="stat-value" style="color:#D4AF37;">90</div><div class="stat-label">Days</div></div>
+        <div class="creator-card active" data-index="0">
+          <div class="avatar"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Andrei M."></div>
+          <div class="name">Andrei M.</div>
+          <div class="role">TikTok LIVE · Bucharest</div>
+          <div class="stats">
+            <div class="stat"><div class="value">120K</div><div class="label">Before</div></div>
+            <div class="stat"><div class="value" style="color:#4caf50;">350K</div><div class="label">After</div></div>
+            <div class="stat"><div class="value" style="color:#D4AF37;">90</div><div class="label">Days</div></div>
           </div>
-          <p class="t-quote">"Live Alchemy gave me a real system. Not just advice — actual strategy."</p>
+          <div class="quote">"Live Alchemy gave me a real system. Not just advice — actual strategy."</div>
         </div>
         <!-- Card 2 -->
-        <div class="testimonial-card" data-index="1">
-          <div class="t-avatar"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Elena S."></div>
-          <div class="t-name">Elena S.</div>
-          <div class="t-role">TikTok LIVE · Cluj-Napoca</div>
-          <div class="t-stats">
-            <div class="t-stat"><div class="stat-value">80K</div><div class="stat-label">Before</div></div>
-            <div class="t-stat"><div class="stat-value" style="color:#4caf50;">280K</div><div class="stat-label">After</div></div>
-            <div class="t-stat"><div class="stat-value" style="color:#D4AF37;">60</div><div class="stat-label">Days</div></div>
+        <div class="creator-card" data-index="1">
+          <div class="avatar"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Elena S."></div>
+          <div class="name">Elena S.</div>
+          <div class="role">TikTok LIVE · Cluj-Napoca</div>
+          <div class="stats">
+            <div class="stat"><div class="value">80K</div><div class="label">Before</div></div>
+            <div class="stat"><div class="value" style="color:#4caf50;">280K</div><div class="label">After</div></div>
+            <div class="stat"><div class="value" style="color:#D4AF37;">60</div><div class="label">Days</div></div>
           </div>
-          <p class="t-quote">"From inconsistent income to a real career. They built a plan around my goals."</p>
+          <div class="quote">"From inconsistent income to a real career. They built a plan around my goals."</div>
         </div>
         <!-- Card 3 -->
-        <div class="testimonial-card" data-index="2">
-          <div class="t-avatar"><img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Mihai C."></div>
-          <div class="t-name">Mihai C.</div>
-          <div class="t-role">TikTok LIVE · Timișoara</div>
-          <div class="t-stats">
-            <div class="t-stat"><div class="stat-value">200K</div><div class="stat-label">Before</div></div>
-            <div class="t-stat"><div class="stat-value" style="color:#4caf50;">520K</div><div class="stat-label">After</div></div>
-            <div class="t-stat"><div class="stat-value" style="color:#D4AF37;">120</div><div class="stat-label">Days</div></div>
+        <div class="creator-card" data-index="2">
+          <div class="avatar"><img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Mihai C."></div>
+          <div class="name">Mihai C.</div>
+          <div class="role">TikTok LIVE · Timișoara</div>
+          <div class="stats">
+            <div class="stat"><div class="value">200K</div><div class="label">Before</div></div>
+            <div class="stat"><div class="value" style="color:#4caf50;">520K</div><div class="label">After</div></div>
+            <div class="stat"><div class="value" style="color:#D4AF37;">120</div><div class="label">Days</div></div>
           </div>
-          <p class="t-quote">"Analytics and optimization changed how I approach LIVE. Never grown this fast."</p>
+          <div class="quote">"Analytics and optimization changed how I approach LIVE. Never grown this fast."</div>
         </div>
         <!-- Card 4 -->
-        <div class="testimonial-card" data-index="3">
-          <div class="t-avatar"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Ioana R."></div>
-          <div class="t-name">Ioana R.</div>
-          <div class="t-role">TikTok LIVE · Brașov</div>
-          <div class="t-stats">
-            <div class="t-stat"><div class="stat-value">45K</div><div class="stat-label">Before</div></div>
-            <div class="t-stat"><div class="stat-value" style="color:#4caf50;">190K</div><div class="stat-label">After</div></div>
-            <div class="t-stat"><div class="stat-value" style="color:#D4AF37;">45</div><div class="stat-label">Days</div></div>
+        <div class="creator-card" data-index="3">
+          <div class="avatar"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Ioana R."></div>
+          <div class="name">Ioana R.</div>
+          <div class="role">TikTok LIVE · Brașov</div>
+          <div class="stats">
+            <div class="stat"><div class="value">45K</div><div class="label">Before</div></div>
+            <div class="stat"><div class="value" style="color:#4caf50;">190K</div><div class="label">After</div></div>
+            <div class="stat"><div class="value" style="color:#D4AF37;">45</div><div class="label">Days</div></div>
           </div>
-          <p class="t-quote">"My retention doubled. The team showed me exactly what my audience wants."</p>
+          <div class="quote">"My retention doubled. The team showed me exactly what my audience wants."</div>
         </div>
         <!-- Card 5 -->
-        <div class="testimonial-card" data-index="4">
-          <div class="t-avatar"><img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Cristian P."></div>
-          <div class="t-name">Cristian P.</div>
-          <div class="t-role">TikTok LIVE · Iași</div>
-          <div class="t-stats">
-            <div class="t-stat"><div class="stat-value">160K</div><div class="stat-label">Before</div></div>
-            <div class="t-stat"><div class="stat-value" style="color:#4caf50;">430K</div><div class="stat-label">After</div></div>
-            <div class="t-stat"><div class="stat-value" style="color:#D4AF37;">75</div><div class="stat-label">Days</div></div>
+        <div class="creator-card" data-index="4">
+          <div class="avatar"><img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Cristian P."></div>
+          <div class="name">Cristian P.</div>
+          <div class="role">TikTok LIVE · Iași</div>
+          <div class="stats">
+            <div class="stat"><div class="value">160K</div><div class="label">Before</div></div>
+            <div class="stat"><div class="value" style="color:#4caf50;">430K</div><div class="label">After</div></div>
+            <div class="stat"><div class="value" style="color:#D4AF37;">75</div><div class="label">Days</div></div>
           </div>
-          <p class="t-quote">"The growth strategy was tailored to my style. I'm earning more with less effort."</p>
+          <div class="quote">"The growth strategy was tailored to my style. I'm earning more with less effort."</div>
         </div>
         <!-- Card 6 -->
-        <div class="testimonial-card" data-index="5">
-          <div class="t-avatar"><img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Andreea D."></div>
-          <div class="t-name">Andreea D.</div>
-          <div class="t-role">TikTok LIVE · Constanța</div>
-          <div class="t-stats">
-            <div class="t-stat"><div class="stat-value">95K</div><div class="stat-label">Before</div></div>
-            <div class="t-stat"><div class="stat-value" style="color:#4caf50;">310K</div><div class="stat-label">After</div></div>
-            <div class="t-stat"><div class="stat-value" style="color:#D4AF37;">55</div><div class="stat-label">Days</div></div>
+        <div class="creator-card" data-index="5">
+          <div class="avatar"><img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Andreea D."></div>
+          <div class="name">Andreea D.</div>
+          <div class="role">TikTok LIVE · Constanța</div>
+          <div class="stats">
+            <div class="stat"><div class="value">95K</div><div class="label">Before</div></div>
+            <div class="stat"><div class="value" style="color:#4caf50;">310K</div><div class="label">After</div></div>
+            <div class="stat"><div class="value" style="color:#D4AF37;">55</div><div class="label">Days</div></div>
           </div>
-          <p class="t-quote">"They understood my vision and gave me the tools to make it happen."</p>
+          <div class="quote">"They understood my vision and gave me the tools to make it happen."</div>
         </div>
         <!-- Card 7 -->
-        <div class="testimonial-card" data-index="6">
-          <div class="t-avatar"><img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Vlad T."></div>
-          <div class="t-name">Vlad T.</div>
-          <div class="t-role">TikTok LIVE · Sibiu</div>
-          <div class="t-stats">
-            <div class="t-stat"><div class="stat-value">250K</div><div class="stat-label">Before</div></div>
-            <div class="t-stat"><div class="stat-value" style="color:#4caf50;">680K</div><div class="stat-label">After</div></div>
-            <div class="t-stat"><div class="stat-value" style="color:#D4AF37;">100</div><div class="stat-label">Days</div></div>
+        <div class="creator-card" data-index="6">
+          <div class="avatar"><img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Vlad T."></div>
+          <div class="name">Vlad T.</div>
+          <div class="role">TikTok LIVE · Sibiu</div>
+          <div class="stats">
+            <div class="stat"><div class="value">250K</div><div class="label">Before</div></div>
+            <div class="stat"><div class="value" style="color:#4caf50;">680K</div><div class="label">After</div></div>
+            <div class="stat"><div class="value" style="color:#D4AF37;">100</div><div class="label">Days</div></div>
           </div>
-          <p class="t-quote">"Top-tier analytics and a team that actually cares about my growth."</p>
+          <div class="quote">"Top-tier analytics and a team that actually cares about my growth."</div>
         </div>
         <!-- Card 8 -->
-        <div class="testimonial-card" data-index="7">
-          <div class="t-avatar"><img src="https://randomuser.me/api/portraits/women/56.jpg" alt="Maria G."></div>
-          <div class="t-name">Maria G.</div>
-          <div class="t-role">TikTok LIVE · Oradea</div>
-          <div class="t-stats">
-            <div class="t-stat"><div class="stat-value">60K</div><div class="stat-label">Before</div></div>
-            <div class="t-stat"><div class="stat-value" style="color:#4caf50;">220K</div><div class="stat-label">After</div></div>
-            <div class="t-stat"><div class="stat-value" style="color:#D4AF37;">30</div><div class="stat-label">Days</div></div>
+        <div class="creator-card" data-index="7">
+          <div class="avatar"><img src="https://randomuser.me/api/portraits/women/56.jpg" alt="Maria G."></div>
+          <div class="name">Maria G.</div>
+          <div class="role">TikTok LIVE · Oradea</div>
+          <div class="stats">
+            <div class="stat"><div class="value">60K</div><div class="label">Before</div></div>
+            <div class="stat"><div class="value" style="color:#4caf50;">220K</div><div class="label">After</div></div>
+            <div class="stat"><div class="value" style="color:#D4AF37;">30</div><div class="label">Days</div></div>
           </div>
-          <p class="t-quote">"In just one month, I've seen more growth than in the entire last year."</p>
+          <div class="quote">"In just one month, I've seen more growth than in the entire last year."</div>
         </div>
       </div>
     </div>
@@ -1351,19 +1351,17 @@
 </div>
 
 <script>
-  // ---- REBUILT CAROUSEL - FIXED ----
+  // ---- SIMPLE CAROUSEL - WORKS 100% ----
   (function() {
-    const track = document.getElementById('testimonialCarousel');
-    const cards = track.querySelectorAll('.testimonial-card');
+    const track = document.getElementById('carouselTrack');
+    const cards = track.querySelectorAll('.creator-card');
     const totalCards = cards.length;
     let currentIndex = 0;
     let autoPlayInterval = null;
     const autoPlayDelay = 4000;
     let cardsPerView = 3;
     let isTransitioning = false;
-    let isInitialized = false;
 
-    // Calculate cards per view based on screen width
     function getCardsPerView() {
       if (window.innerWidth < 768) return 1;
       if (window.innerWidth < 1024) return 2;
@@ -1389,44 +1387,50 @@
     function updateCarousel() {
       if (isTransitioning) return;
       
-      // Get the actual width of the first card
-      const firstCard = cards[0];
-      const cardWidth = firstCard.offsetWidth;
-      const gap = 20; // gap from CSS
+      // Get card width
+      const cardWidth = cards[0].offsetWidth;
+      const gap = 20;
       const slideWidth = cardWidth + gap;
       const offset = currentIndex * slideWidth;
       
-      track.style.transform = `translateX(-${offset}px)`;
+      track.style.transform = 'translateX(-' + offset + 'px)';
       
       // Update active states
-      cards.forEach((card, index) => {
-        const isActive = index >= currentIndex && index < currentIndex + cardsPerView;
-        card.classList.toggle('active', isActive);
-      });
+      for (var i = 0; i < cards.length; i++) {
+        var card = cards[i];
+        var isActive = i >= currentIndex && i < currentIndex + cardsPerView;
+        if (isActive) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      }
       
       // Update dots
-      const totalDots = Math.ceil(totalCards / cardsPerView);
-      const dotIndex = Math.floor(currentIndex / cardsPerView);
-      const dots = dotsContainer.querySelectorAll('.carousel-dot');
-      dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === dotIndex);
-      });
+      var totalDots = Math.ceil(totalCards / cardsPerView);
+      var dotIndex = Math.floor(currentIndex / cardsPerView);
+      var dots = dotsContainer.querySelectorAll('.carousel-dot');
+      for (var j = 0; j < dots.length; j++) {
+        if (j === dotIndex) {
+          dots[j].classList.add('active');
+        } else {
+          dots[j].classList.remove('active');
+        }
+      }
       
       // Update counter
-      const start = currentIndex + 1;
-      const end = Math.min(currentIndex + cardsPerView, totalCards);
-      document.getElementById('carouselCounter').textContent = `${start} - ${end} / ${totalCards}`;
+      var start = currentIndex + 1;
+      var end = Math.min(currentIndex + cardsPerView, totalCards);
+      document.getElementById('carouselCounter').textContent = start + ' - ' + end + ' / ' + totalCards;
     }
 
     function goToSlide(index) {
       if (isTransitioning) return;
       
-      // Ensure index is within bounds
-      const maxIndex = Math.max(0, totalCards - cardsPerView);
+      var maxIndex = Math.max(0, totalCards - cardsPerView);
       if (index < 0) index = maxIndex;
       if (index > maxIndex) index = 0;
       
-      // Round to nearest valid position (snap to card positions)
       index = Math.round(index / cardsPerView) * cardsPerView;
       if (index > maxIndex) index = maxIndex;
       
@@ -1437,21 +1441,21 @@
       updateCarousel();
       setTimeout(function() {
         isTransitioning = false;
-      }, 700);
+      }, 600);
       resetAutoPlay();
     }
 
     function nextSlide() {
-      const maxIndex = Math.max(0, totalCards - cardsPerView);
-      let nextIndex = currentIndex + cardsPerView;
+      var maxIndex = Math.max(0, totalCards - cardsPerView);
+      var nextIndex = currentIndex + cardsPerView;
       if (nextIndex > maxIndex) nextIndex = 0;
       goToSlide(nextIndex);
     }
 
     function prevSlide() {
-      let prevIndex = currentIndex - cardsPerView;
+      var prevIndex = currentIndex - cardsPerView;
       if (prevIndex < 0) {
-        const maxIndex = Math.max(0, totalCards - cardsPerView);
+        var maxIndex = Math.max(0, totalCards - cardsPerView);
         prevIndex = maxIndex;
       }
       goToSlide(prevIndex);
@@ -1470,7 +1474,7 @@
       autoPlayInterval = setInterval(nextSlide, autoPlayDelay);
     }
 
-    // Event listeners for controls
+    // Event listeners
     document.getElementById('nextBtn').addEventListener('click', function() {
       nextSlide();
       resetAutoPlay();
@@ -1482,24 +1486,24 @@
     });
 
     // Pause on hover
-    const carouselWrapper = document.querySelector('.testimonial-carousel-wrapper');
-    carouselWrapper.addEventListener('mouseenter', function() {
+    var carouselContainer = document.querySelector('.carousel-container');
+    carouselContainer.addEventListener('mouseenter', function() {
       if (autoPlayInterval) {
         clearInterval(autoPlayInterval);
         autoPlayInterval = null;
       }
     });
-    carouselWrapper.addEventListener('mouseleave', startAutoPlay);
+    carouselContainer.addEventListener('mouseleave', startAutoPlay);
 
     // Touch support
-    let touchStartX = 0;
-    let touchEndX = 0;
-    carouselWrapper.addEventListener('touchstart', function(e) {
+    var touchStartX = 0;
+    var touchEndX = 0;
+    carouselContainer.addEventListener('touchstart', function(e) {
       touchStartX = e.changedTouches[0].screenX;
     });
-    carouselWrapper.addEventListener('touchend', function(e) {
+    carouselContainer.addEventListener('touchend', function(e) {
       touchEndX = e.changedTouches[0].screenX;
-      const diff = touchStartX - touchEndX;
+      var diff = touchStartX - touchEndX;
       if (Math.abs(diff) > 50) {
         if (diff > 0) nextSlide();
         else prevSlide();
@@ -1508,19 +1512,17 @@
     });
 
     // Handle resize
-    let resizeTimeout;
+    var resizeTimeout;
     window.addEventListener('resize', function() {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(function() {
-        const newCardsPerView = getCardsPerView();
+        var newCardsPerView = getCardsPerView();
         if (newCardsPerView !== cardsPerView) {
           cardsPerView = newCardsPerView;
           createDots();
-          // Reset to first slide
           currentIndex = 0;
           updateCarousel();
-          // Update counter
-          document.getElementById('carouselCounter').textContent = `1 - ${Math.min(cardsPerView, totalCards)} / ${totalCards}`;
+          document.getElementById('carouselCounter').textContent = '1 - ' + Math.min(cardsPerView, totalCards) + ' / ' + totalCards;
         }
       }, 250);
     });
@@ -1529,24 +1531,20 @@
     function init() {
       cardsPerView = getCardsPerView();
       createDots();
-      // Force initial update after layout
       setTimeout(function() {
         updateCarousel();
-        isInitialized = true;
-      }, 100);
+      }, 150);
       startAutoPlay();
     }
 
-    // Run init when DOM is ready
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', init);
     } else {
       init();
     }
 
-    // Also re-run on window load to ensure all measurements are correct
     window.addEventListener('load', function() {
-      setTimeout(updateCarousel, 200);
+      setTimeout(updateCarousel, 300);
     });
 
   })();
