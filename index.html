@@ -228,7 +228,7 @@
       line-height: 1.6;
     }
 
-    /* TRUST SECTION - CAROUSEL FIXED */
+    /* TRUST SECTION - FIXED CAROUSEL */
     .trust-section {
       padding: 40px 0 60px;
       overflow: hidden;
@@ -404,7 +404,7 @@
       text-align: center;
     }
 
-    /* RECOGNITION - WITH AWARD PHOTOS */
+    /* RECOGNITION - UPDATED WITH PURE BLACK BACKGROUNDS */
     .recognition-section {
       padding: 40px 0 60px;
     }
@@ -425,8 +425,8 @@
       }
     }
     .recognition-item {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.04);
+      background: #000000;
+      border: 1px solid rgba(255,255,255,0.06);
       border-radius: 20px;
       padding: 20px;
       text-align: center;
@@ -443,9 +443,10 @@
     .recognition-item:nth-child(2) { transition-delay: 0.15s; }
     .recognition-item:nth-child(3) { transition-delay: 0.25s; }
     .recognition-item:hover {
-      border-color: rgba(212,175,55,0.15);
+      border-color: rgba(212,175,55,0.2);
       transform: translateY(-4px);
-      background: rgba(255,255,255,0.04);
+      background: #0a0a0a;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
     }
     .recognition-item .award-image {
       width: 100%;
@@ -453,18 +454,26 @@
       object-fit: contain;
       border-radius: 12px;
       margin-bottom: 12px;
-      background: rgba(255,255,255,0.02);
+      background: #000000;
       padding: 10px;
     }
-    .recognition-item .r-year {
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.6);
+    .recognition-item .award-badge {
+      display: inline-block;
+      background: rgba(212,175,55,0.1);
+      color: #D4AF37;
+      padding: 6px 18px;
+      border-radius: 100px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      border: 1px solid rgba(212,175,55,0.1);
       margin-top: 4px;
     }
-    .recognition-item .r-label {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.4);
+    .recognition-item .award-label {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 8px;
+      font-weight: 500;
     }
 
     /* WHY LIVE ALCHEMY - 6 CARDS */
@@ -970,7 +979,7 @@
     </div>
   </section>
 
-  <!-- SECTION 2: TRUST & TESTIMONIALS - CAROUSEL WITH 8 CREATORS -->
+  <!-- SECTION 2: TRUST & TESTIMONIALS - FIXED CAROUSEL -->
   <section id="trust" class="trust-section">
     <div class="section-head">
       <h2 data-key="trustTitle">Real Growth. Real Creators. <span class="gold">Real Results.</span></h2>
@@ -1089,7 +1098,7 @@
     </div>
   </section>
 
-  <!-- SECTION 3: RECOGNITION - WITH AWARD PHOTOS -->
+  <!-- SECTION 3: RECOGNITION - UPDATED -->
   <section class="recognition-section">
     <div class="section-head">
       <h2 data-key="recogTitle">Recognized Within The <span class="gold">TikTok LIVE Ecosystem</span></h2>
@@ -1097,22 +1106,19 @@
     </div>
     <div class="recognition-grid" id="recogGrid">
       <div class="recognition-item">
-        <img src="assets/images/awards/award-2025.png" alt="Best Creator Network 2025" class="award-image" onerror="this.style.display='none'">
-        <i class="fas fa-award" style="font-size:2.8rem;color:#D4AF37;display:block;margin-bottom:8px;"></i>
-        <div class="r-year">2025</div>
-        <div class="r-label" data-key="recog1">Best Creator Network</div>
+        <img src="assets/images/awards/award-2025.png" alt="Best Creator Network" class="award-image" onerror="this.style.display='none'">
+        <div class="award-badge">★ Award Winner</div>
+        <div class="award-label" data-key="recog1">Best Creator Network</div>
       </div>
       <div class="recognition-item">
-        <img src="assets/images/awards/award-2024.png" alt="Innovation in LIVE 2024" class="award-image" onerror="this.style.display='none'">
-        <i class="fas fa-medal" style="font-size:2.8rem;color:#D4AF37;display:block;margin-bottom:8px;"></i>
-        <div class="r-year">2024</div>
-        <div class="r-label" data-key="recog2">Innovation in LIVE</div>
+        <img src="assets/images/awards/award-2024.png" alt="Innovation in LIVE" class="award-image" onerror="this.style.display='none'">
+        <div class="award-badge">★ Award Winner</div>
+        <div class="award-label" data-key="recog2">Innovation in LIVE</div>
       </div>
       <div class="recognition-item">
-        <img src="assets/images/awards/award-2023.png" alt="Top TikTok Partner 2023" class="award-image" onerror="this.style.display='none'">
-        <i class="fas fa-star" style="font-size:2.8rem;color:#D4AF37;display:block;margin-bottom:8px;"></i>
-        <div class="r-year">2023</div>
-        <div class="r-label" data-key="recog3">Top TikTok Partner</div>
+        <img src="assets/images/awards/award-2023.png" alt="Top TikTok Partner" class="award-image" onerror="this.style.display='none'">
+        <div class="award-badge">★ Award Winner</div>
+        <div class="award-label" data-key="recog3">Top TikTok Partner</div>
       </div>
     </div>
   </section>
@@ -1347,7 +1353,7 @@
 </div>
 
 <script>
-  // ---- CAROUSEL FIXED ----
+  // ---- FIXED CAROUSEL ----
   const track = document.getElementById('testimonialCarousel');
   const cards = track.querySelectorAll('.testimonial-card');
   const totalCards = cards.length;
@@ -1542,9 +1548,9 @@
       trustSub: 'Vezi cum creatorii români și-au transformat carierele LIVE cu Live Alchemy.',
       recogTitle: 'Recunoscuți în <span class="gold">Ecosistemul TikTok LIVE</span>',
       recogSub: 'Angajamentul nostru față de excelența creatorilor a fost recunoscut prin realizări și parteneriate în ecosistemul TikTok LIVE.',
-      recog1: 'Cea Mai Bună Rețea de Creatori',
-      recog2: 'Inovație în LIVE',
-      recog3: 'Top Partener TikTok',
+      recog1: 'Best Creator Network',
+      recog2: 'Innovation in LIVE',
+      recog3: 'Top TikTok Partner',
       whyTitle: 'De Ce Creatorii de Succes Aleg <span class="gold">Live Alchemy</span>',
       why1: 'Manager Personal de Creator',
       why1d: 'O persoană dedicată care îți înțelege obiectivele.',
