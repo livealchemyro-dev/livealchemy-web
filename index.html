@@ -228,7 +228,7 @@
       line-height: 1.6;
     }
 
-    /* TRUST SECTION - CAROUSEL */
+    /* TRUST SECTION - CAROUSEL FIXED */
     .trust-section {
       padding: 40px 0 60px;
       overflow: hidden;
@@ -242,10 +242,10 @@
     }
     .testimonial-carousel-track {
       display: flex;
-      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
       gap: 20px;
+      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
       will-change: transform;
-      padding: 5px 0;
+      padding: 5px 2px;
     }
     .testimonial-card {
       flex: 0 0 calc(33.333% - 14px);
@@ -254,8 +254,8 @@
       border: 1px solid rgba(255,255,255,0.06);
       border-radius: 24px;
       padding: 28px 24px;
-      transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-      opacity: 0.4;
+      transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      opacity: 0.35;
       transform: scale(0.92);
       pointer-events: none;
       position: relative;
@@ -263,10 +263,10 @@
     .testimonial-card.active {
       opacity: 1;
       transform: scale(1);
-      border-color: rgba(212,175,55,0.25);
-      background: rgba(255,255,255,0.06);
+      border-color: rgba(212,175,55,0.3);
+      background: rgba(255,255,255,0.07);
       pointer-events: auto;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 60px rgba(212,175,55,0.06);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 80px rgba(212,175,55,0.06);
     }
     .testimonial-card.active::before {
       content: '';
@@ -276,7 +276,7 @@
       right: -1px;
       bottom: -1px;
       border-radius: 25px;
-      background: linear-gradient(135deg, rgba(212,175,55,0.15), transparent 50%, rgba(212,175,55,0.05));
+      background: linear-gradient(135deg, rgba(212,175,55,0.2), transparent 50%, rgba(212,175,55,0.08));
       pointer-events: none;
       z-index: 0;
     }
@@ -404,27 +404,36 @@
       text-align: center;
     }
 
-    /* RECOGNITION */
+    /* RECOGNITION - WITH AWARD PHOTOS */
     .recognition-section {
       padding: 40px 0 60px;
     }
     .recognition-grid {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
-      justify-content: center;
       margin-top: 30px;
+    }
+    @media (max-width: 900px) { 
+      .recognition-grid { 
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) { 
+      .recognition-grid { 
+        grid-template-columns: 1fr;
+      }
     }
     .recognition-item {
       background: rgba(255,255,255,0.02);
       border: 1px solid rgba(255,255,255,0.04);
       border-radius: 20px;
-      padding: 28px 32px;
+      padding: 20px;
       text-align: center;
-      min-width: 160px;
       transition: all 0.4s ease;
       opacity: 0;
       transform: translateY(20px);
+      overflow: hidden;
     }
     .recognition-item.revealed {
       opacity: 1;
@@ -433,21 +442,25 @@
     .recognition-item:nth-child(1) { transition-delay: 0.05s; }
     .recognition-item:nth-child(2) { transition-delay: 0.15s; }
     .recognition-item:nth-child(3) { transition-delay: 0.25s; }
-    .recognition-item:nth-child(4) { transition-delay: 0.35s; }
     .recognition-item:hover {
       border-color: rgba(212,175,55,0.15);
       transform: translateY(-4px);
       background: rgba(255,255,255,0.04);
     }
-    .recognition-item i {
-      font-size: 2.8rem;
-      color: #D4AF37;
-      margin-bottom: 8px;
+    .recognition-item .award-image {
+      width: 100%;
+      max-height: 200px;
+      object-fit: contain;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      background: rgba(255,255,255,0.02);
+      padding: 10px;
     }
     .recognition-item .r-year {
       font-weight: 700;
       font-size: 1.1rem;
       color: rgba(255,255,255,0.6);
+      margin-top: 4px;
     }
     .recognition-item .r-label {
       font-size: 0.85rem;
@@ -893,6 +906,9 @@
       .carousel-dot.active {
         width: 20px;
       }
+      .recognition-grid { 
+        grid-template-columns: 1fr;
+      }
     }
     .fade-up { opacity: 0; transform: translateY(20px); transition: all 0.7s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
@@ -1073,7 +1089,7 @@
     </div>
   </section>
 
-  <!-- SECTION 3: RECOGNITION -->
+  <!-- SECTION 3: RECOGNITION - WITH AWARD PHOTOS -->
   <section class="recognition-section">
     <div class="section-head">
       <h2 data-key="recogTitle">Recognized Within The <span class="gold">TikTok LIVE Ecosystem</span></h2>
@@ -1081,24 +1097,22 @@
     </div>
     <div class="recognition-grid" id="recogGrid">
       <div class="recognition-item">
-        <i class="fas fa-award"></i>
+        <img src="assets/images/awards/award-2025.png" alt="Best Creator Network 2025" class="award-image" onerror="this.style.display='none'">
+        <i class="fas fa-award" style="font-size:2.8rem;color:#D4AF37;display:block;margin-bottom:8px;"></i>
         <div class="r-year">2025</div>
         <div class="r-label" data-key="recog1">Best Creator Network</div>
       </div>
       <div class="recognition-item">
-        <i class="fas fa-medal"></i>
+        <img src="assets/images/awards/award-2024.png" alt="Innovation in LIVE 2024" class="award-image" onerror="this.style.display='none'">
+        <i class="fas fa-medal" style="font-size:2.8rem;color:#D4AF37;display:block;margin-bottom:8px;"></i>
         <div class="r-year">2024</div>
         <div class="r-label" data-key="recog2">Innovation in LIVE</div>
       </div>
       <div class="recognition-item">
-        <i class="fas fa-star"></i>
+        <img src="assets/images/awards/award-2023.png" alt="Top TikTok Partner 2023" class="award-image" onerror="this.style.display='none'">
+        <i class="fas fa-star" style="font-size:2.8rem;color:#D4AF37;display:block;margin-bottom:8px;"></i>
         <div class="r-year">2023</div>
         <div class="r-label" data-key="recog3">Top TikTok Partner</div>
-      </div>
-      <div class="recognition-item">
-        <i class="fas fa-gem"></i>
-        <div class="r-year">2022</div>
-        <div class="r-label" data-key="recog4">Community Impact</div>
       </div>
     </div>
   </section>
@@ -1333,7 +1347,7 @@
 </div>
 
 <script>
-  // ---- CAROUSEL ----
+  // ---- CAROUSEL FIXED ----
   const track = document.getElementById('testimonialCarousel');
   const cards = track.querySelectorAll('.testimonial-card');
   const totalCards = cards.length;
@@ -1367,8 +1381,12 @@
   function updateCarousel() {
     if (isTransitioning) return;
     
-    const cardWidth = cards[0].offsetWidth + 20; // width + gap
-    const offset = currentIndex * cardWidth;
+    // Get the actual width of the first card
+    const cardWidth = cards[0].offsetWidth;
+    const gap = 20; // gap from CSS
+    const slideWidth = cardWidth + gap;
+    const offset = currentIndex * slideWidth;
+    
     track.style.transform = `translateX(-${offset}px)`;
     
     // Update active states
@@ -1498,7 +1516,8 @@
   // Initialize
   cardsPerView = getCardsPerView();
   createDots();
-  updateCarousel();
+  // Force initial update after layout
+  setTimeout(updateCarousel, 100);
   startAutoPlay();
 
   // ---- LANGUAGE TRANSLATIONS ----
@@ -1526,7 +1545,6 @@
       recog1: 'Cea Mai Bună Rețea de Creatori',
       recog2: 'Inovație în LIVE',
       recog3: 'Top Partener TikTok',
-      recog4: 'Impact în Comunitate',
       whyTitle: 'De Ce Creatorii de Succes Aleg <span class="gold">Live Alchemy</span>',
       why1: 'Manager Personal de Creator',
       why1d: 'O persoană dedicată care îți înțelege obiectivele.',
@@ -1624,7 +1642,6 @@
       recog1: 'Best Creator Network',
       recog2: 'Innovation in LIVE',
       recog3: 'Top TikTok Partner',
-      recog4: 'Community Impact',
       whyTitle: 'Why Successful Creators Choose <span class="gold">Live Alchemy</span>',
       why1: 'Personal Creator Manager',
       why1d: 'A dedicated person who understands your goals.',
