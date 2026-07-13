@@ -19,25 +19,20 @@
       scroll-behavior: smooth;
     }
     .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-    
-    /* === TIKTOK COLORS (replaced #D4AF37 with #fe2c55 and #25f4ee) === */
-    .tiktok { color: #fe2c55; }
+    .tiktok-pink { color: #fe2c55; }
     .tiktok-cyan { color: #25f4ee; }
-    .gradient-text {
-      background: linear-gradient(135deg, #fe2c55, #25f4ee);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
+
+    /* REPLACED: #D4AF37 → #fe2c55 for all gold classes */
+    .gold { color: #fe2c55; }
     .btn-gold {
-      background: linear-gradient(135deg, #fe2c55, #25f4ee);
+      background: #fe2c55;
       color: #050505;
       font-weight: 700;
       border: none;
       transition: all 0.25s ease;
       box-shadow: 0 4px 20px rgba(254, 44, 85, 0.15);
     }
-    .btn-gold:hover { background: linear-gradient(135deg, #ff3b6b, #4af8f0); transform: scale(1.02); box-shadow: 0 8px 30px rgba(254, 44, 85, 0.3); }
+    .btn-gold:hover { background: #fe4c6a; transform: scale(1.02); box-shadow: 0 8px 30px rgba(254, 44, 85, 0.3); }
     .btn-outline-gold {
       background: transparent;
       border: 1.5px solid #fe2c55;
@@ -64,11 +59,7 @@
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
     .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; }
-    .logo span {
-      background: linear-gradient(135deg, #fe2c55, #25f4ee);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+    .logo span { color: #fe2c55; }
     .nav-links { display: flex; gap: 32px; font-weight: 500; font-size: 0.95rem; }
     .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; transition: 0.2s; }
     .nav-links a:hover { color: #fff; }
@@ -148,7 +139,7 @@
       position: relative;
       z-index: 1;
     }
-    .hero h1 .gradient-text { display: inline-block; }
+    .hero h1 .gold { display: inline-block; }
     .hero-sub {
       font-size: 1.25rem;
       color: rgba(255,255,255,0.7);
@@ -222,9 +213,7 @@
     }
     .elite-card .elite-icon {
       font-size: 2.4rem;
-      background: linear-gradient(135deg, #fe2c55, #25f4ee);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #fe2c55;
       margin-bottom: 16px;
       display: block;
       opacity: 0.8;
@@ -305,9 +294,7 @@
       transition: color 0.3s ease;
     }
     .trust-card:hover .name {
-      background: linear-gradient(135deg, #fe2c55, #25f4ee);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #fe2c55;
     }
     .trust-card .role {
       font-size: 0.7rem;
@@ -329,9 +316,7 @@
     .trust-card .stat .value {
       font-weight: 700;
       font-size: 0.95rem;
-      background: linear-gradient(135deg, #fe2c55, #25f4ee);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #fe2c55;
       transition: all 0.3s ease;
     }
     .trust-card:hover .stat .value {
@@ -461,9 +446,7 @@
     }
     .why-card .why-icon {
       font-size: 1.8rem;
-      background: linear-gradient(135deg, #fe2c55, #25f4ee);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #fe2c55;
       margin-bottom: 12px;
       display: block;
     }
@@ -519,26 +502,16 @@
       gap: 10px;
     }
     .switch-col ul li i {
-      background: linear-gradient(135deg, #fe2c55, #25f4ee);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #fe2c55;
       width: 18px;
     }
     .switch-col.highlight {
       border-color: rgba(254, 44, 85, 0.15);
       background: rgba(254, 44, 85, 0.04);
     }
-    .switch-col.highlight h4 {
-      background: linear-gradient(135deg, #fe2c55, #25f4ee);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+    .switch-col.highlight h4 { color: #fe2c55; }
     .switch-col.highlight ul li { color: rgba(255,255,255,0.7); }
-    .switch-col.highlight ul li i {
-      background: linear-gradient(135deg, #fe2c55, #25f4ee);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+    .switch-col.highlight ul li i { color: #25f4ee; }
 
     /* ACCOUNT SECURITY */
     .security-section {
@@ -570,9 +543,7 @@
     }
     .security-item i {
       font-size: 1.8rem;
-      background: linear-gradient(135deg, #fe2c55, #25f4ee);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #fe2c55;
       margin-bottom: 8px;
       display: block;
     }
@@ -653,9 +624,7 @@
     .step-item .step-num {
       font-size: 2rem;
       font-weight: 800;
-      background: linear-gradient(135deg, #fe2c55, #25f4ee);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #fe2c55;
       opacity: 0.5;
       transition: 0.5s;
     }
@@ -760,11 +729,7 @@
     }
     .float-btn:hover { transform: scale(1.08); }
     .float-btn.whatsapp { background: #25D366; }
-    .float-btn.tiktok { 
-      background: #000; 
-      border: 1px solid #fe2c55; 
-      color: #fe2c55; 
-    }
+    .float-btn.tiktok { background: #000; border: 1px solid #fe2c55; color: #fe2c55; }
     .float-btn.tiktok i { color: #fe2c55; }
 
     /* CALCULATOR */
@@ -798,7 +763,7 @@
     .btn-submit {
       width: 100%;
       padding: 14px;
-      background: linear-gradient(135deg, #fe2c55, #25f4ee);
+      background: #fe2c55;
       color: #050505;
       border: none;
       border-radius: 60px;
@@ -807,16 +772,9 @@
       cursor: pointer;
       transition: 0.2s;
     }
-    .btn-submit:hover { transform: scale(1.01); opacity: 0.9; }
+    .btn-submit:hover { background: #fe4c6a; transform: scale(1.01); }
     .result-block { display: none; text-align: center; padding: 10px 0; }
-    .score-display { 
-      font-size: 3rem; 
-      font-weight: 700; 
-      margin: 15px 0; 
-      background: linear-gradient(135deg, #fe2c55, #25f4ee);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+    .score-display { font-size: 3rem; font-weight: 700; margin: 15px 0; color: #fe2c55; }
     .feedback-text { font-size: 0.95rem; color: #aaa; line-height: 1.6; margin-bottom: 20px; }
     .cta-link {
       display: inline-block;
@@ -898,7 +856,7 @@
   <!-- HERO -->
   <section class="hero" id="home">
     <span class="hero-badge" data-key="heroBadge">Romania's Premium TikTok LIVE Creator Ecosystem</span>
-    <h1 data-key="heroTitle">Built For Creators Who Are Ready For Their <span class="gradient-text">Next Level.</span></h1>
+    <h1 data-key="heroTitle">Built For Creators Who Are Ready For Their <span class="gold">Next Level.</span></h1>
     <p class="hero-sub" data-key="heroSub">Live Alchemy is a premium TikTok LIVE creator growth ecosystem helping Romania's most ambitious creators increase revenue, improve performance, and build sustainable digital careers.</p>
     <div class="hero-qualification" data-key="heroQual">For creators who treat LIVE as a business.</div>
     <div class="hero-cta">
@@ -910,7 +868,7 @@
   <!-- SECTION 1: ELITE POSITIONING -->
   <section id="elite" class="elite-section">
     <div class="section-head">
-      <h2 data-key="eliteTitle">Not For Everyone. Built For Creators Who <span class="gradient-text">Want More.</span></h2>
+      <h2 data-key="eliteTitle">Not For Everyone. Built For Creators Who <span class="gold">Want More.</span></h2>
       <p data-key="eliteSub">Thousands of creators go LIVE every day. Only a few build a real digital career. Live Alchemy works with creators who want structured growth, professional support, and a clear path toward higher performance.</p>
     </div>
     <div class="elite-grid" id="eliteGrid">
@@ -935,7 +893,7 @@
   <!-- SECTION 2: TRUST & TESTIMONIALS - STAGGERED ANIMATION -->
   <section id="trust" class="trust-section">
     <div class="section-head">
-      <h2 data-key="trustTitle">Real Growth. Real Creators. <span class="gradient-text">Real Results.</span></h2>
+      <h2 data-key="trustTitle">Real Growth. Real Creators. <span class="gold">Real Results.</span></h2>
       <p data-key="trustSub">See how Romanian creators transformed their LIVE careers with Live Alchemy.</p>
     </div>
     <div class="trust-grid" id="trustGrid">
@@ -946,8 +904,8 @@
         <div class="role">TikTok LIVE · Bucharest</div>
         <div class="stats">
           <div class="stat"><div class="value">120K</div><div class="label">Before</div></div>
-          <div class="stat"><div class="value" style="-webkit-text-fill-color:#4caf50;">350K</div><div class="label">After</div></div>
-          <div class="stat"><div class="value" style="-webkit-text-fill-color:#fe2c55;">90</div><div class="label">Days</div></div>
+          <div class="stat"><div class="value" style="color:#4caf50;">350K</div><div class="label">After</div></div>
+          <div class="stat"><div class="value" style="color:#fe2c55;">90</div><div class="label">Days</div></div>
         </div>
         <div class="quote">"Live Alchemy gave me a real system. Not just advice — actual strategy."</div>
       </div>
@@ -958,8 +916,8 @@
         <div class="role">TikTok LIVE · Cluj-Napoca</div>
         <div class="stats">
           <div class="stat"><div class="value">80K</div><div class="label">Before</div></div>
-          <div class="stat"><div class="value" style="-webkit-text-fill-color:#4caf50;">280K</div><div class="label">After</div></div>
-          <div class="stat"><div class="value" style="-webkit-text-fill-color:#fe2c55;">60</div><div class="label">Days</div></div>
+          <div class="stat"><div class="value" style="color:#4caf50;">280K</div><div class="label">After</div></div>
+          <div class="stat"><div class="value" style="color:#fe2c55;">60</div><div class="label">Days</div></div>
         </div>
         <div class="quote">"From inconsistent income to a real career. They built a plan around my goals."</div>
       </div>
@@ -970,8 +928,8 @@
         <div class="role">TikTok LIVE · Timișoara</div>
         <div class="stats">
           <div class="stat"><div class="value">200K</div><div class="label">Before</div></div>
-          <div class="stat"><div class="value" style="-webkit-text-fill-color:#4caf50;">520K</div><div class="label">After</div></div>
-          <div class="stat"><div class="value" style="-webkit-text-fill-color:#fe2c55;">120</div><div class="label">Days</div></div>
+          <div class="stat"><div class="value" style="color:#4caf50;">520K</div><div class="label">After</div></div>
+          <div class="stat"><div class="value" style="color:#fe2c55;">120</div><div class="label">Days</div></div>
         </div>
         <div class="quote">"Analytics and optimization changed how I approach LIVE. Never grown this fast."</div>
       </div>
@@ -982,8 +940,8 @@
         <div class="role">TikTok LIVE · Brașov</div>
         <div class="stats">
           <div class="stat"><div class="value">45K</div><div class="label">Before</div></div>
-          <div class="stat"><div class="value" style="-webkit-text-fill-color:#4caf50;">190K</div><div class="label">After</div></div>
-          <div class="stat"><div class="value" style="-webkit-text-fill-color:#fe2c55;">45</div><div class="label">Days</div></div>
+          <div class="stat"><div class="value" style="color:#4caf50;">190K</div><div class="label">After</div></div>
+          <div class="stat"><div class="value" style="color:#fe2c55;">45</div><div class="label">Days</div></div>
         </div>
         <div class="quote">"My retention doubled. The team showed me exactly what my audience wants."</div>
       </div>
@@ -994,8 +952,8 @@
         <div class="role">TikTok LIVE · Iași</div>
         <div class="stats">
           <div class="stat"><div class="value">160K</div><div class="label">Before</div></div>
-          <div class="stat"><div class="value" style="-webkit-text-fill-color:#4caf50;">430K</div><div class="label">After</div></div>
-          <div class="stat"><div class="value" style="-webkit-text-fill-color:#fe2c55;">75</div><div class="label">Days</div></div>
+          <div class="stat"><div class="value" style="color:#4caf50;">430K</div><div class="label">After</div></div>
+          <div class="stat"><div class="value" style="color:#fe2c55;">75</div><div class="label">Days</div></div>
         </div>
         <div class="quote">"The growth strategy was tailored to my style. I'm earning more with less effort."</div>
       </div>
@@ -1006,8 +964,8 @@
         <div class="role">TikTok LIVE · Constanța</div>
         <div class="stats">
           <div class="stat"><div class="value">95K</div><div class="label">Before</div></div>
-          <div class="stat"><div class="value" style="-webkit-text-fill-color:#4caf50;">310K</div><div class="label">After</div></div>
-          <div class="stat"><div class="value" style="-webkit-text-fill-color:#fe2c55;">55</div><div class="label">Days</div></div>
+          <div class="stat"><div class="value" style="color:#4caf50;">310K</div><div class="label">After</div></div>
+          <div class="stat"><div class="value" style="color:#fe2c55;">55</div><div class="label">Days</div></div>
         </div>
         <div class="quote">"They understood my vision and gave me the tools to make it happen."</div>
       </div>
@@ -1018,8 +976,8 @@
         <div class="role">TikTok LIVE · Sibiu</div>
         <div class="stats">
           <div class="stat"><div class="value">250K</div><div class="label">Before</div></div>
-          <div class="stat"><div class="value" style="-webkit-text-fill-color:#4caf50;">680K</div><div class="label">After</div></div>
-          <div class="stat"><div class="value" style="-webkit-text-fill-color:#fe2c55;">100</div><div class="label">Days</div></div>
+          <div class="stat"><div class="value" style="color:#4caf50;">680K</div><div class="label">After</div></div>
+          <div class="stat"><div class="value" style="color:#fe2c55;">100</div><div class="label">Days</div></div>
         </div>
         <div class="quote">"Top-tier analytics and a team that actually cares about my growth."</div>
       </div>
@@ -1030,8 +988,8 @@
         <div class="role">TikTok LIVE · Oradea</div>
         <div class="stats">
           <div class="stat"><div class="value">60K</div><div class="label">Before</div></div>
-          <div class="stat"><div class="value" style="-webkit-text-fill-color:#4caf50;">220K</div><div class="label">After</div></div>
-          <div class="stat"><div class="value" style="-webkit-text-fill-color:#fe2c55;">30</div><div class="label">Days</div></div>
+          <div class="stat"><div class="value" style="color:#4caf50;">220K</div><div class="label">After</div></div>
+          <div class="stat"><div class="value" style="color:#fe2c55;">30</div><div class="label">Days</div></div>
         </div>
         <div class="quote">"In just one month, I've seen more growth than in the entire last year."</div>
       </div>
@@ -1041,7 +999,7 @@
   <!-- SECTION 3: RECOGNITION -->
   <section class="recognition-section">
     <div class="section-head">
-      <h2 data-key="recogTitle">Recognized Within The <span class="gradient-text">TikTok LIVE Ecosystem</span></h2>
+      <h2 data-key="recogTitle">Recognized Within The <span class="gold">TikTok LIVE Ecosystem</span></h2>
       <p data-key="recogSub">Our commitment to creator excellence has been recognized through achievements and partnerships within the TikTok LIVE ecosystem.</p>
     </div>
     <div class="recognition-grid" id="recogGrid">
@@ -1066,7 +1024,7 @@
   <!-- SECTION 4: WHY LIVE ALCHEMY -->
   <section class="section-pad" style="padding-top:0;">
     <div class="section-head">
-      <h2 data-key="whyTitle">Why Successful Creators Choose <span class="gradient-text">Live Alchemy</span></h2>
+      <h2 data-key="whyTitle">Why Successful Creators Choose <span class="gold">Live Alchemy</span></h2>
     </div>
     <div class="why-grid" id="whyGrid">
       <div class="why-card">
@@ -1105,7 +1063,7 @@
   <!-- SECTION 5: SWITCHING FROM ANOTHER AGENCY -->
   <section class="section-pad" style="padding-top:0;">
     <div class="section-head">
-      <h2 data-key="switchTitle">Already With <span class="gradient-text">Another Agency?</span></h2>
+      <h2 data-key="switchTitle">Already With <span class="gold">Another Agency?</span></h2>
       <p data-key="switchSub">Many creators have support but still lack strategy, direction, and growth systems.</p>
     </div>
     <div class="switch-section">
@@ -1134,7 +1092,7 @@
   <!-- SECTION 6: CREATOR JOURNEY -->
   <section id="journey" class="section-pad" style="padding:20px 0 60px;">
     <div class="section-head">
-      <h2 data-key="journeyTitle">From Creator To <span class="gradient-text">Digital Entrepreneur</span></h2>
+      <h2 data-key="journeyTitle">From Creator To <span class="gold">Digital Entrepreneur</span></h2>
     </div>
     <div class="journey-wrapper">
       <div class="journey-trigger" id="journeyTrigger"></div>
@@ -1178,7 +1136,7 @@
   <!-- SECTION 7: ACCOUNT SECURITY -->
   <section class="security-section" style="padding-top:0;">
     <div class="section-head">
-      <h2 data-key="securityTitle">Your Account. Your Identity. <span class="gradient-text">Your Control.</span></h2>
+      <h2 data-key="securityTitle">Your Account. Your Identity. <span class="gold">Your Control.</span></h2>
     </div>
     <div class="security-grid" id="securityGrid">
       <div class="security-item">
@@ -1206,7 +1164,7 @@
 
   <!-- SECTION 8: CALCULATOR -->
   <section id="calculator" class="section-pad" style="padding-top:0;">
-    <div class="section-head"><h2 data-key="calcTitle">Calculate Your <span class="gradient-text">Creator Growth Score™</span></h2></div>
+    <div class="section-head"><h2 data-key="calcTitle">Calculate Your <span class="gold">Creator Growth Score™</span></h2></div>
     <div class="quiz-container">
       <div id="quiz-form">
         <div class="question-block">
@@ -1247,7 +1205,7 @@
 
   <!-- SECTION 9: APPLICATION -->
   <section id="apply" class="section-pad" style="padding-top:0;">
-    <div class="section-head"><h2 data-key="applyTitle">Start Your <span class="gradient-text">Creator Application</span></h2></div>
+    <div class="section-head"><h2 data-key="applyTitle">Start Your <span class="gold">Creator Application</span></h2></div>
     <div class="app-form">
       <form id="applicationForm" onsubmit="return handleApply(event)">
         <input type="text" placeholder="Full Name" data-key="fName" required>
@@ -1324,12 +1282,12 @@
     ro: {
       navElite: 'De Ce Noi', navTrust: 'Rezultate', navJourney: 'Călătorie', navApply: 'Aplică',
       heroBadge: 'Ecosistemul Premium de Creatori TikTok LIVE din România',
-      heroTitle: 'Construit Pentru Creatorii Care Sunt Gata Pentru <span class="gradient-text">Următorul Nivel.</span>',
+      heroTitle: 'Construit Pentru Creatorii Care Sunt Gata Pentru <span class="gold">Următorul Nivel.</span>',
       heroSub: 'Live Alchemy este un ecosistem premium de creștere pentru creatorii TikTok LIVE, care ajută cei mai ambițioși creatori din România să își crească veniturile, să își îmbunătățească performanța și să construiască cariere digitale sustenabile.',
       heroQual: 'Pentru creatorii care tratează LIVE-ul ca pe o afacere.',
       btnApply: 'Solicită Parteneriat Privat',
       btnCheck: 'Vreau un Audit de Creștere',
-      eliteTitle: 'Nu Pentru Toată Lumea. Construit Pentru Creatorii Care Vor <span class="gradient-text">Mai Mult.</span>',
+      eliteTitle: 'Nu Pentru Toată Lumea. Construit Pentru Creatorii Care Vor <span class="gold">Mai Mult.</span>',
       eliteSub: 'Mii de creatori transmit LIVE în fiecare zi. Doar câțiva construiesc o carieră digitală reală. Live Alchemy lucrează cu creatori care vor creștere structurată, suport profesional și o cale clară către performanță superioară.',
       elite1: 'Strategie de Creștere',
       elite1d: 'Roadmap personalizată bazată pe obiectivele și performanța ta.',
@@ -1337,14 +1295,14 @@
       elite2d: 'Analiză, optimizare și planuri de îmbunătățire.',
       elite3: 'Avantaj Creator',
       elite3d: 'Acces la campanii, oportunități și suport profesional.',
-      trustTitle: 'Creștere Reală. Creatori Reali. <span class="gradient-text">Rezultate Reale.</span>',
+      trustTitle: 'Creștere Reală. Creatori Reali. <span class="gold">Rezultate Reale.</span>',
       trustSub: 'Vezi cum creatorii români și-au transformat carierele LIVE cu Live Alchemy.',
-      recogTitle: 'Recunoscuți în <span class="gradient-text">Ecosistemul TikTok LIVE</span>',
+      recogTitle: 'Recunoscuți în <span class="gold">Ecosistemul TikTok LIVE</span>',
       recogSub: 'Angajamentul nostru față de excelența creatorilor a fost recunoscut prin realizări și parteneriate în ecosistemul TikTok LIVE.',
       recog1: 'Best Creator Network',
       recog2: 'Innovation in LIVE',
       recog3: 'Top TikTok Partner',
-      whyTitle: 'De Ce Creatorii de Succes Aleg <span class="gradient-text">Live Alchemy</span>',
+      whyTitle: 'De Ce Creatorii de Succes Aleg <span class="gold">Live Alchemy</span>',
       why1: 'Manager Personal de Creator',
       why1d: 'O persoană dedicată care îți înțelege obiectivele.',
       why2: 'Strategie de Creștere',
@@ -1357,7 +1315,7 @@
       why5d: 'Ghidaj profesional și suport pentru siguranța contului.',
       why6: 'Parteneriat pe Termen Lung',
       why6d: 'Creștem împreună, nu doar gestionăm conturi.',
-      switchTitle: 'Ești Deja Cu <span class="gradient-text">Altă Agenție?</span>',
+      switchTitle: 'Ești Deja Cu <span class="gold">Altă Agenție?</span>',
       switchSub: 'Mulți creatori au suport, dar încă le lipsesc strategia, direcția și sistemele de creștere.',
       switchTraditional: 'Agenție Tradițională',
       s1: 'Comunicare de bază',
@@ -1368,7 +1326,7 @@
       sa2: 'Analiză de performanță',
       sa3: 'Plan de dezvoltare a creatorului',
       sa4: 'Management dedicat',
-      journeyTitle: 'De la Creator la <span class="gradient-text">Antreprenor Digital</span>',
+      journeyTitle: 'De la Creator la <span class="gold">Antreprenor Digital</span>',
       j1Title: 'Evaluare Creator',
       j1Desc: 'Înțelegem performanța curentă și obiectivele tale.',
       j2Title: 'Strategie de Creștere',
@@ -1377,13 +1335,13 @@
       j3Desc: 'Îmbunătățim performanța LIVE, implicarea și consistența.',
       j4Title: 'Scalare',
       j4Desc: 'Te ajutăm să ajungi la următoarea etapă ca creator.',
-      securityTitle: 'Contul Tău. Identitatea Ta. <span class="gradient-text">Controlul Tău.</span>',
+      securityTitle: 'Contul Tău. Identitatea Ta. <span class="gold">Controlul Tău.</span>',
       sec1: 'Contul tău rămâne al tău',
       sec2: 'Parteneriat transparent',
       sec3: 'Fără partajare parole',
       sec4: 'Suport profesional',
       sec5: 'Protecție pe termen lung',
-      calcTitle: 'Calculează-ți <span class="gradient-text">Scorul de Creștere™</span>',
+      calcTitle: 'Calculează-ți <span class="gold">Scorul de Creștere™</span>',
       q1: 'Volumul Lunar de Diamante',
       q2: 'Ore Săptămânale de Streaming',
       q3: 'Provocarea Principală de Creștere',
@@ -1401,7 +1359,7 @@
       resultLabel: 'SCOR INSIGHT CREATOR',
       resultMsg: 'Analiză completă. Am identificat zone cheie pentru creștere și optimizare.',
       resultCta: 'Aplică pentru un Audit GRATUIT de Stream →',
-      applyTitle: 'Începe <span class="gradient-text">Aplicația Ta de Creator</span>',
+      applyTitle: 'Începe <span class="gold">Aplicația Ta de Creator</span>',
       fName: 'Nume Complet',
       fUser: 'Nume utilizator TikTok',
       fDiamonds: 'Diamante lunare',
@@ -1421,12 +1379,12 @@
     en: {
       navElite: 'Why Us', navTrust: 'Results', navJourney: 'Journey', navApply: 'Apply',
       heroBadge: "Romania's Premium TikTok LIVE Creator Ecosystem",
-      heroTitle: 'Built For Creators Who Are Ready For Their <span class="gradient-text">Next Level.</span>',
+      heroTitle: 'Built For Creators Who Are Ready For Their <span class="gold">Next Level.</span>',
       heroSub: 'Live Alchemy is a premium TikTok LIVE creator growth ecosystem helping Romania\'s most ambitious creators increase revenue, improve performance, and build sustainable digital careers.',
       heroQual: 'For creators who treat LIVE as a business.',
       btnApply: 'Apply For Private Partnership',
       btnCheck: 'Get My Creator Growth Audit',
-      eliteTitle: 'Not For Everyone. Built For Creators Who <span class="gradient-text">Want More.</span>',
+      eliteTitle: 'Not For Everyone. Built For Creators Who <span class="gold">Want More.</span>',
       eliteSub: 'Thousands of creators go LIVE every day. Only a few build a real digital career. Live Alchemy works with creators who want structured growth, professional support, and a clear path toward higher performance.',
       elite1: 'Growth Strategy',
       elite1d: 'Personal roadmap based on your goals and performance.',
@@ -1434,14 +1392,14 @@
       elite2d: 'Analytics, optimization, and improvement plans.',
       elite3: 'Creator Advantage',
       elite3d: 'Access to campaigns, opportunities, and professional support.',
-      trustTitle: 'Real Growth. Real Creators. <span class="gradient-text">Real Results.</span>',
+      trustTitle: 'Real Growth. Real Creators. <span class="gold">Real Results.</span>',
       trustSub: 'See how Romanian creators transformed their LIVE careers with Live Alchemy.',
-      recogTitle: 'Recognized Within The <span class="gradient-text">TikTok LIVE Ecosystem</span>',
+      recogTitle: 'Recognized Within The <span class="gold">TikTok LIVE Ecosystem</span>',
       recogSub: 'Our commitment to creator excellence has been recognized through achievements and partnerships within the TikTok LIVE ecosystem.',
       recog1: 'Best Creator Network',
       recog2: 'Innovation in LIVE',
       recog3: 'Top TikTok Partner',
-      whyTitle: 'Why Successful Creators Choose <span class="gradient-text">Live Alchemy</span>',
+      whyTitle: 'Why Successful Creators Choose <span class="gold">Live Alchemy</span>',
       why1: 'Personal Creator Manager',
       why1d: 'A dedicated person who understands your goals.',
       why2: 'Growth Strategy',
@@ -1454,7 +1412,7 @@
       why5d: 'Professional guidance and account safety support.',
       why6: 'Long-Term Partnership',
       why6d: 'We grow together, not just manage accounts.',
-      switchTitle: 'Already With <span class="gradient-text">Another Agency?</span>',
+      switchTitle: 'Already With <span class="gold">Another Agency?</span>',
       switchSub: 'Many creators have support but still lack strategy, direction, and growth systems.',
       switchTraditional: 'Traditional Agency',
       s1: 'Basic communication',
@@ -1465,7 +1423,7 @@
       sa2: 'Performance analysis',
       sa3: 'Creator development plan',
       sa4: 'Dedicated management',
-      journeyTitle: 'From Creator To <span class="gradient-text">Digital Entrepreneur</span>',
+      journeyTitle: 'From Creator To <span class="gold">Digital Entrepreneur</span>',
       j1Title: 'Creator Assessment',
       j1Desc: 'We understand your current performance and goals.',
       j2Title: 'Growth Strategy',
@@ -1474,13 +1432,13 @@
       j3Desc: 'We improve your LIVE performance, engagement, and consistency.',
       j4Title: 'Scale',
       j4Desc: 'We help you reach your next creator milestone.',
-      securityTitle: 'Your Account. Your Identity. <span class="gradient-text">Your Control.</span>',
+      securityTitle: 'Your Account. Your Identity. <span class="gold">Your Control.</span>',
       sec1: 'Your account remains yours',
       sec2: 'Transparent partnership',
       sec3: 'No password sharing',
       sec4: 'Professional support',
       sec5: 'Long-term creator protection',
-      calcTitle: 'Calculate Your <span class="gradient-text">Creator Growth Score™</span>',
+      calcTitle: 'Calculate Your <span class="gold">Creator Growth Score™</span>',
       q1: 'Current Monthly Diamond Volume',
       q2: 'Average Weekly Live Streaming Hours',
       q3: 'Primary Growth Challenge',
@@ -1498,7 +1456,7 @@
       resultLabel: 'CREATOR INSIGHT SCORE',
       resultMsg: 'Analysis complete. We\'ve identified key areas for growth and optimization.',
       resultCta: 'Apply For A Free Stream Audit →',
-      applyTitle: 'Start Your <span class="gradient-text">Creator Application</span>',
+      applyTitle: 'Start Your <span class="gold">Creator Application</span>',
       fName: 'Full Name',
       fUser: 'TikTok Username',
       fDiamonds: 'Monthly Diamonds',
