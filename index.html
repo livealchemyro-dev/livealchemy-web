@@ -19,28 +19,24 @@
       scroll-behavior: smooth;
     }
     .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-    .tiktok-pink { color: #fe2c55; }
-    .tiktok-cyan { color: #25f4ee; }
-
-    /* REPLACED: #D4AF37 → #fe2c55 for all gold classes */
-    .gold { color: #fe2c55; }
+    .gold { color: #D4AF37; }
     .btn-gold {
-      background: #fe2c55;
+      background: #D4AF37;
       color: #050505;
       font-weight: 700;
       border: none;
       transition: all 0.25s ease;
-      box-shadow: 0 4px 20px rgba(254, 44, 85, 0.15);
+      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15);
     }
-    .btn-gold:hover { background: #fe4c6a; transform: scale(1.02); box-shadow: 0 8px 30px rgba(254, 44, 85, 0.3); }
+    .btn-gold:hover { background: #e6c84a; transform: scale(1.02); box-shadow: 0 8px 30px rgba(212, 175, 55, 0.3); }
     .btn-outline-gold {
       background: transparent;
-      border: 1.5px solid #fe2c55;
-      color: #fe2c55;
+      border: 1.5px solid #D4AF37;
+      color: #D4AF37;
       font-weight: 600;
       transition: all 0.25s ease;
     }
-    .btn-outline-gold:hover { background: #fe2c55; color: #050505; box-shadow: 0 8px 24px rgba(254, 44, 85, 0.15); }
+    .btn-outline-gold:hover { background: #D4AF37; color: #050505; box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15); }
     .btn {
       padding: 14px 34px;
       border-radius: 60px;
@@ -59,7 +55,7 @@
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
     .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; }
-    .logo span { color: #fe2c55; }
+    .logo span { color: #D4AF37; }
     .nav-links { display: flex; gap: 32px; font-weight: 500; font-size: 0.95rem; }
     .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; transition: 0.2s; }
     .nav-links a:hover { color: #fff; }
@@ -89,8 +85,8 @@
     }
     .lang-btn:hover { color: rgba(255,255,255,0.7); }
     .lang-btn.active {
-      color: #fe2c55;
-      background: rgba(254, 44, 85, 0.12);
+      color: #D4AF37;
+      background: rgba(212, 175, 55, 0.12);
     }
 
     /* HERO */
@@ -109,21 +105,21 @@
       right: -20%;
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle, rgba(254, 44, 85, 0.06) 0%, rgba(37, 244, 238, 0.04) 50%, transparent 70%);
+      background: radial-gradient(circle, rgba(201, 168, 76, 0.06) 0%, rgba(76, 43, 107, 0.04) 50%, transparent 70%);
       border-radius: 50%;
       pointer-events: none;
     }
     .hero-badge {
       display: inline-block;
-      background: rgba(254, 44, 85, 0.10);
-      color: #fe2c55;
+      background: rgba(201, 168, 76, 0.10);
+      color: #D4AF37;
       padding: 8px 20px;
       border-radius: 100px;
       font-size: 0.7rem;
       font-weight: 600;
       letter-spacing: 1px;
       text-transform: uppercase;
-      border: 1px solid rgba(254, 44, 85, 0.15);
+      border: 1px solid rgba(201, 168, 76, 0.15);
       backdrop-filter: blur(4px);
       margin-bottom: 20px;
       position: relative;
@@ -150,7 +146,7 @@
     }
     .hero-qualification {
       font-size: 0.85rem;
-      color: #25f4ee;
+      color: #D4AF37;
       font-weight: 500;
       letter-spacing: 0.5px;
       padding: 10px 0 20px;
@@ -207,13 +203,13 @@
     .elite-card:nth-child(3) { transition-delay: 0.25s; }
     .elite-card:hover {
       transform: translateY(-8px) scale(1.02);
-      border-color: rgba(254, 44, 85, 0.2);
+      border-color: rgba(212, 175, 55, 0.2);
       background: rgba(255,255,255,0.04);
       box-shadow: 0 20px 40px rgba(0,0,0,0.4);
     }
     .elite-card .elite-icon {
       font-size: 2.4rem;
-      color: #fe2c55;
+      color: #D4AF37;
       margin-bottom: 16px;
       display: block;
       opacity: 0.8;
@@ -263,10 +259,10 @@
       transform: translateY(0) scale(1);
     }
     .trust-card:hover {
-      border-color: rgba(254, 44, 85, 0.25);
+      border-color: rgba(212,175,55,0.25);
       transform: translateY(-6px) scale(1.02);
       background: rgba(255,255,255,0.05);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(254, 44, 85, 0.04);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(212,175,55,0.04);
     }
     .trust-card .avatar {
       width: 56px;
@@ -274,13 +270,13 @@
       border-radius: 50%;
       overflow: hidden;
       margin-bottom: 12px;
-      border: 2px solid rgba(254, 44, 85, 0.15);
-      background: linear-gradient(135deg, rgba(254, 44, 85, 0.1), rgba(37, 244, 238, 0.1));
+      border: 2px solid rgba(212,175,55,0.15);
+      background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(76,43,107,0.1));
       transition: all 0.4s ease;
     }
     .trust-card:hover .avatar {
-      border-color: rgba(254, 44, 85, 0.4);
-      box-shadow: 0 0 30px rgba(254, 44, 85, 0.1);
+      border-color: rgba(212,175,55,0.4);
+      box-shadow: 0 0 30px rgba(212,175,55,0.1);
     }
     .trust-card .avatar img {
       width: 100%;
@@ -294,7 +290,7 @@
       transition: color 0.3s ease;
     }
     .trust-card:hover .name {
-      color: #fe2c55;
+      color: #D4AF37;
     }
     .trust-card .role {
       font-size: 0.7rem;
@@ -316,7 +312,7 @@
     .trust-card .stat .value {
       font-weight: 700;
       font-size: 0.95rem;
-      color: #fe2c55;
+      color: #D4AF37;
       transition: all 0.3s ease;
     }
     .trust-card:hover .stat .value {
@@ -379,7 +375,7 @@
     .recognition-item:nth-child(2) { transition-delay: 0.15s; }
     .recognition-item:nth-child(3) { transition-delay: 0.25s; }
     .recognition-item:hover {
-      border-color: rgba(254, 44, 85, 0.2);
+      border-color: rgba(212,175,55,0.2);
       transform: translateY(-4px);
       background: #0a0a0a;
       box-shadow: 0 20px 60px rgba(0,0,0,0.6);
@@ -395,14 +391,14 @@
     }
     .recognition-item .award-badge {
       display: inline-block;
-      background: rgba(254, 44, 85, 0.1);
-      color: #fe2c55;
+      background: rgba(212,175,55,0.1);
+      color: #D4AF37;
       padding: 6px 18px;
       border-radius: 100px;
       font-size: 0.7rem;
       font-weight: 600;
       letter-spacing: 0.5px;
-      border: 1px solid rgba(254, 44, 85, 0.1);
+      border: 1px solid rgba(212,175,55,0.1);
       margin-top: 4px;
     }
     .recognition-item .award-label {
@@ -440,13 +436,13 @@
     .why-card:nth-child(5) { transition-delay: 0.15s; }
     .why-card:nth-child(6) { transition-delay: 0.18s; }
     .why-card:hover {
-      border-color: rgba(254, 44, 85, 0.15);
+      border-color: rgba(212,175,55,0.15);
       transform: translateY(-4px);
       background: rgba(255,255,255,0.04);
     }
     .why-card .why-icon {
       font-size: 1.8rem;
-      color: #fe2c55;
+      color: #D4AF37;
       margin-bottom: 12px;
       display: block;
     }
@@ -502,16 +498,15 @@
       gap: 10px;
     }
     .switch-col ul li i {
-      color: #fe2c55;
+      color: #D4AF37;
       width: 18px;
     }
     .switch-col.highlight {
-      border-color: rgba(254, 44, 85, 0.15);
-      background: rgba(254, 44, 85, 0.04);
+      border-color: rgba(212,175,55,0.15);
+      background: rgba(212,175,55,0.04);
     }
-    .switch-col.highlight h4 { color: #fe2c55; }
+    .switch-col.highlight h4 { color: #D4AF37; }
     .switch-col.highlight ul li { color: rgba(255,255,255,0.7); }
-    .switch-col.highlight ul li i { color: #25f4ee; }
 
     /* ACCOUNT SECURITY */
     .security-section {
@@ -538,12 +533,12 @@
       transform: translateY(0);
     }
     .security-item:hover {
-      border-color: rgba(254, 44, 85, 0.15);
+      border-color: rgba(212,175,55,0.15);
       transform: translateY(-3px);
     }
     .security-item i {
       font-size: 1.8rem;
-      color: #fe2c55;
+      color: #D4AF37;
       margin-bottom: 8px;
       display: block;
     }
@@ -577,7 +572,7 @@
       top: 30px;
       bottom: 30px;
       width: 2px;
-      background: linear-gradient(to bottom, rgba(254, 44, 85, 0.1), rgba(37, 244, 238, 0.4), rgba(254, 44, 85, 0.1));
+      background: linear-gradient(to bottom, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.4), rgba(212, 175, 55, 0.1));
       transform: translateX(-50%);
     }
     .step-item {
@@ -599,7 +594,7 @@
       opacity: 1;
       transform: translateY(0) scale(1);
       pointer-events: auto;
-      border-color: rgba(254, 44, 85, 0.12);
+      border-color: rgba(212, 175, 55, 0.12);
       background: rgba(255,255,255,0.03);
     }
     .step-item:nth-child(odd) { flex-direction: row; }
@@ -612,19 +607,19 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: radial-gradient(circle at 30% 30%, rgba(254, 44, 85, 0.15), rgba(37, 244, 238, 0.02));
-      border: 2px solid rgba(254, 44, 85, 0.25);
+      background: radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.02));
+      border: 2px solid rgba(212, 175, 55, 0.25);
       transition: all 0.6s ease;
       position: relative;
     }
     .step-item.revealed .step-num-wrapper {
-      border-color: #fe2c55;
-      box-shadow: 0 0 40px rgba(254, 44, 85, 0.15);
+      border-color: #D4AF37;
+      box-shadow: 0 0 40px rgba(212, 175, 55, 0.15);
     }
     .step-item .step-num {
       font-size: 2rem;
       font-weight: 800;
-      color: #fe2c55;
+      color: #D4AF37;
       opacity: 0.5;
       transition: 0.5s;
     }
@@ -641,7 +636,7 @@
       top: 0;
       left: 0;
       border-radius: 20px;
-      background: radial-gradient(circle at var(--glow-x, 50%) var(--glow-y, 50%), rgba(254, 44, 85, 0.04), transparent 70%);
+      background: radial-gradient(circle at var(--glow-x, 50%) var(--glow-y, 50%), rgba(212, 175, 55, 0.04), transparent 70%);
       opacity: 0;
       transition: opacity 0.6s;
       pointer-events: none;
@@ -676,7 +671,7 @@
       outline: none;
       transition: 0.2s;
     }
-    .app-form input:focus, .app-form select:focus, .app-form textarea:focus { border-color: #fe2c55; }
+    .app-form input:focus, .app-form select:focus, .app-form textarea:focus { border-color: #D4AF37; }
     .app-form textarea { border-radius: 24px; min-height: 100px; }
     .app-form .btn { width: 100%; padding: 16px; border-radius: 60px; font-weight: 700; font-size: 1.1rem; }
 
@@ -729,8 +724,8 @@
     }
     .float-btn:hover { transform: scale(1.08); }
     .float-btn.whatsapp { background: #25D366; }
-    .float-btn.tiktok { background: #000; border: 1px solid #fe2c55; color: #fe2c55; }
-    .float-btn.tiktok i { color: #fe2c55; }
+    .float-btn.tiktok { background: #000; border: 1px solid #D4AF37; color: #D4AF37; }
+    .float-btn.tiktok i { color: #D4AF37; }
 
     /* CALCULATOR */
     .quiz-container {
@@ -759,11 +754,11 @@
       font-size: 0.95rem;
       transition: 0.2s;
     }
-    .question-block select:focus { border-color: #fe2c55; outline: none; }
+    .question-block select:focus { border-color: #D4AF37; outline: none; }
     .btn-submit {
       width: 100%;
       padding: 14px;
-      background: #fe2c55;
+      background: #D4AF37;
       color: #050505;
       border: none;
       border-radius: 60px;
@@ -772,9 +767,9 @@
       cursor: pointer;
       transition: 0.2s;
     }
-    .btn-submit:hover { background: #fe4c6a; transform: scale(1.01); }
+    .btn-submit:hover { background: #e6c84a; transform: scale(1.01); }
     .result-block { display: none; text-align: center; padding: 10px 0; }
-    .score-display { font-size: 3rem; font-weight: 700; margin: 15px 0; color: #fe2c55; }
+    .score-display { font-size: 3rem; font-weight: 700; margin: 15px 0; color: #D4AF37; }
     .feedback-text { font-size: 0.95rem; color: #aaa; line-height: 1.6; margin-bottom: 20px; }
     .cta-link {
       display: inline-block;
@@ -788,7 +783,7 @@
       border: 1px solid #444;
       transition: 0.2s;
     }
-    .cta-link:hover { background: #2a2a2a; border-color: #fe2c55; }
+    .cta-link:hover { background: #2a2a2a; }
 
     @media (max-width: 768px) {
       .hero h1 { font-size: 2.8rem; }
@@ -905,7 +900,7 @@
         <div class="stats">
           <div class="stat"><div class="value">120K</div><div class="label">Before</div></div>
           <div class="stat"><div class="value" style="color:#4caf50;">350K</div><div class="label">After</div></div>
-          <div class="stat"><div class="value" style="color:#fe2c55;">90</div><div class="label">Days</div></div>
+          <div class="stat"><div class="value" style="color:#D4AF37;">90</div><div class="label">Days</div></div>
         </div>
         <div class="quote">"Live Alchemy gave me a real system. Not just advice — actual strategy."</div>
       </div>
@@ -917,7 +912,7 @@
         <div class="stats">
           <div class="stat"><div class="value">80K</div><div class="label">Before</div></div>
           <div class="stat"><div class="value" style="color:#4caf50;">280K</div><div class="label">After</div></div>
-          <div class="stat"><div class="value" style="color:#fe2c55;">60</div><div class="label">Days</div></div>
+          <div class="stat"><div class="value" style="color:#D4AF37;">60</div><div class="label">Days</div></div>
         </div>
         <div class="quote">"From inconsistent income to a real career. They built a plan around my goals."</div>
       </div>
@@ -929,7 +924,7 @@
         <div class="stats">
           <div class="stat"><div class="value">200K</div><div class="label">Before</div></div>
           <div class="stat"><div class="value" style="color:#4caf50;">520K</div><div class="label">After</div></div>
-          <div class="stat"><div class="value" style="color:#fe2c55;">120</div><div class="label">Days</div></div>
+          <div class="stat"><div class="value" style="color:#D4AF37;">120</div><div class="label">Days</div></div>
         </div>
         <div class="quote">"Analytics and optimization changed how I approach LIVE. Never grown this fast."</div>
       </div>
@@ -941,7 +936,7 @@
         <div class="stats">
           <div class="stat"><div class="value">45K</div><div class="label">Before</div></div>
           <div class="stat"><div class="value" style="color:#4caf50;">190K</div><div class="label">After</div></div>
-          <div class="stat"><div class="value" style="color:#fe2c55;">45</div><div class="label">Days</div></div>
+          <div class="stat"><div class="value" style="color:#D4AF37;">45</div><div class="label">Days</div></div>
         </div>
         <div class="quote">"My retention doubled. The team showed me exactly what my audience wants."</div>
       </div>
@@ -953,7 +948,7 @@
         <div class="stats">
           <div class="stat"><div class="value">160K</div><div class="label">Before</div></div>
           <div class="stat"><div class="value" style="color:#4caf50;">430K</div><div class="label">After</div></div>
-          <div class="stat"><div class="value" style="color:#fe2c55;">75</div><div class="label">Days</div></div>
+          <div class="stat"><div class="value" style="color:#D4AF37;">75</div><div class="label">Days</div></div>
         </div>
         <div class="quote">"The growth strategy was tailored to my style. I'm earning more with less effort."</div>
       </div>
@@ -965,7 +960,7 @@
         <div class="stats">
           <div class="stat"><div class="value">95K</div><div class="label">Before</div></div>
           <div class="stat"><div class="value" style="color:#4caf50;">310K</div><div class="label">After</div></div>
-          <div class="stat"><div class="value" style="color:#fe2c55;">55</div><div class="label">Days</div></div>
+          <div class="stat"><div class="value" style="color:#D4AF37;">55</div><div class="label">Days</div></div>
         </div>
         <div class="quote">"They understood my vision and gave me the tools to make it happen."</div>
       </div>
@@ -977,7 +972,7 @@
         <div class="stats">
           <div class="stat"><div class="value">250K</div><div class="label">Before</div></div>
           <div class="stat"><div class="value" style="color:#4caf50;">680K</div><div class="label">After</div></div>
-          <div class="stat"><div class="value" style="color:#fe2c55;">100</div><div class="label">Days</div></div>
+          <div class="stat"><div class="value" style="color:#D4AF37;">100</div><div class="label">Days</div></div>
         </div>
         <div class="quote">"Top-tier analytics and a team that actually cares about my growth."</div>
       </div>
@@ -989,7 +984,7 @@
         <div class="stats">
           <div class="stat"><div class="value">60K</div><div class="label">Before</div></div>
           <div class="stat"><div class="value" style="color:#4caf50;">220K</div><div class="label">After</div></div>
-          <div class="stat"><div class="value" style="color:#fe2c55;">30</div><div class="label">Days</div></div>
+          <div class="stat"><div class="value" style="color:#D4AF37;">30</div><div class="label">Days</div></div>
         </div>
         <div class="quote">"In just one month, I've seen more growth than in the entire last year."</div>
       </div>
@@ -1195,7 +1190,7 @@
       </div>
       <div id="quiz-result" class="result-block">
         <h2 style="font-size:1.3rem;" data-key="resultTitle">Your Performance Analysis</h2>
-        <div class="feedback-text" style="color:#fe2c55; font-weight:600;" id="verdict-label" data-key="resultLabel">CREATOR INSIGHT SCORE</div>
+        <div class="feedback-text" style="color:#D4AF37; font-weight:600;" id="verdict-label" data-key="resultLabel">CREATOR INSIGHT SCORE</div>
         <div class="score-display" id="score-val">00/100</div>
         <div class="feedback-text" id="feedback-val" data-key="resultMsg">Analysis complete. We've identified key areas for growth and optimization.</div>
         <a href="#apply" class="cta-link" data-key="resultCta">Apply For A Free Stream Audit →</a>
@@ -1220,7 +1215,7 @@
         </select>
         <textarea placeholder="Why do you want to join Live Alchemy?" data-key="fWhy" required></textarea>
         <button type="submit" class="btn btn-gold" data-key="fBtn">Apply For Private Partnership</button>
-        <div id="formMessage" style="margin-top:12px;color:#fe2c55;font-size:0.9rem;"></div>
+        <div id="formMessage" style="margin-top:12px;color:#D4AF37;font-size:0.9rem;"></div>
       </form>
     </div>
   </section>
@@ -1264,6 +1259,7 @@
       });
     }
 
+    // Use Intersection Observer to trigger animation when section is visible
     const section = document.querySelector('.trust-section');
     const observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
@@ -1528,7 +1524,7 @@
     const msgEl = document.getElementById('formMessage');
     if (isNaN(diamonds) || diamonds < 60000) {
       msgEl.innerHTML = 'We sincerely regret that we are unable to onboard you to our premium network at this moment. Our partnership criteria require a minimum monthly diamond volume of 60,000, and we only collaborate with creators who meet this threshold. We wish you every success in growing your live streaming career, and welcome you to reapply once your monthly diamond earnings meet our requirement.';
-      msgEl.style.color = '#fe2c55';
+      msgEl.style.color = '#D4AF37';
       return false;
     }
     window.location.href = 'https://www.tiktok.com/t/ZMS4vJ1VD/';
